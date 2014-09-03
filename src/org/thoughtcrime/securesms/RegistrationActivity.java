@@ -1,14 +1,13 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -19,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
@@ -28,9 +28,9 @@ import com.google.i18n.phonenumbers.Phonenumber;
 
 import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.crypto.MasterSecret;
-import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.textsecure.api.util.PhoneNumberFormatter;
+import org.whispersystems.textsecure.crypto.MasterSecret;
+import org.whispersystems.textsecure.util.PhoneNumberFormatter;
+import org.whispersystems.textsecure.util.Util;
 
 /**
  * The register account activity.  Prompts ths user for their registration information
@@ -39,7 +39,7 @@ import org.whispersystems.textsecure.api.util.PhoneNumberFormatter;
  * @author Moxie Marlinspike
  *
  */
-public class RegistrationActivity extends ActionBarActivity {
+public class RegistrationActivity extends SherlockActivity {
 
   private static final int PICK_COUNTRY = 1;
 
@@ -89,7 +89,7 @@ public class RegistrationActivity extends ActionBarActivity {
   }
 
   private void initializeSpinner() {
-    this.countrySpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
+    this.countrySpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
     this.countrySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
     setCountryDisplay(getString(R.string.RegistrationActivity_select_your_country));
@@ -109,10 +109,10 @@ public class RegistrationActivity extends ActionBarActivity {
 
   private void initializeNumber() {
     PhoneNumberUtil numberUtil  = PhoneNumberUtil.getInstance();
-    String          localNumber = Util.getDeviceE164Number(this);
+    String          localNumber = org.whispersystems.textsecure.util.Util.getDeviceE164Number(this);
 
     try {
-      if (!TextUtils.isEmpty(localNumber)) {
+      if (!Util.isEmpty(localNumber)) {
         Phonenumber.PhoneNumber localNumberObject = numberUtil.parse(localNumber, null);
 
         if (localNumberObject != null) {
@@ -122,7 +122,7 @@ public class RegistrationActivity extends ActionBarActivity {
       } else {
         String simCountryIso = ((TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE)).getSimCountryIso();
 
-        if (!TextUtils.isEmpty(simCountryIso)) {
+        if (!Util.isEmpty(simCountryIso)) {
           this.countryCode.setText(numberUtil.getCountryCodeForRegion(simCountryIso.toUpperCase())+"");
         }
       }
@@ -156,61 +156,49 @@ public class RegistrationActivity extends ActionBarActivity {
 
       TextSecurePreferences.setPromptedPushRegistration(self, true);
 
-      if (TextUtils.isEmpty(countryCode.getText())) {
-        Toast.makeText(self,
-                       getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
-                       Toast.LENGTH_LONG).show();
+      if (!validateE164Number(self))
         return;
+
+      registerAtGcm(self);
+      promptRegistrationDialog(self);
+    }
+
+    private boolean validateE164Number(Activity activity) {
+      if (Util.isEmpty(countryCode.getText())) {
+        Toast.makeText(activity,
+                getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
+                Toast.LENGTH_LONG).show();
+        return false;
       }
 
-      if (TextUtils.isEmpty(number.getText())) {
-        Toast.makeText(self,
+      if (Util.isEmpty(number.getText())) {
+        Toast.makeText(activity,
                        getString(R.string.RegistrationActivity_you_must_specify_your_phone_number),
                        Toast.LENGTH_LONG).show();
-        return;
+        return false;
       }
 
       final String e164number = getConfiguredE164Number();
-
       if (!PhoneNumberFormatter.isValidNumber(e164number)) {
-        Dialogs.showAlertDialog(self,
-                             getString(R.string.RegistrationActivity_invalid_number),
-                             String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
-                                           e164number));
-        return;
+        Dialogs.showAlertDialog(activity,
+                getString(R.string.RegistrationActivity_invalid_number),
+                String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
+                        e164number));
+        return false;
       }
+      return true;
+    }
 
-      int gcmStatus = GooglePlayServicesUtil.isGooglePlayServicesAvailable(self);
-
-      /**
-       * This function checks if GCM is available. If the error is userRecoverable,
-       * that means that either Play is not installed or outdated.
-       *
-       * If that is the case we set GCM to false, but periodically check in GcmRegistrationService
-       */
-
-      if ( !Release.DISABLE_GCM && gcmStatus != ConnectionResult.SUCCESS) {
-        if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
-          GooglePlayServicesUtil.getErrorDialog(gcmStatus, self, 9000).show();
-        } else {
-           Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
-        }
-        TextSecurePreferences.setGcmRegistered(self, false);
-      }else if(!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS){
-          TextSecurePreferences.setGcmRegistered(self, true);
-      }else {
-          Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
-          TextSecurePreferences.setGcmRegistered(self, false);
-      }
-
-      AlertDialog.Builder dialog = new AlertDialog.Builder(self);
+    private void promptRegistrationDialog(final Activity activity) {
+      final String e164number = getConfiguredE164Number();
+      AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
       dialog.setMessage(String.format(getString(R.string.RegistrationActivity_we_will_now_verify_that_the_following_number_is_associated_with_your_device_s),
                                       PhoneNumberFormatter.getInternationalFormatFromE164(e164number)));
       dialog.setPositiveButton(getString(R.string.RegistrationActivity_continue),
                                new DialogInterface.OnClickListener() {
                                  @Override
                                  public void onClick(DialogInterface dialog, int which) {
-                                   Intent intent = new Intent(self, RegistrationProgressActivity.class);
+                                   Intent intent = new Intent(activity, RegistrationProgressActivity.class);
                                    intent.putExtra("e164number", e164number);
                                    intent.putExtra("master_secret", masterSecret);
                                    startActivity(intent);
@@ -220,12 +208,35 @@ public class RegistrationActivity extends ActionBarActivity {
       dialog.setNegativeButton(getString(R.string.RegistrationActivity_edit), null);
       dialog.show();
     }
+
+    /**
+     * This function checks if GCM is available. If the error is userRecoverable,
+     * that means that either Play is not installed or outdated.
+     *
+     * If that is the case we set GCM to false, but periodically check in GcmRegistrationService
+     */
+    private void registerAtGcm(Activity activity) {
+      int gcmStatus = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+      if (!Release.DISABLE_GCM && gcmStatus != ConnectionResult.SUCCESS) {
+        if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
+          GooglePlayServicesUtil.getErrorDialog(gcmStatus, activity, 9000).show();
+        } else {
+           Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
+        }
+        TextSecurePreferences.setGcmRegistered(activity, false);
+      }else if(!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS){
+          TextSecurePreferences.setGcmRegistered(activity, true);
+      }else {
+          Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
+          TextSecurePreferences.setGcmRegistered(activity, false);
+      }
+    }
   }
 
   private class CountryCodeChangedListener implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
-      if (TextUtils.isEmpty(s)) {
+      if (Util.isEmpty(s)) {
         setCountryDisplay(getString(R.string.RegistrationActivity_select_your_country));
         countryFormatter = null;
         return;
@@ -237,7 +248,7 @@ public class RegistrationActivity extends ActionBarActivity {
       setCountryFormatter(countryCode);
       setCountryDisplay(PhoneNumberFormatter.getRegionDisplayName(regionCode));
 
-      if (!TextUtils.isEmpty(regionCode) && !regionCode.equals("ZZ")) {
+      if (!Util.isEmpty(regionCode) && !regionCode.equals("ZZ")) {
         number.requestFocus();
       }
     }
@@ -258,7 +269,7 @@ public class RegistrationActivity extends ActionBarActivity {
       if (countryFormatter == null)
         return;
 
-      if (TextUtils.isEmpty(s))
+      if (Util.isEmpty(s))
         return;
 
       countryFormatter.clear();
