@@ -43,7 +43,7 @@ import java.io.InputStream;
 
 public class PartProvider extends ContentProvider {
 
-  private static final String CONTENT_URI_STRING = "content://org.thoughtcrime.provider.securesms/part";
+  private static final String CONTENT_URI_STRING = "content://org.thoughtcrime.provider.securesms.wstest/part";
   public  static final Uri    CONTENT_URI        = Uri.parse(CONTENT_URI_STRING);
   private static final int    SINGLE_ROW         = 1;
 
@@ -51,7 +51,7 @@ public class PartProvider extends ContentProvider {
 
   static {
     uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI("org.thoughtcrime.provider.securesms", "part/#", SINGLE_ROW);
+    uriMatcher.addURI("org.thoughtcrime.provider.securesms.wstest", "part/#", SINGLE_ROW);
   }
 
   private MasterSecret masterSecret;

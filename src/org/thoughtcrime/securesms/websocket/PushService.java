@@ -246,7 +246,7 @@ public class PushService extends Service implements Listener {
             }
             WebsocketMessage websocketMessage = WebsocketMessage.fromJson(data);
 
-            Log.d(TAG, "StartService: ackIntent; "+startService(ackIntent(this, websocketMessage))); //TODO This acks the message prior to reading => could mean that messages with an error are never read?
+            startService(ackIntent(this, websocketMessage)); //TODO This acks the message prior to reading => could mean that messages with an error are never read?
 
             String sessionKey = TextSecurePreferences.getSignalingKey(this);
             IncomingEncryptedPushMessage encryptedMessage = new IncomingEncryptedPushMessage(websocketMessage.getMessage(), sessionKey);
