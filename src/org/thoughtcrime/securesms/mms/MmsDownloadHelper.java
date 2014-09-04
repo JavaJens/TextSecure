@@ -21,7 +21,9 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.util.Arrays;
 
 import ws.com.google.android.mms.pdu.PduParser;
 import ws.com.google.android.mms.pdu.RetrieveConf;
@@ -44,7 +46,8 @@ public class MmsDownloadHelper extends MmsCommunication {
       Log.w(TAG, "Connecting to " + url);
       client.connect();
 
-      int responseCode = client.getResponseCode();
+      final InputStream is           = client.getInputStream();
+      final int         responseCode = client.getResponseCode();
 
       Log.w(TAG, "Response code: " + responseCode + "/" + client.getResponseMessage());
 
@@ -52,7 +55,7 @@ public class MmsDownloadHelper extends MmsCommunication {
         throw new IOException("non-200 response");
       }
 
-      return parseResponse(client.getInputStream());
+      return parseResponse(is);
     } finally {
       if (client != null) client.disconnect();
     }
@@ -88,7 +91,7 @@ public class MmsDownloadHelper extends MmsCommunication {
 
         if (pdu != null) break;
       } catch (IOException ioe) {
-        Log.w("MmsDownloadHelper", ioe);
+        Log.w(TAG, ioe);
       }
     }
 
@@ -99,6 +102,7 @@ public class MmsDownloadHelper extends MmsCommunication {
     RetrieveConf retrieved = (RetrieveConf)new PduParser(pdu).parse();
 
     if (retrieved == null) {
+      Log.w(TAG, "Couldn't parse PDU, raw server response: " + Arrays.toString(pdu));
       throw new IOException("Bad retrieved PDU");
     }
 
