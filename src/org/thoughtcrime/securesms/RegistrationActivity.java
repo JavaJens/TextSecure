@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -155,61 +156,49 @@ public class RegistrationActivity extends SherlockActivity {
 
       TextSecurePreferences.setPromptedPushRegistration(self, true);
 
-      if (Util.isEmpty(countryCode.getText())) {
-        Toast.makeText(self,
-                       getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
-                       Toast.LENGTH_LONG).show();
+      if (!validateE164Number(self))
         return;
+
+      registerAtGcm(self);
+      promptRegistrationDialog(self);
+    }
+
+    private boolean validateE164Number(Activity activity) {
+      if (Util.isEmpty(countryCode.getText())) {
+        Toast.makeText(activity,
+                getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
+                Toast.LENGTH_LONG).show();
+        return false;
       }
 
       if (Util.isEmpty(number.getText())) {
-        Toast.makeText(self,
+        Toast.makeText(activity,
                        getString(R.string.RegistrationActivity_you_must_specify_your_phone_number),
                        Toast.LENGTH_LONG).show();
-        return;
+        return false;
       }
 
       final String e164number = getConfiguredE164Number();
-
       if (!PhoneNumberFormatter.isValidNumber(e164number)) {
-        Dialogs.showAlertDialog(self,
-                             getString(R.string.RegistrationActivity_invalid_number),
-                             String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
-                                           e164number));
-        return;
+        Dialogs.showAlertDialog(activity,
+                getString(R.string.RegistrationActivity_invalid_number),
+                String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
+                        e164number));
+        return false;
       }
+      return true;
+    }
 
-      int gcmStatus = GooglePlayServicesUtil.isGooglePlayServicesAvailable(self);
-
-      /**
-       * This function checks if GCM is available. If the error is userRecoverable,
-       * that means that either Play is not installed or outdated.
-       *
-       * If that is the case we set GCM to false, but periodically check in GcmRegistrationService
-       */
-
-      if ( !Release.DISABLE_GCM && gcmStatus != ConnectionResult.SUCCESS) {
-        if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
-          GooglePlayServicesUtil.getErrorDialog(gcmStatus, self, 9000).show();
-        } else {
-           Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
-        }
-        TextSecurePreferences.setGcmRegistered(self, false);
-      }else if(!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS){
-          TextSecurePreferences.setGcmRegistered(self, true);
-      }else {
-          Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
-          TextSecurePreferences.setGcmRegistered(self, false);
-      }
-
-      AlertDialog.Builder dialog = new AlertDialog.Builder(self);
+    private void promptRegistrationDialog(final Activity activity) {
+      final String e164number = getConfiguredE164Number();
+      AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
       dialog.setMessage(String.format(getString(R.string.RegistrationActivity_we_will_now_verify_that_the_following_number_is_associated_with_your_device_s),
                                       PhoneNumberFormatter.getInternationalFormatFromE164(e164number)));
       dialog.setPositiveButton(getString(R.string.RegistrationActivity_continue),
                                new DialogInterface.OnClickListener() {
                                  @Override
                                  public void onClick(DialogInterface dialog, int which) {
-                                   Intent intent = new Intent(self, RegistrationProgressActivity.class);
+                                   Intent intent = new Intent(activity, RegistrationProgressActivity.class);
                                    intent.putExtra("e164number", e164number);
                                    intent.putExtra("master_secret", masterSecret);
                                    startActivity(intent);
@@ -218,6 +207,29 @@ public class RegistrationActivity extends SherlockActivity {
                                });
       dialog.setNegativeButton(getString(R.string.RegistrationActivity_edit), null);
       dialog.show();
+    }
+
+    /**
+     * This function checks if GCM is available. If the error is userRecoverable,
+     * that means that either Play is not installed or outdated.
+     *
+     * If that is the case we set GCM to false, but periodically check in GcmRegistrationService
+     */
+    private void registerAtGcm(Activity activity) {
+      int gcmStatus = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+      if (!Release.DISABLE_GCM && gcmStatus != ConnectionResult.SUCCESS) {
+        if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
+          GooglePlayServicesUtil.getErrorDialog(gcmStatus, activity, 9000).show();
+        } else {
+           Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
+        }
+        TextSecurePreferences.setGcmRegistered(activity, false);
+      }else if(!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS){
+          TextSecurePreferences.setGcmRegistered(activity, true);
+      }else {
+          Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
+          TextSecurePreferences.setGcmRegistered(activity, false);
+      }
     }
   }
 
