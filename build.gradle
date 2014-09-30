@@ -79,11 +79,6 @@ android {
                 renderscript.srcDirs = ['androidTest']
             }
         }
-        productFlavors {
-            wstest {
-                packageName "org.thoughtcrime.securesms.wstest"
-            }
-        }
     }
 
     signingConfigs {

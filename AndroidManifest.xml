@@ -210,7 +210,7 @@
     <service android:enabled="true" android:name=".service.RegistrationService"/>
     <service android:enabled="true" android:name=".service.DirectoryRefreshService"/>
     <service android:enabled="true" android:name=".service.PreKeyService"/>
-	<service android:enabled="true" android:name="org.thoughtcrime.securesms.websocket.PushService"/>
+    <service android:enabled="true" android:name="org.thoughtcrime.securesms.websocket.PushService"/>
 
     <service android:name=".service.QuickResponseService"
              android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE"
@@ -225,14 +225,13 @@
         </intent-filter>
     </service>
 
-	<receiver android:name="org.thoughtcrime.securesms.websocket.NetworkReceiver" android:enabled="true">
-
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE" />
-            </intent-filter>
-        </receiver>
+    <receiver android:name="org.thoughtcrime.securesms.websocket.NetworkReceiver" android:enabled="true">
+        <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE" />
+        </intent-filter>
+    </receiver>
 
 
 <!--	<receiver android:name=".service.BootListener" -->
@@ -293,7 +292,7 @@
 
     <provider android:name=".providers.PartProvider"
               android:grantUriPermissions="true"
-              android:authorities="org.thoughtcrime.provider.securesms.wstest" />
+              android:authorities="org.thoughtcrime.provider.securesms" />
 
     <receiver android:name=".service.RegistrationNotifier"
               android:exported="false">
