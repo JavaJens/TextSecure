@@ -49,9 +49,9 @@ public class Util {
     boolean isActiveNumber;
 
     try {
-        isActiveNumber = Directory.getInstance(context).isActiveNumber(e164number);
+      isActiveNumber = Directory.getInstance(context).isActiveNumber(e164number);
     } catch (NotInDirectoryException e) {
-        isActiveNumber = false;
+      isActiveNumber = false;
     }
 
     return isActiveNumber;
@@ -170,7 +170,7 @@ public class Util {
   }
 
   @SuppressLint("NewApi")
-  public static boolean isDefaultSmsProvider(Context context){
+  public static boolean isDefaultSmsProvider(Context context) {
     return (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) ||
       (context.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(context)));
   }

@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.websocket;
 
-
 import android.content.Context;
 import android.os.PowerManager;
 
@@ -16,9 +15,8 @@ import java.util.List;
 
 public class WebSocketClientFactory {
 
-    public static WebSocketClient create(String number, String password, WebSocketClient.Listener listener, List<BasicNameValuePair> extraHeaders, PowerManager.WakeLock wakelock, Context context) {
-        return new WebSocketClient(URI.create(Release.WS_URL + "?login="
-                + number +
-                "&password=" + password), listener, null, wakelock, new TextSecurePushTrustStore(context));
-    }
+  public static WebSocketClient create(String number, String password, WebSocketClient.Listener listener, List<BasicNameValuePair> extraHeaders, PowerManager.WakeLock wakelock, Context context) {
+    return new WebSocketClient(URI.create(Release.WS_URL + "?login=" + number + "&password=" + password),
+                               listener, null, wakelock, new TextSecurePushTrustStore(context));
+  }
 }
