@@ -8,17 +8,16 @@ public class AccountAttributes {
   private int     registrationId;
 
   public AccountAttributes(String signalingKey, boolean supportsSms, int registrationId) {
-      this(signalingKey, supportsSms, registrationId, false);
+    this(signalingKey, supportsSms, registrationId, false);
   }
 
   public AccountAttributes() {}
 
   public AccountAttributes(String signalingKey, boolean supportsSms, int registrationId, boolean fetchesMessages) {
-
-      this.signalingKey    = signalingKey;
-      this.supportsSms     = supportsSms;
-      this.registrationId  = registrationId;
-      this.fetchesMessages = fetchesMessages;
+    this.signalingKey    = signalingKey;
+    this.supportsSms     = supportsSms;
+    this.registrationId  = registrationId;
+    this.fetchesMessages = fetchesMessages;
   }
 
   public String getSignalingKey() {
@@ -26,11 +25,11 @@ public class AccountAttributes {
   }
 
   public boolean isSupportsSms() {
-      return supportsSms;
+    return supportsSms;
   }
   public boolean isFetchesMessages() {
-        return fetchesMessages;
-    }
+    return fetchesMessages;
+  }
 
   public int getRegistrationId() {
     return registrationId;

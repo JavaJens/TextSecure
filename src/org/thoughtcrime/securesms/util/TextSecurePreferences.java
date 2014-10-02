@@ -351,7 +351,6 @@ public class TextSecurePreferences {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putLong(key, value).apply();
   }
 
-
   public static void setGcmRegistered(Context context, boolean gcmRegistered) {
    setBooleanPreference(context, REGISTERED_GCM_PREF, gcmRegistered);
   }

@@ -32,27 +32,27 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
 public class Util {
-    public static TrustManager[] initializeTrustManager(PushServiceSocket.TrustStore trustStore) {
-        try {
-            InputStream keyStoreInputStream = trustStore.getKeyStoreInputStream();
-            KeyStore keyStore            = KeyStore.getInstance("BKS");
+  public static TrustManager[] initializeTrustManager(PushServiceSocket.TrustStore trustStore) {
+    try {
+      InputStream keyStoreInputStream = trustStore.getKeyStoreInputStream();
+      KeyStore keyStore               = KeyStore.getInstance("BKS");
 
-            keyStore.load(keyStoreInputStream, trustStore.getKeyStorePassword().toCharArray());
+      keyStore.load(keyStoreInputStream, trustStore.getKeyStorePassword().toCharArray());
 
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("X509");
-            trustManagerFactory.init(keyStore);
+      TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("X509");
+      trustManagerFactory.init(keyStore);
 
-            return BlacklistingTrustManager.createFor(trustManagerFactory.getTrustManagers());
-        } catch (KeyStoreException kse) {
-            throw new AssertionError(kse);
-        } catch (CertificateException e) {
-            throw new AssertionError(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new AssertionError(e);
-        } catch (IOException ioe) {
-            throw new AssertionError(ioe);
-        }
+      return BlacklistingTrustManager.createFor(trustManagerFactory.getTrustManagers());
+    } catch (KeyStoreException kse) {
+      throw new AssertionError(kse);
+    } catch (CertificateException e) {
+      throw new AssertionError(e);
+    } catch (NoSuchAlgorithmException e) {
+      throw new AssertionError(e);
+    } catch (IOException ioe) {
+      throw new AssertionError(ioe);
     }
+  }
 
   public static byte[] combine(byte[]... elements) {
     try {

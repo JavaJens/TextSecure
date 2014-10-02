@@ -166,8 +166,8 @@ public class RegistrationActivity extends SherlockActivity {
     private boolean validateE164Number(Activity activity) {
       if (Util.isEmpty(countryCode.getText())) {
         Toast.makeText(activity,
-                getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
-                Toast.LENGTH_LONG).show();
+                       getString(R.string.RegistrationActivity_you_must_specify_your_country_code),
+                       Toast.LENGTH_LONG).show();
         return false;
       }
 
@@ -181,9 +181,9 @@ public class RegistrationActivity extends SherlockActivity {
       final String e164number = getConfiguredE164Number();
       if (!PhoneNumberFormatter.isValidNumber(e164number)) {
         Dialogs.showAlertDialog(activity,
-                getString(R.string.RegistrationActivity_invalid_number),
-                String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
-                        e164number));
+                                getString(R.string.RegistrationActivity_invalid_number),
+                                String.format(getString(R.string.RegistrationActivity_the_number_you_specified_s_is_invalid),
+                                              e164number));
         return false;
       }
       return true;
@@ -223,12 +223,12 @@ public class RegistrationActivity extends SherlockActivity {
         if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
           GooglePlayServicesUtil.getErrorDialog(gcmStatus, activity, 9000).show();
         }
-      }else if(!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS){
-          Log.d("RegistrationActivity", "GCM upported.");
-          TextSecurePreferences.setGcmRegistered(activity, true);
+      }else if (!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS) {
+        Log.d("RegistrationActivity", "GCM upported.");
+        TextSecurePreferences.setGcmRegistered(activity, true);
       }else {
-          Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
-          TextSecurePreferences.setGcmRegistered(activity, false);
+        Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");
+        TextSecurePreferences.setGcmRegistered(activity, false);
       }
     }
   }

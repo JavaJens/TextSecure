@@ -323,18 +323,20 @@ public class RegistrationProgressActivity extends SherlockActivity {
   }
 
     private void handleVerificationComplete() {
-        if (visible) {
-            Toast.makeText(this,
-                    R.string.RegistrationProgressActivity_registration_complete,
-                    Toast.LENGTH_LONG).show();
-        }
-        if (TextSecurePreferences.isPushRegistered(getApplicationContext())
-                && !TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
-            startService(PushService.startIntent(this.getApplicationContext()));
-        }
-        shutdownService();
-        startActivity(new Intent(this, RoutingActivity.class));
-        finish();
+      if (visible) {
+        Toast.makeText(this,
+                       R.string.RegistrationProgressActivity_registration_complete,
+                       Toast.LENGTH_LONG).show();
+      }
+
+      if (TextSecurePreferences.isPushRegistered(getApplicationContext())
+          && !TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
+        startService(PushService.startIntent(this.getApplicationContext()));
+      }
+
+      shutdownService();
+      startActivity(new Intent(this, RoutingActivity.class));
+      finish();
     }
 
   private void handleTimerUpdate() {
@@ -520,11 +522,12 @@ public class RegistrationProgressActivity extends SherlockActivity {
           try {
             PushServiceSocket socket = PushServiceSocketFactory.create(context, e164number, password);
             int registrationId = TextSecurePreferences.getLocalRegistrationId(context);
-              if (TextSecurePreferences.isGcmRegistered(context)) {
-                  socket.verifyAccount(code, signalingKey, true, registrationId);
-              } else {
-                  socket.verifyAccount(code, signalingKey, true, registrationId, true);
-              }
+
+            if (TextSecurePreferences.isGcmRegistered(context)) {
+              socket.verifyAccount(code, signalingKey, true, registrationId);
+            } else {
+              socket.verifyAccount(code, signalingKey, true, registrationId, true);
+            }
             return SUCCESS;
           } catch (ExpectationFailedException e) {
             Log.w("RegistrationProgressActivity", e);
@@ -585,7 +588,7 @@ public class RegistrationProgressActivity extends SherlockActivity {
               startService(intent);
 
               callButton.setEnabled(false);
-              new Handler().postDelayed(new Runnable(){
+              new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                   callButton.setEnabled(true);

@@ -47,7 +47,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         IncomingPushMessage          message          = encryptedMessage.getIncomingPushMessage();
 
         if (!org.thoughtcrime.securesms.util.Util.isActiveNumber(context, message.getSource())) {
-          Directory directory           = Directory.getInstance(context);
+          Directory directory                     = Directory.getInstance(context);
           ContactTokenDetails contactTokenDetails = new ContactTokenDetails();
           contactTokenDetails.setNumber(message.getSource());
 
