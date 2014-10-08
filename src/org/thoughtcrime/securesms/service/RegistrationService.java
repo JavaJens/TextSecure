@@ -14,19 +14,18 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.crypto.IdentityKeyUtil;
-import org.thoughtcrime.securesms.crypto.MasterSecret;
-import org.thoughtcrime.securesms.crypto.PreKeyUtil;
-import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
+import org.thoughtcrime.securesms.push.PushServiceSocketFactory;
 import org.thoughtcrime.securesms.util.DirectoryHelper;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.thoughtcrime.securesms.util.Util;
 import org.whispersystems.libaxolotl.IdentityKeyPair;
-import org.whispersystems.libaxolotl.state.PreKeyRecord;
 import org.whispersystems.libaxolotl.state.SignedPreKeyRecord;
+import org.whispersystems.libaxolotl.state.PreKeyRecord;
 import org.whispersystems.libaxolotl.util.KeyHelper;
-import org.whispersystems.libaxolotl.util.guava.Optional;
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.push.exceptions.ExpectationFailedException;
+import org.whispersystems.textsecure.crypto.MasterSecret;
+import org.whispersystems.textsecure.crypto.PreKeyUtil;
+import org.whispersystems.textsecure.push.exceptions.ExpectationFailedException;
+import org.whispersystems.textsecure.push.PushServiceSocket;
+import org.whispersystems.textsecure.util.Util;
 
 import java.io.IOException;
 import java.util.List;
@@ -154,9 +153,9 @@ public class RegistrationService extends Service {
     MasterSecret masterSecret = intent.getParcelableExtra("master_secret");
 
     try {
-      TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(this, number, password);
+      PushServiceSocket socket = PushServiceSocketFactory.create(this, number, password);
 
-      handleCommonRegistration(masterSecret, accountManager, number);
+      handleCommonRegistration(masterSecret, socket, number);
 
       markAsVerified(number, password, signalingKey);
 
@@ -192,14 +191,18 @@ public class RegistrationService extends Service {
       initializeChallengeListener();
 
       setState(new RegistrationState(RegistrationState.STATE_CONNECTING, number));
-      TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(this, number, password);
-      accountManager.requestSmsVerificationCode();
+      PushServiceSocket socket = PushServiceSocketFactory.create(this, number, password);
+      socket.createAccount(false);
 
       setState(new RegistrationState(RegistrationState.STATE_VERIFYING, number));
+      //String challenge = "111111"; if(false)throw new AccountVerificationTimeoutException();
       String challenge = waitForChallenge();
-      accountManager.verifyAccount(challenge, signalingKey, true, registrationId);
-
-      handleCommonRegistration(masterSecret, accountManager, number);
+      if (TextSecurePreferences.isGcmRegistered(this)) {
+        socket.verifyAccount(challenge, signalingKey, true, registrationId);
+      } else {
+        socket.verifyAccount(challenge, signalingKey, true, registrationId, true);
+      }
+      handleCommonRegistration(masterSecret, socket, number);
       markAsVerified(number, password, signalingKey);
 
       setState(new RegistrationState(RegistrationState.STATE_COMPLETE, number));
@@ -225,7 +228,7 @@ public class RegistrationService extends Service {
     }
   }
 
-  private void handleCommonRegistration(MasterSecret masterSecret, TextSecureAccountManager accountManager, String number)
+  private void handleCommonRegistration(MasterSecret masterSecret, PushServiceSocket socket, String number)
       throws IOException
   {
     setState(new RegistrationState(RegistrationState.STATE_GENERATING_KEYS, number));
@@ -233,15 +236,15 @@ public class RegistrationService extends Service {
     List<PreKeyRecord> records      = PreKeyUtil.generatePreKeys(this, masterSecret);
     PreKeyRecord       lastResort   = PreKeyUtil.generateLastResortKey(this, masterSecret);
     SignedPreKeyRecord signedPreKey = PreKeyUtil.generateSignedPreKey(this, masterSecret, identityKey);
-    accountManager.setPreKeys(identityKey.getPublicKey(),lastResort, signedPreKey, records);
+    socket.registerPreKeys(identityKey.getPublicKey(), lastResort, signedPreKey, records);
 
     setState(new RegistrationState(RegistrationState.STATE_GCM_REGISTERING, number));
-
-    String gcmRegistrationId = GoogleCloudMessaging.getInstance(this).register("312334754206");
-    TextSecurePreferences.setGcmRegistrationId(this, gcmRegistrationId);
-    accountManager.setGcmId(Optional.of(gcmRegistrationId));
-
-    DirectoryHelper.refreshDirectory(this, accountManager, number);
+ 	if(TextSecurePreferences.isGcmRegistered(this)){
+    	String gcmRegistrationId = GoogleCloudMessaging.getInstance(this).register("312334754206");
+    	TextSecurePreferences.setGcmRegistrationId(this, gcmRegistrationId);
+    	socket.registerGcmId(gcmRegistrationId);
+	}
+    DirectoryHelper.refreshDirectory(this, socket, number);
 
     DirectoryRefreshListener.schedule(this);
   }
@@ -272,7 +275,7 @@ public class RegistrationService extends Service {
     TextSecurePreferences.setVerifying(this, verifying);
 
     if (verifying) {
-      TextSecurePreferences.setPushRegistered(this, false);
+      TextSecurePreferences.setPushRegistered(this, false); //TODO Need to set both booleans here?
     }
   }
 
