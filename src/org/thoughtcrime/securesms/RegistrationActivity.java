@@ -224,7 +224,7 @@ public class RegistrationActivity extends SherlockActivity {
           GooglePlayServicesUtil.getErrorDialog(gcmStatus, activity, 9000).show();
         }
       }else if (!Release.DISABLE_GCM && gcmStatus == ConnectionResult.SUCCESS) {
-        Log.d("RegistrationActivity", "GCM upported.");
+        Log.d("RegistrationActivity", "GCM supported.");
         TextSecurePreferences.setGcmRegistered(activity, true);
       }else {
         Log.w("RegistrationActivity", "GCM not supported. Fallback to WebSocket");

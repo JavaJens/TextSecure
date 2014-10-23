@@ -195,7 +195,6 @@ public class RegistrationService extends Service {
       socket.createAccount(false);
 
       setState(new RegistrationState(RegistrationState.STATE_VERIFYING, number));
-      //String challenge = "111111"; if(false)throw new AccountVerificationTimeoutException();
       String challenge = waitForChallenge();
       if (TextSecurePreferences.isGcmRegistered(this)) {
         socket.verifyAccount(challenge, signalingKey, true, registrationId);

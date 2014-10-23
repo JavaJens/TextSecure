@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.Release;
 import org.thoughtcrime.securesms.service.SendReceiveService;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.whispersystems.textsecure.crypto.InvalidVersionException;
+import org.whispersystems.libaxolotl.InvalidVersionException;
 import org.whispersystems.textsecure.directory.Directory;
 import org.whispersystems.textsecure.directory.NotInDirectoryException;
 import org.whispersystems.textsecure.push.ContactTokenDetails;
@@ -82,13 +82,11 @@ public class PushService extends Service implements Listener {
   @Override
   public void onCreate() {
     super.onCreate();
-    Log.d(TAG, "Creating Service " + this.toString());
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    Log.d(TAG, "Destroying Service " + this.toString());
     if (mClient != null && mClient.isConnected()) mClient.disconnect();
   }
 
@@ -101,11 +99,10 @@ public class PushService extends Service implements Listener {
                  .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
       wakelock.acquire();
     }
-    Log.d(TAG, "PushService start command: " + ((intent == null) ? "null" : intent.toUri(Intent.URI_INTENT_SCHEME)));
     mShutDown = false;
 
     if (!TextSecurePreferences.isPushRegistered(getApplicationContext()) || TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
-      Log.i(TAG, "PushService not registered");
+      Log.w(TAG, "Not push registered");
       wakelock.release();
       stopSelf();
       return START_NOT_STICKY;
@@ -116,8 +113,6 @@ public class PushService extends Service implements Listener {
       NetworkInfo networkInfo = conn.getActiveNetworkInfo();
       if (networkInfo != null) {
         NetworkInfo.DetailedState state = networkInfo.getDetailedState();
-        if (state != null) Log.w(TAG, "NetworkInfo: " + state.name());
-        else Log.w(TAG, "NetworkState: " + state);
         if (networkInfo.getDetailedState() != NetworkInfo.DetailedState.CONNECTED) {
           Log.w(TAG, "Not connected, reset");
           wakelock.release();
@@ -144,7 +139,6 @@ public class PushService extends Service implements Listener {
       mClient = WebSocketClientFactory.create(TextSecurePreferences.getLocalNumber(this),
                                               TextSecurePreferences.getPushServerPassword(this),
                                               this, null, clientlock, this);
-      Log.w(TAG, "mClient created");
     }
     if (intent != null) {
       if (ACTION_DISCONNECT.equals(intent.getAction())) {
@@ -165,7 +159,6 @@ public class PushService extends Service implements Listener {
         if (mClient.isConnected()) {
           String ackMessage= "{\"type\":1, \"id\":" + WebsocketMessage.fromJson(intent.getStringExtra("ack")).getId() + "}";
           mClient.send(ackMessage); //TODO Build this JSON properly
-          Log.d(TAG, "Acknowledge message: "+ackMessage);
         }
       }
     }
@@ -188,17 +181,16 @@ public class PushService extends Service implements Listener {
   @Override
   public void onConnect() {
    errors = 0;
-   Log.d(TAG, "Connected to websocket");
+   Log.w(TAG, "Connected to websocket");
   }
 
   @Override
   public void onPong(String message) {
-    Log.d(TAG, "Got Pong: "+message);
   }
 
   @Override
   public synchronized void onDisconnect(int code, String reason) {
-    Log.d(TAG, String.format("Disconnected! Code: %d Reason: %s", code, reason));
+    Log.w(TAG, String.format("Disconnected! Code: %d Reason: %s", code, reason));
     if (!mShutDown) {
       startService(startIntent(this));
     } else {
@@ -213,7 +205,7 @@ public class PushService extends Service implements Listener {
     }
     int backoff = (1 << (errors - 1)); //Use bit-shifting for exponential calculation
 
-    Log.e(TAG, "Websocket error; Restart in "+(backoff*TIMEOUT)+" seconds");
+    Log.w(TAG, "Websocket error; Restart in "+(backoff*TIMEOUT)+" seconds");
 
     AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
     PendingIntent operation = PendingIntent.getService(this, 0, PushService.pingIntent(this), PendingIntent.FLAG_NO_CREATE);
@@ -235,7 +227,6 @@ public class PushService extends Service implements Listener {
       onMessageWakeLock.acquire();
     }
     try {
-      Log.w(TAG, "onMessage: " + data);
       if (Util.isEmpty(data)) {
         return;
       }
