@@ -17,17 +17,13 @@ import android.util.Log;
 import com.codebutler.android_websockets.WebSocketClient;
 import com.codebutler.android_websockets.WebSocketClient.Listener;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.Release;
-import org.thoughtcrime.securesms.service.SendReceiveService;
+import org.thoughtcrime.securesms.jobs.PushReceiveJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.libaxolotl.InvalidVersionException;
-import org.whispersystems.textsecure.directory.Directory;
-import org.whispersystems.textsecure.directory.NotInDirectoryException;
-import org.whispersystems.textsecure.push.ContactTokenDetails;
-import org.whispersystems.textsecure.push.IncomingEncryptedPushMessage;
-import org.whispersystems.textsecure.push.IncomingPushMessage;
-import org.whispersystems.textsecure.util.Util;
+import org.whispersystems.textsecure.internal.util.Util;
 
 import java.io.IOException;
 import java.net.URI;
@@ -238,26 +234,9 @@ public class PushService extends Service implements Listener {
 
       startService(ackIntent(this, websocketMessage)); //TODO This acks the message prior to reading => could mean that messages with an error are never read?
 
-      String sessionKey = TextSecurePreferences.getSignalingKey(this);
-      IncomingEncryptedPushMessage encryptedMessage = new IncomingEncryptedPushMessage(websocketMessage.getMessage(), sessionKey);
-      IncomingPushMessage message = encryptedMessage.getIncomingPushMessage();
-
-      if (!org.thoughtcrime.securesms.util.Util.isActiveNumber(this, message.getSource())) {
-        Directory directory = Directory.getInstance(this);
-        ContactTokenDetails contactTokenDetails = new ContactTokenDetails();
-        contactTokenDetails.setNumber(message.getSource());
-
-        directory.setNumber(contactTokenDetails, true);
-      }
-
-      Intent service = new Intent(this, SendReceiveService.class);
-      service.setAction(SendReceiveService.RECEIVE_PUSH_ACTION);
-      service.putExtra("message", message);
-      startService(service);
-    } catch (IOException e) {
-      Log.w(TAG, e);
-    } catch (InvalidVersionException e) {
-      Log.w(TAG, e);
+      ApplicationContext.getInstance(getApplicationContext())
+                                    .getJobManager()
+                                    .add(new PushReceiveJob(getApplicationContext(), websocketMessage.getMessage()));
     }catch (Exception e) {
       Log.w(TAG, e);
     } finally {

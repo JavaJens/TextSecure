@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.whispersystems.textsecure.push;
+package org.whispersystems.textsecure.internal.push;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.thoughtcrimegson.Gson;
@@ -28,17 +27,23 @@ import org.whispersystems.libaxolotl.ecc.ECPublicKey;
 import org.whispersystems.libaxolotl.state.PreKeyBundle;
 import org.whispersystems.libaxolotl.state.PreKeyRecord;
 import org.whispersystems.libaxolotl.state.SignedPreKeyRecord;
-import org.whispersystems.textsecure.push.exceptions.AuthorizationFailedException;
-import org.whispersystems.textsecure.push.exceptions.ExpectationFailedException;
-import org.whispersystems.textsecure.push.exceptions.MismatchedDevicesException;
-import org.whispersystems.textsecure.push.exceptions.NonSuccessfulResponseCodeException;
-import org.whispersystems.textsecure.push.exceptions.NotFoundException;
-import org.whispersystems.textsecure.push.exceptions.PushNetworkException;
-import org.whispersystems.textsecure.push.exceptions.RateLimitException;
-import org.whispersystems.textsecure.push.exceptions.StaleDevicesException;
-import org.whispersystems.textsecure.util.Base64;
-import org.whispersystems.textsecure.util.BlacklistingTrustManager;
-import org.whispersystems.textsecure.util.Util;
+import org.whispersystems.textsecure.api.push.PushAddress;
+import org.whispersystems.textsecure.api.crypto.AttachmentCipherOutputStream;
+import org.whispersystems.textsecure.api.push.ContactTokenDetails;
+import org.whispersystems.textsecure.api.push.SignedPreKeyEntity;
+import org.whispersystems.textsecure.api.push.TrustStore;
+import org.whispersystems.textsecure.api.push.exceptions.UnregisteredUserException;
+import org.whispersystems.textsecure.internal.push.exceptions.MismatchedDevicesException;
+import org.whispersystems.textsecure.internal.push.exceptions.StaleDevicesException;
+import org.whispersystems.textsecure.internal.util.Base64;
+import org.whispersystems.textsecure.internal.util.Util;
+import org.whispersystems.textsecure.api.push.exceptions.AuthorizationFailedException;
+import org.whispersystems.textsecure.api.push.exceptions.ExpectationFailedException;
+import org.whispersystems.textsecure.api.push.exceptions.NonSuccessfulResponseCodeException;
+import org.whispersystems.textsecure.api.push.exceptions.NotFoundException;
+import org.whispersystems.textsecure.api.push.exceptions.PushNetworkException;
+import org.whispersystems.textsecure.api.push.exceptions.RateLimitException;
+import org.whispersystems.textsecure.internal.util.BlacklistingTrustManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,7 +52,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -88,16 +92,14 @@ public class PushServiceSocket {
 
   private static final boolean ENFORCE_SSL = true;
 
-  private final Context        context;
   private final String         serviceUrl;
   private final String         localNumber;
   private final String         password;
   private final TrustManager[] trustManagers;
 
-  public PushServiceSocket(Context context, String serviceUrl, TrustStore trustStore,
+  public PushServiceSocket(String serviceUrl, TrustStore trustStore,
                            String localNumber, String password)
   {
-    this.context       = context.getApplicationContext();
     this.serviceUrl    = serviceUrl;
     this.localNumber   = localNumber;
     this.password      = password;
@@ -111,7 +113,7 @@ public class PushServiceSocket {
 
   public void verifyAccount(String verificationCode, String signalingKey,
                             boolean supportsSms, int registrationId)
-          throws IOException
+      throws IOException
   {
     verifyAccount(verificationCode, signalingKey, supportsSms, registrationId, false);
   }
@@ -305,12 +307,13 @@ public class PushServiceSocket {
 
     Log.w("PushServiceSocket", "Got attachment content location: " + attachmentKey.getLocation());
 
-    uploadExternalFile("PUT", attachmentKey.getLocation(), attachment.getData());
+    uploadAttachment("PUT", attachmentKey.getLocation(), attachment.getData(),
+                     attachment.getDataSize(), attachment.getKey());
 
     return attachmentKey.getId();
   }
 
-  public File retrieveAttachment(String relay, long attachmentId) throws IOException {
+  public void retrieveAttachment(String relay, long attachmentId, File destination) throws IOException {
     String path = String.format(ATTACHMENT_PATH, String.valueOf(attachmentId));
 
     if (!Util.isEmpty(relay)) {
@@ -322,12 +325,7 @@ public class PushServiceSocket {
 
     Log.w("PushServiceSocket", "Attachment: " + attachmentId + " is at: " + descriptor.getLocation());
 
-    File attachment = File.createTempFile("attachment", ".tmp", context.getFilesDir());
-    attachment.deleteOnExit();
-
-    downloadExternalFile(descriptor.getLocation(), attachment);
-
-    return attachment;
+    downloadExternalFile(descriptor.getLocation(), destination);
   }
 
   public List<ContactTokenDetails> retrieveDirectory(Set<String> contactTokens) {
@@ -363,7 +361,7 @@ public class PushServiceSocket {
 
     try {
       if (connection.getResponseCode() != 200) {
-        throw new IOException("Bad response: " + connection.getResponseCode());
+        throw new NonSuccessfulResponseCodeException("Bad response: " + connection.getResponseCode());
       }
 
       OutputStream output = new FileOutputStream(localDestination);
@@ -382,20 +380,23 @@ public class PushServiceSocket {
     }
   }
 
-  private void uploadExternalFile(String method, String url, byte[] data)
+  private void uploadAttachment(String method, String url, InputStream data, long dataSize, byte[] key)
     throws IOException
   {
     URL                uploadUrl  = new URL(url);
     HttpsURLConnection connection = (HttpsURLConnection) uploadUrl.openConnection();
     connection.setDoOutput(true);
+    connection.setFixedLengthStreamingMode((int) AttachmentCipherOutputStream.getCiphertextLength(dataSize));
     connection.setRequestMethod(method);
     connection.setRequestProperty("Content-Type", "application/octet-stream");
     connection.connect();
 
     try {
-      OutputStream out = connection.getOutputStream();
-      out.write(data);
-      out.close();
+      OutputStream                 stream = connection.getOutputStream();
+      AttachmentCipherOutputStream out    = new AttachmentCipherOutputStream(key, stream);
+
+      Util.copy(data, out);
+      out.flush();
 
       if (connection.getResponseCode() != 200) {
         throw new IOException("Bad response: " + connection.getResponseCode() + " " + connection.getResponseMessage());
@@ -550,10 +551,5 @@ public class PushServiceSocket {
     public String getLocation() {
       return location;
     }
-  }
-
-  public interface TrustStore {
-    public InputStream getKeyStoreInputStream();
-    public String getKeyStorePassword();
   }
 }

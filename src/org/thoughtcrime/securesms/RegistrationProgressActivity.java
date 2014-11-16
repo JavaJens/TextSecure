@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -28,25 +30,24 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockActivity;
 
-import org.thoughtcrime.securesms.push.PushServiceSocketFactory;
+import org.thoughtcrime.securesms.crypto.MasterSecret;
+import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
 import org.thoughtcrime.securesms.service.RegistrationService;
 import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.websocket.PushService;
-import org.whispersystems.textsecure.crypto.MasterSecret;
-import org.whispersystems.textsecure.push.exceptions.ExpectationFailedException;
-import org.whispersystems.textsecure.push.PushServiceSocket;
-import org.whispersystems.textsecure.push.exceptions.RateLimitException;
-import org.whispersystems.textsecure.util.PhoneNumberFormatter;
-import org.whispersystems.textsecure.util.Util;
+import org.whispersystems.textsecure.api.TextSecureAccountManager;
+import org.whispersystems.textsecure.api.push.exceptions.ExpectationFailedException;
+import org.whispersystems.textsecure.api.push.exceptions.RateLimitException;
+import org.whispersystems.textsecure.api.util.PhoneNumberFormatter;
 
 import java.io.IOException;
 
 import static org.thoughtcrime.securesms.service.RegistrationService.RegistrationState;
 
-public class RegistrationProgressActivity extends SherlockActivity {
+public class RegistrationProgressActivity extends ActionBarActivity {
 
   private static final int FOCUSED_COLOR   = Color.parseColor("#ff333333");
   private static final int UNFOCUSED_COLOR = Color.parseColor("#ff808080");
@@ -322,22 +323,22 @@ public class RegistrationProgressActivity extends SherlockActivity {
                          getString(R.string.RegistrationProgressActivity_this_number_is_already_registered_on_a_different));
   }
 
-    private void handleVerificationComplete() {
-      if (visible) {
-        Toast.makeText(this,
-                       R.string.RegistrationProgressActivity_registration_complete,
-                       Toast.LENGTH_LONG).show();
-      }
+  private void handleVerificationComplete() {
+    if (visible) {
+      Toast.makeText(this,
+                     R.string.RegistrationProgressActivity_registration_complete,
+                     Toast.LENGTH_LONG).show();
+    }
 
-      if (TextSecurePreferences.isPushRegistered(getApplicationContext())
+	if (TextSecurePreferences.isPushRegistered(getApplicationContext())
           && !TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
         startService(PushService.startIntent(this.getApplicationContext()));
-      }
-
-      shutdownService();
-      startActivity(new Intent(this, RoutingActivity.class));
-      finish();
     }
+
+    shutdownService();
+    startActivity(new Intent(this, RoutingActivity.class));
+    finish();
+  }
 
   private void handleTimerUpdate() {
     if (registrationService == null)
@@ -467,7 +468,7 @@ public class RegistrationProgressActivity extends SherlockActivity {
     public void onClick(View v) {
       final String code = codeEditText.getText().toString();
 
-      if (Util.isEmpty(code)) {
+      if (TextUtils.isEmpty(code)) {
         Toast.makeText(context,
                        getString(R.string.RegistrationProgressActivity_you_must_enter_the_code_you_received_first),
                        Toast.LENGTH_LONG).show();
@@ -520,13 +521,13 @@ public class RegistrationProgressActivity extends SherlockActivity {
         @Override
         protected Integer doInBackground(Void... params) {
           try {
-            PushServiceSocket socket = PushServiceSocketFactory.create(context, e164number, password);
+            TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context, e164number, password);
             int registrationId = TextSecurePreferences.getLocalRegistrationId(context);
 
             if (TextSecurePreferences.isGcmRegistered(context)) {
-              socket.verifyAccount(code, signalingKey, true, registrationId);
+              accountManager.verifyAccount(code, signalingKey, true, registrationId);
             } else {
-              socket.verifyAccount(code, signalingKey, true, registrationId, true);
+              accountManager.verifyAccount(code, signalingKey, true, registrationId, true);
             }
             return SUCCESS;
           } catch (ExpectationFailedException e) {
@@ -588,7 +589,7 @@ public class RegistrationProgressActivity extends SherlockActivity {
               startService(intent);
 
               callButton.setEnabled(false);
-              new Handler().postDelayed(new Runnable() {
+              new Handler().postDelayed(new Runnable(){
                 @Override
                 public void run() {
                   callButton.setEnabled(true);
@@ -616,8 +617,8 @@ public class RegistrationProgressActivity extends SherlockActivity {
         @Override
         protected Integer doInBackground(Void... params) {
           try {
-            PushServiceSocket socket = PushServiceSocketFactory.create(context, e164number, password);
-            socket.createAccount(true);
+            TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context, e164number, password);
+            accountManager.requestVoiceVerificationCode();
 
             return SUCCESS;
           } catch (RateLimitException e) {

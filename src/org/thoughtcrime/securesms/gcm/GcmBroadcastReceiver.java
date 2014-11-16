@@ -3,24 +3,14 @@ package org.thoughtcrime.securesms.gcm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import org.thoughtcrime.securesms.ApplicationContext;
-import org.thoughtcrime.securesms.jobs.DeliveryReceiptJob;
-import org.thoughtcrime.securesms.service.SendReceiveService;
+import org.thoughtcrime.securesms.jobs.PushReceiveJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
-import org.whispersystems.jobqueue.JobManager;
-import org.whispersystems.libaxolotl.InvalidVersionException;
-import org.whispersystems.textsecure.directory.Directory;
-import org.whispersystems.textsecure.directory.NotInDirectoryException;
-import org.whispersystems.textsecure.push.ContactTokenDetails;
-import org.whispersystems.textsecure.push.IncomingEncryptedPushMessage;
-import org.whispersystems.textsecure.push.IncomingPushMessage;
-import org.whispersystems.textsecure.util.Util;
-
-import java.io.IOException;
 
 public class GcmBroadcastReceiver extends BroadcastReceiver {
 
@@ -42,40 +32,14 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
       String messageData = intent.getStringExtra("message");
       String receiptData = intent.getStringExtra("receipt");
 
-      if      (!Util.isEmpty(messageData)) handleReceivedMessage(context, messageData);
-      else if (!Util.isEmpty(receiptData)) handleReceivedMessage(context, receiptData);
+      if      (!TextUtils.isEmpty(messageData)) handleReceivedMessage(context, messageData);
+      else if (!TextUtils.isEmpty(receiptData)) handleReceivedMessage(context, receiptData);
     }
   }
 
   private void handleReceivedMessage(Context context, String data) {
-    try {
-      String                       sessionKey = TextSecurePreferences.getSignalingKey(context);
-      IncomingEncryptedPushMessage encrypted  = new IncomingEncryptedPushMessage(data, sessionKey);
-      IncomingPushMessage          message    = encrypted.getIncomingPushMessage();
-
-      if (!org.thoughtcrime.securesms.util.Util.isActiveNumber(context, message.getSource())) {
-        Directory           directory           = Directory.getInstance(context);
-        ContactTokenDetails contactTokenDetails = new ContactTokenDetails();
-        contactTokenDetails.setNumber(message.getSource());
-
-        directory.setNumber(contactTokenDetails, true);
-      }
-
-      Intent receiveService = new Intent(context, SendReceiveService.class);
-      receiveService.setAction(SendReceiveService.RECEIVE_PUSH_ACTION);
-      receiveService.putExtra("message", message);
-      context.startService(receiveService);
-
-      if (!message.isReceipt()) {
-        JobManager jobManager = ApplicationContext.getInstance(context).getJobManager();
-        jobManager.add(new DeliveryReceiptJob(context, message.getSource(),
-                                              message.getTimestampMillis(),
-                                              message.getRelay()));
-      }
-    } catch (IOException | InvalidVersionException e) {
-      Log.w(TAG, e);
-    }
+    ApplicationContext.getInstance(context)
+                      .getJobManager()
+                      .add(new PushReceiveJob(context, data));
   }
-
-
 }
