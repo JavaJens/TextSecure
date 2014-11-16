@@ -330,8 +330,8 @@ public class RegistrationProgressActivity extends ActionBarActivity {
                      Toast.LENGTH_LONG).show();
     }
 
-	if (TextSecurePreferences.isPushRegistered(getApplicationContext())
-          && !TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
+  if (TextSecurePreferences.isPushRegistered(getApplicationContext()) &&
+      !TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
         startService(PushService.startIntent(this.getApplicationContext()));
     }
 

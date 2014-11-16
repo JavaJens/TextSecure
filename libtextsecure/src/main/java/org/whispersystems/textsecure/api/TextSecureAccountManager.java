@@ -59,13 +59,12 @@ public class TextSecureAccountManager {
                             boolean supportsSms, int axolotlRegistrationId)
       throws IOException
   {
-    verifyAccount(verificationCode, signalingKey,
-                                         supportsSms, axolotlRegistrationId, false);
+    verifyAccount(verificationCode, signalingKey, supportsSms, axolotlRegistrationId, false);
   }
 
   public void verifyAccount(String verificationCode, String signalingKey,
                             boolean supportsSms, int axolotlRegistrationId, boolean fetchesMessages)
-          throws IOException
+      throws IOException
   {
     this.pushServiceSocket.verifyAccount(verificationCode, signalingKey,
             supportsSms, axolotlRegistrationId, fetchesMessages);

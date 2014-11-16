@@ -241,10 +241,10 @@ public class RegistrationService extends Service {
     setState(new RegistrationState(RegistrationState.STATE_GCM_REGISTERING, number));
 
     if (TextSecurePreferences.isGcmRegistered(this)) {
-    	String gcmRegistrationId = GoogleCloudMessaging.getInstance(this).register("312334754206");
-    	TextSecurePreferences.setGcmRegistrationId(this, gcmRegistrationId);
-    	accountManager.setGcmId(Optional.of(gcmRegistrationId));
-	  }
+      String gcmRegistrationId = GoogleCloudMessaging.getInstance(this).register("312334754206");
+      TextSecurePreferences.setGcmRegistrationId(this, gcmRegistrationId);
+      accountManager.setGcmId(Optional.of(gcmRegistrationId));
+    }
     DirectoryHelper.refreshDirectory(this, accountManager, number);
 
     DirectoryRefreshListener.schedule(this);

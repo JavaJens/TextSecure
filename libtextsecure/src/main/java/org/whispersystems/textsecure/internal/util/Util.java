@@ -29,7 +29,6 @@ import java.security.cert.CertificateException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-
 import org.whispersystems.textsecure.api.push.TrustStore;
 
 public class Util {

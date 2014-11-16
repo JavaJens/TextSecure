@@ -31,12 +31,12 @@ import java.net.URI;
 public class PushService extends Service implements Listener {
   public static final String TAG = "WebSocket.PushService";
 
-  public static final String ACTION_PING = "WS_PING";
-  public static final String ACTION_CONNECT = "WS_CONNECT";
-  public static final String ACTION_DISCONNECT = "WS_DISCONNECT";
+  public  static final String ACTION_PING        = "WS_PING";
+  public  static final String ACTION_CONNECT     = "WS_CONNECT";
+  public  static final String ACTION_DISCONNECT  = "WS_DISCONNECT";
   private static final String ACTION_ACKNOWLEDGE = "WS_ACKNOWLEDGE";
-  private static final int TIMEOUT = 1;
-  private static final int MILLIS = 1000;
+  private static final int TIMEOUT     = 1;
+  private static final int MILLIS      = 1000;
   private static final int ERROR_LIMIT = 11; // 2^10 * 1000ms * 1 = 1024s ~= 17min
 
   private WebSocketClient mClient;
@@ -97,7 +97,8 @@ public class PushService extends Service implements Listener {
     }
     mShutDown = false;
 
-    if (!TextSecurePreferences.isPushRegistered(getApplicationContext()) || TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
+    if (!TextSecurePreferences.isPushRegistered(getApplicationContext()) ||
+        TextSecurePreferences.isGcmRegistered(getApplicationContext())) {
       Log.w(TAG, "Not push registered");
       wakelock.release();
       stopSelf();

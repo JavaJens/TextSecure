@@ -180,7 +180,7 @@ public class RegistrationActivity extends ActionBarActivity {
                                            e164number));
         return;
       }
-	  registerAtGcm(self);
+      registerAtGcm(self);
       promptRegistrationDialog(self);
     }
 
