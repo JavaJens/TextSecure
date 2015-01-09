@@ -246,7 +246,7 @@ public class PushService extends Service implements Listener {
     if (request.getPath().equalsIgnoreCase("/api/v1/message") && request.getVerb().equalsIgnoreCase("PUT")){
       ApplicationContext.getInstance(getApplicationContext())
               .getJobManager()
-              .add(new PushReceiveJob(getApplicationContext(), request.getBody().toStringUtf8()));
+              .add(new PushReceiveJob(getApplicationContext(), request.getBody().toByteArray()));
     }else{
       Log.w(TAG, "Unsupported WebSocket Request");
     }

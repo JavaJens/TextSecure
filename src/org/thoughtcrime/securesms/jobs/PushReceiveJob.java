@@ -21,6 +21,7 @@ public class PushReceiveJob extends ContextJob {
   private static final String TAG = PushReceiveJob.class.getSimpleName();
 
   private final String data;
+  private final byte[] ciphertext;
 
   public PushReceiveJob(Context context, String data) {
     super(context, JobParameters.newBuilder()
@@ -28,6 +29,15 @@ public class PushReceiveJob extends ContextJob {
                                 .create());
 
     this.data = data;
+    this.ciphertext = null;
+  }
+  public PushReceiveJob(Context context, byte[] ciphertext) {
+    super(context, JobParameters.newBuilder()
+            .withPersistence()
+            .create());
+
+    this.ciphertext = ciphertext;
+    this.data = null;
   }
 
   @Override
@@ -37,7 +47,12 @@ public class PushReceiveJob extends ContextJob {
   public void onRun() {
     try {
       String             sessionKey = TextSecurePreferences.getSignalingKey(context);
-      TextSecureEnvelope envelope   = new TextSecureEnvelope(data, sessionKey);
+      TextSecureEnvelope envelope;
+      if(data != null){
+        envelope = new TextSecureEnvelope(data, sessionKey);
+      }else{
+        envelope = new TextSecureEnvelope(ciphertext, sessionKey);
+      }
 
       if (!isActiveNumber(context, envelope.getSource())) {
         TextSecureDirectory directory           = TextSecureDirectory.getInstance(context);

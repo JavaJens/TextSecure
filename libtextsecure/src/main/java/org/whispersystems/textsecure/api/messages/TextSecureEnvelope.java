@@ -57,10 +57,14 @@ public class TextSecureEnvelope {
   private final IncomingPushMessageSignal signal;
 
   public TextSecureEnvelope(String message, String signalingKey)
+          throws IOException, InvalidVersionException {
+    this(Base64.decode(message),signalingKey);
+  }
+
+
+  public TextSecureEnvelope(byte[] ciphertext, String signalingKey)
       throws IOException, InvalidVersionException
   {
-    byte[] ciphertext = Base64.decode(message);
-
     if (ciphertext.length < VERSION_LENGTH || ciphertext[VERSION_OFFSET] != SUPPORTED_VERSION)
       throw new InvalidVersionException("Unsupported version!");
 
