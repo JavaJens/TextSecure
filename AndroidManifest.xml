@@ -225,6 +225,14 @@
         </intent-filter>
     </service>
 
+    <receiver android:name="org.thoughtcrime.securesms.websocket.NetworkReceiver" android:enabled="true">
+        <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE" />
+        </intent-filter>
+    </receiver>
+
 
 <!--	<receiver android:name=".service.BootListener" -->
 <!-- 			  android:enabled="true" -->

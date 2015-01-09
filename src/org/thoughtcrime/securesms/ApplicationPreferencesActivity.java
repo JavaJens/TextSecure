@@ -268,8 +268,10 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
             Context                  context        = getActivity();
             TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context);
 
-            accountManager.setGcmId(Optional.<String>absent());
+          accountManager.setGcmId(Optional.<String>absent()); //TODO How to unregister a Non-GCM Account
+          if (TextSecurePreferences.isGcmRegistered(context)) {
             GoogleCloudMessaging.getInstance(context).unregister();
+          }
 
             return SUCCESS;
           } catch (AuthorizationFailedException afe) {

@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.jobs.persistence.EncryptingJobSerializer;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.ServiceRequirementProvider;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
+import org.thoughtcrime.securesms.websocket.PushService;
 import org.whispersystems.jobqueue.JobManager;
 import org.whispersystems.jobqueue.dependencies.DependencyInjector;
 import org.whispersystems.jobqueue.requirements.NetworkRequirementProvider;
@@ -96,10 +97,14 @@ public class ApplicationContext extends Application implements DependencyInjecto
   }
 
   private void initializeGcmCheck() {
-    if (TextSecurePreferences.isPushRegistered(this) &&
+    if (TextSecurePreferences.isGcmRegistered(this) &&
         TextSecurePreferences.getGcmRegistrationId(this) == null)
     {
       this.jobManager.add(new GcmRefreshJob(this));
+    }
+    if (TextSecurePreferences.isPushRegistered(this) &&
+        !TextSecurePreferences.isGcmRegistered(this)){
+      startService(PushService.startIntent(this));
     }
   }
 
