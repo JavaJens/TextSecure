@@ -198,8 +198,10 @@ public class RegistrationActivity extends BaseActionBarActivity {
 
       int gcmStatus = GooglePlayServicesUtil.isGooglePlayServicesAvailable(self);
 
-      if (gcmStatus != ConnectionResult.SUCCESS) {
-        if(BuildConfig.FORCE_WEBSOCKETS) {
+      if (gcmStatus != ConnectionResult.SUCCESS || BuildConfig.FORCE_WEBSOCKETS) {
+          if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
+            GooglePlayServicesUtil.getErrorDialog(gcmStatus, self, 9000).show();
+          }
           AlertDialogWrapper.Builder unsupportedDialog = new AlertDialogWrapper.Builder(self);
           unsupportedDialog.setTitle(getString(R.string.RegistrationActivity_unsupported));
           unsupportedDialog.setMessage(getString(R.string.RegistrationActivity_websockets_only_unsupported));
@@ -211,14 +213,6 @@ public class RegistrationActivity extends BaseActionBarActivity {
                                                 }
                                               });
           unsupportedDialog.show();
-        } else if (GooglePlayServicesUtil.isUserRecoverableError(gcmStatus)) {
-          GooglePlayServicesUtil.getErrorDialog(gcmStatus, self, 9000).show();
-          return;
-        } else {
-          Dialogs.showAlertDialog(self, getString(R.string.RegistrationActivity_unsupported),
-                                  getString(R.string.RegistrationActivity_sorry_this_device_is_not_supported_for_data_messaging));
-          return;
-        }
       } else {
         showDoubleCheckDialog(self,e164number);
       }
