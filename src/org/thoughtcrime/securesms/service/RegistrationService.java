@@ -245,7 +245,7 @@ public class RegistrationService extends Service {
     accountManager.setPreKeys(identityKey.getPublicKey(),lastResort, signedPreKey, records);
 
     if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS &&
-        !BuildConfig.FORCE_WEBSOCKETS)
+        !TextSecurePreferences.isForceWebsocketEnabled(this))
     {
       setState(new RegistrationState(RegistrationState.STATE_GCM_REGISTERING, number));
 
@@ -260,17 +260,16 @@ public class RegistrationService extends Service {
     DatabaseFactory.getIdentityDatabase(this).saveIdentity(self.getRecipientId(), identityKey.getPublicKey());
     DirectoryHelper.refreshDirectory(this, accountManager, number);
 
-    //if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS &&
-    //    !BuildConfig.FORCE_WEBSOCKETS)
-    //{
-    //  RedPhoneAccountManager redPhoneAccountManager = new RedPhoneAccountManager(BuildConfig.REDPHONE_MASTER_URL,
-    //                                                                           new RedPhoneTrustStore(this),
-    //                                                                           number, password);
-    //  String verificationToken = accountManager.getAccountVerificationToken();
-    //  redPhoneAccountManager.createAccount(verificationToken, new RedPhoneAccountAttributes(signalingKey,
-    //          TextSecurePreferences.getGcmRegistrationId(this)));
-    //}
-    accountManager.getAccountVerificationToken();
+    String verificationToken = accountManager.getAccountVerificationToken();
+    if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS &&
+        !TextSecurePreferences.isForceWebsocketEnabled(this))
+    {
+      RedPhoneAccountManager redPhoneAccountManager = new RedPhoneAccountManager(BuildConfig.REDPHONE_MASTER_URL,
+                                                                                 new RedPhoneTrustStore(this),
+                                                                                 number, password);
+      redPhoneAccountManager.createAccount(verificationToken, new RedPhoneAccountAttributes(signalingKey,
+              TextSecurePreferences.getGcmRegistrationId(this)));
+    }
 
     DirectoryRefreshListener.schedule(this);
   }

@@ -56,6 +56,7 @@ public class TextSecurePreferences {
   public  static final String PASSPHRASE_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
   private static final String PASSPHRASE_TIMEOUT_PREF          = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
+  private static final String FORCE_WEBSOCKET_PREF             = "pref_force_websocket";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String ENTER_PRESENT_PREF               = "pref_enter_key";
   private static final String SMS_DELIVERY_REPORT_PREF         = "pref_delivery_report_sms";
@@ -210,6 +211,10 @@ public class TextSecurePreferences {
 
   public static String getSignalingKey(Context context) {
     return getStringPreference(context, SIGNALING_KEY_PREF, null);
+  }
+
+  public static boolean isForceWebsocketEnabled(Context context) {
+    return getBooleanPreference(context, FORCE_WEBSOCKET_PREF, false);
   }
 
   public static boolean isEnterImeKeyEnabled(Context context) {

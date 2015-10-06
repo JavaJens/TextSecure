@@ -174,7 +174,6 @@ android {
         buildConfigField "String", "REDPHONE_RELAY_HOST", "\"relay.whispersystems.org\""
         buildConfigField "String", "REDPHONE_PREFIX_NAME", "\".whispersystems.org\""
         buildConfigField "boolean", "DEV_BUILD", "false"
-        buildConfigField "boolean", "FORCE_WEBSOCKETS", "false"
     }
 
     compileOptions {
@@ -223,10 +222,6 @@ android {
             buildConfigField "boolean", "DEV_BUILD", "true"
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
-        }
-        websockets.initWith(buildTypes.dev)
-        websockets {
-            buildConfigField "boolean", "FORCE_WEBSOCKETS", "true"
         }
     }
 

@@ -51,6 +51,8 @@ public class AdvancedPreferenceFragmentTest extends TextSecureEspressoTestCase<C
   private void checkAllPreferencesDisplayed() throws Exception {
     onData(Matchers.<Object>allOf(withKey("pref_toggle_push_messaging")))
           .check(matches(isDisplayed()));
+    onData(Matchers.<Object>allOf(withKey("pref_force_websocket")))
+          .check(matches(isDisplayed()));
     onData(Matchers.<Object>allOf(withKey("pref_enter_sends")))
           .check(matches(isDisplayed()));
     onData(Matchers.<Object>allOf(withKey("pref_submit_debug_logs")))
@@ -68,6 +70,12 @@ public class AdvancedPreferenceFragmentTest extends TextSecureEspressoTestCase<C
       isChecked().matches(onData(Matchers.<Object>allOf(withKey("pref_toggle_push_messaging"))));
     } else {
       isNotChecked().matches(onData(Matchers.<Object>allOf(withKey("pref_toggle_push_messaging"))));
+    }
+
+    if (TextSecurePreferences.isForceWebsocketEnabled(getContext())) {
+      isChecked().matches(onData(Matchers.<Object>allOf(withKey("pref_force_websocket"))));
+    } else {
+      isNotChecked().matches(onData(Matchers.<Object>allOf(withKey("pref_force_websocket"))));
     }
 
     if (TextSecurePreferences.isEnterSendsEnabled(getContext())) {
