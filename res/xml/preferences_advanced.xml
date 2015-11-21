@@ -9,6 +9,12 @@
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                         android:defaultValue="false"
+                        android:key="pref_force_websocket"
+                        android:summary="@string/preferences__always_use_websocket_instead_of_gcm"
+                        android:title="@string/preferences__pref_force_websocket_title"/>
+
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+                        android:defaultValue="false"
                         android:key="pref_enter_sends"
                         android:summary="@string/preferences__pressing_the_enter_key_will_send_text_messages"
                         android:title="@string/preferences__pref_enter_sends_title"/>

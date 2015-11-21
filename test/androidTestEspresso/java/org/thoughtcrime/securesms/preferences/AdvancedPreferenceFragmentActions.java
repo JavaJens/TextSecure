@@ -28,6 +28,10 @@ public class AdvancedPreferenceFragmentActions {
     onData(Matchers.<Object>allOf(withKey("pref_toggle_push_messaging"))).perform(click());
   }
 
+  public static void clickForceWebsocket() throws Exception {
+    onData(Matchers.<Object>allOf(withKey("pref_force_websocket"))).perform(click());
+  }
+
   public static void clickEnterKeySends() throws Exception {
     onData(Matchers.<Object>allOf(withKey("pref_enter_sends"))).perform(click());
   }
