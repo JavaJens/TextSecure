@@ -1,32 +1,29 @@
-# Signal Android 
+# Signal Android Websockets-Only
 
 Signal is a messaging app for simple private communication with friends.
 
 Signal uses your phone's data connection (WiFi/3G/4G) to communicate securely, optionally supports plain SMS/MMS to function as a unified messenger, and can also encrypt the stored messages on your phone.
 
-Currently available on the Play store.
-
-*[![Play Store Badge](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms)*
-
 #WebSocket Support#
 
 This branch adds rudimentary WebSocket-ONLY support to Signal Private Messenger.
-In order to build a modified version of libtextsecure is needed, for that [checkout](https://github.com/JavaJens/libtextsecure-java/tree/fix/maven_local) my fork
 
-and run: ````./gradlew tasks installArchives```` to install in local maven directory.
+## THIS CODE IS ALPHA QUALITY AND HAS KNOWN BUGS. PLEASE BE AWARE AND USE AT YOUR OWN RISK.
+
+In specific, Signal ZRTP encrypted calls do not work at this time. That code is commented out of this websocket-only version.
+
+## Building the Websockets Version
+
+In order to build this fork, a modified version of the libtextsecure library is needed. You can find that [here](https://github.com/JavaJens/libtextsecure-java/tree/fix/maven_local).
+
+Once the code for the libtextsecure library has been checked out, you will want to run ````./gradlew tasks installArchives```` to install the alternate, websockets version in local maven cache on your computer.
+
+See further, more in-depth building instructions to compile this application [here](https://github.com/JavaJens/TextSecure/wiki/Building-the-Websockets-reborn-fork).
 
 ## Contributing Bug reports
 We use GitHub for bug tracking. Please search the existing issues for your bug and create a new one if the issue is not yet tracked!
 
 https://github.com/WhisperSystems/Signal-Android/issues
-
-## Joining the Beta
-Want to live life on the bleeding edge and help out with testing?
-
-You can subscribe to Signal Android Beta releases here:
-https://play.google.com/apps/testing/org.thoughtcrime.securesms
- 
-If you're interested in a life of peace and tranquility, stick with the standard releases.
 
 ## Contributing Translations
 Interested in helping to translate Signal? Contribute here:
@@ -34,7 +31,7 @@ Interested in helping to translate Signal? Contribute here:
 https://www.transifex.com/projects/p/signal-android/
 
 ## Contributing Code
-Instructions on how to setup your development environment and build Signal can be found in  [BUILDING.md](https://github.com/WhisperSystems/Signal-Android/blob/master/BUILDING.md).
+General instructions on how to setup your development environment and build vanilla Signal can be found in  [BUILDING.md](https://github.com/WhisperSystems/Signal-Android/blob/master/BUILDING.md).
 
 If you're new to the Signal codebase, we recommend going through our issues and picking out a simple bug to fix (check the "easy" label in our issues) in order to get yourself familiar.
 
