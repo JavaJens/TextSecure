@@ -161,7 +161,6 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.thoughtcrime.securesms"
         minSdkVersion 9
         targetSdkVersion 22
 
