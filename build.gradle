@@ -182,6 +182,9 @@ android {
                           'proguard-shortcutbadger.pro',
                           'proguard-retrofit.pro',
                           'proguard.cfg'
+            //buildConfigField "String", "TEXTSECURE_URL", "\"https://textsecure-service-staging.whispersystems.org\""
+            //buildConfigField "String", "REDPHONE_MASTER_URL", "\"https://redphone-staging.whispersystems.org\""
+            //buildConfigField "String", "REDPHONE_RELAY_HOST", "\"redphone-staging-relay.whispersystems.org\""
         }
         release {
             minifyEnabled true
@@ -194,16 +197,6 @@ android {
         }
     }
 
-    //productFlavors {
-    //  prod {
-    //    // defaults
-    //  }
-    //  staging {
-    //    buildConfigField "String", "TEXTSECURE_URL", "\"https://textsecure-service-staging.whispersystems.org\""
-    //    buildConfigField "String", "REDPHONE_MASTER_URL", "\"https://redphone-staging.whispersystems.org\""
-    //    buildConfigField "String", "REDPHONE_RELAY_HOST", "\"redphone-staging-relay.whispersystems.org\""
-    //  }
-    //}
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
