@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Ναι</string>
   <string name="no">Όχι</string>
   <string name="delete">Διαγραφή</string>
   <string name="please_wait">Παρακαλώ περίμενε...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Νέο Μήνυμα</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Αυτή τη στιγμή: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Δεν έχεις ορίσει συνθηματικό!</string>
@@ -19,17 +21,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Διαγραφή</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Απενεργοποίηση συνθηματικού;</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Αυτό θα ξεκλειδώσει το LibreSignal και τις ειδοποιήσεις μηνυμάτων μόνιμα.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Αυτό θα ξεκλειδώσει το Signal και τις ειδοποιήσεις μηνυμάτων μόνιμα.</string>
   <string name="ApplicationPreferencesActivity_disable">Απενεργοποίηση</string>
   <string name="ApplicationPreferencesActivity_unregistering">Απεγγραφή</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Απεγγραφή από τα μηνύματα και τις κλήσεις LibreSignal...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Απενεργοποίηση των μηνυμάτων και των κλήσεων LibreSignal;</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Απενεργοποίηση μηνυμάτων και κλήσεων του LibreSignal με απεγγραφή από τον διακομιστή. Θα χρειαστεί να επανεγγράψεις τον αριθμό τηλεφώνου σου για να τα ξαναχρησιμοποιήσεις στο μέλλον.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Απεγγραφή από τα μηνύματα και τις κλήσεις Signal...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Απενεργοποίηση των μηνυμάτων και των κλήσεων Signal;</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Απενεργοποίηση μηνυμάτων και κλήσεων του Signal με απεγγραφή από τον διακομιστή. Θα χρειαστεί να επανεγγράψεις τον αριθμό τηλεφώνου σου για να τα ξαναχρησιμοποιήσεις στο μέλλον.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Σφάλμα κατά τη σύνδεση με τον διακομιστή!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">Ενεργοποίηση SMS</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Πάτησε για αλλαγή της προεπιλεγμένης εφαρμογής για SMS</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">Απενεργοποίηση SMS</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Πατήσε εδώ για να κάνεις το LibreSignal την προκαθορισμένη εφαρμογή SMS</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Πατήσε εδώ για να κάνεις το Signal την προκαθορισμένη εφαρμογή SMS</string>
   <string name="ApplicationPreferencesActivity_on">ενεργοποίηση</string>
   <string name="ApplicationPreferencesActivity_On">Ενεργοποίηση</string>
   <string name="ApplicationPreferencesActivity_off">απενεργοποίηση</string>
@@ -65,14 +67,14 @@
   <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">Το
 περιεχόμενο του κλειδιού ταυτοποίησης για τον/την %1$s άλλαξε. Αυτό μπορεί να σημαίνει
 πως κάποιος προσπαθεί να υποκλέψει τις επικοινωνίες σου ή πως απλά ο/η %2$s
-επανεγκατέστησε το LibreSignal και πλέον έχει νέο κλειδί ταυτοποίησης.</string>
+επανεγκατέστησε το Signal και πλέον έχει νέο κλειδί ταυτοποίησης.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Προτείνεται να επιβεβαιώσεις
 αυτήν την επαφή.
     </string>
   <string name="ConfirmIdentityDialog_accept">Αποδοχή</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Μήνυμα %s</string>
-  <string name="ContactsDatabase_signal_call_s">Κλήση LibreSignal %s</string>
+  <string name="ContactsDatabase_signal_call_s">Κλήση Signal %s</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Μέγεθος μηνύματος: %d KB</string>
   <string name="ConversationItem_expires_s">Λήγει: %s</string>
@@ -86,7 +88,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Πάτησε για απροστάτευτη εναλλακτική</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Να γίνει αποστολή ΜΗ κρυπτογραφημένου μηνύματος?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Χρήση μη κρυπτογραφημένου MMS ως εναλλακτική;</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Αυτό το μήνυμα <b>δεν</b> θα κρυπτογραφηθεί, επειδή ο παραλήπτης δεν είναι πλέον χρήστης του LibreSignal.\n\nΝα σταλεί το μήνυμα μη κρυπτογραφημένο;</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Αυτό το μήνυμα <b>δεν</b> θα κρυπτογραφηθεί, επειδή ο παραλήπτης δεν είναι πλέον χρήστης του Signal.\n\nΝα σταλεί το μήνυμα μη κρυπτογραφημένο;</string>
   <string name="ConversationItem_unable_to_open_media">Δεν μπορεί να βρεθεί κατάλληλη εφαρμογή για το άνοιγμα αυτού του πολυμέσου.</string>
   <string name="ConversationItem_from_s">από τον/την %s</string>
   <string name="ConversationItem_to_s">προς τον/την %s</string>
@@ -120,8 +122,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Είσαι σίγουρος/η πως θέλεις να αποχωρήσεις από την ομάδα;</string>
   <string name="ConversationActivity_transport_insecure_sms">Μη ασφαλές SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Μη ασφαλές MMS</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Ας χρησιμοποιήσουμε το LibreSignal %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Ας χρησιμοποιήσουμε το Signal %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Ας χρησιμοποιήσουμε αυτό για να συνομιλήσουμε: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Σφάλμα κατα την αποχώρηση από την ομάδα...</string>
   <string name="ConversationActivity_mms_not_supported_title">Τα MMS δεν υποστηρίζονται</string>
@@ -171,7 +173,7 @@
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Τα συνημμένα συλλέγονται...</string>
   <string name="ConversationFragment_pending">Εν αναμονή...</string>
-  <string name="ConversationFragment_push">Δεδομένα (LibreSignal)</string>
+  <string name="ConversationFragment_push">Δεδομένα (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Διαγραφ</string>
@@ -225,15 +227,15 @@
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Διαμοιρασμός με</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Καλωσήλθες στο LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">Το Textsecure και το Redphone είναι πλέον ένας messenger ιδιωτικότητας, για κάθε περίπτωση: LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Καλωσήλθες στο LibreSignal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">Το TextLibre είναι πλέον LibreSignal</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">Το Textsecure και το Redphone είναι πλέον μία εφαρμογή: LibreSignal. Πάτησε για να την εξερευνήσεις.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Καλωσήλθες στο Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">Το Textsecure και το Redphone είναι πλέον ένας messenger ιδιωτικότητας, για κάθε περίπτωση: Signal.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Καλωσήλθες στο Signal!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">Το TextSecure είναι πλέον Signal</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">Το Textsecure και το Redphone είναι πλέον μία εφαρμογή: Signal. Πάτησε για να την εξερευνήσεις.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Εξαγωγή</string>
   <string name="ExportFragment_export_plaintext_to_storage">Εξαγωγή αποκρυπτογραφημένου κειμένου στον αποθηκευτικό χώρο;</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Προσοχή, αυτό θα εξάγει αποκρυπτογραφημένα περιεχόμενα των μηνυμάτων LibreSignal σου στον αποθηκευτικό χώρο.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Προσοχή, αυτό θα εξάγει αποκρυπτογραφημένα περιεχόμενα των μηνυμάτων Signal σου στον αποθηκευτικό χώρο.</string>
   <string name="ExportFragment_cancel">Ακύρωση</string>
   <string name="ExportFragment_exporting">Εξαγωγή</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Εξαγωγή των αποκρυπτογραφημένων δεδομένων στον αποθηκευτικό χώρο...</string>
@@ -241,15 +243,15 @@
   <string name="ExportFragment_error_while_writing_to_storage">Σφάλμα κατά την εγγραφή στον αποθηκευτικό χώρο.</string>
   <string name="ExportFragment_export_successful">Επιτυχία εξαγωγής.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Μόνιμη αποτυχία επικοινωνίας του LibreSignal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Το LibreSignal δεν μπόρεσε να εγγραφτεί στις Υπηρεσίες Google Play. Τα μηνύματα και οι κλήσεις του LibreSignal έχουν απενεργοποιηθεί. Παρακαλώ προσπάθησε να επανεγγραφτείς στις Ρυθμίσεις &gt; Προχωρημένες Ρυθμίσεις.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Μόνιμη αποτυχία επικοινωνίας του Signal!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Το Signal δεν μπόρεσε να εγγραφτεί στις Υπηρεσίες Google Play. Τα μηνύματα και οι κλήσεις του Signal έχουν απενεργοποιηθεί. Παρακαλώ προσπάθησε να επανεγγραφτείς στις Ρυθμίσεις &gt; Προχωρημένες Ρυθμίσεις.</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Νέα ομάδα</string>
   <string name="GroupCreateActivity_actionbar_update_title">Ενημέρωση ομάδας</string>
   <string name="GroupCreateActivity_group_name_hint">Όνομα ομάδας</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Νέα ομάδα MMS</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">Επέλεξες μια επαφή που δεν υποστηρίζει ομάδες LibreSignal, οπότε αυτή η ομάδα θα είναι MMS.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">Δεν έχεις εγγραφτεί για μηνύματα και κλήσεις του LibreSignal, οπότε οι ομάδες του LibreSignal έχουν απενεργοποιηθεί. Παρακαλώ προσπάθησε να εγγραφτείς στις Ρυθμίσεις &gt; Προχωρημένες Ρυθμίσεις.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Επέλεξες μια επαφή που δεν υποστηρίζει ομάδες Signal, οπότε αυτή η ομάδα θα είναι MMS.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Δεν έχεις εγγραφτεί για μηνύματα και κλήσεις του Signal, οπότε οι ομάδες του Signal έχουν απενεργοποιηθεί. Παρακαλώ προσπάθησε να εγγραφτείς στις Ρυθμίσεις &gt; Προχωρημένες Ρυθμίσεις.</string>
   <string name="GroupCreateActivity_contacts_mms_exception">Προέκυψε ένα απρόσμενο σφάλμα και η δημιουργία ομάδας απέτυχε.</string>
   <string name="GroupCreateActivity_contacts_no_members">Χρειάζεται τουλάχιστον ένα άτομο στην ομάδα σου
 !</string>
@@ -258,7 +260,7 @@
   <string name="GroupCreateActivity_menu_create_title">Δημιουργία ομάδα</string>
   <string name="GroupCreateActivity_creating_group">Δημιουργία %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Ενημέρωση %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Δεν μπορέσαμε να προσθέσουμε τον/την %1$s επειδή δεν είναι χρήστης του LibreSignal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Δεν μπορέσαμε να προσθέσουμε τον/την %1$s επειδή δεν είναι χρήστης του Signal.</string>
   <string name="GroupCreateActivity_loading_group_details">Φόρτωση λεπτομέρειων ομάδας...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Είσαι ήδη μέλος αυτής της ομάδας</string>
   <!--GroupMembersDialog-->
@@ -269,13 +271,13 @@
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">Να εισαγχθούν όλα τα προϋπάρχοντα SMS;</string>
   <string name="ImportFragment_this_will_import_messages_from_the_system">Αυτό θα εισάγει
-         τα μηνύματα από τη προεπιλεγμένη βάση δεδομένων SMS του συστήματος στο LibreSignal. Εάν είχες ξαναεισάγει τη βάση δεδομένων, εισάγοντάς την εκ νέου θα έχει ως αποτέλεσμα διπλότυπα μηνύματα.
+         τα μηνύματα από τη προεπιλεγμένη βάση δεδομένων SMS του συστήματος στο Signal. Εάν είχες ξαναεισάγει τη βάση δεδομένων, εισάγοντάς την εκ νέου θα έχει ως αποτέλεσμα διπλότυπα μηνύματα.
     </string>
   <string name="ImportFragment_import">Εισαγωγή</string>
   <string name="ImportFragment_cancel">Ακύρωση</string>
   <string name="ImportFragment_restore_encrypted_backup">Επαναφορά του κρυπτογραφημένου αντίγραφου ασφαλείας;</string>
   <string name="ImportFragment_restoring_an_encrypted_backup_will_completely_replace_your_existing_keys">
-Η επαναφορά του κρυπτογραφημένου αντίγραφου ασφαλείας θα αντικαταστήσει πλήρως τα υπάρχοντα κλειδιά, τις ρυθμίσεις και τα μηνύματά σου. Θα χάσεις όλα τα δεδομένα αυτής της εγκατάστασης του LibreSignal, αλλά όχι το αντίγραφο ασφαλείας.
+Η επαναφορά του κρυπτογραφημένου αντίγραφου ασφαλείας θα αντικαταστήσει πλήρως τα υπάρχοντα κλειδιά, τις ρυθμίσεις και τα μηνύματά σου. Θα χάσεις όλα τα δεδομένα αυτής της εγκατάστασης του Signal, αλλά όχι το αντίγραφο ασφαλείας.
 </string>
   <string name="ImportFragment_restore">Επαναφορά</string>
   <string name="ImportFragment_import_plaintext_backup">Εισαγωγή μη κρυπτογραφημένου αντίγραφου ασφαλείας;</string>
@@ -296,27 +298,22 @@
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Πάτα και κράτα πατημένο για να ηχογραφήσεις ένα μήνυμα φωνής, άφησε το κουμπί για αποστολή</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Διαμοιρασμός</string>
-  <string name="InviteActivity_send_sms">Αποστολή SMS</string>
   <string name="InviteActivity_cancel">Ακύρωση</string>
   <string name="InviteActivity_sending">Αποστολή...</string>
   <string name="InviteActivity_heart_content_description">Καρδιά</string>
   <string name="InviteActivity_invitations_sent">Οι προσκλήσεις στάλθηκαν!</string>
-  <string name="InviteActivity_invite_to_signal">Πρόσκληση στο LibreSignal</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="one">ΑΠΟΣΤΟΛΗ ΣΕ 1 ΦΙΛΟ</item>
-    <item quantity="other">ΑΠΟΣΤΟΛΗ ΣΕ %d ΦΙΛΟΥΣ</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Πρόσκληση στο Signal</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="one">Αποστολή 1 πρόσκλησης μέσω SMS; </item>
     <item quantity="other">Αποστολή %d προσκλήσεων μέσω SMS; </item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Ας χρησιμοποιήσουμε το LibreSignal: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Ας χρησιμοποιήσουμε το Signal: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Φαινεται πως δεν έχεις κάποια εφαρμογή στην οποία μπορείς να μοιραστείς.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Οι φίλοι δεν αφήνουν τους φίλους να συνομιλούν χωρίς κρυπτογράφηση.</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">Δε βρέθηκε σαρωμένο κλειδί!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">Θέλεις να εγκαταστήσεις το Barcode Scanner;</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Το LibreSignal χρειάζεται την εφαρμογή Barcode Scanner για κωδικούς QR</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Το Signal χρειάζεται την εφαρμογή Barcode Scanner για κωδικούς QR</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Αποτυχία αποστολής</string>
   <string name="MessageDetailsRecipient_new_identity">Νέα ταυτότητα</string>
@@ -325,11 +322,11 @@
   <string name="MmsDownloader_error_connecting_to_mms_provider">Σφάλμα κατά στη σύνδεση με τον πάροχο MMS...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Σφάλμα κατά την διάβαση των ρυθμίσεων MMS του παρόχου...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Κλήση LibreSignal εν εξελίξει</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Κλήση Signal εν εξελίξει</string>
   <string name="NotificationBarManager_missed_call_from_s">Αναπάντητη κλήση από τον/την %s</string>
-  <string name="NotificationBarManager_missed_signal_call">Αναπάντητη κλήση LibreSignal</string>
-  <string name="NotificationBarManager__establishing_signal_call">Γίνεται κλήση LibreSignal</string>
-  <string name="NotificationBarManager__incoming_signal_call">Εισερχόμενη κλήση LibreSignal</string>
+  <string name="NotificationBarManager_missed_signal_call">Αναπάντητη κλήση Signal</string>
+  <string name="NotificationBarManager__establishing_signal_call">Γίνεται κλήση Signal</string>
+  <string name="NotificationBarManager__incoming_signal_call">Εισερχόμενη κλήση Signal</string>
   <string name="NotificationBarManager__deny_call">Απόρριψη κλήσης</string>
   <string name="NotificationBarManager__answer_call">Απάντηση</string>
   <string name="NotificationBarManager__end_call">Τερματισμός κλήσης</string>
@@ -337,13 +334,14 @@
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Μήνυμα Πολυμέσων</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Λήφθηκε ένα μήνυμα που είναι κρυπτογραφημένο με μια παλιά έκδοση του LibreSignal που δεν υποστηρίζεται πια. Παρακαλώ ζήτησε από τον αποστολέα να αναβαθμίσει στην πιο πρόσφατη έκδοση και να ξαναστείλει το μήνυμα.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Λήφθηκε ένα μήνυμα που είναι κρυπτογραφημένο με μια παλιά έκδοση του Signal που δεν υποστηρίζεται πια. Παρακαλώ ζήτησε από τον αποστολέα να αναβαθμίσει στην πιο πρόσφατη έκδοση και να ξαναστείλει το μήνυμα.</string>
   <string name="MessageRecord_left_group">Αποχωρήσατε από την ομάδα.</string>
   <string name="MessageRecord_updated_group">Η ομάδα ενημερώθηκε.</string>
   <string name="MessageRecord_s_called_you">O/H %s σε κάλεσε</string>
   <string name="MessageRecord_called_s">Κλήση προς τον/την %s</string>
   <string name="MessageRecord_missed_call_from">Αναπάντητη κλήση από τον/την %s</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">Ο/Η %s είναι στο LibreSignal, πες ένα γεια!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">Ο/Η %s είναι στο Signal, πες ένα γεια!</string>
+  <string name="MessageRecord_you">Εσύ</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Τα συνθηματικά δε ταιριάζουν!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Λανθασμένο, παλιό συνθηματικό!</string>
@@ -365,11 +363,12 @@
   <string name="DeviceProvisioningActivity_content_progress_key_error">Άκυρος QR κωδικός.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Συγγνώμη, έχεις πάρα πολλές συσκευές ήδη συνδεδεμένες, προσπάθησε να αφαιρέσεις κάποιες...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Συγγνώμη, αυτός δεν είναι ένας έγκυρος κωδικός QR για σύνδεση συσκευών.</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Σύνδεση μιας συσκευής LibreSignal;</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Φαίνεται πως προσπαθείς να συνδέσεις μια συσκευή LibreSignal χρησιμοποιώντας ένα τρίτο πρόγραμμα σάρωσης. Για την προστασία σου, παρακαλώ ξανασκάνναρε τον κωδικό μέσα από το LibreSignal.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Σύνδεση μιας συσκευής Signal;</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Φαίνεται πως προσπαθείς να συνδέσεις μια συσκευή Signal χρησιμοποιώντας ένα τρίτο πρόγραμμα σάρωσης. Για την προστασία σου, παρακαλώ ξανασκάνναρε τον κωδικό μέσα από το Signal.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Εισαγωγή συνθηματικό</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">Εικονίδιο LibreSignal</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Εικονίδιο Signal</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Καταχώρηση συνθηματικού</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Άκυρο συνθηματικό!</string>
   <!--PlayServicesProblemFragment-->
@@ -411,7 +410,7 @@
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">Ο αριθμός που κάλεσες δεν υποστηρίζει ασφαλή φωνή!</string>
   <string name="RedPhone_got_it">Εντάξει</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">Σύνδεση με LibreSignal</string>
+  <string name="RegistrationActivity_connect_with_signal">Σύνδεση με Signal</string>
   <string name="RegistrationActivity_select_your_country">Επιλέξτε χώρα</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Πρέπει να καθορίσεις τον
 κώδικα της χώρας σου</string>
@@ -449,12 +448,12 @@
   <string name="RegistrationProgressActivity_too_many_requests">Πάρα πολλές αιτήσεις!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Έχεις πρόσφατα ζητήσει κλήση επαλήθευσης. Μπορείς να ξαναζητήσεις μια άλλη σε 20 λεπτά.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Πρόβλημα με την εγγραφή</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Αυτός ο αριθμός είναι ήδη εγγεγραμμένος σε έναν άλλο διακομιστή LibreSignal (CyanogenMod;). Πρέπει πρώτα να απεγγραφείς από κει, πριν εγγραφείς από αυτή τη συσκευή.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Αυτός ο αριθμός είναι ήδη εγγεγραμμένος σε έναν άλλο διακομιστή Signal (CyanogenMod;). Πρέπει πρώτα να απεγγραφείς από κει, πριν εγγραφείς από αυτή τη συσκευή.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Η εγγραφή ολοκληρώθηκε</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">Η εγγραφή στο LibreSignal ολοκληρώθηκε επιτυχώς.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">Η εγγραφή στο Signal ολοκληρώθηκε επιτυχώς.</string>
   <string name="RegistrationService_registration_error">Σφάλμα εγγραφής</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Υπήρξε κάποιο πρόβλημα κατά την εγγραφή στο LibreSignal.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Υπήρξε κάποιο πρόβλημα κατά την εγγραφή στο Signal.</string>
   <!--Slide-->
   <string name="Slide_image">Εικόνα</string>
   <string name="Slide_audio">Ήχος</string>
@@ -477,7 +476,7 @@
   <string name="ThreadRecord_called_you">Σε κάλεσε</string>
   <string name="ThreadRecord_missed_call">Αναπάντητη κλήση</string>
   <string name="ThreadRecord_media_message">Μήνυμα πολυμέσων</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">Ο/Η %s είναι στο LibreSignal, πές ένα γεια!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">Ο/Η %s είναι στο Signal, πές ένα γεια!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">Δεν έχεις κλειδί ταυτότητας.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">Ο παραλήπτης δεν έχει κλειδί ταυτότητας.</string>
@@ -530,7 +529,7 @@
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Πάτησε για άνοιγμα.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Πάτησε για άνοιγμα, ή πάτησε την κλειδαριά για κλείσιμο.</string>
-  <string name="KeyCachingService_passphrase_cached">Το LibreSignal ξεκλειδώθηκε</string>
+  <string name="KeyCachingService_passphrase_cached">Το Signal ξεκλειδώθηκε</string>
   <string name="KeyCachingService_lock">Κλείδωμα με συνθηματικό</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d νέα μηνύματα σε %2$d συζητήσεις</string>
@@ -546,10 +545,10 @@
   <string name="MessageNotifier_media_message">Μήνυμα πολυμέσων</string>
   <string name="MessageNotifier_reply">Απάντηση</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Η γρήγορη απάντηση δεν είναι διαθέσιμη όταν το LibreSignal είναι κλειδωμένο!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Η γρήγορη απάντηση δεν είναι διαθέσιμη όταν το Signal είναι κλειδωμένο!</string>
   <string name="QuickResponseService_problem_sending_message">Πρόβλημα με την αποστολή μηνύματος!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Νέο Μήνυμα</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Εικόνα</string>
@@ -578,7 +577,7 @@
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Η συζήτηση έχει σιγαθεί</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Αποστολή μηνύματος LibreSignal</string>
+  <string name="conversation_activity__type_message_push">Αποστολή μηνύματος Signal</string>
   <string name="conversation_activity__type_message_sms_insecure">Αποστολή μη ασφαλούς SMS</string>
   <string name="conversation_activity__type_message_mms_insecure">Αποστολή μη ασφαλούς MMS</string>
   <string name="conversation_activity__from_sim_name">Από τον/την %1$s</string>
@@ -620,13 +619,15 @@
   <string name="device_list_fragment__link_new_device">Σύνδεση νέας συσκευής</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">συνέχεια</string>
+  <!--expiration-->
+  <string name="expiration_off">Απενεργοποίηση</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Αποτυχία ανάγνωσης αρχείου συμβάντων για τη συσκευή σου. Μπορείς να χρησιμοποιήσεις το ADB για να πάρεις ένα αρχείο συμβάντων αποσφαλμάτωσης.</string>
   <string name="log_submit_activity__thanks">Ευχαριστούμε για τη βοήθειά σου!</string>
   <string name="log_submit_activity__submitting">Αποστολή</string>
   <string name="log_submit_activity__posting_logs">Αποστολή των αρχείων συμβάντων στο gist…</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Θέλεις να εισάγεις τα υπάρχοντα μηνύματά σου στη κρυπτογραφημένη βάση δεδομένων του LibreSignal;</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Θέλεις να εισάγεις τα υπάρχοντα μηνύματά σου στη κρυπτογραφημένη βάση δεδομένων του Signal;</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Η προκαθορισμένη βάση δεδομένων του συστήματος δε θα αλλαχθεί καθόλου.</string>
   <string name="database_migration_activity__skip">Παράλειψη</string>
   <string name="database_migration_activity__import">Εισαγωγή</string>
@@ -639,7 +640,7 @@
   <string name="import_fragment__import_system_sms_database">Εισαγωγή της βάσης δεδομένων SMS του συστήματος</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Εισαγωγή της βάσης δεδομένων από την προκαθορισμένη συσκευή μηνυμάτων του συστήματος</string>
   <string name="import_fragment__restore_encrypted_backup">Επαναφορά κρυπτογραφημένου αντίγραφου ασφαλείας</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Επαναφορά ενός υφιστάμενου κρυπτογραφημένου αντίγραφου ασφαλείας του LibreSignal</string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Επαναφορά ενός υφιστάμενου κρυπτογραφημένου αντίγραφου ασφαλείας του Signal</string>
   <string name="import_fragment__import_plaintext_backup">Εισαγωγή μη κρυπτογραφημένου αντίγραφου ασφαλείας</string>
   <string name="import_fragment__import_a_plaintext_backup_file">Εισαγωγή μη κρυπτογραφημένου αντίγραφου ασφαλείας. Συμβατό με το \'SMS Backup &amp; Restore.\'</string>
   <!--load_more_header-->
@@ -666,7 +667,7 @@
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Ξεκλείδωμα</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Το LibreSignal χρειάζεται τις ρυθμίσεις MMS για να στείλει μηνύματα πολυμέσων και ομαδικών συζητήσεων μέσω του παρόχου σου. Η συσκευή σου δεν παρέχει αυτές τις πληροφορίες, το οποίο μερικές φορές γίνεται σε κλειδωμένες συσκευές ή λόγω άλλων περιοριστικών ρυθμίσεων.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Το Signal χρειάζεται τις ρυθμίσεις MMS για να στείλει μηνύματα πολυμέσων και ομαδικών συζητήσεων μέσω του παρόχου σου. Η συσκευή σου δεν παρέχει αυτές τις πληροφορίες, το οποίο μερικές φορές γίνεται σε κλειδωμένες συσκευές ή λόγω άλλων περιοριστικών ρυθμίσεων.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Για να στείλεις μηνύματα πολυμέσων, πάτησε \'ΟΚ\' και συμπλήρωσε τις ρυθμίσεις. Θα βρείς τις σωστές ρυθμίσεις MMS για τον πάροχό σου ψάχνοντας στο ίντερνετ για \"το όνομα του παρόχου σου\" + APN. Αυτές οι ρυθμίσεις γίνονται μόνο μια φορά.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">ΜΠΛΟΚΑΡΙΣΜΕΝΟΣ/Η</string>
@@ -680,14 +681,14 @@
   <string name="recipient_preferences__color_for_this_contact">Χρώμα επαφής</string>
   <string name="recipient_preferences__verify_identity">Επιβεβαίωση ταυτότητας</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Κλήση LibreSignal</string>
+  <string name="redphone_call_card__signal_call">Κλήση Signal</string>
   <string name="redphone_call_controls__end_call">τερματισμός κλήσης</string>
   <string name="redphone_call_controls__audio">Ήχος</string>
   <string name="redphone_call_controls__mute">Σίγαση</string>
-  <string name="redphone_call_controls__signal_call">Κλήση LibreSignal</string>
+  <string name="redphone_call_controls__signal_call">Κλήση Signal</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-Επιβεβαίωσε τον αριθμό τηλεφώνου σου για να συνδεθείς με το LibreSignal.
+Επιβεβαίωσε τον αριθμό τηλεφώνου σου για να συνδεθείς με το Signal.
     </string>
   <string name="registration_activity__your_country">Η ΧΩΡΑ ΣΟΥ</string>
   <string name="registration_activity__your_country_code_and_phone_number">Ο ΚΩΔΙΚΟΣ ΤΗΣ ΧΩΡΑΣ ΣΟΥ
@@ -703,7 +704,7 @@
   <string name="registration_problems__sms_interceptors">Εφαρμογές που υποκλέπτουν όλα τα SMS.</string>
   <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">
 Κάποιες εφαρμογές μηνυμάτων τρίτων, όπως το Handcent και το GoSMS, συμπεριφέρονται
-άσχημα και υποκλέπτουν όλα τα εισερχόμενα SMS. Δες αν έλαβες ενα μήνυμα που ξεκινά με \"O κωδικός επιβεβαίωσης του LibreSignal:\" ή \"Your LibreSignal verification code:\".
+άσχημα και υποκλέπτουν όλα τα εισερχόμενα SMS. Δες αν έλαβες ενα μήνυμα που ξεκινά με \"O κωδικός επιβεβαίωσης του Signal:\" ή \"Your Signal verification code:\".
 Σε αυτή την περίπτωση θα πρέπει να ρυθμίσεις αυτές τις τρίτες εφαρμογές να επιτρέψουν την παραλαβή των μηνυμάτων SMS.</string>
   <string name="registration_problems__incorrect_number">Λάθος αριθμός.</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">
@@ -711,18 +712,18 @@
 για την περιοχή σου.</string>
   <string name="registration_problems__google_voice">Google Voice.</string>
   <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">
-Το LibreSignal δεν λειτουργεί με αριθμούς Google Voice.
+Το Signal δεν λειτουργεί με αριθμούς Google Voice.
     </string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Επιβεβαίωση με φωνή</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-Το LibreSignal μπορεί επίσης να σε καλέσει για να επιβεβαιώσει τον αριθμό σου. Πάτα \'Κάλεσέ με\'
+Το Signal μπορεί επίσης να σε καλέσει για να επιβεβαιώσει τον αριθμό σου. Πάτα \'Κάλεσέ με\'
 και γράψε παρακάτω τον εξαψήφιο κωδικό που θα ακούσεις.</string>
   <string name="registration_progress_activity__verify">Επιβεβαίωση</string>
   <string name="registration_progress_activity__call_me">Κάλεσέ με</string>
   <string name="registration_progress_activity__edit_number">Επεξεργασία αριθμού</string>
   <string name="registration_progress_activity__connectivity_error">Σφάλμα συνδεσιμότητας.</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Το LibreSignal δεν μπόρεσε να συνδεθεί στον διακομιστή.</string>
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Το Signal δεν μπόρεσε να συνδεθεί στον διακομιστή.</string>
   <string name="registration_progress_activity__some_possible_problems_include">Πιθανά
         προβλήματα:
     </string>
@@ -730,14 +731,14 @@
 σύνδεση στο δίκτυο.
     </string>
   <string name="registration_progress_activity__your_device_needs_network_connectivity">Η συσκευή
-σου πρέπει να είναι συνδεδεμένη στο δίκτυο για να χρησιμοποιήσεις αυτό το χαρακτηριστικό του LibreSignal. 
+σου πρέπει να είναι συνδεδεμένη στο δίκτυο για να χρησιμοποιήσεις αυτό το χαρακτηριστικό του Signal. 
 Επιβεβαίωσε ότι είναι συνδεδεμένη σε Wi-Fi ή 3G.</string>
   <string name="registration_progress_activity__restrictive_firewall">Περιοριστικό τείχος προστασίας.</string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
 Αν είσαι συνδεμένος/η μέσω WiFi, πιθανώς να υπάρχει ένα τείχος προστασίας που εμποδίζει
-την πρόσβαση στον διακομιστή του LibreSignal. Δοκίμασε άλλο δίκτυο ή τα δεδομένα.</string>
+την πρόσβαση στον διακομιστή του Signal. Δοκίμασε άλλο δίκτυο ή τα δεδομένα.</string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-Το LibreSignal θα επιβεβαιώσει αυτόματα τον αριθμό σου με ένα SMS επιβεβαίωσης.</string>
+Το Signal θα επιβεβαιώσει αυτόματα τον αριθμό σου με ένα SMS επιβεβαίωσης.</string>
   <string name="registration_progress_activity__connecting">Γίνεται σύνδεση...</string>
   <string name="registration_progress_activity__waiting_for_sms_verification">Αναμονή για επιβεβαίωση
         SMS...
@@ -746,7 +747,7 @@
   <string name="registration_progress_activity__this_couild_take_a_moment_please_be_patient">Αυτό
 μπορεί να διαρκέσει για λίγο. Παρακαλώ κάνε υπομονή και θα σε ειδοποιήσουμε όταν ολοκληρωθεί η επαλήθευση.</string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-Το LibreSignal ξεπέρασε τον αναμενόμενο χρόνο αναμονής για επιβεβαίωση με SMS.</string>
+Το Signal ξεπέρασε τον αναμενόμενο χρόνο αναμονής για επιβεβαίωση με SMS.</string>
   <string name="registration_progress_activity__sms_verification_failed">Η επιβεβαίωση SMS
         απέτυχε.
     </string>
@@ -772,7 +773,7 @@
   <string name="AndroidManifest__create_passphrase">Δημιουργία Συνθηματικού</string>
   <string name="AndroidManifest__enter_passphrase">Εισαγωγή συνθηματικού</string>
   <string name="AndroidManifest__select_contacts">Επιλογή επαφών</string>
-  <string name="AndroidManifest__signal_detected">Το LibreSignal εντοπίστηκε</string>
+  <string name="AndroidManifest__signal_detected">Το Signal εντοπίστηκε</string>
   <string name="AndroidManifest__public_identity_key">Δημόσιο κλειδί ταυτότητας</string>
   <string name="AndroidManifest__change_passphrase">Αλλαγή συνθηματικού</string>
   <string name="AndroidManifest__verify_identity">Επιβεβαίωση ταυτότητας</string>
@@ -813,8 +814,8 @@
   <string name="preferences__sms_mms">SMS και MMS</string>
   <string name="preferences__pref_all_sms_title">Λήψη όλων των SMS</string>
   <string name="preferences__pref_all_mms_title">Λήψη όλων των MMS</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Χρήση του LibreSignal για όλα τα εισερχόμενα μηνύματα</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Χρήση του LibreSignal για όλα τα εισερχόμενα μηνύματα πολυμέσων</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Χρήση του Signal για όλα τα εισερχόμενα μηνύματα</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Χρήση του Signal για όλα τα εισερχόμενα μηνύματα πολυμέσων</string>
   <string name="preferences__input_settings">Ρυθμίσεις εισαγωγής</string>
   <string name="preferences__enable_enter_key_title">Ενεργοποίηση πλήκτρου Enter</string>
   <string name="preferences__replace_smiley_with_enter_key">Αντικατάσταση του πλήκτρου smiley με το πλήκτρο Enter</string>
@@ -826,16 +827,16 @@
   <string name="preferences__change_passphrase">Αλλαγή συνθηματικού</string>
   <string name="preferences__change_your_passphrase">Αλλαγή συνθηματικού</string>
   <string name="preferences__enable_passphrase">Ενεργοποίηση συνθηματικού</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Κλείδωμα του LibreSignal και των ειδοποιήσεων μηνυμάτων με ένα συνθηματικό</string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Κλείδωμα του Signal και των ειδοποιήσεων μηνυμάτων με ένα συνθηματικό</string>
   <string name="preferences__screen_security">Ασφάλεια οθόνης</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Να επιτρέπεται η καταγραφή της οθόνης (screenshots)</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Αυτόματο κλείδωμα του LibreSignal μετά απο κάποιο συγκεκριμένο χρόνο αδράνειας</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Αυτόματο κλείδωμα του Signal μετά απο κάποιο συγκεκριμένο χρόνο αδράνειας</string>
   <string name="preferences__inactivity_timeout_passphrase">Συνθηματικό χρόνου αδράνειας</string>
   <string name="preferences__inactivity_timeout_interval">Χρονικό διάστημα χρόνου αδράνειας</string>
   <string name="preferences__notifications">Ειδοποιήσεις</string>
   <string name="preferences__enable_message_notifications">Ενεργοποίηση ειδοποιήσεων μηνυμάτων</string>
   <string name="preferences__new_contacts_notifications">Ειδοποιήσεις νέων επαφών</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Εμφάνιση ειδοποίησης για νέες επαφές LibreSignal</string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Εμφάνιση ειδοποίησης για νέες επαφές Signal</string>
   <string name="preferences__led_color">Χρώμα LED</string>
   <string name="preferences__led_color_unknown">Αγνωστο</string>
   <string name="preferences__pref_led_blink_title">Μοτίβο αναβοσβησίματος του LED</string>
@@ -897,8 +898,8 @@
   <string name="preferences__theme">Θέμα</string>
   <string name="preferences__default">Προκαθορισμένη</string>
   <string name="preferences__language">Γλώσσα</string>
-  <string name="preferences__signal_messages_and_calls">Μηνύματα και κλήσεις του LibreSignal</string>
-  <string name="preferences__free_private_messages_and_calls">Δωρεάν προσωπικά μηνύματα και κλήσεις προς τους χρήστες του LibreSignal</string>
+  <string name="preferences__signal_messages_and_calls">Μηνύματα και κλήσεις του Signal</string>
+  <string name="preferences__free_private_messages_and_calls">Δωρεάν προσωπικά μηνύματα και κλήσεις προς τους χρήστες του Signal</string>
   <string name="preferences__submit_debug_log">Αποστολή αρχείου συμβάντων αποσφαλμάτωσης</string>
   <string name="preferences__support_wifi_calling">Λειτουργία συμβατότητας \"WiFi Calling\' </string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Ενεργοποίηση αν η συσκευή σου χρησιμοποιεί παράδοση SMS/MMS μέσω WiFi (ενεργοποίηση μόνο αν το \'WiFi Calling\' είναι ενεργοποιημένο στη συσκευή σου)</string>
@@ -910,7 +911,7 @@
   <string name="preferences_chats__media_auto_download">Αυτόματο κατέβασμα πολυμέσων</string>
   <string name="preferences_chats__message_trimming">Περικοπή μηνυμάτων</string>
   <string name="preferences_advanced__use_system_emoji">Χρήση emoji συστήματος</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Απενεργοποίηση την ενσωματωμένη υποστήριξη για emoji του LibreSignal</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Απενεργοποίηση την ενσωματωμένη υποστήριξη για emoji του Signal</string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -927,7 +928,7 @@
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Κλήση</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Κλήση LibreSignal</string>
+  <string name="conversation_callable_secure__menu_call">Κλήση Signal</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Στοιχεία μηνύματος</string>
   <string name="conversation_context__menu_copy_text">Αντιγραφή κειμένου</string>
@@ -936,6 +937,8 @@
   <string name="conversation_context__menu_resend_message">Αποστολή ξανά</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Αποθήκευση συνημμένου</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Πρόσκληση</string>
   <!--conversation_insecure_no_push-->
@@ -990,29 +993,29 @@
   <string name="text_secure_normal__invite_friends">Πρόσκληση φίλων</string>
   <string name="text_secure_normal__help">Βοήθεια</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Η έκδοση του LibreSignal σου είναι παρωχημένη</string>
+  <string name="reminder_header_outdated_build">Η έκδοση του Signal σου είναι παρωχημένη</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="one">Η έκδοση του Signal σου θα λήξει σε 1 ημέρα. Πάτα για να αναβαθμίσεις στην πιο πρόσφατη έκδοση.</item>
     <item quantity="other">Η έκδοση του Signal σου θα λήξει σε %d ημέρες. Πάτα για να αναβαθμίσεις στην πιο πρόσφατη έκδοση.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Η έκδοση του LibreSignal σου θα λήξει σήμερα. Πάτα για να αναβαθμίσεις στην πιο πρόσφατη έκδοση.</string>
-  <string name="reminder_header_expired_build">Η έκδοση του LibreSignal σου έχει λήξει!</string>
+  <string name="reminder_header_outdated_build_details_today">Η έκδοση του Signal σου θα λήξει σήμερα. Πάτα για να αναβαθμίσεις στην πιο πρόσφατη έκδοση.</string>
+  <string name="reminder_header_expired_build">Η έκδοση του Signal σου έχει λήξει!</string>
   <string name="reminder_header_expired_build_details">Τα μηνύματα δεν θα αποστέλλονται πια επιτυχώς. Πάτα για να αναβαθμίσεις στην πιο πρόσφατη έκδοση.</string>
   <string name="reminder_header_expired_build_button">ΑΝΑΒΑΘΜΙΣΗ</string>
   <string name="reminder_header_sms_default_title">Χρήση ως προκαθορισμένη εφαρμογή για τα SMS</string>
-  <string name="reminder_header_sms_default_text">Πάτα για να κάνεις το LibreSignal την προκαθορισμένη εφαρμογή για τα SMS.</string>
+  <string name="reminder_header_sms_default_text">Πάτα για να κάνεις το Signal την προκαθορισμένη εφαρμογή για τα SMS.</string>
   <string name="reminder_header_sms_default_button">ΟΡΙΣΜΟΣ</string>
   <string name="reminder_header_sms_import_title">Εισαγωγή SMS συστήματος</string>
-  <string name="reminder_header_sms_import_text">Πάτα για να αντιγράψεις τα μηνύματα SMS του κινητού σου στην κρυπτογραφημένη βάση δεδομένων του LibreSignal.</string>
+  <string name="reminder_header_sms_import_text">Πάτα για να αντιγράψεις τα μηνύματα SMS του κινητού σου στην κρυπτογραφημένη βάση δεδομένων του Signal.</string>
   <string name="reminder_header_sms_import_button">ΕΙΣΑΓΩΓΗ</string>
-  <string name="reminder_header_push_title">Ενεργοποίηση των μηνημάτων και κλήσεων LibreSignal</string>
+  <string name="reminder_header_push_title">Ενεργοποίηση των μηνημάτων και κλήσεων Signal</string>
   <string name="reminder_header_push_text">Αναβάθμισε την εμπειρία επικοινωνίας σου.</string>
   <string name="reminder_header_push_button">ΕΝΕΡΓΟΠΟΙΗΣΗ</string>
-  <string name="reminder_header_invite_title">Πρόσκληση στο LibreSignal</string>
+  <string name="reminder_header_invite_title">Πρόσκληση στο Signal</string>
   <string name="reminder_header_invite_text">Φέρε την συζήτησή σου με τον/την %1$s στο επόμενο επίπεδο.</string>
   <string name="reminder_header_invite_button">ΠΡΟΣΚΛΗΣΗ</string>
   <string name="reminder_header_share_title">Προσκάλεσε τους φίλους και τις φίλες σου!</string>
-  <string name="reminder_header_share_text">Όσο περισσότεροι φίλοι σου χρησιμοποιούν το LibreSignal, τόσο καλύτερο γίνεται.</string>
+  <string name="reminder_header_share_text">Όσο περισσότεροι φίλοι σου χρησιμοποιούν το Signal, τόσο καλύτερο γίνεται.</string>
   <string name="reminder_header_share_button">ΜΟΙΡΑΣΟΥ</string>
   <string name="reminder_header_close_button">ΚΛΕΙΣΙΜΟ</string>
   <!--MediaPreviewActivity-->

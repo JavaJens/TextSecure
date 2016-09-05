@@ -59,6 +59,10 @@ dependencies {
     compile 'com.h6ah4i.android.compat:mulsellistprefcompat:1.0.0'
     compile 'com.google.zxing:core:3.2.1'
 
+    compile ('cn.carbswang.android:NumberPickerView:1.0.9') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:1.7.1'
     testCompile 'org.mockito:mockito-core:1.9.5'
@@ -126,7 +130,7 @@ dependencyVerification {
             'com.fasterxml.jackson.core:jackson-core:cbf4604784b4de226262845447a1ad3bb38a6728cebe86562e2c5afada8be2c0',
             'org.whispersystems:curve25519-java:08cc3be52723e0fc4148e5e7002d51d6d7e495b2130022237f2d47b90af6ae0b',
             'com.android.support:support-v4:c62f0d025dafa86f423f48df9185b0d89496adbc5f6a9be5a7c394d84cf91423',
-    ]
+            ]
 }
 
 android {

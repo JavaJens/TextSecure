@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Sí</string>
   <string name="no">No</string>
   <string name="delete">Borrar</string>
   <string name="please_wait">Por favor, espere...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Nuevo mensaje</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Actualmente: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">¡Todavía no ha elegido una clave de acceso!</string>
@@ -19,17 +21,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Eliminar</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">¿Deshabilitar clave de acceso?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Esto desbloqueará permanentemente LibreSignal y las notificaciones de mensaje.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Esto desbloqueará permanentemente Signal y las notificaciones de mensaje.</string>
   <string name="ApplicationPreferencesActivity_disable">Desactivar</string>
   <string name="ApplicationPreferencesActivity_unregistering">Desregistrándose</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Borrando cuenta LibreSignal...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">¿Deshabilitar mensajes y llamadas de LibreSignal?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Esto deshabilitará los mensajes de LibreSignal eliminándole del servidor. Necesitará volver a registrar su número de teléfono para usar mensajes de LibreSignal de nuevo en el futuro.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Borrando cuenta Signal...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">¿Deshabilitar mensajes y llamadas de Signal?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Esto deshabilitará los mensajes de Signal eliminándole del servidor. Necesitará volver a registrar su número de teléfono para usar mensajes de Signal de nuevo en el futuro.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">¡Error conectando al servidor!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS habilitados</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Pulse para cambiar la aplicación de SMS predeterminada</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS deshabilitados</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Pulse para hacer de LibreSignal su aplicación de SMS predeterminada</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Pulse para hacer de Signal su aplicación de SMS predeterminada</string>
   <string name="ApplicationPreferencesActivity_on">activo</string>
   <string name="ApplicationPreferencesActivity_On">Activo</string>
   <string name="ApplicationPreferencesActivity_off">inactivo</string>
@@ -64,7 +66,7 @@
   <!--ConfirmIdentityDialog-->
   <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">El
 material de la clave identificadora para %1$s ha cambiado. Esto podría bien significar que alguien está intentando
-interceptar su comunicación, o que %2$s simplemente reinstaló LibreSignal y ahora tiene una nueva
+interceptar su comunicación, o que %2$s simplemente reinstaló Signal y ahora tiene una nueva
 clave identificadora.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Puede que dese verificar
 este contacto.
@@ -72,7 +74,7 @@ este contacto.
   <string name="ConfirmIdentityDialog_accept">Aceptar</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Mensaje %s</string>
-  <string name="ContactsDatabase_signal_call_s">Llamar a %s con LibreSignal</string>
+  <string name="ContactsDatabase_signal_call_s">Llamar a %s con Signal</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Tamaño del mensaje: %d KB</string>
   <string name="ConversationItem_expires_s">Expira: %s</string>
@@ -86,7 +88,7 @@ este contacto.
   <string name="ConversationItem_click_to_approve_unencrypted">Pulse para cambiar a no cifrado</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">¿Recurrir a SMS no cifrado?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">¿Recurrir a MMS cifrado?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Este mensaje <b>no</b> se cifrará porque el destinatario ya no es un usuario de LibreSignal.\n\n¿Enviar mensaje no asegurado?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Este mensaje <b>no</b> se cifrará porque el destinatario ya no es un usuario de Signal.\n\n¿Enviar mensaje no asegurado?</string>
   <string name="ConversationItem_unable_to_open_media">No se pudo encontrar una aplicación capaz de abrir este contenido.</string>
   <string name="ConversationItem_from_s">de %s</string>
   <string name="ConversationItem_to_s">a %s</string>
@@ -120,8 +122,8 @@ este contacto.
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">¿Está seguro de que quiere dejar este grupo?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS no seguro</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS no seguro</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Pasémonos a LibreSignal: %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Pasémonos a Signal: %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Usemos esto para hablar: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Error al dejar el grupo...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS no admitidos</string>
@@ -171,7 +173,7 @@ Recibido:%4$s</string>
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Recopilando adjuntos...</string>
   <string name="ConversationFragment_pending">Pendiente...</string>
-  <string name="ConversationFragment_push">Datos (LibreSignal)</string>
+  <string name="ConversationFragment_push">Datos (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Eliminando</string>
@@ -225,15 +227,15 @@ Recibido:%4$s</string>
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Compartir con</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bienvenido a LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextLibre y PhoneLibre son ahora una sola aplicación de mensajería privada, para cualquier situación: LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">¡Bienvenido a LibreSignal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre es ahora LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextLibre y PhoneLibre son ahora una sola aplicación: LibreSignal. Pulse para explorar.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bienvenido a Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure y RedPhone son ahora una sola aplicación de mensajería privada, para cualquier situación: Signal.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">¡Bienvenido a Signal!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure es ahora Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure y RedPhone son ahora una sola aplicación: Signal. Pulse para explorar.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Exportar</string>
   <string name="ExportFragment_export_plaintext_to_storage">¿Exportar texto plano al almacenamiento?</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atención, esto exportará el contenido en texto plano de sus mensajes de LibreSignal a almacenamiento.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atención, esto exportará el contenido en texto plano de sus mensajes de Signal a almacenamiento.</string>
   <string name="ExportFragment_cancel">Cancelar</string>
   <string name="ExportFragment_exporting">Exportando</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Exportando texto plano a almacenamiento...</string>
@@ -241,15 +243,15 @@ Recibido:%4$s</string>
   <string name="ExportFragment_error_while_writing_to_storage">Error al escribir en almacenamiento.</string>
   <string name="ExportFragment_export_successful">Exportación satisfactoria.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">¡Fallo permanente de comunicación de LibreSignal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">LibreSignal fué incapaz de registrarse con Google Play Services. Los mensajes y llamadas de LibreSignal han sido desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">¡Fallo permanente de comunicación de Signal!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal fué incapaz de registrarse con Google Play Services. Los mensajes y llamadas de Signal han sido desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nuevo grupo</string>
   <string name="GroupCreateActivity_actionbar_update_title">Actualizar grupo</string>
   <string name="GroupCreateActivity_group_name_hint">Nombre del grupo</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Nuevo grupo de MMS</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">Ha seleccionado un contacto que no soporta grupos de LibreSignal, así que este grupo será de MMS.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">No estás registrado para los mensajes y llamadas de LibreSignal, así que los grupos de LibreSignal están desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Ha seleccionado un contacto que no soporta grupos de Signal, así que este grupo será de MMS.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">No estás registrado para los mensajes y llamadas de Signal, así que los grupos de Signal están desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
   <string name="GroupCreateActivity_contacts_mms_exception">Un error inesperado hizo fallar la creación del grupo.</string>
   <string name="GroupCreateActivity_contacts_no_members">¡Necesita al menos una persona en su grupo!</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Uno de los miembros de su grupo tiene un número que no puede ser leído correctamente. Por favor arréglelo o elimine ese contacto, e inténtelo de nuevo.</string>
@@ -257,7 +259,7 @@ Recibido:%4$s</string>
   <string name="GroupCreateActivity_menu_create_title">Crear grupo</string>
   <string name="GroupCreateActivity_creating_group">Creando %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Actualizando %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">No se ha podido agregar a %1$s porque no es usuario de LibreSignal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">No se ha podido agregar a %1$s porque no es usuario de Signal.</string>
   <string name="GroupCreateActivity_loading_group_details">Cargando detalles del grupo...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Ya está en el grupo.</string>
   <!--GroupMembersDialog-->
@@ -268,14 +270,14 @@ Recibido:%4$s</string>
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">¿Importar base de datos de SMS del sistema?</string>
   <string name="ImportFragment_this_will_import_messages_from_the_system">Esto importará
-mensajes desde la base de datos de SMS predeterminada del sistema hacia LibreSignal. Si previamente ha
+mensajes desde la base de datos de SMS predeterminada del sistema hacia Signal. Si previamente ha
 importado la base de datos de SMS del sistema, importarla de nuevo resultará en mensajes duplicados.</string>
   <string name="ImportFragment_import">Importar</string>
   <string name="ImportFragment_cancel">Cancelar</string>
   <string name="ImportFragment_restore_encrypted_backup">¿Restaurar copia de seguridad cifrada?</string>
   <string name="ImportFragment_restoring_an_encrypted_backup_will_completely_replace_your_existing_keys">
 Restaurar una copia de seguridad cifrada reemplazará completamente sus claves existentes, preferencias, y
-mensajes. Perderá cualquier información que esté en su instalación actual de LibreSignal pero no
+mensajes. Perderá cualquier información que esté en su instalación actual de Signal pero no
 en la copia de seguridad.</string>
   <string name="ImportFragment_restore">Restaurar</string>
   <string name="ImportFragment_import_plaintext_backup">¿Importar copia de seguridad en texto plano?</string>
@@ -295,27 +297,22 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Pulse y mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Compartir</string>
-  <string name="InviteActivity_send_sms">Enviar SMS</string>
   <string name="InviteActivity_cancel">Cancelar</string>
   <string name="InviteActivity_sending">Enviando...</string>
   <string name="InviteActivity_heart_content_description">Corazón</string>
   <string name="InviteActivity_invitations_sent">¡Invitaciones enviadas!</string>
-  <string name="InviteActivity_invite_to_signal">Invitar a LibreSignal</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="one">ENVIAR A 1 AMIGO</item>
-    <item quantity="other">ENVIAR A %d AMIGOS</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Invitar a Signal</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="one">¿Enviar 1 invitación SMS?</item>
     <item quantity="other">¿Enviar %d invitaciones SMS?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Pasémonos a LibreSignal: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Pasémonos a Signal: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Parece que no tiene ninguna aplicación con qué compartir.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Los verdaderos amigos no dejan que sus amigos hablen sin cifrar</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">¡No se encontró una clave escaneada!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">¿Instalar Barcode Scanner?</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">LibreSignal necesita Barcode Scanner para códigos QR.</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Signal necesita Barcode Scanner para códigos QR.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Fallo al enviar</string>
   <string name="MessageDetailsRecipient_new_identity">Nueva identidad</string>
@@ -324,11 +321,11 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="MmsDownloader_error_connecting_to_mms_provider">Error conectando al proveedor MMS...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Error al leer la configuración MMS del proveedor...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Llamada de LibreSignal en curso</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Llamada de Signal en curso</string>
   <string name="NotificationBarManager_missed_call_from_s">Llamada perdida de %s</string>
-  <string name="NotificationBarManager_missed_signal_call">Llamada perdida de LibreSignal</string>
-  <string name="NotificationBarManager__establishing_signal_call">Estableciendo llamada de LibreSignal</string>
-  <string name="NotificationBarManager__incoming_signal_call">Llamada de LibreSignal entrante</string>
+  <string name="NotificationBarManager_missed_signal_call">Llamada perdida de Signal</string>
+  <string name="NotificationBarManager__establishing_signal_call">Estableciendo llamada de Signal</string>
+  <string name="NotificationBarManager__incoming_signal_call">Llamada de Signal entrante</string>
   <string name="NotificationBarManager__deny_call">Denegar llamada</string>
   <string name="NotificationBarManager__answer_call">Contestar llamada</string>
   <string name="NotificationBarManager__end_call">Finalizar llamada</string>
@@ -336,13 +333,14 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Mensaje multimedia</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Se ha recibido un mensaje encriptado usando una versión de LibreSignal antigua que ya no está soportada. Por favor, avisa al quien te lo ha enviado para que actualice a la versión más reciente y reenvíe el mensaje.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Se ha recibido un mensaje encriptado usando una versión de Signal antigua que ya no está soportada. Por favor, avisa al quien te lo ha enviado para que actualice a la versión más reciente y reenvíe el mensaje.</string>
   <string name="MessageRecord_left_group">Ha dejado el grupo.</string>
   <string name="MessageRecord_updated_group">Grupo actualizado.</string>
   <string name="MessageRecord_s_called_you">%s le llamó</string>
   <string name="MessageRecord_called_s">Llamó a %s</string>
   <string name="MessageRecord_missed_call_from">Llamada perdida de %s</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">¡%s esta en LibreSignal, salúdele!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">¡%s esta en Signal, salúdele!</string>
+  <string name="MessageRecord_you">Usted</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">¡Las claves de acceso no coinciden!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">¡Clave de acceso antigua incorrecta!</string>
@@ -365,11 +363,12 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="DeviceProvisioningActivity_content_progress_key_error">Código QR no válido.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Lo sentimos, ya tiene demasiados dispositivos vinculados, pruebe a eliminar alguno...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Lo sentimos , este código QR no es ​​válido .</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">¿Enlazar un dispositivo LibreSignal?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Parece que estás intentando enlazar un dispositivo LibreSignal usando un escáner de terceros. Para tu protección, por favor, escanea el código otra vez desde LibreSignal.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">¿Enlazar un dispositivo Signal?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Parece que estás intentando enlazar un dispositivo Signal usando un escáner de terceros. Para tu protección, por favor, escanea el código otra vez desde Signal.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Introduzca clave de acceso</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">Icono de LibreSignal</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Icono de Signal</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Enviar clave de acceso</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">¡Clave de acceso no válida!</string>
   <!--PlayServicesProblemFragment-->
@@ -411,7 +410,7 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">¡El número que marcó no soporta llamada de voz segura!</string>
   <string name="RedPhone_got_it">Recibido</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">Conectar con LibreSignal</string>
+  <string name="RegistrationActivity_connect_with_signal">Conectar con Signal</string>
   <string name="RegistrationActivity_select_your_country">Seleccione su país</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Debe especificar su
 código de país
@@ -456,12 +455,12 @@ requieren una cuenta de Google, pero deben tener la aplicación Play Store insta
   <string name="RegistrationProgressActivity_too_many_requests">¡Demasiadas peticiones!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Usted ya ha solicitado recientemente una llamada de voz. Puede pedir otra en 20 minutos.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Confilicto al registrarse</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Este número ya está registrado en un servidor LibreSignal distinto (¿CyanogenMod?). Tiene que desregistrarse allí antes de registrarse aquí.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Este número ya está registrado en un servidor Signal distinto (¿CyanogenMod?). Tiene que desregistrarse allí antes de registrarse aquí.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Registro completado</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">El registro en LibreSignal se ha completado con éxito.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">El registro en Signal se ha completado con éxito.</string>
   <string name="RegistrationService_registration_error">Error al registrarse</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">El registro en LibreSignal se ha encontrado con un problema.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">El registro en Signal se ha encontrado con un problema.</string>
   <!--Slide-->
   <string name="Slide_image">Imagen</string>
   <string name="Slide_audio">Audio</string>
@@ -485,7 +484,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="ThreadRecord_called_you">Le llamaron</string>
   <string name="ThreadRecord_missed_call">Llamada perdida</string>
   <string name="ThreadRecord_media_message">Mensaje multimedia</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">¡%s está en LibreSignal, salúdele!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">¡%s está en Signal, salúdele!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">No tiene ninguna clave de identidad.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">El destinatario no tiene clave de identidad.</string>
@@ -538,7 +537,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Pulse para abrir.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Pulse para abrir, o pulse el candado para cerrar.</string>
-  <string name="KeyCachingService_passphrase_cached">LibreSignal está desbloqueado</string>
+  <string name="KeyCachingService_passphrase_cached">Signal está desbloqueado</string>
   <string name="KeyCachingService_lock">Bloquear con clave de acceso</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d mensajes nuevos en %2$d conversaciones</string>
@@ -554,10 +553,10 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="MessageNotifier_media_message">Mensaje multimedia</string>
   <string name="MessageNotifier_reply">Responder</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">¡La respuesta rápida no está disponible cuando LibreSignal está bloqueado!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">¡La respuesta rápida no está disponible cuando Signal está bloqueado!</string>
   <string name="QuickResponseService_problem_sending_message">¡Hubo un problema al enviar el mensaje!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Nuevo mensaje</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Imagen</string>
@@ -586,7 +585,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Conversación silenciada</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Enviar mensaje de LibreSignal</string>
+  <string name="conversation_activity__type_message_push">Enviar mensaje de Signal</string>
   <string name="conversation_activity__type_message_sms_insecure">Enviar SMS no seguro</string>
   <string name="conversation_activity__type_message_mms_insecure">Enviar MMS no seguro</string>
   <string name="conversation_activity__from_sim_name">De %1$s</string>
@@ -628,13 +627,15 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="device_list_fragment__link_new_device">Vincular nuevo dispositivo</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">continuar</string>
+  <!--expiration-->
+  <string name="expiration_off">Inactivo</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">No se pudo leer el registro (log) en su dispositivo. Aún puede usar ADB para obtener un registro de depuración en su lugar.</string>
   <string name="log_submit_activity__thanks">¡Gracias por su ayuda!</string>
   <string name="log_submit_activity__submitting">Enviando</string>
   <string name="log_submit_activity__posting_logs">Publicando registros de actividad en gist...</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">¿Desea importar sus mensajes de texto existentes a la base de datos cifrada de LibreSignal?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">¿Desea importar sus mensajes de texto existentes a la base de datos cifrada de Signal?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">La base de datos de sistema por defecto no será modificada o alterada de ningún modo.</string>
   <string name="database_migration_activity__skip">Saltar</string>
   <string name="database_migration_activity__import">Importar</string>
@@ -647,7 +648,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="import_fragment__import_system_sms_database">Importar base de datos de SMS del sistema</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Importar la base de datos desde la aplicación de mensajería por defecto del sistema</string>
   <string name="import_fragment__restore_encrypted_backup">Restaurar copia de seguridad encriptada</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Recuperar una copia de seguridad ecriptada de LibreSignal previamente exportada</string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Recuperar una copia de seguridad ecriptada de Signal previamente exportada</string>
   <string name="import_fragment__import_plaintext_backup">Importar copia de seguridad en texto plano</string>
   <string name="import_fragment__import_a_plaintext_backup_file">Importar una copia de seguridad en texto plano. Compatible con \'SMS Backup &amp; Restore.\'</string>
   <!--load_more_header-->
@@ -674,7 +675,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Desbloquear</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">LibreSignal requiere que la configuración de MMS envíe los mensajes audiovisuales y de grupo a través de su proveedor móvil. Su dispositivo no proporciona esta información, algo que ocasionalmente ocurre con dispositivos bloqueados y otras configuraciones restrictivas.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal requiere que la configuración de MMS envíe los mensajes audiovisuales y de grupo a través de su proveedor móvil. Su dispositivo no proporciona esta información, algo que ocasionalmente ocurre con dispositivos bloqueados y otras configuraciones restrictivas.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Para enviar mensajes audiovisuales y de grupo, pulse \'Aceptar\' y complete las configuraciones solicitadas. Las configuraciones de MMS para su proveedor generalmente se pueden localizar buscando por \'el APN de su proveedor\'. Sólo necesitará hacer esto una vez.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">BLOQUEADO</string>
@@ -688,14 +689,14 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="recipient_preferences__color_for_this_contact">Color para este contacto</string>
   <string name="recipient_preferences__verify_identity">Verificar identidad</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Llamada de LibreSignal</string>
+  <string name="redphone_call_card__signal_call">Llamada de Signal</string>
   <string name="redphone_call_controls__end_call">finalizar llamada</string>
   <string name="redphone_call_controls__audio">Audio</string>
   <string name="redphone_call_controls__mute">Silenciar</string>
-  <string name="redphone_call_controls__signal_call">Llamada de LibreSignal</string>
+  <string name="redphone_call_controls__signal_call">Llamada de Signal</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-Verifique su número de teléfono móvil para conectar con LibreSignal.</string>
+Verifique su número de teléfono móvil para conectar con Signal.</string>
   <string name="registration_activity__your_country">SU PAÍS</string>
   <string name="registration_activity__your_country_code_and_phone_number">SU CÓDIGO DE PAÍS Y
 NÚMERO DE TELÉFONO
@@ -712,7 +713,7 @@ son:
   <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">
 Algunos clientes de mensajería de texto de terceros, tales como Handcent o GoSMS, se comportan pobremente e
 interceptan todos los mensajes SMS entrantes. Compruebe si recibió un mensaje de texto que comience
-con \'Su código de verificación de LibreSignal:\', en cuyo caso necesitará configurar su aplicación de mensajería de texo de terceros para que permita pasar a los mensajes.</string>
+con \'Su código de verificación de Signal:\', en cuyo caso necesitará configurar su aplicación de mensajería de texo de terceros para que permita pasar a los mensajes.</string>
   <string name="registration_problems__incorrect_number">Número incorrecto.</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">
 Por favor asegúrese de que introdujo su número de teléfono correctamente y de que tiene el formato correcto
@@ -720,16 +721,16 @@ para su región.
     </string>
   <string name="registration_problems__google_voice">Google Voice.</string>
   <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">
-LibreSignal no funcionará con números de Google Voice.</string>
+Signal no funcionará con números de Google Voice.</string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Verificación por voz</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-LibreSignal también puede llamarle para verificar su número. Pulse \'Llamarme\' e introduzca el código de seis dígitos que escuche debajo.</string>
+Signal también puede llamarle para verificar su número. Pulse \'Llamarme\' e introduzca el código de seis dígitos que escuche debajo.</string>
   <string name="registration_progress_activity__verify">Verificar</string>
   <string name="registration_progress_activity__call_me">Llamarme</string>
   <string name="registration_progress_activity__edit_number">Editar número</string>
   <string name="registration_progress_activity__connectivity_error">Fallo de conectividad.</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">LibreSignal no pudo conectar con el servidor.</string>
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Signal no pudo conectar con el servidor.</string>
   <string name="registration_progress_activity__some_possible_problems_include">Algunos posibles
 problemas son:
 
@@ -738,15 +739,15 @@ problemas son:
 a la red.
     </string>
   <string name="registration_progress_activity__your_device_needs_network_connectivity">Tu
-dispositivo necesita estar conectado para poder usar esta característica de LibreSignal. Comprueba
+dispositivo necesita estar conectado para poder usar esta característica de Signal. Comprueba
 que está conectado a datos móviles o por Wi-Fi.
  </string>
   <string name="registration_progress_activity__restrictive_firewall">Cortafuegos restrictivo.
 </string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
-Si está conectado vía Wi-Fi, es posible que haya un cortafuegos (firewall) bloqueando el acceso al servidor LibreSignal. Pruebe con otra red o con la conexión de datos móvil.</string>
+Si está conectado vía Wi-Fi, es posible que haya un cortafuegos (firewall) bloqueando el acceso al servidor Signal. Pruebe con otra red o con la conexión de datos móvil.</string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-LibreSignal ahora verificará automáticamente su número con un mensaje SMS de confirmación.</string>
+Signal ahora verificará automáticamente su número con un mensaje SMS de confirmación.</string>
   <string name="registration_progress_activity__connecting">Conectando...</string>
   <string name="registration_progress_activity__waiting_for_sms_verification">Esperando al SMS
 de verificación...
@@ -757,7 +758,7 @@ podría llevar un rato. Por favor, tenga paciencia, le notificaremos cuando su v
 
     </string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-LibreSignal agotó el periodo de espera para un mensaje SMS de verificación.</string>
+Signal agotó el periodo de espera para un mensaje SMS de verificación.</string>
   <string name="registration_progress_activity__sms_verification_failed">Fallo en la verificación
 por SMS.
 
@@ -784,7 +785,7 @@ por SMS.
   <string name="AndroidManifest__create_passphrase">Crear clave de acceso</string>
   <string name="AndroidManifest__enter_passphrase">Introduzca clave de acceso</string>
   <string name="AndroidManifest__select_contacts">Seleccionar contactos</string>
-  <string name="AndroidManifest__signal_detected">LibreSignal detectado</string>
+  <string name="AndroidManifest__signal_detected">Signal detectado</string>
   <string name="AndroidManifest__public_identity_key">Clave pública de identidad</string>
   <string name="AndroidManifest__change_passphrase">Cambiar clave de acceso</string>
   <string name="AndroidManifest__verify_identity">Verificar identidad</string>
@@ -825,8 +826,8 @@ por SMS.
   <string name="preferences__sms_mms">SMS y MMS</string>
   <string name="preferences__pref_all_sms_title">Recibir todos los SMS</string>
   <string name="preferences__pref_all_mms_title">Recibir todos los MMS</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Usar LibreSignal para todos los mensajes de texto entrantes</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Usar LibreSignal para todos los mensajes multimedia entrantes</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Usar Signal para todos los mensajes de texto entrantes</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Usar Signal para todos los mensajes multimedia entrantes</string>
   <string name="preferences__input_settings">Preferencias de escritura</string>
   <string name="preferences__enable_enter_key_title">Habilitar tecla Intro</string>
   <string name="preferences__replace_smiley_with_enter_key">Reemplazar la tecla de emoticono con una tecla Intro</string>
@@ -838,16 +839,16 @@ por SMS.
   <string name="preferences__change_passphrase">Cambiar clave de acceso</string>
   <string name="preferences__change_your_passphrase">Cambiar su frase de contraseña</string>
   <string name="preferences__enable_passphrase">Habilitar clave de acceso</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Bloquear LibreSignal y notificaciones de mensajes con una frase-contraseña</string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Bloquear Signal y notificaciones de mensajes con una frase-contraseña</string>
   <string name="preferences__screen_security">Seguridad de la pantalla</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Bloquear capturas de pantalla en la lista de aplicaciones recientes y dentro de la aplicación</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Bloquear automáticamente LibreSignal tras un intervalo de inactividad específicado</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Bloquear automáticamente Signal tras un intervalo de inactividad específicado</string>
   <string name="preferences__inactivity_timeout_passphrase">Frase-contraseña para suspensión por inactividad</string>
   <string name="preferences__inactivity_timeout_interval">Intervalo para suspensión por inactividad</string>
   <string name="preferences__notifications">Notificaciones</string>
   <string name="preferences__enable_message_notifications">Habilitar notificaciones de mensaje</string>
   <string name="preferences__new_contacts_notifications">Notificaciones de nuevos contactos</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Mostrar una notificación para nuevos contactos de LibreSignal</string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Mostrar una notificación para nuevos contactos de Signal</string>
   <string name="preferences__led_color">Color del LED</string>
   <string name="preferences__led_color_unknown">Desconocido</string>
   <string name="preferences__pref_led_blink_title">Patrón de parpadeo del LED</string>
@@ -909,8 +910,8 @@ por SMS.
   <string name="preferences__theme">Tema</string>
   <string name="preferences__default">Por defecto</string>
   <string name="preferences__language">Idioma</string>
-  <string name="preferences__signal_messages_and_calls">LibreSignal mensajes y llamadas</string>
-  <string name="preferences__free_private_messages_and_calls">Llamadas y mensajes privados gratuitos para los usuarios de LibreSignal</string>
+  <string name="preferences__signal_messages_and_calls">Signal mensajes y llamadas</string>
+  <string name="preferences__free_private_messages_and_calls">Llamadas y mensajes privados gratuitos para los usuarios de Signal</string>
   <string name="preferences__submit_debug_log">Enviar registro de depuración</string>
   <string name="preferences__support_wifi_calling">Modo de compatibilidad \'Llamada por WiFi\'</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Habilítelo si su dispositivo utiliza entrega de SMS/MMS vía WiFi (actívelo sólo cuando \'Llamada por WiFi\' esté activada en su dispositivo)</string>
@@ -922,7 +923,7 @@ por SMS.
   <string name="preferences_chats__media_auto_download">Auto-descarga de audiovisuales</string>
   <string name="preferences_chats__message_trimming">Recortado de mensaje</string>
   <string name="preferences_advanced__use_system_emoji">Usar emoji del sistema</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Deshabilitar soporte de emoji integrado de LibreSignal</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Deshabilitar soporte de emoji integrado de Signal</string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -939,7 +940,7 @@ por SMS.
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Llamar</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Llamada de LibreSignal</string>
+  <string name="conversation_callable_secure__menu_call">Llamada de Signal</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Detalles del mensaje</string>
   <string name="conversation_context__menu_copy_text">Copiar texto</string>
@@ -948,6 +949,8 @@ por SMS.
   <string name="conversation_context__menu_resend_message">Reenviar mensaje</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Guardar archivo adjunto</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Invitar</string>
   <!--conversation_insecure_no_push-->
@@ -1002,29 +1005,29 @@ por SMS.
   <string name="text_secure_normal__invite_friends">Invitar amigos</string>
   <string name="text_secure_normal__help">Ayuda</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Su versión de LibreSignal está anticuada</string>
+  <string name="reminder_header_outdated_build">Su versión de Signal está anticuada</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="one">Su versión de Signal caducará en 1 día. Pulse para actualizarla a la versión más reciente.</item>
     <item quantity="other">Su versión de Signal caducará en %d días. Pulse para actualizarla a la versión más reciente.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Su versión de LibreSignal caduca hoy. Pulse para actualizarla a la versión más reciente.</string>
-  <string name="reminder_header_expired_build">¡Su versión de LibreSignal ha caducado!</string>
+  <string name="reminder_header_outdated_build_details_today">Su versión de Signal caduca hoy. Pulse para actualizarla a la versión más reciente.</string>
+  <string name="reminder_header_expired_build">¡Su versión de Signal ha caducado!</string>
   <string name="reminder_header_expired_build_details">Los mensajes ya no se mandarán exitosamente. Pulse para actualizar a la versión más reciente.</string>
   <string name="reminder_header_expired_build_button">ACTUALIZAR</string>
   <string name="reminder_header_sms_default_title">Usar como aplicación de SMS predeterminada</string>
-  <string name="reminder_header_sms_default_text">Pulse para hacer de LibreSignal su aplicación de SMS predeterminada.</string>
+  <string name="reminder_header_sms_default_text">Pulse para hacer de Signal su aplicación de SMS predeterminada.</string>
   <string name="reminder_header_sms_default_button">AJUSTAR</string>
   <string name="reminder_header_sms_import_title">Importar SMS del sistema</string>
-  <string name="reminder_header_sms_import_text">Pulse para copiar los mensajes SMS de su teléfono a la base de datos cifrada de LibreSignal.</string>
+  <string name="reminder_header_sms_import_text">Pulse para copiar los mensajes SMS de su teléfono a la base de datos cifrada de Signal.</string>
   <string name="reminder_header_sms_import_button">IMPORTAR</string>
-  <string name="reminder_header_push_title">Activar LibreSignal mensajes y llamadas</string>
+  <string name="reminder_header_push_title">Activar Signal mensajes y llamadas</string>
   <string name="reminder_header_push_text">Actualiza tu experiencia comunicativa</string>
   <string name="reminder_header_push_button">HABILITAR</string>
-  <string name="reminder_header_invite_title">Invitar a LibreSignal</string>
+  <string name="reminder_header_invite_title">Invitar a Signal</string>
   <string name="reminder_header_invite_text">Lleva su conversación con %1$s al siguiente nivel.</string>
   <string name="reminder_header_invite_button">INVITAR</string>
   <string name="reminder_header_share_title">¡Invite a sus amigos!</string>
-  <string name="reminder_header_share_text">Cuantos amigos más usen LibreSignal, mejor será.</string>
+  <string name="reminder_header_share_text">Cuantos amigos más usen Signal, mejor será.</string>
   <string name="reminder_header_share_button">COMPARTIR</string>
   <string name="reminder_header_close_button">CERRAR</string>
   <!--MediaPreviewActivity-->

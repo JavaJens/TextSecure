@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Так</string>
   <string name="no">Ні</string>
   <string name="delete">Видалити</string>
   <string name="please_wait">Будь ласка, зачекайте...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Нове повідомлення</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Зараз: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Ви ще не задали фразу-пароль!</string>
@@ -21,12 +23,12 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Видалити</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Відключити фразу-пароль?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Це відразу розблокує LibreSignal та сповіщення про повідомлення.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Це відразу розблокує Signal та сповіщення про повідомлення.</string>
   <string name="ApplicationPreferencesActivity_disable">Вимкнути</string>
   <string name="ApplicationPreferencesActivity_unregistering">Припинення реєстрації</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Припинення підписки на поідомлення та дзвінки LibreSignal...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Відключити повідомлення та дзвінки LibreSignal?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Це відключить повідомлення LibreSignal шляхом припинення Вашої реєстрації на сервері. Вам знадобиться заново зареєструвати свій номер телефону, щоб користуватися LibreSignal для обміну повідомленнями в майбутньому.
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Припинення підписки на поідомлення та дзвінки Signal...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Відключити повідомлення та дзвінки Signal?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Це відключить повідомлення Signal шляхом припинення Вашої реєстрації на сервері. Вам знадобиться заново зареєструвати свій номер телефону, щоб користуватися Signal для обміну повідомленнями в майбутньому.
     </string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Помилка підключення до сервера!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS Вимкнено</string>
@@ -67,14 +69,14 @@
   <string name="CallScreen_Incoming_call">Вхідні дхвінки</string>
   <!--ConfirmIdentityDialog-->
   <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">        Ключ ідентифікації для %1$s змінився. Це має означати, що хтось намагається
-        перехопити Вашу розмову, або %2$s просто перевстановив LibreSignal і має новий
+        перехопити Вашу розмову, або %2$s просто перевстановив Signal і має новий
         ключ ідентифікації.
     </string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Можливо, вам потрібно перевірити цей контакт.</string>
   <string name="ConfirmIdentityDialog_accept">Прийняти</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Повідомлення %s</string>
-  <string name="ContactsDatabase_signal_call_s">Виклик LibreSignal %s</string>
+  <string name="ContactsDatabase_signal_call_s">Виклик Signal %s</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Розмір повідомленя: %d KБ</string>
   <string name="ConversationItem_expires_s">Завершується: %s</string>
@@ -88,7 +90,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Торкніться для незахищеного запасного варіанту</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Скористатися незашифрованим SMS як запасним варіантом?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Скористатися незашифрованим MMS як запасним варіантом?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Це повідомлення <b>не</b> буде зашифровано, оскільки отримувач більше не користується LibreSignal.\n\nНадіслати незахищене повідомлення?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Це повідомлення <b>не</b> буде зашифровано, оскільки отримувач більше не користується Signal.\n\nНадіслати незахищене повідомлення?</string>
   <string name="ConversationItem_unable_to_open_media">Не знайдено застосунку для відкриття цього файлу.</string>
   <string name="ConversationItem_from_s">від %s</string>
   <string name="ConversationItem_to_s">до %s</string>
@@ -123,8 +125,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ви дійсно хочете покинути цю групу?</string>
   <string name="ConversationActivity_transport_insecure_sms">Незахищене SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Незахищене MMS</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Давайте перейдемо до LibreSignal %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Давайте перейдемо до Signal %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Давайте скористаємось цією перепискою: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Помилка виходу з групи...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS не підтримується</string>
@@ -176,7 +178,7 @@
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Збираю вкладення...</string>
   <string name="ConversationFragment_pending">Очікування...</string>
-  <string name="ConversationFragment_push">Дані (LibreSignal)</string>
+  <string name="ConversationFragment_push">Дані (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Видалення</string>
@@ -234,11 +236,11 @@
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Поділитися з</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Вітаємо в LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextLibre і PhoneLibre тепер єдиний застосунок для приватних повідомлень на всі випадки: LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Вітаємо в LibreSignal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre тепер LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextLibre і PhoneLibre тепер єдиний застосунок: Сигнал. Торкніться, щоб дізнатися більше.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Вітаємо в Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure і RedPhone тепер єдиний застосунок для приватних повідомлень на всі випадки: Signal.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Вітаємо в Signal!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure тепер Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure і RedPhone тепер єдиний застосунок: Сигнал. Торкніться, щоб дізнатися більше.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Експортувати</string>
   <string name="ExportFragment_export_plaintext_to_storage">Експортувати відкритим текстом на карту SD?</string>
@@ -250,15 +252,15 @@
   <string name="ExportFragment_error_while_writing_to_storage">Помилка при записі на накопичувач.</string>
   <string name="ExportFragment_export_successful">Експорт пройшов успішно.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Постійний збій зв\'язку LibreSignal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">LibreSignal не зміг зареєструватись у сервісах Google Play. Дзвінки та повідомлення LibreSignal наразі відключені, спробуйте перереєструватися у Налаштування --&gt; Додатково</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Постійний збій зв\'язку Signal!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal не зміг зареєструватись у сервісах Google Play. Дзвінки та повідомлення Signal наразі відключені, спробуйте перереєструватися у Налаштування --&gt; Додатково</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Нова група</string>
   <string name="GroupCreateActivity_actionbar_update_title">Оновити групу</string>
   <string name="GroupCreateActivity_group_name_hint">Назва групи</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Нова група для MMS</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">Ви обрали контакт, який не підтримує групи LibreSignal, тому ця група буде в MMS.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">Ви не зареєстровані для використання повідомлень та викликів LibreSignal тому групи LibreSignal відключено. Спробуйте перереєструватися у Налаштування --&gt; Додатково</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Ви обрали контакт, який не підтримує групи Signal, тому ця група буде в MMS.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Ви не зареєстровані для використання повідомлень та викликів Signal тому групи Signal відключено. Спробуйте перереєструватися у Налаштування --&gt; Додатково</string>
   <string name="GroupCreateActivity_contacts_mms_exception">Сталася неочікувана помилка, що завадила створенню групи.</string>
   <string name="GroupCreateActivity_contacts_no_members">Для Вашої групи потрібна щонайменше одна особа!</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Один із учасників групи має номер, що не може бути прочитаний належним чином. Будь ласка, виправте або приберіть контакт і спробуйте ще раз.</string>
@@ -266,7 +268,7 @@
   <string name="GroupCreateActivity_menu_create_title">Створити групу</string>
   <string name="GroupCreateActivity_creating_group">Створення %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Оновлення %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Не вдалося додати %1$s, тому що вони не є користувачами LibreSignal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Не вдалося додати %1$s, тому що вони не є користувачами Signal.</string>
   <string name="GroupCreateActivity_loading_group_details">Завантаження деталей групи...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Ви вже у групі</string>
   <!--GroupMembersDialog-->
@@ -277,7 +279,7 @@
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">Завантажити всі SMS з системи?</string>
   <string name="ImportFragment_this_will_import_messages_from_the_system">Це завантажить
-        усі повідомлення зі сховища SMS за замовчуванням до LibreSignal. Якщо Ви раніше
+        усі повідомлення зі сховища SMS за замовчуванням до Signal. Якщо Ви раніше
         вже імпортували SMS з системи, новий імпорт призведе до дублювання повідомлень.
     </string>
   <string name="ImportFragment_import">Імпортувати</string>
@@ -303,29 +305,23 @@
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Торкніться і утримуйте для запису голосового повідомлення, відпустіть щоб надіслати</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Поділитися</string>
-  <string name="InviteActivity_send_sms">Надіслати SMS</string>
   <string name="InviteActivity_cancel">Скасувати</string>
   <string name="InviteActivity_sending">Надсилання...</string>
   <string name="InviteActivity_heart_content_description">Серце</string>
   <string name="InviteActivity_invitations_sent">Запрошення надіслано!</string>
-  <string name="InviteActivity_invite_to_signal">Запросити до LibreSignal</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="one">ВІДПРАВИТИ 1 ДРУГУ</item>
-    <item quantity="few">ВІДПРАВИТИ %d ДРУЗЯМ</item>
-    <item quantity="other">ВІДПРАВИТИ %d ДРУЗЯМ</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Запросити до Signal</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="one">Надіслати 1 SMS запрошення?</item>
     <item quantity="few">Надіслати %d SMS запрошень?</item>
     <item quantity="other">Надіслати %d SMS запрошень?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Давайте перейдемо на LibreSignal! %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Давайте перейдемо на Signal! %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Схоже, що у Вас немає додатків, щоб поділитися.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Друзі мають піклуватися про приватність свого спілкування!</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">При скануванні ключ не виявленo!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">Встановити зчитувач штрих-кодів?</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">LibreSignal потрібен зчитувач штрих-кодів для QR-кодів.</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Signal потрібен зчитувач штрих-кодів для QR-кодів.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Не вдалося надіслати</string>
   <string name="MessageDetailsRecipient_new_identity">Нова особистість</string>
@@ -334,11 +330,11 @@
   <string name="MmsDownloader_error_connecting_to_mms_provider">Помилка підключення до MMS провайдера...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Помилка читання налаштувань MMS провайдера...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Відбувається дзвінок LibreSignal</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Відбувається дзвінок Signal</string>
   <string name="NotificationBarManager_missed_call_from_s">Пропущено дзвінок від %s</string>
-  <string name="NotificationBarManager_missed_signal_call">Пропущено дзвінок LibreSignal</string>
-  <string name="NotificationBarManager__establishing_signal_call">Встановлення виклику LibreSignal</string>
-  <string name="NotificationBarManager__incoming_signal_call">Вхідний виклик LibreSignal</string>
+  <string name="NotificationBarManager_missed_signal_call">Пропущено дзвінок Signal</string>
+  <string name="NotificationBarManager__establishing_signal_call">Встановлення виклику Signal</string>
+  <string name="NotificationBarManager__incoming_signal_call">Вхідний виклик Signal</string>
   <string name="NotificationBarManager__deny_call">Відхилити виклик</string>
   <string name="NotificationBarManager__answer_call">Відповісти на виклик</string>
   <string name="NotificationBarManager__end_call">Завершити виклик</string>
@@ -346,13 +342,14 @@
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Мільтимедійне повідомлення</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Повідомлення зашифроване старою версією LibreSignal, яка вже не підтримується. Попросіть друга оновити LibreSignal та спробувати ще раз.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Повідомлення зашифроване старою версією Signal, яка вже не підтримується. Попросіть друга оновити Signal та спробувати ще раз.</string>
   <string name="MessageRecord_left_group">Ви вийшли з групи.</string>
   <string name="MessageRecord_updated_group">Групу оновлено.</string>
   <string name="MessageRecord_s_called_you">%s телефонував Вам</string>
   <string name="MessageRecord_called_s">Телефонували %s</string>
   <string name="MessageRecord_missed_call_from">Пропущено дзвінок від %s</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">%s зараз в LibreSignal, привітайтеся!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">%s зараз в Signal, привітайтеся!</string>
+  <string name="MessageRecord_you">Ви</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Фраза-пароль не збігається!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Невірна стара фраза!</string>
@@ -375,8 +372,9 @@
   <string name="DeviceProvisioningActivity_content_progress_key_error">Недійсний QR-код.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Вибачте, у Вас забагато прив\'язаних пристроїв, спробуйте видалити декілька...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Вибачте, це недійсний QR код для прив\'язки пристрою.</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Прив\'язати пристрій LibreSignal?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Схоже ви не використовуєте LibreSignal для сканування QR коду. Для вашого захисту, відскануйте код знову, використовуючи LibreSignal.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Прив\'язати пристрій Signal?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Схоже ви не використовуєте Signal для сканування QR коду. Для вашого захисту, відскануйте код знову, використовуючи Signal.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Уведіть фразу-пароль</string>
   <string name="PassphrasePromptActivity_watermark_content_description">Значок Сигнал</string>
@@ -385,8 +383,8 @@
   <!--PlayServicesProblemFragment-->
   <string name="PlayServicesProblemFragment_the_version_of_google_play_services_you_have_installed_is_not_functioning">Встановлена версія Служб Google Play працює некоректно. Перевстановіть Служби Google Play та спробуйте знову.</string>
   <!--RatingManager-->
-  <string name="RatingManager_rate_this_app">Оцінити LibreSignal</string>
-  <string name="RatingManager_if_you_enjoy_using_this_app_please_take_a_moment">Якщо вам сподобався LibreSignal, будь-ласка, оцініть його.</string>
+  <string name="RatingManager_rate_this_app">Оцінити Signal</string>
+  <string name="RatingManager_if_you_enjoy_using_this_app_please_take_a_moment">Якщо вам сподобався Signal, будь-ласка, оцініть його.</string>
   <string name="RatingManager_rate_now">Оцінити зараз!</string>
   <string name="RatingManager_no_thanks">Ні, дякую</string>
   <string name="RatingManager_later">Пізніше</string>
@@ -421,7 +419,7 @@
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">Набраний номер не підтримує безпечні дзвінки!</string>
   <string name="RedPhone_got_it">Ясно</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">Підключення до LibreSignal</string>
+  <string name="RegistrationActivity_connect_with_signal">Підключення до Signal</string>
   <string name="RegistrationActivity_select_your_country">Виберіть Вашу країну</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Вкажіть код країни</string>
   <string name="RegistrationActivity_you_must_specify_your_phone_number">Вкажіть свій номер телефону</string>
@@ -456,12 +454,12 @@
   <string name="RegistrationProgressActivity_too_many_requests">Забагато запитів!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Телефонний дзвінок вже був запитаний. Запросити ще один можна тільки через 20 хвилин.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Конфлікт регістрації</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Цей номер вже зареєстровано на іншому сервері LibreSignal (CyanogenMod?). Перш ніж зареєструватися на новому сервері, відмініть реєстрацію на попередньому.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Цей номер вже зареєстровано на іншому сервері Signal (CyanogenMod?). Перш ніж зареєструватися на новому сервері, відмініть реєстрацію на попередньому.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Реєстрацію завершено</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">Реєстрація в службі LibreSignal успішно виконана.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">Реєстрація в службі Signal успішно виконана.</string>
   <string name="RegistrationService_registration_error">Помилка реєстрації</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Виникла помилка при реєстрації в службі LibreSignal.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Виникла помилка при реєстрації в службі Signal.</string>
   <!--Slide-->
   <string name="Slide_image">Зображення</string>
   <string name="Slide_audio">Аудіо</string>
@@ -481,7 +479,7 @@
   <string name="ThreadRecord_called_you">Вам дзвонили</string>
   <string name="ThreadRecord_missed_call">Пропущений дзвінок</string>
   <string name="ThreadRecord_media_message">Медіа повідомлення</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">%s зараз в LibreSignal, привітайтеся!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">%s зараз в Signal, привітайтеся!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">У вас немає особистого ключа.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">У одержувача немає особистого ключа.</string>
@@ -534,7 +532,7 @@
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Доторкніться щоб відкрити.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Торкніться щоб відкрити, чи торкніться замка щоб закрити.</string>
-  <string name="KeyCachingService_passphrase_cached">LibreSignal розблоковано</string>
+  <string name="KeyCachingService_passphrase_cached">Signal розблоковано</string>
   <string name="KeyCachingService_lock">Заблокувати фразою-паролем</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d нових повідомлень у %2$d розмовах</string>
@@ -550,10 +548,10 @@
   <string name="MessageNotifier_media_message">Медіа повідомлення</string>
   <string name="MessageNotifier_reply">Відповісти</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Швидка відповідь неможлива коли LibreSignal заблоковано!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Швидка відповідь неможлива коли Signal заблоковано!</string>
   <string name="QuickResponseService_problem_sending_message">Проблема під час відправлення повідомлення!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Нове повідомлення</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Зображення</string>
@@ -582,7 +580,7 @@
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Звук для розмови вимкнено</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Надіслати LibreSignal повідомлення</string>
+  <string name="conversation_activity__type_message_push">Надіслати Signal повідомлення</string>
   <string name="conversation_activity__type_message_sms_insecure">Надіслати незахищене SMS</string>
   <string name="conversation_activity__type_message_mms_insecure">Надіслати незахищене MMS</string>
   <string name="conversation_activity__from_sim_name">Від %1$s</string>
@@ -624,13 +622,15 @@
   <string name="device_list_fragment__link_new_device">Прив\'язати новий пристрій</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">продовжити</string>
+  <!--expiration-->
+  <string name="expiration_off">Вимкнено</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Помилка читання журналу відлагодження з вашого пристрою. Ви також можете використати ADB для отримання журналу.</string>
   <string name="log_submit_activity__thanks">Дякуємо за вашу допомогу!</string>
   <string name="log_submit_activity__submitting">Надсилання</string>
   <string name="log_submit_activity__posting_logs">Відправляємо логи на gist...</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Імпорутвати ваші SMS повідомлення у зашифровану базу даних LibreSignal?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Імпорутвати ваші SMS повідомлення у зашифровану базу даних Signal?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Системна база даних не буде порушена.</string>
   <string name="database_migration_activity__skip">Пропустити</string>
   <string name="database_migration_activity__import">Імпортувати</string>
@@ -643,7 +643,7 @@
   <string name="import_fragment__import_system_sms_database">Імпортувати системну базу SMS</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Імпортувати дані з додатку обміну повідомленнями за замовчанням</string>
   <string name="import_fragment__restore_encrypted_backup">Відновити зашифровану резервну копію</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Відновити раніше експортовану зашифровану резервну копію LibreSignal</string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Відновити раніше експортовану зашифровану резервну копію Signal</string>
   <string name="import_fragment__import_plaintext_backup">Імпорт незашифрованої резервної копії</string>
   <string name="import_fragment__import_a_plaintext_backup_file">Імпортувати незашифровану резервну копію, сумісну з додатком \'SMSBackup And Restore\'.</string>
   <!--load_more_header-->
@@ -671,7 +671,7 @@
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Розблокувати</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Для надсилання MMS-повідомлень LibreSignal\'у необхідно знати настройки APN вашого оператора. Однак ваш пристрій не надає цієї інформації - перевірте налаштування доступу до цих опцій.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Для надсилання MMS-повідомлень Signal\'у необхідно знати настройки APN вашого оператора. Однак ваш пристрій не надає цієї інформації - перевірте налаштування доступу до цих опцій.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Щоб мати можливість відправляти MMS-повідомлення, введіть інформацію про APN нижче. Потрібні значення для вашого оператора можна знайти в інтернеті за запитом \'оператор APN\' або в його службі підтримки. Це потрібно зробити тільки один раз.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">ЗАБЛОКОВАНО</string>
@@ -685,14 +685,14 @@
   <string name="recipient_preferences__color_for_this_contact">Колір для цього контакту</string>
   <string name="recipient_preferences__verify_identity">Перевірити особистість</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Виклик LibreSignal </string>
+  <string name="redphone_call_card__signal_call">Виклик Signal </string>
   <string name="redphone_call_controls__end_call">завершити виклик</string>
   <string name="redphone_call_controls__audio">Аудіо</string>
   <string name="redphone_call_controls__mute">Без звуку</string>
-  <string name="redphone_call_controls__signal_call">Виклик LibreSignal</string>
+  <string name="redphone_call_controls__signal_call">Виклик Signal</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-Перевірте ваш телефонний номер щоб підключити LibreSignal.
+Перевірте ваш телефонний номер щоб підключити Signal.
 </string>
   <string name="registration_activity__your_country">ВАША КРАЇНА</string>
   <string name="registration_activity__your_country_code_and_phone_number">КОД ВАШОЇ КРАЇНИ ТА НОМЕР ТЕЛЕФОНУ
@@ -707,39 +707,39 @@
   <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">
         Деякі сторонні програми обміну текстовими повідомленнями, такі як Handcent або GoSMS, чинять не як належить
         перехоплюючи всі вхідні SMS повідомлення. Перевірте, чи отримали текстове повідомлення, яке починається
-        словами \'Your LibreSignal verification code:\', у такому разі вам потрібно налаштувати вашу
+        словами \'Your Signal verification code:\', у такому разі вам потрібно налаштувати вашу
         сторонню програму обміну текстовими повідомленнями, щоб вона пропускала текстові повідомлення.
     </string>
   <string name="registration_problems__incorrect_number">Неправильний номер.</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">Переконайтеся, що номер введений правильно і має вірний формат.</string>
   <string name="registration_problems__google_voice">Google Voice.</string>
   <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">
-LibreSignal не буде працювати з номерами Google Voice.
+Signal не буде працювати з номерами Google Voice.
 </string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Голосова перевірка</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-LibreSignal може зателефонувати вам, щоб перевірити номер. Торкніться \'Подзвонити мені\' і введіть шестизначний код, який ви почуєте, нижче.</string>
+Signal може зателефонувати вам, щоб перевірити номер. Торкніться \'Подзвонити мені\' і введіть шестизначний код, який ви почуєте, нижче.</string>
   <string name="registration_progress_activity__verify">Перевірити</string>
   <string name="registration_progress_activity__call_me">Зателефонувати мені</string>
   <string name="registration_progress_activity__edit_number">Редагувати номер</string>
   <string name="registration_progress_activity__connectivity_error">Помилка взаємозв’яку.</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">LibreSignal не вдалося підключитись до серверу.</string>
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Signal не вдалося підключитись до серверу.</string>
   <string name="registration_progress_activity__some_possible_problems_include">Можливі проблеми:</string>
   <string name="registration_progress_activity__no_network_connectivity">Відсутня можливість підключення.</string>
-  <string name="registration_progress_activity__your_device_needs_network_connectivity">Щоб використовувати LibreSignal необхідне підключення до інтернету. Упевніться, що підключений мобільний інтернет чи Wi-Fi.</string>
+  <string name="registration_progress_activity__your_device_needs_network_connectivity">Щоб використовувати Signal необхідне підключення до інтернету. Упевніться, що підключений мобільний інтернет чи Wi-Fi.</string>
   <string name="registration_progress_activity__restrictive_firewall">Обмеження фаєрвол.</string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
-Якщо ви підключені через W-Fi, можливо, файрвол блокує доступ до сервера LibreSignal. Мпробуйте інше підключення.
+Якщо ви підключені через W-Fi, можливо, файрвол блокує доступ до сервера Signal. Мпробуйте інше підключення.
 </string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-LibreSignal зараз перевірить ваш номер за допомогою SMS повідомлення.</string>
+Signal зараз перевірить ваш номер за допомогою SMS повідомлення.</string>
   <string name="registration_progress_activity__connecting">Підключення...</string>
   <string name="registration_progress_activity__waiting_for_sms_verification">Очікування SMS для перевірки...</string>
   <string name="registration_progress_activity__registering_with_server">Реєстрація на сервері...</string>
   <string name="registration_progress_activity__this_couild_take_a_moment_please_be_patient">Це може зайняти якийсь час. Будь ласка, наберіться терпіння, ми вам повідомимо, коли перевірка завершиться.</string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-LibreSignal не дочекався перевірочного SMS.
+Signal не дочекався перевірочного SMS.
 </string>
   <string name="registration_progress_activity__sms_verification_failed">SMS-перевірка не вдалася.</string>
   <string name="registration_progress_activity__generating_keys">Генерування ключів...</string>
@@ -806,8 +806,8 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="preferences__sms_mms">SMS та MMS</string>
   <string name="preferences__pref_all_sms_title">Отримати усі SMS</string>
   <string name="preferences__pref_all_mms_title">Отримати усі MMS</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Використовувати LibreSignal для вхідних текстових повідомлень</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Використовувати LibreSignal для вхідних мультимедійних повідомлень</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Використовувати Signal для вхідних текстових повідомлень</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Використовувати Signal для вхідних мультимедійних повідомлень</string>
   <string name="preferences__input_settings">Налаштування вводу</string>
   <string name="preferences__enable_enter_key_title">Увімкнути клавішу Enter </string>
   <string name="preferences__replace_smiley_with_enter_key">Замінити кнопку смайликів кнопкою Enter </string>
@@ -819,16 +819,16 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="preferences__change_passphrase">Змінити фразу-ключ</string>
   <string name="preferences__change_your_passphrase">Змінити вашу фразу-ключ</string>
   <string name="preferences__enable_passphrase">Увімкнути фразу-пароль</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Встановити фразу-ключ на LibreSignal </string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Встановити фразу-ключ на Signal </string>
   <string name="preferences__screen_security">Безпека екрану</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Блокувати знімки екрану в списку нещодавніх та в середині програми</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Автоблокувати LibreSignal після певного часу неактивності</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Автоблокувати Signal після певного часу неактивності</string>
   <string name="preferences__inactivity_timeout_passphrase">фраза-ключ після спливання часу неактивностіі</string>
   <string name="preferences__inactivity_timeout_interval">Інтервал часу неактивності</string>
   <string name="preferences__notifications">Сповіщення</string>
   <string name="preferences__enable_message_notifications">Увімкнути сповіщення про нові повідомлення</string>
   <string name="preferences__new_contacts_notifications">Увімкнути сповіщення про нові контакти</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Показувати сповіщення про нові контакти LibreSignal </string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Показувати сповіщення про нові контакти Signal </string>
   <string name="preferences__led_color">Колір LED</string>
   <string name="preferences__led_color_unknown">Невідомо</string>
   <string name="preferences__pref_led_blink_title">Шаблон мерехтіння LED</string>
@@ -890,8 +890,8 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="preferences__theme">Тема</string>
   <string name="preferences__default">Типово</string>
   <string name="preferences__language">Мова</string>
-  <string name="preferences__signal_messages_and_calls">Повідомлення та виклики LibreSignal</string>
-  <string name="preferences__free_private_messages_and_calls">Безкоштовні приватні повідомлення та дзвінки для користувачів LibreSignal</string>
+  <string name="preferences__signal_messages_and_calls">Повідомлення та виклики Signal</string>
+  <string name="preferences__free_private_messages_and_calls">Безкоштовні приватні повідомлення та дзвінки для користувачів Signal</string>
   <string name="preferences__submit_debug_log">Відіслати журнал відлагодження</string>
   <string name="preferences__support_wifi_calling">Режим сумісності \'WiFi Calling\'</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Увімкніть, якщо ваш пристрій використовує доставку SMS/MMS через WiFi (вмикайте лише якщо «Дзвінки по WiFi» включено на вашому пристрої)</string>
@@ -903,7 +903,7 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="preferences_chats__media_auto_download">Автозавантаження медіа</string>
   <string name="preferences_chats__message_trimming">Обрізка повідомлень</string>
   <string name="preferences_advanced__use_system_emoji">Використовувати системні emoji</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Вимкнути вбудовану в LibreSignal підтримку emoji</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Вимкнути вбудовану в Signal підтримку emoji</string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -920,7 +920,7 @@ LibreSignal не дочекався перевірочного SMS.
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Виклик</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Виклик через LibreSignal </string>
+  <string name="conversation_callable_secure__menu_call">Виклик через Signal </string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Деталі повідомлення</string>
   <string name="conversation_context__menu_copy_text">Скопіювати текст</string>
@@ -929,6 +929,8 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="conversation_context__menu_resend_message">Переслати повідомлення</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Зберегти вкладення</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Запросити</string>
   <!--conversation_insecure_no_push-->
@@ -983,30 +985,30 @@ LibreSignal не дочекався перевірочного SMS.
   <string name="text_secure_normal__invite_friends">Запросити друзів</string>
   <string name="text_secure_normal__help">Допомога</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Ваша версія LibreSignal застаріла!</string>
+  <string name="reminder_header_outdated_build">Ваша версія Signal застаріла!</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="one">Вашу версію Сигналу за 1 день перестануть підтримувати. Торкніться, щоб оновити до останньої версії.</item>
     <item quantity="few">Вашу версію Сигналу перестануть підтримувати за %d дні. Торкніться, щоб оновити до останньої версії.</item>
     <item quantity="other">Вашу версію Сигналу перестануть підтримувати за %d днів. Торкніться, щоб оновити до останньої версії.</item>
   </plurals>
   <string name="reminder_header_outdated_build_details_today">Вашу версію Сигналу перестануть підтримувати сьогодні. Торкніться, щоб оновити до останньої версії.</string>
-  <string name="reminder_header_expired_build">Ваша версія LibreSignal застаріла!</string>
+  <string name="reminder_header_expired_build">Ваша версія Signal застаріла!</string>
   <string name="reminder_header_expired_build_details">Повідомлення більше не будуть відправлятися. Торкніться, щоб оновитися до останньої версії.</string>
   <string name="reminder_header_expired_build_button">ОНОВИТИ</string>
   <string name="reminder_header_sms_default_title">Використовувати як додаток для SMS за замовчуванням</string>
-  <string name="reminder_header_sms_default_text">Торкніться, щоб зробити LibreSignal додатком для SMS за замовчуванням.</string>
+  <string name="reminder_header_sms_default_text">Торкніться, щоб зробити Signal додатком для SMS за замовчуванням.</string>
   <string name="reminder_header_sms_default_button">ЗАДАТИ</string>
   <string name="reminder_header_sms_import_title">Імпортувати системну базу SMS?</string>
-  <string name="reminder_header_sms_import_text">Торкніться, щоб імпортувати ваші SMS повідомлення у зашифровану базу даних LibreSignal.</string>
+  <string name="reminder_header_sms_import_text">Торкніться, щоб імпортувати ваші SMS повідомлення у зашифровану базу даних Signal.</string>
   <string name="reminder_header_sms_import_button">ІМПОРТУВАТИ</string>
-  <string name="reminder_header_push_title">Увімкнути повідомлення та виклики LibreSignal</string>
+  <string name="reminder_header_push_title">Увімкнути повідомлення та виклики Signal</string>
   <string name="reminder_header_push_text">Оновіть досвід вашого спілкування.</string>
   <string name="reminder_header_push_button">ВВІМКНУТИ</string>
   <string name="reminder_header_invite_title">Запросити до Сигнал</string>
   <string name="reminder_header_invite_text">Спілкуйтеся з %1$s на якісно новому рівні.</string>
   <string name="reminder_header_invite_button">ЗАПРОСИТИ</string>
   <string name="reminder_header_share_title">Запросити друзів</string>
-  <string name="reminder_header_share_text">Чим більше друзів використовують LibreSignal, тим кращим він стає.</string>
+  <string name="reminder_header_share_text">Чим більше друзів використовують Signal, тим кращим він стає.</string>
   <string name="reminder_header_share_button">ПОДІЛИТИСЯ</string>
   <string name="reminder_header_close_button">ЗАКРИТИ</string>
   <!--MediaPreviewActivity-->

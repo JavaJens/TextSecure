@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Bai</string>
   <string name="no">Ez</string>
   <string name="delete">Ezabatu</string>
   <string name="please_wait">Itxaron, mesedez...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Mezu berria</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Une honetan: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Oraindik ez duzu pasahitza ezarri!</string>
@@ -19,17 +21,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Ezabatu</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Desgaitu pasahitza?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">LibreSignal eta mezu jakinarazpenak iraunkorki desbloketuako dira.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Signal eta mezu jakinarazpenak iraunkorki desbloketuako dira.</string>
   <string name="ApplicationPreferencesActivity_disable">Desgaitu</string>
   <string name="ApplicationPreferencesActivity_unregistering">Deserregistratzen</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Deserregistratzen LibreSignal mezu eta deietatik...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Desgaitu LibreSignal mezu eta deiak?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Desgaitu LibreSignal mezu eta deiak zerbitzaritik deserregistratuz. Zure telefono zenbakia bererregistratu beharko duzu mezu eta deiak berriro erabili ahal izateko.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Deserregistratzen Signal mezu eta deietatik...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Desgaitu Signal mezu eta deiak?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Desgaitu Signal mezu eta deiak zerbitzaritik deserregistratuz. Zure telefono zenbakia bererregistratu beharko duzu mezu eta deiak berriro erabili ahal izateko.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Errorea zerbitzariarekin konektatzerakoan!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS Gaituta</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Ukitu zure SMS aplikazio lehenetsia aldatzeko</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS Desgaituta</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">LibreSignal zure SMS aplikazio lehenetsia izan dadin, ukitu.</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Signal zure SMS aplikazio lehenetsia izan dadin, ukitu.</string>
   <string name="ApplicationPreferencesActivity_on">piztuta</string>
   <string name="ApplicationPreferencesActivity_On">Aktibatuta</string>
   <string name="ApplicationPreferencesActivity_off">desaktibatuta</string>
@@ -62,12 +64,12 @@
   <!--CallScreen-->
   <string name="CallScreen_Incoming_call">Sarrerako dei</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">%1$s kontaktuaren material-gako identifikatzailea aldatu da. Izan daiteke norbait zure komunikazioaren erdian egotea edo, era berean, posible da %2$s kontaktuak LibreSignal berrinstalatu izana eta gako berri bat edukitzea.</string>
+  <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">%1$s kontaktuaren material-gako identifikatzailea aldatu da. Izan daiteke norbait zure komunikazioaren erdian egotea edo, era berean, posible da %2$s kontaktuak Signal berrinstalatu izana eta gako berri bat edukitzea.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Agian kontaktu hau egiaztatu beharko zenuke.</string>
   <string name="ConfirmIdentityDialog_accept">Onartu</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Mezu %s</string>
-  <string name="ContactsDatabase_signal_call_s">LibreSignal Dei %s</string>
+  <string name="ContactsDatabase_signal_call_s">Signal Dei %s</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Mezuaren tamaina: %d KB</string>
   <string name="ConversationItem_expires_s">Iraingutuko da: %s</string>
@@ -81,7 +83,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Tap egin segurtasunik gabeko alternatibarako</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Zifratu gabeko SMSaz baliatu?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Zifratu gabeko MMSaz baliatu?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Mezu hau <b>ez</b> da zifratuko jadanik hartzailea ez delako LibreSignal erabiltzailea.\n\nSegurtasunik gabeko mezua bidali?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Mezu hau <b>ez</b> da zifratuko jadanik hartzailea ez delako Signal erabiltzailea.\n\nSegurtasunik gabeko mezua bidali?</string>
   <string name="ConversationItem_unable_to_open_media">Ez da euskarri hau irekitzeko gai den aplikaziorik aurkitu.</string>
   <string name="ConversationItem_from_s">%s-(e)tik</string>
   <string name="ConversationItem_to_s">%s-(e)ra</string>
@@ -115,8 +117,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ziur zaude talde hau utzi nahi izateaz?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS ez segurua</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS ez segurua</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">LibreSignalera aldatu dezagun %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Signalera aldatu dezagun %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Erabili dezagun hau txatarako: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Errorea taldea uzterakoan...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS ez daude onartuta</string>
@@ -163,7 +165,7 @@
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Eranskinak biltzen...</string>
   <string name="ConversationFragment_pending">Zain...</string>
-  <string name="ConversationFragment_push">Datuak (LibreSignal)</string>
+  <string name="ConversationFragment_push">Datuak (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Ezabatzen</string>
@@ -217,15 +219,15 @@
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Norekin konpartitu</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Ongi etorri LibreSignalera!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextLibre eta PhoneLibre mezulari pribatua bakar bat dira orain, edozein egoeratako.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Ongi etorri LibreSignalera!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre orain LibreSignal da.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextLibre eta PhoneLibre aplikazio bera da orain: LibreSignal.  Ukitu arakatzeko.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Ongi etorri Signalera!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure eta RedPhone mezulari pribatua bakar bat dira orain, edozein egoeratako.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Ongi etorri Signalera!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure orain Signal da.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure eta RedPhone aplikazio bera da orain: Signal.  Ukitu arakatzeko.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Esportatu</string>
   <string name="ExportFragment_export_plaintext_to_storage">Zifratu gabeko testua biltegira esportatu?</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Kontuz, ekintza honek zure LibreSignal mezuen zifratu gabeko testua biltegira esportatuko du.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Kontuz, ekintza honek zure Signal mezuen zifratu gabeko testua biltegira esportatuko du.</string>
   <string name="ExportFragment_cancel">Utzi</string>
   <string name="ExportFragment_exporting">Esportatzen</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Zifratu gabeko testua biltegira esportatzen...</string>
@@ -233,15 +235,15 @@
   <string name="ExportFragment_error_while_writing_to_storage">Errorea memorian idazterakoan.</string>
   <string name="ExportFragment_export_successful">Esportazioa arrakastaz egin da.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">LibreSignal behin betiko komunikazio hutsegitea!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">LibreSignal ez da gai izan Google Play Zerbitzuekin erregistratzeko. LibreSignal mezu eta deiak desgaitu egin dira, mesedez saiatu bererregistratzen Ezarpenak &gt; Aurreratua menuan.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Signal behin betiko komunikazio hutsegitea!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal ez da gai izan Google Play Zerbitzuekin erregistratzeko. Signal mezu eta deiak desgaitu egin dira, mesedez saiatu bererregistratzen Ezarpenak &gt; Aurreratua menuan.</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Talde berria</string>
   <string name="GroupCreateActivity_actionbar_update_title">Taldea eguneratu</string>
   <string name="GroupCreateActivity_group_name_hint">Taldearen izena</string>
   <string name="GroupCreateActivity_actionbar_mms_title">MMS talde berria</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">LibreSignal taldeak onartzen ez duen kontaktu bat aukeratu duzu; beraz, talde hau MMS izango da.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">LibreSignal zerbitzuan izena eman ez duzunez, LibreSignal taldeak desaktibatuta daude.  Saiatu izena ematen Ezarpenak &gt; Aurreratua menutik mesedez.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Signal taldeak onartzen ez duen kontaktu bat aukeratu duzu; beraz, talde hau MMS izango da.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Signal zerbitzuan izena eman ez duzunez, Signal taldeak desaktibatuta daude.  Saiatu izena ematen Ezarpenak &gt; Aurreratua menutik mesedez.</string>
   <string name="GroupCreateActivity_contacts_mms_exception">Ustekabeko errorea gertatu da eta eragin du taldea sortu ezin izatea.</string>
   <string name="GroupCreateActivity_contacts_no_members">Gutxienez pertsona bat behar duzu zure taldean!</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Zure taldeko partaide batek ondo irakurri ezin daitekeen zenbaki bat dauka. Konpondu edo ezabatu kontaktua eta saiatu berriro mesedez.</string>
@@ -249,7 +251,7 @@
   <string name="GroupCreateActivity_menu_create_title">Taldea sortu</string>
   <string name="GroupCreateActivity_creating_group">Sortzen %1$s...</string>
   <string name="GroupCreateActivity_updating_group">Eguneratzen: %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Ezin izan da %1$s gehitu LibreSignal erabiltzailea ez delako.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Ezin izan da %1$s gehitu Signal erabiltzailea ez delako.</string>
   <string name="GroupCreateActivity_loading_group_details">Taldearen detaileak kargatzen...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Dagoeneko zaude taldean.</string>
   <!--GroupMembersDialog-->
@@ -287,27 +289,22 @@ Babeskopia hau lehenago inportatu baduzu, mezu bikoiztuak sor daitezke.
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Ukitu eta eutsi ahots mezua grabatzeko, jaregin bidaltzeko.</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Partekatu</string>
-  <string name="InviteActivity_send_sms">Bidali SMS mezua</string>
   <string name="InviteActivity_cancel">Utzi</string>
   <string name="InviteActivity_sending">Bidaltzen...</string>
   <string name="InviteActivity_heart_content_description">Bihotza</string>
   <string name="InviteActivity_invitations_sent">Gonbidapenak bidali dira!</string>
-  <string name="InviteActivity_invite_to_signal">Gonbidatu LibreSignal erabiltzera</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="one">BIDALI LAGUN BATI</item>
-    <item quantity="other">BIDALI %d LAGUNERI</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Gonbidatu Signal erabiltzera</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="one">Bidali SMS bidezko gonbidapena?</item>
     <item quantity="other">Bidali %d  SMS bidezko gonbidapen?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">LibreSignalera alda dezagun: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Signalera alda dezagun: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Dirudienez ez duzu partekatzeko aplikazio bakar bat ere.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Lagunek ez dute lagunak zifratu gabeko txatean jardun.</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">Ez da topatu eskaneatutako gakorik!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">Barcode Scanner instalatu?</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">LibreSignalek Barcode Scanner aplikazioa behar du QR kodeak irakurtzeko.</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Signalek Barcode Scanner aplikazioa behar du QR kodeak irakurtzeko.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Bidalketak huts egin du</string>
   <string name="MessageDetailsRecipient_new_identity">Nortasun berria </string>
@@ -316,11 +313,11 @@ Babeskopia hau lehenago inportatu baduzu, mezu bikoiztuak sor daitezke.
   <string name="MmsDownloader_error_connecting_to_mms_provider">Errorea MMS hornitzailearekin konentatzerakoan...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Errorea hari-gabeko hornitzailearen MMS ezarpenak irakurtzen...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Uneko LibreSignal deia</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Uneko Signal deia</string>
   <string name="NotificationBarManager_missed_call_from_s">%s-en erantzun gabeko deia</string>
-  <string name="NotificationBarManager_missed_signal_call">Erantzun gabeko LibreSignal deia</string>
-  <string name="NotificationBarManager__establishing_signal_call">LibreSignal deia finkatzen</string>
-  <string name="NotificationBarManager__incoming_signal_call">Sarrerako LibreSignal deia</string>
+  <string name="NotificationBarManager_missed_signal_call">Erantzun gabeko Signal deia</string>
+  <string name="NotificationBarManager__establishing_signal_call">Signal deia finkatzen</string>
+  <string name="NotificationBarManager__incoming_signal_call">Sarrerako Signal deia</string>
   <string name="NotificationBarManager__deny_call">Ukatu deia</string>
   <string name="NotificationBarManager__answer_call">Erantzun deia</string>
   <string name="NotificationBarManager__end_call">Amaitu deia</string>
@@ -328,13 +325,14 @@ Babeskopia hau lehenago inportatu baduzu, mezu bikoiztuak sor daitezke.
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Multimedia mezua</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">LibreSignal bertsio zaharregitik jaso da mezu zifratua.  Eskatu igorleari birbidaltzeko mesedez bere LibreSignal egiaztatu ondoren.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Signal bertsio zaharregitik jaso da mezu zifratua.  Eskatu igorleari birbidaltzeko mesedez bere Signal egiaztatu ondoren.</string>
   <string name="MessageRecord_left_group">Taldea utzi duzu.</string>
   <string name="MessageRecord_updated_group">Taldea eguneratuta.</string>
   <string name="MessageRecord_s_called_you">%s-(e)k deitu dizu</string>
   <string name="MessageRecord_called_s">%s-(e)ri deitu duzu</string>
   <string name="MessageRecord_missed_call_from">%s-en erantzun gabeko deia</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">%s-(e)k LibreSignal dauka, agur egin!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">%s-(e)k Signal dauka, agur egin!</string>
+  <string name="MessageRecord_you">Zu</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Pasahitzak ez datoz bat!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Pasahitz zahar ez zuzena!</string>
@@ -357,11 +355,12 @@ Babeskopia hau lehenago inportatu baduzu, mezu bikoiztuak sor daitezke.
   <string name="DeviceProvisioningActivity_content_progress_key_error">Baliogabeko QR kodea.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Barkatu, konektatutako gailu gehiegi dauzkazu jadanik, kendu batzuk...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Barkatu, hau ez da gailua lotzeko baliozko QR kodea.</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Lotu LibreSignal gailu bat?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">LibreSignalez kanpoko eskaner batez parekatzen omen duzu LibreSignal gailu bat.  Zure segurtasunerako, eskaneatu kodea LibreSignaletik mesedez.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Lotu Signal gailu bat?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Signalez kanpoko eskaner batez parekatzen omen duzu Signal gailu bat.  Zure segurtasunerako, eskaneatu kodea Signaletik mesedez.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Pasahitza sartu</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">LibreSignal ikonoa</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Signal ikonoa</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Bidali pasahitza</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Pasahitz baliogabea!</string>
   <!--PlayServicesProblemFragment-->
@@ -403,7 +402,7 @@ Babeskopia hau lehenago inportatu baduzu, mezu bikoiztuak sor daitezke.
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">Markatu duzun zenbakiak ez du dei segururik babesten!</string>
   <string name="RedPhone_got_it">Jasota</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">Konektatu LibreSignalekin</string>
+  <string name="RegistrationActivity_connect_with_signal">Konektatu Signalekin</string>
   <string name="RegistrationActivity_select_your_country">Zure herrialdea aukeratu</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Zure herrialdearen 
 kodea zehaztu behar duzu
@@ -444,12 +443,12 @@ Android 4.0 edo berriagoa badute, ez da beharrezkoa Google Kontu bat izatea, bai
   <string name="RegistrationProgressActivity_too_many_requests">Eskaera gehiegi!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Duela gutxi ahotsezko dei bat eskatu duzu. Beste bat eska dezakezu 20 minutu barru.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Erregistratze gatazka</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Zenbaki hori badago beste LibreSignal zerbitzari batean (CyanogenMod?).  Hartik bazkidetza kendu behar duzu LibreSignal zerbitzarian izena eman aurretik.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Zenbaki hori badago beste Signal zerbitzari batean (CyanogenMod?).  Hartik bazkidetza kendu behar duzu Signal zerbitzarian izena eman aurretik.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Erregistratzea osatuta</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">LibreSignalen erregistratzea arrakastaz osatu da.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">Signalen erregistratzea arrakastaz osatu da.</string>
   <string name="RegistrationService_registration_error">Erregistratze errorea</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">LibreSignalen erregistratzeak arazo bat topatu du.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Signalen erregistratzeak arazo bat topatu du.</string>
   <!--Slide-->
   <string name="Slide_image">Irudia</string>
   <string name="Slide_audio">Audioa</string>
@@ -475,7 +474,7 @@ Nortasun gako ezezagun batekin jaso da mezua. Ukitu prozesatzeko eta erakusteko.
   <string name="ThreadRecord_called_you">Deitu dizu</string>
   <string name="ThreadRecord_missed_call">Erantzun gabeko deia</string>
   <string name="ThreadRecord_media_message">Multimedia mezua</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">%s-(e)k LibreSignal dauka, agur egin!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">%s-(e)k Signal dauka, agur egin!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">Ez daukazu nortasun gakorik.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">Hartzaileak ez dauka nortasun gakorik.</string>
@@ -528,7 +527,7 @@ Nortasun gako ezezagun batekin jaso da mezua. Ukitu prozesatzeko eta erakusteko.
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Ukitu irekitzeko.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Ukitu irekitzeko, edo sarraila ukitu ixteko.</string>
-  <string name="KeyCachingService_passphrase_cached">LibreSignal desblokeatuta dago</string>
+  <string name="KeyCachingService_passphrase_cached">Signal desblokeatuta dago</string>
   <string name="KeyCachingService_lock">Blokeatu pasahitz bat erabiliz</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d mezu berri %2$d solasalditan</string>
@@ -544,10 +543,10 @@ Nortasun gako ezezagun batekin jaso da mezua. Ukitu prozesatzeko eta erakusteko.
   <string name="MessageNotifier_media_message">Multimedia mezua</string>
   <string name="MessageNotifier_reply">Erantzun</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Erantzun bizkorra eskuraezina LibreSignal blokeatuta badago!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Erantzun bizkorra eskuraezina Signal blokeatuta badago!</string>
   <string name="QuickResponseService_problem_sending_message">Arazoa mezua bidaltzen!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Mezu berria</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Irudia</string>
@@ -576,7 +575,7 @@ Nortasun gako ezezagun batekin jaso da mezua. Ukitu prozesatzeko eta erakusteko.
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Solasaldi isildua</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Bidali LibreSignal mezua</string>
+  <string name="conversation_activity__type_message_push">Bidali Signal mezua</string>
   <string name="conversation_activity__type_message_sms_insecure">SMS ez segurua bidali</string>
   <string name="conversation_activity__type_message_mms_insecure">MMS ez segurua bidali</string>
   <string name="conversation_activity__from_sim_name">%1$s-(e)tik</string>
@@ -618,13 +617,15 @@ Nortasun gako ezezagun batekin jaso da mezua. Ukitu prozesatzeko eta erakusteko.
   <string name="device_list_fragment__link_new_device">Lotu gailu berria</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">jarraitu</string>
+  <!--expiration-->
+  <string name="expiration_off">Desaktibatuta</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Ezin izan da gailuko erregistroa irakurri.  Dena den, ordenagailuko ADB programa erabil dezakezu arazketa-erregistroa eskuratzeko.</string>
   <string name="log_submit_activity__thanks">Eskerrik asko zure laguntzagatik!</string>
   <string name="log_submit_activity__submitting">Bidaltzen</string>
   <string name="log_submit_activity__posting_logs">Logak gist-era bidaltzen...</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Oraingo telefonoaren zifratu gabeko mezuak LibreSignalen datu-base zifratura inportatzea gustatuko litzaizuke?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Oraingo telefonoaren zifratu gabeko mezuak Signalen datu-base zifratura inportatzea gustatuko litzaizuke?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Sistemaren lehenetsitako datubasea ez da inolako moduan aldatuko.</string>
   <string name="database_migration_activity__skip">Saltatu</string>
   <string name="database_migration_activity__import">Inportatu</string>
@@ -638,7 +639,7 @@ Esportatu \'SMSBackup and Restorekin\' bateragarria den zifratu gabeko babeskopi
   <string name="import_fragment__import_system_sms_database">Inportatu sistemaren SMS datubasea</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Inportatu sistemako mezulari aplikazio lehenetsiaren datu-basea.</string>
   <string name="import_fragment__restore_encrypted_backup">Berrezarri zifratutako babeskopia</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Leheneratu aurrez zifratu eta esportatu den LibreSignal babeskopia.</string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Leheneratu aurrez zifratu eta esportatu den Signal babeskopia.</string>
   <string name="import_fragment__import_plaintext_backup">Inportatu zifratu gabeko babeskopia</string>
   <string name="import_fragment__import_a_plaintext_backup_file">
 Inportatu \'SMSBackup and Restorekin\' bateragarria den zifratu gabeko babeskopia bat.</string>
@@ -666,7 +667,7 @@ Inportatu \'SMSBackup and Restorekin\' bateragarria den zifratu gabeko babeskopi
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Desblokeatu</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">LibreSignalek MMS ezarpenak behar ditu media eta taldeko mezuak banatu ahal izateko zure hari-gabeko hornitzailearen bitartez. Zure gailuak ez dauka informazio hau eskuragarri. Hau batzuetan gertatzen da blokeatuta dauden eta beste konfigurazio murrizgarriak dituzten gailuetan.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signalek MMS ezarpenak behar ditu media eta taldeko mezuak banatu ahal izateko zure hari-gabeko hornitzailearen bitartez. Zure gailuak ez dauka informazio hau eskuragarri. Hau batzuetan gertatzen da blokeatuta dauden eta beste konfigurazio murrizgarriak dituzten gailuetan.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Media eta taldeko mezuak bidaltzeko, ukatu \'Ados\' eta osatu behar diren ezarpenak. Zure hornitzailearentzako ezarpenak normalean topa daitezke zure hornitzailearen APNa bilatuz. Bakarrik behin egin beharko duzu hau.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">BLOKEATUTA</string>
@@ -680,14 +681,14 @@ Inportatu \'SMSBackup and Restorekin\' bateragarria den zifratu gabeko babeskopi
   <string name="recipient_preferences__color_for_this_contact">Kontaktu honentzako kolorea</string>
   <string name="recipient_preferences__verify_identity">Egiaztatu nortasuna</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">LibreSignal deia</string>
+  <string name="redphone_call_card__signal_call">Signal deia</string>
   <string name="redphone_call_controls__end_call">amaitu deia</string>
   <string name="redphone_call_controls__audio">Audioa</string>
   <string name="redphone_call_controls__mute">Isildu</string>
-  <string name="redphone_call_controls__signal_call">LibreSignal deia</string>
+  <string name="redphone_call_controls__signal_call">Signal deia</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-Egiaztatu zure telefono zenbakia LibreSignalera konektatzeko.
+Egiaztatu zure telefono zenbakia Signalera konektatzeko.
 
 </string>
   <string name="registration_activity__your_country">ZURE HERRIALDEA</string>
@@ -703,32 +704,32 @@ TELEFONO ZENBAKIA
 batzuk ondokoak dira:
 </string>
   <string name="registration_problems__sms_interceptors">SMSen pase-harrapatzaileak</string>
-  <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">Beste mezulari batzuk, Handcent-ek edo GoSMS-ek bezala, heltzen diren mezu guztiak oztopatzen dituzte.  Egiaztatu \"Your LibreSignal verification code\" hasten duen mezu bat jaso duzula.  Kasu horretan, modifikatu mezulari horien ezarpenak mezuak ez oztopatzeko.</string>
+  <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">Beste mezulari batzuk, Handcent-ek edo GoSMS-ek bezala, heltzen diren mezu guztiak oztopatzen dituzte.  Egiaztatu \"Your Signal verification code\" hasten duen mezu bat jaso duzula.  Kasu horretan, modifikatu mezulari horien ezarpenak mezuak ez oztopatzeko.</string>
   <string name="registration_problems__incorrect_number">Zenbaki ez zuzena.</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">Mesedez, egiazta ezazu zenbakia ondo sartu duzun, eta zure zonaldeari dagokion formatoan dagoen.</string>
   <string name="registration_problems__google_voice">Google Voice.</string>
-  <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">LibreSignalek ez du funtzionatzen Google Voice-eko zenbakiekin.</string>
+  <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">Signalek ez du funtzionatzen Google Voice-eko zenbakiekin.</string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Ahotsaren bidezko egiaztapena</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-LibreSignalek, era berean, dei diezazuke zure zenbakia egiaztatzeko. Ukitu \"Dei iezadazu\" eta sartu azpian entzungo duzun sei zenbakiko kodea.</string>
+Signalek, era berean, dei diezazuke zure zenbakia egiaztatzeko. Ukitu \"Dei iezadazu\" eta sartu azpian entzungo duzun sei zenbakiko kodea.</string>
   <string name="registration_progress_activity__verify">Egiaztatu</string>
   <string name="registration_progress_activity__call_me">Dei iezadazu</string>
   <string name="registration_progress_activity__edit_number">Zenbakia editatu</string>
   <string name="registration_progress_activity__connectivity_error">Konexioaren errorea</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">LibreSignal ezin izan da zerbitzarira konektatu.</string>
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Signal ezin izan da zerbitzarira konektatu.</string>
   <string name="registration_progress_activity__some_possible_problems_include">Aurreikusi daitezkeen 
 arazo batzuk ondokoak dira:
 </string>
   <string name="registration_progress_activity__no_network_connectivity">Ez dago s
 areko konexiorik.
 </string>
-  <string name="registration_progress_activity__your_device_needs_network_connectivity">Zure gailuak sarean egon behar du LibreSignalen ezaugarri hau erabiltzeko.  Ziurtatu mugikorraren edo hiririk gabeko sarean dagoela.</string>
+  <string name="registration_progress_activity__your_device_needs_network_connectivity">Zure gailuak sarean egon behar du Signalen ezaugarri hau erabiltzeko.  Ziurtatu mugikorraren edo hiririk gabeko sarean dagoela.</string>
   <string name="registration_progress_activity__restrictive_firewall">Firewall murrizgarria.</string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
-Wi-Fi sarean bazaude, agian suebaki bat LibreSignal zerbitzariaren atzipena blokeatzen ari da.  Saiatu haririk gabeko beste sare batez edo datu mugikorrez konektatzen mesedez.</string>
+Wi-Fi sarean bazaude, agian suebaki bat Signal zerbitzariaren atzipena blokeatzen ari da.  Saiatu haririk gabeko beste sare batez edo datu mugikorrez konektatzen mesedez.</string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-Orain LibreSignalek zure zenbakia automatikoki egiaztatuko du SMS egiaztapen mezu bat bidaliz.</string>
+Orain Signalek zure zenbakia automatikoki egiaztatuko du SMS egiaztapen mezu bat bidaliz.</string>
   <string name="registration_progress_activity__connecting">Konektatzen...</string>
   <string name="registration_progress_activity__waiting_for_sms_verification">SMS bidezko
 egiaztapenaren zain...
@@ -738,7 +739,7 @@ egiaztapenaren zain...
 denbora tarte bat har lezake. Mesedez, pazientzia izan, jakinaraziko dizugu egiaztapena osatuta dagoenean.
 </string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-LibreSignal SMS bidez egiaztatzeko mezuaren zain zegoela denbora mugara iritsi da.
+Signal SMS bidez egiaztatzeko mezuaren zain zegoela denbora mugara iritsi da.
 </string>
   <string name="registration_progress_activity__sms_verification_failed">SMS bidezko egiaztapenak 
 huts egin du.
@@ -765,7 +766,7 @@ huts egin du.
   <string name="AndroidManifest__create_passphrase">Pasahitza sortu</string>
   <string name="AndroidManifest__enter_passphrase">Pasahitza sartu</string>
   <string name="AndroidManifest__select_contacts">Kontaktuak hautatu</string>
-  <string name="AndroidManifest__signal_detected">LibreSignal detektatu da</string>
+  <string name="AndroidManifest__signal_detected">Signal detektatu da</string>
   <string name="AndroidManifest__public_identity_key">Gako publikoaren nortasuna</string>
   <string name="AndroidManifest__change_passphrase">Pasahitza aldatu</string>
   <string name="AndroidManifest__verify_identity">Egiaztatu nortasuna</string>
@@ -806,8 +807,8 @@ huts egin du.
   <string name="preferences__sms_mms">SMS eta MMS</string>
   <string name="preferences__pref_all_sms_title">Jaso SMS guztiak</string>
   <string name="preferences__pref_all_mms_title">Jaso MMS guztiak</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Erabili LibreSignal etorriko diren testu mezu guztiak jasotzeko</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Erabili LibreSignal etorriko diren multimedia mezu guztiak jasotzeko</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Erabili Signal etorriko diren testu mezu guztiak jasotzeko</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Erabili Signal etorriko diren multimedia mezu guztiak jasotzeko</string>
   <string name="preferences__input_settings">Sarreraren Ezarpenak</string>
   <string name="preferences__enable_enter_key_title">Enter tekla gaitu</string>
   <string name="preferences__replace_smiley_with_enter_key">Smiley tekla Enter teklaren bidez ordezkatu</string>
@@ -819,16 +820,16 @@ huts egin du.
   <string name="preferences__change_passphrase">Pasahitza aldatu</string>
   <string name="preferences__change_your_passphrase">Aldatu zure pasahitza</string>
   <string name="preferences__enable_passphrase">Pasahitza gaitu</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Blokeatu LibreSignal dei eta mezuen jakinarazpenak pasahitza baten bitartez</string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Blokeatu Signal dei eta mezuen jakinarazpenak pasahitza baten bitartez</string>
   <string name="preferences__screen_security">Pantailaren segurtasuna</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Blokeatu pantailazoak arestikoen zerrendan eta aplikazioaren barruan</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Blokeatu LibreSignal automatikoki jarduerarik gabe denbora tarte bat pasa eta gero.</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Blokeatu Signal automatikoki jarduerarik gabe denbora tarte bat pasa eta gero.</string>
   <string name="preferences__inactivity_timeout_passphrase">Jarduerarik gabeko denbora tarte pasahitza</string>
   <string name="preferences__inactivity_timeout_interval">Jarduerarik gabeko denbora tartea</string>
   <string name="preferences__notifications">Jakinarazpenak</string>
   <string name="preferences__enable_message_notifications">Aktibatu mezu jakinarazpenak</string>
   <string name="preferences__new_contacts_notifications">Kontaktu berrien jakinarazpenak</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Erakutsi jakinarazpen bat LibreSignal kontaktu berrientzat</string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Erakutsi jakinarazpen bat Signal kontaktu berrientzat</string>
   <string name="preferences__led_color">LED kolorea</string>
   <string name="preferences__led_color_unknown">Ezezaguna</string>
   <string name="preferences__pref_led_blink_title">LEDaren keinuka eredua</string>
@@ -890,8 +891,8 @@ huts egin du.
   <string name="preferences__theme">Gaia</string>
   <string name="preferences__default">Lehenetsia</string>
   <string name="preferences__language">Hizkuntza</string>
-  <string name="preferences__signal_messages_and_calls">LibreSignal mezu eta deiak</string>
-  <string name="preferences__free_private_messages_and_calls">Mezu eta dei pribatu doanak LibreSignal erabiltzaileri.</string>
+  <string name="preferences__signal_messages_and_calls">Signal mezu eta deiak</string>
+  <string name="preferences__free_private_messages_and_calls">Mezu eta dei pribatu doanak Signal erabiltzaileri.</string>
   <string name="preferences__submit_debug_log">Arazketaren log-a bidali</string>
   <string name="preferences__support_wifi_calling">\'\"WiFi Calling\' modu bateragarria</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Aktibatu zure gailuak WiFi bidezko SMS/MMS banaketa erabiltzen badu (bakarrik aktibatu \'WiFi Calling\' aktibatuta badago zure gailuan).</string>
@@ -903,7 +904,7 @@ huts egin du.
   <string name="preferences_chats__media_auto_download">Multimedia edukiak deskargatze automatikoa</string>
   <string name="preferences_chats__message_trimming">Mezu murrizketa </string>
   <string name="preferences_advanced__use_system_emoji">Erabili sistemako emojiak</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Desaktibatu LibreSignalen emoji integratuak</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Desaktibatu Signalen emoji integratuak</string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -920,7 +921,7 @@ huts egin du.
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Deitu</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">LibreSignal deia</string>
+  <string name="conversation_callable_secure__menu_call">Signal deia</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Mezuaren detaileak</string>
   <string name="conversation_context__menu_copy_text">Testua kopiatu</string>
@@ -929,6 +930,8 @@ huts egin du.
   <string name="conversation_context__menu_resend_message">Mezua berbidali</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Eraskina gorde</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Gonbidatu</string>
   <!--conversation_insecure_no_push-->
@@ -983,29 +986,29 @@ huts egin du.
   <string name="text_secure_normal__invite_friends">Gonbidatu lagunak</string>
   <string name="text_secure_normal__help">Laguntza</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Zure LibreSignal bertsioa zaharkitua dago</string>
+  <string name="reminder_header_outdated_build">Zure Signal bertsioa zaharkitua dago</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="one">Bihar amaituko da zure Signal bertsioa erabiltzeko epea. Tap egin azken bertsioara eguneratzeko.</item>
     <item quantity="other">%d egun barru amaituko da zure Signal bertsioa erabiltzeko epea. Ukitu azken bertsioara eguneratzeko.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Gaur amaituko da zure LibreSignal bertsioa erabiltzeko epea. Ukitu azken bertsioara eguneratzeko.</string>
-  <string name="reminder_header_expired_build">Amaitu da zure LibreSignal bertsioa erabiltzeko epea!</string>
+  <string name="reminder_header_outdated_build_details_today">Gaur amaituko da zure Signal bertsioa erabiltzeko epea. Ukitu azken bertsioara eguneratzeko.</string>
+  <string name="reminder_header_expired_build">Amaitu da zure Signal bertsioa erabiltzeko epea!</string>
   <string name="reminder_header_expired_build_details">Mezuak ezingo dira bidali.  Ukitu azken bertsiora eguneratzeko.</string>
   <string name="reminder_header_expired_build_button">EGUNERATU</string>
   <string name="reminder_header_sms_default_title">Lehenetsitako SMS aplikazio gisa erabili</string>
-  <string name="reminder_header_sms_default_text">Ukitu LibreSignal zure SMS aplikazio lehenetsia bihurtzeko</string>
+  <string name="reminder_header_sms_default_text">Ukitu Signal zure SMS aplikazio lehenetsia bihurtzeko</string>
   <string name="reminder_header_sms_default_button">EZARRI</string>
   <string name="reminder_header_sms_import_title">Importatu sistemaren SMS mezuak</string>
-  <string name="reminder_header_sms_import_text">Ukitu telefonoaren zifratu gabeko SMS mezuak LibreSignalen datu-base zifratura kopiatzeko.</string>
+  <string name="reminder_header_sms_import_text">Ukitu telefonoaren zifratu gabeko SMS mezuak Signalen datu-base zifratura kopiatzeko.</string>
   <string name="reminder_header_sms_import_button">IMPORTATU</string>
-  <string name="reminder_header_push_title">Aktibatu LibreSignal mezu eta deiak</string>
+  <string name="reminder_header_push_title">Aktibatu Signal mezu eta deiak</string>
   <string name="reminder_header_push_text">Berritu zure komunikazio-esperientzia.</string>
   <string name="reminder_header_push_button">AKTIBATU</string>
-  <string name="reminder_header_invite_title">LibreSignal erabilitzera gonbidatu</string>
+  <string name="reminder_header_invite_title">Signal erabilitzera gonbidatu</string>
   <string name="reminder_header_invite_text">Hobetu zure %1$s-(e)kiko solasaldia.</string>
   <string name="reminder_header_invite_button">GONBIDATU</string>
   <string name="reminder_header_share_title">Gonbidatu zure lagunak!</string>
-  <string name="reminder_header_share_text">Zenbat eta LibreSignalen adiskide gehiago izan, hobe.</string>
+  <string name="reminder_header_share_text">Zenbat eta Signalen adiskide gehiago izan, hobe.</string>
   <string name="reminder_header_share_button">PARTEKATU</string>
   <string name="reminder_header_close_button">ITXI</string>
   <!--MediaPreviewActivity-->

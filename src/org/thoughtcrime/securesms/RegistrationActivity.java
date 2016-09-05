@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,6 +40,7 @@ import org.whispersystems.signalservice.api.util.PhoneNumberFormatter;
 public class RegistrationActivity extends BaseActionBarActivity {
 
   private static final int PICK_COUNTRY = 1;
+  private static final String TAG = RegistrationActivity.class.getSimpleName();
 
   private AsYouTypeFormatter   countryFormatter;
   private ArrayAdapter<String> countrySpinnerAdapter;
@@ -97,7 +99,11 @@ public class RegistrationActivity extends BaseActionBarActivity {
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.setData(Uri.parse("https://twilio.com"));
-        startActivity(intent);
+        try {
+          startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+          Log.w(TAG,e);
+        }
       }
     });
   }
@@ -152,7 +158,7 @@ public class RegistrationActivity extends BaseActionBarActivity {
         }
       }
     } catch (NumberParseException npe) {
-      Log.w("CreateAccountActivity", npe);
+      Log.w(TAG, npe);
     }
   }
 

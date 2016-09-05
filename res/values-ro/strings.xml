@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Da</string>
   <string name="no">Nu</string>
   <string name="delete">Șterge</string>
   <string name="please_wait">Te rog așteaptă...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Mesaj nou</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Acum: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Nu ai setat înca o parolă!</string>
@@ -21,17 +23,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Şterge</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Dezactivez parola?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Această acțiune va debloca permanent LibreSignal și notificările pentru mesaje.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Această acțiune va debloca permanent Signal și notificările pentru mesaje.</string>
   <string name="ApplicationPreferencesActivity_disable">Dezactivează</string>
   <string name="ApplicationPreferencesActivity_unregistering">Anulare înregistrare</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Se dezabonează de la mesajele și apelurile LibreSignal... </string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Dezactivez mesajele și apelurile LibreSignal? </string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Dezactivare mesaje și apeluri LibreSignal prin dezabonarea de la server. Va trebui să re-înregistrezi numărul tău de telefon pentru a putea să le folosești din nou în viitor.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Se dezabonează de la mesajele și apelurile Signal... </string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Dezactivez mesajele și apelurile Signal? </string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Dezactivare mesaje și apeluri Signal prin dezabonarea de la server. Va trebui să re-înregistrezi numărul tău de telefon pentru a putea să le folosești din nou în viitor.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Eroare de conectare la server!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS Activat</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Atinge pentru a schimba aplicaţia implicită de SMS </string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS Dezactivat</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Atinge pentru a seta LibreSignal ca şi aplicaţie SMS implicită</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Atinge pentru a seta Signal ca şi aplicaţie SMS implicită</string>
   <string name="ApplicationPreferencesActivity_on">activat</string>
   <string name="ApplicationPreferencesActivity_On">Activat</string>
   <string name="ApplicationPreferencesActivity_off">dezactivat</string>
@@ -67,13 +69,13 @@
   <!--ConfirmIdentityDialog-->
   <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">Cheia
 de identitate pentru %1$s s-a schimbat. Asta poate însemna că cineva încearcă să intercepteze
-traficul tău, sau că %2$s și-a re-instalat LibreSignal și acum are o nouă cheie de identitate.</string>
+traficul tău, sau că %2$s și-a re-instalat Signal și acum are o nouă cheie de identitate.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Probabil că dorești să verifici 
 această persoană.</string>
   <string name="ConfirmIdentityDialog_accept">Acceptă</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Mesaj %s</string>
-  <string name="ContactsDatabase_signal_call_s">Apel LibreSignal %s</string>
+  <string name="ContactsDatabase_signal_call_s">Apel Signal %s</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Mărimea mesajului: %d KB</string>
   <string name="ConversationItem_expires_s">Expiră în: %s</string>
@@ -87,7 +89,7 @@ această persoană.</string>
   <string name="ConversationItem_click_to_approve_unencrypted">Apasă pentru revenirea la soluția ne-securizată</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Reveniţi la SMS necriptat ca soluţie de rezervă?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Reveniţi la MMS necriptat ca soluţie de rezervă?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Acest mesaj <b>nu</b> o să fie criptat deoarece destinatarul nu mai este un utilizator LibreSignal.\n\nTrimit mesaj nesecurizat?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Acest mesaj <b>nu</b> o să fie criptat deoarece destinatarul nu mai este un utilizator Signal.\n\nTrimit mesaj nesecurizat?</string>
   <string name="ConversationItem_unable_to_open_media">Nu a fost găsită nici o aplicație pentru a deschide acest tip media.</string>
   <string name="ConversationItem_from_s">de la %s</string>
   <string name="ConversationItem_to_s">către %s</string>
@@ -122,8 +124,8 @@ această persoană.</string>
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ești sigur că vrei să părăsești acest grup?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS nesecurizat</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS nesecurizat</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Hai să folosim LibreSignal %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Hai să folosim Signal %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Hai să utilizăm aplicația asta ca să vorbim: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Eroare la parăsirea grupului...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS-ul nu este suportat</string>
@@ -175,7 +177,7 @@ această persoană.</string>
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Se colectează atașamentele...</string>
   <string name="ConversationFragment_pending">În curs...</string>
-  <string name="ConversationFragment_push">Date (LibreSignal)</string>
+  <string name="ConversationFragment_push">Date (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Se șterge</string>
@@ -233,15 +235,15 @@ această persoană.</string>
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Partajează cu</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bunvenit la LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextLibre și PhoneLibre sunt acum un singur mesager privat pentru orice situație: LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Bunvenit la LibreSignal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre se numește acum LibreSignal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextLibre și PhoneLibre sunt acum o singură aplicație: LibreSignal. Apasă pentru a explora.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bunvenit la Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure și RedPhone sunt acum un singur mesager privat pentru orice situație: Signal.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Bunvenit la Signal!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure se numește acum Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure și RedPhone sunt acum o singură aplicație: Signal. Apasă pentru a explora.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Exportă</string>
   <string name="ExportFragment_export_plaintext_to_storage">Export în format text pe spațiul de stocare?</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atenție, această acțiune va exporta conținutul mesajelor tale LibreSignal în format text pe spațiul de stocare.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atenție, această acțiune va exporta conținutul mesajelor tale Signal în format text pe spațiul de stocare.</string>
   <string name="ExportFragment_cancel">Anulare</string>
   <string name="ExportFragment_exporting">Se exportă</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Se exportă în format text pe spațiul de stocare...</string>
@@ -249,15 +251,15 @@ această persoană.</string>
   <string name="ExportFragment_error_while_writing_to_storage">Eroare în timpul scrierii pe spațiul de stocare.</string>
   <string name="ExportFragment_export_successful">Exportarea a fost făcută cu succes.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Eroare permanentă de comunicare cu LibreSignal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">LibreSignal nu s-a putut înregistra la Google Play Services. Mesajele și apelurile LibreSignal au fost dezactivate, te rog încearcă să te înregistrezi din nou din meniul Setări &gt; Avansat.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Eroare permanentă de comunicare cu Signal!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal nu s-a putut înregistra la Google Play Services. Mesajele și apelurile Signal au fost dezactivate, te rog încearcă să te înregistrezi din nou din meniul Setări &gt; Avansat.</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Grup nou</string>
   <string name="GroupCreateActivity_actionbar_update_title">Actualizează grup</string>
   <string name="GroupCreateActivity_group_name_hint">Nume grup</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Grup MMS nou</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">Ai selectat un contact care nu suportă grupuri LibreSignal, astfel acest grup va fi de tip MMS.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">Nu ești înregistrat pentru mesaje și apeluri LibreSignal, astfel grupurile LibreSignal sunt dezactivate. Încearcă înregistrarea de la Setări &gt; Avansat.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Ai selectat un contact care nu suportă grupuri Signal, astfel acest grup va fi de tip MMS.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Nu ești înregistrat pentru mesaje și apeluri Signal, astfel grupurile Signal sunt dezactivate. Încearcă înregistrarea de la Setări &gt; Avansat.</string>
   <string name="GroupCreateActivity_contacts_mms_exception">A apărut o eroare neprevazută care a dus la imposibilitatea creării grupului.</string>
   <string name="GroupCreateActivity_contacts_no_members">Ai nevoie de cel puțin o persoană în grupul tău!</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Unul dintre membrii grupului tău are un număr de telefon ce nu poate fi citit corect. Te rog să remediezi problema sau să elimini acel contact şi să încerci din nou.</string>
@@ -265,7 +267,7 @@ această persoană.</string>
   <string name="GroupCreateActivity_menu_create_title">Creează grup </string>
   <string name="GroupCreateActivity_creating_group">Se creează %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Se actualizează %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">%1$s nu a putut fi adăugat deoarece nu este un utlizator LibreSignal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">%1$s nu a putut fi adăugat deoarece nu este un utlizator Signal.</string>
   <string name="GroupCreateActivity_loading_group_details">Se încarcă detaliile grupului...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Ești deja în grup.</string>
   <!--GroupMembersDialog-->
@@ -276,14 +278,14 @@ această persoană.</string>
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">Importă baza de date cu SMS-uri?</string>
   <string name="ImportFragment_this_will_import_messages_from_the_system">Această acțiune va importa 
-mesajele din baza de date SMS implicită de sistem în LibreSignal. Dacă ai importat anterior
+mesajele din baza de date SMS implicită de sistem în Signal. Dacă ai importat anterior
  baza de date cu SMS-uri, importarea repetată va rezulta în mesaje duplicate.</string>
   <string name="ImportFragment_import">Importă</string>
   <string name="ImportFragment_cancel">Anulare</string>
   <string name="ImportFragment_restore_encrypted_backup">Restaurează backup criptat?</string>
   <string name="ImportFragment_restoring_an_encrypted_backup_will_completely_replace_your_existing_keys">
 Restaurarea unui backup criptat va înlocui în totalitate cheile, preferințele și mesajele tale existente.
-Vei pierde orice informație care se află în instalarea curentă de LibreSignal și care nu se află în backup.</string>
+Vei pierde orice informație care se află în instalarea curentă de Signal și care nu se află în backup.</string>
   <string name="ImportFragment_restore">Restaurează</string>
   <string name="ImportFragment_import_plaintext_backup">Importă backup necriptat?</string>
   <string name="ImportFragment_this_will_import_messages_from_a_plaintext_backup">Această acțiune va importa mesajele din backup-ul necriptat. Dacă ați mai importat acest backup atunci importarea curentă va crea mesaje duplicate. </string>
@@ -300,29 +302,23 @@ Vei pierde orice informație care se află în instalarea curentă de LibreSigna
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Ține apăsat pentru a înregistra un mesaj vocal, eliberează pentru a trimite</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Partajează</string>
-  <string name="InviteActivity_send_sms">Trimite SMS</string>
   <string name="InviteActivity_cancel">Anulare</string>
   <string name="InviteActivity_sending">Se trimite...</string>
   <string name="InviteActivity_heart_content_description">Inimă</string>
   <string name="InviteActivity_invitations_sent">Invitațiile au fost trimise!</string>
-  <string name="InviteActivity_invite_to_signal">Invită la LibreSignal</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="one">TRIMITE LA 1 PRIETEN</item>
-    <item quantity="few">TRIMITE LA %d PRIETENI</item>
-    <item quantity="other">TRIMITE LA %d PRIETENI</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Invită la Signal</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="one">Trimit o invitație prin SMS?</item>
     <item quantity="few">Trimit %d invitații prin SMS?</item>
     <item quantity="other">Trimit %d invitații prin SMS?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Hai să folosim LibreSignal: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Hai să folosim Signal: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Se pare că nu ai aplicații cu care să poți partaja.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Prietenii nu-și lasă prietenii să comunice necriptat.</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">Nu a fost găsită nici o cheie scanată!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">Instalez scanerul de coduri de bare?</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">LibreSignal are nevoie de Barcode Scanner pentru coduri QR.</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Signal are nevoie de Barcode Scanner pentru coduri QR.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Expediere eşuată</string>
   <string name="MessageDetailsRecipient_new_identity">Identitate nouă</string>
@@ -331,11 +327,11 @@ Vei pierde orice informație care se află în instalarea curentă de LibreSigna
   <string name="MmsDownloader_error_connecting_to_mms_provider">Eroare de conectare la furnizorul MMS...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Eroare la citirea setărilor MMS ale operatorului wireless...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Apel LibreSignal în curs</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Apel Signal în curs</string>
   <string name="NotificationBarManager_missed_call_from_s">Apel ratat de la %s</string>
-  <string name="NotificationBarManager_missed_signal_call">Apel LibreSignal ratat</string>
-  <string name="NotificationBarManager__establishing_signal_call">Se realizează un apel LibreSignal</string>
-  <string name="NotificationBarManager__incoming_signal_call">Apel de intrare LibreSignal</string>
+  <string name="NotificationBarManager_missed_signal_call">Apel Signal ratat</string>
+  <string name="NotificationBarManager__establishing_signal_call">Se realizează un apel Signal</string>
+  <string name="NotificationBarManager__incoming_signal_call">Apel de intrare Signal</string>
   <string name="NotificationBarManager__deny_call">Respinge apelul</string>
   <string name="NotificationBarManager__answer_call">Răspunde apelului</string>
   <string name="NotificationBarManager__end_call">Închide apelul</string>
@@ -343,13 +339,14 @@ Vei pierde orice informație care se află în instalarea curentă de LibreSigna
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Mesaj multimedia</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Ai primit un mesaj care a fost criptat cu o versiune mai veche de LibreSignal care nu mai este suportată. Roagă-l pe expeditor să-și actualizeze aplicația la ultima versiune și să retrimită mesajul.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Ai primit un mesaj care a fost criptat cu o versiune mai veche de Signal care nu mai este suportată. Roagă-l pe expeditor să-și actualizeze aplicația la ultima versiune și să retrimită mesajul.</string>
   <string name="MessageRecord_left_group">Ai parăsit grupul.</string>
   <string name="MessageRecord_updated_group">Grupul a fost actualizat.</string>
   <string name="MessageRecord_s_called_you">%s te-a apelat</string>
   <string name="MessageRecord_called_s">Apel %s</string>
   <string name="MessageRecord_missed_call_from">Apel ratat de la %s</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">%s este pe LibreSignal, salută-l!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">%s este pe Signal, salută-l!</string>
+  <string name="MessageRecord_you">Tu</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Parolele nu se potrivesc!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Parola veche este incorectă!</string>
@@ -372,11 +369,12 @@ Vei pierde orice informație care se află în instalarea curentă de LibreSigna
   <string name="DeviceProvisioningActivity_content_progress_key_error">Cod QR invalid.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Ne pare rău, ai prea multe dispozitive conectate deja, încearcă să elimini câteva...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Ne pare rău. acest cod QR pentru conectarea dispozitivului nu este valid.</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Conectez un dispozitiv LibreSignal?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Se pare că încerci să conectezi un dispozitiv LibreSignal folosind un scaner terț. Pentru protecția ta, te rog scanează codul încă o dată din interiorul aplicației LibreSignal.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Conectez un dispozitiv Signal?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Se pare că încerci să conectezi un dispozitiv Signal folosind un scaner terț. Pentru protecția ta, te rog scanează codul încă o dată din interiorul aplicației Signal.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Introdu parola</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">Icoană LibreSignal</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Icoană Signal</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Trimite parola</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Parolă incorectă!</string>
   <!--PlayServicesProblemFragment-->
@@ -418,7 +416,7 @@ Vei pierde orice informație care se află în instalarea curentă de LibreSigna
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">Numărul format nu suportă apeluri securizate!</string>
   <string name="RedPhone_got_it">Am înțeles</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">Conectează-te la LibreSignal</string>
+  <string name="RegistrationActivity_connect_with_signal">Conectează-te la Signal</string>
   <string name="RegistrationActivity_select_your_country">Alege ţara ta</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Trebuie să specifici
 codul țarii tale</string>
@@ -458,12 +456,12 @@ Verifică din nou dacă acesta este numărul tău! Suntem pe cale să-l verific�
   <string name="RegistrationProgressActivity_too_many_requests">Prea multe cereri!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Ai solicitat deja un apel vocal. Vei putea solicita altul după 20 de minute.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Conflict înregistrare</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Acest număr este deja înregistrat pe un alt server LibreSignal (CyanogenMod?). Mai întâi trebuie să te dezabonezi acolo ca să te înregistrezi aici.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Acest număr este deja înregistrat pe un alt server Signal (CyanogenMod?). Mai întâi trebuie să te dezabonezi acolo ca să te înregistrezi aici.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Înregistrarea este completă</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">Înregistrarea la LibreSignal s-a finalizat cu succes.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">Înregistrarea la Signal s-a finalizat cu succes.</string>
   <string name="RegistrationService_registration_error">Eroare de înregistrare</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Înregistrarea la LibreSignal a întampinat o problemă.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Înregistrarea la Signal a întampinat o problemă.</string>
   <!--Slide-->
   <string name="Slide_image">Imagine</string>
   <string name="Slide_audio">Audio</string>
@@ -485,7 +483,7 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <string name="ThreadRecord_called_you">Te-a apelat</string>
   <string name="ThreadRecord_missed_call">Apel ratat</string>
   <string name="ThreadRecord_media_message">Mesaj media</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">%s este pe LibreSignal, spune-i hey!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">%s este pe Signal, spune-i hey!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">Nu ai o cheie de identitate.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">Destinatarul nu are o cheie de identitate.</string>
@@ -538,7 +536,7 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Atinge pentru a-l deschide.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Atinge pentru a deschide sau atinge lacătul pentru a închide.</string>
-  <string name="KeyCachingService_passphrase_cached">LibreSignal este deblocat</string>
+  <string name="KeyCachingService_passphrase_cached">Signal este deblocat</string>
   <string name="KeyCachingService_lock">Blocare acces cu parolă</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d mesaje noi în %2$d conversaţii</string>
@@ -554,10 +552,10 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <string name="MessageNotifier_media_message">Mesaj media</string>
   <string name="MessageNotifier_reply">Răspunde</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Răspunsul rapid nu este disponibil cât timp LibreSignal este blocat!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Răspunsul rapid nu este disponibil cât timp Signal este blocat!</string>
   <string name="QuickResponseService_problem_sending_message">Problemă la trimiterea mesajului!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Mesaj nou</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Imagine</string>
@@ -586,7 +584,7 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Conversaţia este acum silenţiosă</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Trimite mesaj LibreSignal</string>
+  <string name="conversation_activity__type_message_push">Trimite mesaj Signal</string>
   <string name="conversation_activity__type_message_sms_insecure">Trimite SMS nesecurizat</string>
   <string name="conversation_activity__type_message_mms_insecure">Trimite MMS nesecurizat</string>
   <string name="conversation_activity__from_sim_name">De la %1$s</string>
@@ -628,13 +626,15 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <string name="device_list_fragment__link_new_device">Conectează dispozitiv nou</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">continuă</string>
+  <!--expiration-->
+  <string name="expiration_off">Dezactivat</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Fișierul log nu a putut fi citit de pe dispozitivul tău. Poţi folosi în schimb ADB pentru a obţine log-ul de depanare.</string>
   <string name="log_submit_activity__thanks">Vă mulțumim pentru ajutor!</string>
   <string name="log_submit_activity__submitting">Se trimite</string>
   <string name="log_submit_activity__posting_logs">Se trimit log-urile către gist...</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Vrei să imporţi mesajale tale text existente în baza de date criptată LibreSignal?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Vrei să imporţi mesajale tale text existente în baza de date criptată Signal?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Baza de date a sistemului nu va fi modificată în nici un fel.</string>
   <string name="database_migration_activity__skip">Treci peste</string>
   <string name="database_migration_activity__import">Importă</string>
@@ -647,7 +647,7 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <string name="import_fragment__import_system_sms_database">Import baza de date cu SMS-uri?</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Importă baza de date din aplicația implicită de mesagerie din sistem</string>
   <string name="import_fragment__restore_encrypted_backup">Restaurează backup criptat?</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Restaurează un backup criptat exportat anterior cu LibreSignal </string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Restaurează un backup criptat exportat anterior cu Signal </string>
   <string name="import_fragment__import_plaintext_backup">Importă backup text</string>
   <string name="import_fragment__import_a_plaintext_backup_file">Importă un fișier de backup text. Compatibil cu \'SMS Backup &amp;  Restore.\'</string>
   <!--load_more_header-->
@@ -675,7 +675,7 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Deblochează</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">LibreSignal are nevoie de setările MMS pentru a trimite media și mesaje pentru grupuri prin operatorul wireless. Acest dispozitiv nu oferă această informație, lucru care se poate întâmpla uneori pentru dispozitive blocate sau alte configurații restrictive.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal are nevoie de setările MMS pentru a trimite media și mesaje pentru grupuri prin operatorul wireless. Acest dispozitiv nu oferă această informație, lucru care se poate întâmpla uneori pentru dispozitive blocate sau alte configurații restrictive.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Pentru a putea trimite mesaje multimedia cât și mesaje într-un grup, apasă \'OK\' și completează setările solicitate. Setările MMS pentru operatorul tău pot fi găsite cautând după \'APN operatorul tău\'. Această operațiune este necesară o singură dată.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">BLOCAT</string>
@@ -689,14 +689,14 @@ Am primit mesajul conform căruia schimbul de chei a avut loc pentru o versiune 
   <string name="recipient_preferences__color_for_this_contact">Culoarea pentru acest contact</string>
   <string name="recipient_preferences__verify_identity">Verifică identitatea</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Apel LibreSignal</string>
+  <string name="redphone_call_card__signal_call">Apel Signal</string>
   <string name="redphone_call_controls__end_call">închide apelul</string>
   <string name="redphone_call_controls__audio">Audio</string>
   <string name="redphone_call_controls__mute">Silenţios</string>
-  <string name="redphone_call_controls__signal_call">Apel LibreSignal</string>
+  <string name="redphone_call_controls__signal_call">Apel Signal</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-        Verifică numărul tău de telefon pentru a te conecta la LibreSignal.
+        Verifică numărul tău de telefon pentru a te conecta la Signal.
     </string>
   <string name="registration_activity__your_country">ȚARA TA</string>
   <string name="registration_activity__your_country_code_and_phone_number">CODUL ŢĂRII TALE ŞI 
@@ -712,7 +712,7 @@ sunt:</string>
   <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">
 Unele aplicații terțe de mesagerie text, cum ar fi Handcent sau GoSMS,  se comportă sub standard 
 și interceptează toate mesajele SMS primite. Verifică dacă ai primit un mesaj text care 
-începe cu \"Codul tău de verificare LibreSignal:\", caz în care va trebui să configurezi cealaltă 
+începe cu \"Codul tău de verificare Signal:\", caz în care va trebui să configurezi cealaltă 
 aplicație de mesagerie să permită trecerea mesajelor text mai departe.</string>
   <string name="registration_problems__incorrect_number">Număr incorect.</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">
@@ -720,34 +720,34 @@ Te rog să te asiguri că ai introdus corect numărul tău de telefon şi că ac
 regiunea ta.</string>
   <string name="registration_problems__google_voice">Google Voice.</string>
   <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">
-        LibreSignal nu va funcţiona cu numere Google Voice.
+        Signal nu va funcţiona cu numere Google Voice.
     </string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Verificare pe bază de apel vocal</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-LibreSignal poate de asemenea să te sune pentru a verifica numărul tău.
+Signal poate de asemenea să te sune pentru a verifica numărul tău.
 Apasă \"Sună-mă\" și introdu mai jos
  codul din șase cifre pe care îl vei auzi.</string>
   <string name="registration_progress_activity__verify">Verifică</string>
   <string name="registration_progress_activity__call_me">Apelează-mă</string>
   <string name="registration_progress_activity__edit_number">Editează număr</string>
   <string name="registration_progress_activity__connectivity_error">Eroare de conectivitate</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">LibreSignal nu s-a putut conecta la server.
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Signal nu s-a putut conecta la server.
     </string>
   <string name="registration_progress_activity__some_possible_problems_include">Probleme posibile
 sunt:</string>
   <string name="registration_progress_activity__no_network_connectivity">Nu există 
 conexiune la rețea.</string>
   <string name="registration_progress_activity__your_device_needs_network_connectivity">Dispozitivul
-        tău are nevoie de conectivitate în rețea pentru a utiliza această funcționalitate LibreSignal. Verifică
+        tău are nevoie de conectivitate în rețea pentru a utiliza această funcționalitate Signal. Verifică
         dacă este conectat la date mobile sau Wi-Fi.
     </string>
   <string name="registration_progress_activity__restrictive_firewall">Firewall restrictiv.</string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
 Dacă ești conectat prin Wi-Fi, atunci este posibil ca un firewall să blocheze accesul la
-server-ul LibreSignal. Încearcă altă rețea sau să utilizezi date mobile.</string>
+server-ul Signal. Încearcă altă rețea sau să utilizezi date mobile.</string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-LibreSignal va verifica acum automat numărul de telefon printr-un mesaj SMS de confirmare.
+Signal va verifica acum automat numărul de telefon printr-un mesaj SMS de confirmare.
 
     </string>
   <string name="registration_progress_activity__connecting">Se conectează...</string>
@@ -757,7 +757,7 @@ de verificare...</string>
   <string name="registration_progress_activity__this_couild_take_a_moment_please_be_patient">S-ar putea să dureze câteva momente.
 Vă rugăm să aveți răbdare, vă vom notifica când verificarea este completă.</string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-        LibreSignal a depășit limita de timp pentru așteptarea mesajului SMS de verificare.
+        Signal a depășit limita de timp pentru așteptarea mesajului SMS de verificare.
     </string>
   <string name="registration_progress_activity__sms_verification_failed">Verificarea prin 
 SMS a eșuat.</string>
@@ -783,7 +783,7 @@ SMS a eșuat.</string>
   <string name="AndroidManifest__create_passphrase">Creează parolă</string>
   <string name="AndroidManifest__enter_passphrase">Introdu parola</string>
   <string name="AndroidManifest__select_contacts">Selectează contacte</string>
-  <string name="AndroidManifest__signal_detected">LibreSignal detectat</string>
+  <string name="AndroidManifest__signal_detected">Signal detectat</string>
   <string name="AndroidManifest__public_identity_key">Cheia de identitate publică</string>
   <string name="AndroidManifest__change_passphrase">Schimbă parola</string>
   <string name="AndroidManifest__verify_identity">Verifică identitatea</string>
@@ -825,8 +825,8 @@ SMS a eșuat.</string>
   <string name="preferences__sms_mms">SMS și MMS</string>
   <string name="preferences__pref_all_sms_title">Recepționează toate SMS-urile</string>
   <string name="preferences__pref_all_mms_title">Recepționează toate MMS-urile</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Utilizează LibreSignal pentru toate mesajele text</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Utilizează LibreSignal pentru toate mesajele multimedia de intrare</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Utilizează Signal pentru toate mesajele text</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Utilizează Signal pentru toate mesajele multimedia de intrare</string>
   <string name="preferences__input_settings">Setări de introducere</string>
   <string name="preferences__enable_enter_key_title">Activează tasta Enter</string>
   <string name="preferences__replace_smiley_with_enter_key">Inlocuiți tasta smiley cu tasta Enter</string>
@@ -838,16 +838,16 @@ SMS a eșuat.</string>
   <string name="preferences__change_passphrase">Schimbă parola</string>
   <string name="preferences__change_your_passphrase">Schimbă-ți parola</string>
   <string name="preferences__enable_passphrase">Activează parola</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Blochează LibreSignal și notificările mesageriei cu o parolă</string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Blochează Signal și notificările mesageriei cu o parolă</string>
   <string name="preferences__screen_security">Securitate ecran</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Blochează screenshot-urile în lista cu aplicaţii recente şi în interiorul aplicaţiei</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Blochează automat LibreSignal după o perioadă specificată de timp de inactivitate</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Blochează automat Signal după o perioadă specificată de timp de inactivitate</string>
   <string name="preferences__inactivity_timeout_passphrase">Cere parolă pentru inactivitate</string>
   <string name="preferences__inactivity_timeout_interval">Interval de timp pentru inactivitate</string>
   <string name="preferences__notifications">Notificări</string>
   <string name="preferences__enable_message_notifications">Activează notificari pentru mesaje</string>
   <string name="preferences__new_contacts_notifications">Notificări contacte noi</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Afișează o notificare pentru noile contacte LibreSignal</string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Afișează o notificare pentru noile contacte Signal</string>
   <string name="preferences__led_color">Culoare LED</string>
   <string name="preferences__led_color_unknown">Necunoscut</string>
   <string name="preferences__pref_led_blink_title">Tipar de clipire LED</string>
@@ -909,8 +909,8 @@ SMS a eșuat.</string>
   <string name="preferences__theme">Tema</string>
   <string name="preferences__default">Implicit</string>
   <string name="preferences__language">Limba</string>
-  <string name="preferences__signal_messages_and_calls">Mesaje și apeluri LibreSignal</string>
-  <string name="preferences__free_private_messages_and_calls">Mesaje și apeluri, private şi gratuite cu utilizatorii LibreSignal
+  <string name="preferences__signal_messages_and_calls">Mesaje și apeluri Signal</string>
+  <string name="preferences__free_private_messages_and_calls">Mesaje și apeluri, private şi gratuite cu utilizatorii Signal
     </string>
   <string name="preferences__submit_debug_log">Trimite log-ul de depanare</string>
   <string name="preferences__support_wifi_calling">Mod compatibilitate \"Apelare WiFi\"</string>
@@ -923,7 +923,7 @@ SMS a eșuat.</string>
   <string name="preferences_chats__media_auto_download">Descărcare automată Media</string>
   <string name="preferences_chats__message_trimming">Scurtarea mesajelor</string>
   <string name="preferences_advanced__use_system_emoji">Foloseşte emoji de sistem</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Dezactivează icoanele emoji oferite de LibreSignal </string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Dezactivează icoanele emoji oferite de Signal </string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -940,7 +940,7 @@ SMS a eșuat.</string>
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Apelează</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Apel LibreSignal</string>
+  <string name="conversation_callable_secure__menu_call">Apel Signal</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Detalii mesaj</string>
   <string name="conversation_context__menu_copy_text">Copiază textul</string>
@@ -949,6 +949,8 @@ SMS a eșuat.</string>
   <string name="conversation_context__menu_resend_message">Retrimite mesaj</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Salvează ataşamentul</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Invită</string>
   <!--conversation_insecure_no_push-->
@@ -1003,30 +1005,30 @@ SMS a eșuat.</string>
   <string name="text_secure_normal__invite_friends">Invită prieteni</string>
   <string name="text_secure_normal__help">Ajutor</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Versiunea ta de LibreSignal este veche</string>
+  <string name="reminder_header_outdated_build">Versiunea ta de Signal este veche</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="one">Versiunea ta de Signal va expira într-o zi. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</item>
     <item quantity="few">Versiunea ta de Signal va expira în %d zile. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</item>
     <item quantity="other">Versiunea ta de Signal va expira în %d zile. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Versiunea ta de LibreSignal va expira azi. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</string>
-  <string name="reminder_header_expired_build">Versiunea ta de LibreSignal a expirat!</string>
+  <string name="reminder_header_outdated_build_details_today">Versiunea ta de Signal va expira azi. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</string>
+  <string name="reminder_header_expired_build">Versiunea ta de Signal a expirat!</string>
   <string name="reminder_header_expired_build_details">Mesajele nu se vor mai trimite cu succes. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.</string>
   <string name="reminder_header_expired_build_button">ACTUALIZEAZĂ</string>
   <string name="reminder_header_sms_default_title">Utilizează ca și aplicație SMS implicită</string>
-  <string name="reminder_header_sms_default_text">Atingeți pentru a seta LibreSignal ca și aplicație SMS implicită.</string>
+  <string name="reminder_header_sms_default_text">Atingeți pentru a seta Signal ca și aplicație SMS implicită.</string>
   <string name="reminder_header_sms_default_button">SETEAZĂ</string>
   <string name="reminder_header_sms_import_title">Importă SMS de sistem</string>
-  <string name="reminder_header_sms_import_text">Apasă pentru a copia mesajele SMS din telefon în baza de date criptată LibreSignal.</string>
+  <string name="reminder_header_sms_import_text">Apasă pentru a copia mesajele SMS din telefon în baza de date criptată Signal.</string>
   <string name="reminder_header_sms_import_button">IMPORTĂ</string>
-  <string name="reminder_header_push_title">Activează mesaje și apeluri LibreSignal</string>
+  <string name="reminder_header_push_title">Activează mesaje și apeluri Signal</string>
   <string name="reminder_header_push_text">Actualizează-ți experiența ta de comunicare.</string>
   <string name="reminder_header_push_button">ACTIVEAZĂ</string>
-  <string name="reminder_header_invite_title">Invită la LibreSignal</string>
+  <string name="reminder_header_invite_title">Invită la Signal</string>
   <string name="reminder_header_invite_text">Treci la următorul nivel al conversației cu %1$s.</string>
   <string name="reminder_header_invite_button">INVITĂ</string>
   <string name="reminder_header_share_title">Invită-ți prietenii!</string>
-  <string name="reminder_header_share_text">Cu cât mai mulți prieteni utilizează LibreSignal, cu atât devine mai bun.</string>
+  <string name="reminder_header_share_text">Cu cât mai mulți prieteni utilizează Signal, cu atât devine mai bun.</string>
   <string name="reminder_header_share_button">PARTAJEAZĂ</string>
   <string name="reminder_header_close_button">ÎNCHIDE</string>
   <!--MediaPreviewActivity-->

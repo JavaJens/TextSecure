@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">LibreSignal</string>
+  <string name="app_name">Signal</string>
   <string name="yes">Evet</string>
   <string name="no">Hayır</string>
   <string name="delete">Sil</string>
   <string name="please_wait">Lütfen bekleyin...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Yeni mesaj</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Şu anda: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Hâlâ bir parola belirlememişsiniz!</string>
@@ -17,17 +19,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Sil</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Parolayı devre dışı bırak?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Bu işlem LibreSignal ve mesaj bildirimleri kilidini kalıcı olarak açacak.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Bu işlem Signal ve mesaj bildirimleri kilidini kalıcı olarak açacak.</string>
   <string name="ApplicationPreferencesActivity_disable">Devre dışı bırak</string>
   <string name="ApplicationPreferencesActivity_unregistering">Kayıt siliniyor</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">LibreSignal mesajları ve aramalarından kaydınız siliniyor...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">LibreSignal mesajlarını ve aramalarını devre dışı bırak?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Sunucudaki kaydınızı silerek LibreSignal mesajlarını ve aramalarını devre dışı bırakın. Bu özellikleri gelecekte yeniden kullanabilmeniz için telefon numaranızı tekrar kaydetmeniz gerekir.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Signal mesajları ve aramalarından kaydınız siliniyor...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Signal mesajlarını ve aramalarını devre dışı bırak?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Sunucudaki kaydınızı silerek Signal mesajlarını ve aramalarını devre dışı bırakın. Bu özellikleri gelecekte yeniden kullanabilmeniz için telefon numaranızı tekrar kaydetmeniz gerekir.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Sunucu bağlantı hatası!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS Etkin</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Varsayılan SMS uygulamanızı değiştirmek için dokunun</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS Devre dışı</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">LibreSignal\'i varsayılan SMS uygulaması yapmak için dokunun</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Signal\'i varsayılan SMS uygulaması yapmak için dokunun</string>
   <string name="ApplicationPreferencesActivity_on">açık</string>
   <string name="ApplicationPreferencesActivity_On">Açık</string>
   <string name="ApplicationPreferencesActivity_off">kapalı</string>
@@ -59,12 +61,12 @@
   <!--CallScreen-->
   <string name="CallScreen_Incoming_call">Gelen arama</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">%1$s için tanımlama anahtarı değişti. Bunun anlamı birisi sizin iletişiminizi kesmeye çalışıyor, veya %2$s LibreSignal\'i tekrardan yükledi ve şimdi yeni bir tanımlama anahtarı var.</string>
+  <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">%1$s için tanımlama anahtarı değişti. Bunun anlamı birisi sizin iletişiminizi kesmeye çalışıyor, veya %2$s Signal\'i tekrardan yükledi ve şimdi yeni bir tanımlama anahtarı var.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Bu kişiyi doğrulamak isteyebilirsiniz.</string>
   <string name="ConfirmIdentityDialog_accept">Kabul et</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">%s Mesaj</string>
-  <string name="ContactsDatabase_signal_call_s">%s LibreSignal Araması</string>
+  <string name="ContactsDatabase_signal_call_s">%s Signal Araması</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">Mesaj boyutu: %d KB</string>
   <string name="ConversationItem_expires_s">Geçerlilik süresi: %s</string>
@@ -78,7 +80,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Güvensize geri dönmek için dokunun</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Şifrelenmemiş SMS\'e geri dönülsün mü?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Şifrelenmemiş MMS\'e geri dönülsün mü?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Bu mesaj alıcının artık LibreSignal kullanıcısı olmaması nedeniyle şifrelenmiş olarak <b>gönderilemez</b>. \n\nGüvensiz mesaj gönderilsin mi?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Bu mesaj alıcının artık Signal kullanıcısı olmaması nedeniyle şifrelenmiş olarak <b>gönderilemez</b>. \n\nGüvensiz mesaj gönderilsin mi?</string>
   <string name="ConversationItem_unable_to_open_media">Bu medyayı açabilen bir uygulama bulunamadı.</string>
   <string name="ConversationItem_from_s">gönderen %s</string>
   <string name="ConversationItem_to_s">alıcı %s</string>
@@ -111,8 +113,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Bu gruptan ayrılmak istediğinize emin misiniz?</string>
   <string name="ConversationActivity_transport_insecure_sms">Güvensiz SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Güvensiz MMS</string>
-  <string name="ConversationActivity_transport_signal">LibreSignal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Hadi LibreSignal uygulamasını kullanmaya başlayalım %1$s</string>
+  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Hadi Signal uygulamasını kullanmaya başlayalım %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Hadi sohbet etmek için bunu kullanalım: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Gruptan ayrılma hatası...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS desteklenmiyor</string>
@@ -152,7 +154,7 @@
   </plurals>
   <string name="ConversationFragment_collecting_attahments">Ekler toplanıyor...</string>
   <string name="ConversationFragment_pending">Bekleyen...</string>
-  <string name="ConversationFragment_push">Veri (LibreSignal)</string>
+  <string name="ConversationFragment_push">Veri (Signal)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Siliniyor</string>
@@ -202,15 +204,15 @@
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Paylaşılan kişi</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">LibreSignal\'e hoşgeldiniz.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextLibre ve PhoneLibre artık tek bir özel haberleşme uygulaması \"LibreSignal\"</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">LibreSignal\'e hoşgeldiniz!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre\'un adı artık LibreSignal</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextLibre ve PhoneLibre artık tek bir uygulama: LibreSignal. Keşfetmek için dokunun.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Signal\'e hoşgeldiniz.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure ve RedPhone artık tek bir özel haberleşme uygulaması \"Signal\"</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Signal\'e hoşgeldiniz!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure\'un adı artık Signal</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure ve RedPhone artık tek bir uygulama: Signal. Keşfetmek için dokunun.</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Dışa Aktar</string>
   <string name="ExportFragment_export_plaintext_to_storage">Metni dışa aktar?</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Dikkat, bu işlem LibreSignal mesajlarınızın içeriğini şifrelenmemiş olarak dışa aktaracaktır.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Dikkat, bu işlem Signal mesajlarınızın içeriğini şifrelenmemiş olarak dışa aktaracaktır.</string>
   <string name="ExportFragment_cancel">İptal</string>
   <string name="ExportFragment_exporting">Dışa aktarılıyor</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Metin dışa aktarılıyor...</string>
@@ -218,15 +220,15 @@
   <string name="ExportFragment_error_while_writing_to_storage">Depolama alanına yazılırken hata.</string>
   <string name="ExportFragment_export_successful">Dışa aktarma başarılı.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Kalıcı LibreSignal haberleşme hatası!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">LibreSignal Google Play Servislerine kayıt olamadı. LibreSignal mesajları ve aramaları devre dışı bırakıldı, Lütfen Ayarlar &gt; Gelişmiş kısmından tekrardan kayıt olmayı deneyin.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Kalıcı Signal haberleşme hatası!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal Google Play Servislerine kayıt olamadı. Signal mesajları ve aramaları devre dışı bırakıldı, Lütfen Ayarlar &gt; Gelişmiş kısmından tekrardan kayıt olmayı deneyin.</string>
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Yeni grup</string>
   <string name="GroupCreateActivity_actionbar_update_title">Grubu güncelle</string>
   <string name="GroupCreateActivity_group_name_hint">Grup adı</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Yeni MMS grubu</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">LibreSignal gruplarını desteklemeyen bir kişiyi seçtiniz, bu nedenle bu grup MMS olacaktır.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">LibreSignal mesajları ve aramaları için kayıtlı değilsiniz, bundan dolayı LibreSignal grupları devre dışı bırakıldı. Lütfen Ayarlar &gt; Gelişmiş kısmından tekrardan kayıt olmayı deneyin.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Signal gruplarını desteklemeyen bir kişiyi seçtiniz, bu nedenle bu grup MMS olacaktır.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Signal mesajları ve aramaları için kayıtlı değilsiniz, bundan dolayı Signal grupları devre dışı bırakıldı. Lütfen Ayarlar &gt; Gelişmiş kısmından tekrardan kayıt olmayı deneyin.</string>
   <string name="GroupCreateActivity_contacts_mms_exception">Grup yaratılmasına engel olan beklenmedik bir hata oluştu.</string>
   <string name="GroupCreateActivity_contacts_no_members">Grubunuzda en az bir kişi olmalıdır.</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Grubunuzun üyelerinden birinin doğru okunamayan bir numarası var. Lütfen numarayı düzeltiniz veya kişiyi siliniz ve tekrar deneyiniz.</string>
@@ -234,7 +236,7 @@
   <string name="GroupCreateActivity_menu_create_title">Grup yarat</string>
   <string name="GroupCreateActivity_creating_group">%1$s yaratılıyor…</string>
   <string name="GroupCreateActivity_updating_group">Güncelleniyor %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">%1$s LibreSignal kullanıcısı olmadığı için eklenemedi.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">%1$s Signal kullanıcısı olmadığı için eklenemedi.</string>
   <string name="GroupCreateActivity_loading_group_details">Grup ayrıntıları yükleniyor...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Zaten gruptasınız.</string>
   <!--GroupMembersDialog-->
@@ -244,7 +246,7 @@
   <string name="ImportExportActivity_export">Dışa Aktar</string>
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">Sistem SMS veritabanı içe aktarılsın mı?</string>
-  <string name="ImportFragment_this_will_import_messages_from_the_system">Bu işlem varsayılan SMS uygulamasından mesajları LibreSignal\'e aktaracak. Daha önce bu işlemi yaptıysanız mesajların tekrarlanmasına sebep olacaktır.</string>
+  <string name="ImportFragment_this_will_import_messages_from_the_system">Bu işlem varsayılan SMS uygulamasından mesajları Signal\'e aktaracak. Daha önce bu işlemi yaptıysanız mesajların tekrarlanmasına sebep olacaktır.</string>
   <string name="ImportFragment_import">İçe Aktar</string>
   <string name="ImportFragment_cancel">İptal</string>
   <string name="ImportFragment_restore_encrypted_backup">Şifrelenmiş yedek yeniden yüklensin mi?</string>
@@ -266,25 +268,21 @@
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Sesli mesaj kaydetmek için dokun ve basılı tut, göndermek için bırak</string>
   <!--InviteActivity-->
   <string name="InviteActivity_share">Paylaş</string>
-  <string name="InviteActivity_send_sms">SMS Gönder</string>
   <string name="InviteActivity_cancel">İptal</string>
   <string name="InviteActivity_sending">Gönderiliyor...</string>
   <string name="InviteActivity_heart_content_description">Erişilebilirlik</string>
   <string name="InviteActivity_invitations_sent">Davetler gönderildi!</string>
-  <string name="InviteActivity_invite_to_signal">LibreSignal\'e davet et</string>
-  <plurals name="InviteActivity_send_to_friends">
-    <item quantity="other">Arkadaşlara gönder %d</item>
-  </plurals>
+  <string name="InviteActivity_invite_to_signal">Signal\'e davet et</string>
   <plurals name="InviteActivity_send_sms_invites">
     <item quantity="other">%d SMS daveti yolla?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Hadi LibreSignal\'e geçelim: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Hadi Signal\'e geçelim: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Paylaşmak için herhangi bir uygulamanız yok gibi görünüyor.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Arkadaşlar, arkadaşlarının şifresiz sohbet etmesine izin vermez.</string>
   <!--KeyScanningActivity-->
   <string name="KeyScanningActivity_no_scanned_key_found_exclamation">Taralı anahtar bulunamadı!</string>
   <string name="KeyScanningActivity_install_barcode_Scanner">Barcode Scanner kurulsun mu?</string>
-  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">LibreSignal QR kodları için Barkod Tarayıcısına ihtiyaç duyar.</string>
+  <string name="KeyScanningActivity_this_application_requires_barcode_scanner_would_you_like_to_install_it">Signal QR kodları için Barkod Tarayıcısına ihtiyaç duyar.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Başarısız gönderme</string>
   <string name="MessageDetailsRecipient_new_identity">Yeni kimlik</string>
@@ -293,11 +291,11 @@
   <string name="MmsDownloader_error_connecting_to_mms_provider">MMS sağlayıcısına bağlanma hatası...</string>
   <string name="MmsDownloader_error_reading_mms_settings">Kablosuz sağlayıcı MMS ayarlarını okuma hatası...</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">LibreSignal araması sürüyor</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Signal araması sürüyor</string>
   <string name="NotificationBarManager_missed_call_from_s">%s tarafından cevapsız çağrı</string>
-  <string name="NotificationBarManager_missed_signal_call">Cevapsız LibreSignal araması</string>
-  <string name="NotificationBarManager__establishing_signal_call">LibreSignal araması kuruluyor</string>
-  <string name="NotificationBarManager__incoming_signal_call">Gelen LibreSignal araması</string>
+  <string name="NotificationBarManager_missed_signal_call">Cevapsız Signal araması</string>
+  <string name="NotificationBarManager__establishing_signal_call">Signal araması kuruluyor</string>
+  <string name="NotificationBarManager__incoming_signal_call">Gelen Signal araması</string>
   <string name="NotificationBarManager__deny_call">Reddet</string>
   <string name="NotificationBarManager__answer_call">Cevapla</string>
   <string name="NotificationBarManager__end_call">Aramayı sonlandır</string>
@@ -305,13 +303,14 @@
   <!--NotificationMmsMessageRecord-->
   <string name="NotificationMmsMessageRecord_multimedia_message">Multimedya mesajı</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Artık desteklenmeyen eski bir LibreSignal sürümü kullanılarak şifrelenmiş bir mesaj alındı. Gönderen kişiden LibreSignal\'i en son sürüme güncellemesini ve iletiyi yeniden göndermesini isteyin.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Artık desteklenmeyen eski bir Signal sürümü kullanılarak şifrelenmiş bir mesaj alındı. Gönderen kişiden Signal\'i en son sürüme güncellemesini ve iletiyi yeniden göndermesini isteyin.</string>
   <string name="MessageRecord_left_group">Gruptan ayrıldınız.</string>
   <string name="MessageRecord_updated_group">Grup güncellendi.</string>
   <string name="MessageRecord_s_called_you">%s sizi aradı</string>
   <string name="MessageRecord_called_s">%s arandı</string>
   <string name="MessageRecord_missed_call_from">%s tarafından cevapsız çağrı</string>
-  <string name="MessageRecord_s_is_on_signal_say_hey">%s LibreSignal\'e katıldı, ona merhaba de!</string>
+  <string name="MessageRecord_s_is_on_signal_say_hey">%s Signal\'e katıldı, ona merhaba de!</string>
+  <string name="MessageRecord_you">Siz</string>
   <!--PassphraseChangeActivity-->
   <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Parolalar uyuşmuyor!</string>
   <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Yanlış eski parola!</string>
@@ -332,11 +331,12 @@
   <string name="DeviceProvisioningActivity_content_progress_key_error">Geçersiz QR kodu.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Maalesef, bağlı olan çok sayıda cihazınız var, bazılarını kaldırmayı deneyin...</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Maalesef, bu geçerli bir aygıt bağlama QR kodu değil.</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Bir LibreSignal cihazına bağlanılsın mı?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">3. parti bir tarayıcı kullanarak bir LibreSignal cihazına bağlanmaya çalışıyor gibi görünüyorsunuz. Kendi güvenliğinizi korumak için, Kodu lütfen LibreSignal içinden tarayınız.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Bir Signal cihazına bağlanılsın mı?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">3. parti bir tarayıcı kullanarak bir Signal cihazına bağlanmaya çalışıyor gibi görünüyorsunuz. Kendi güvenliğinizi korumak için, Kodu lütfen Signal içinden tarayınız.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Parola girin</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">LibreSignal simgesi</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Signal simgesi</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Parola gönder</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Geçersiz parola!</string>
   <!--PlayServicesProblemFragment-->
@@ -378,7 +378,7 @@
   <string name="RedPhone_the_number_you_dialed_does_not_support_secure_voice">Aradığınız numara güvenli ses sistemini desteklemiyor!</string>
   <string name="RedPhone_got_it">Anladım</string>
   <!--RegistrationActivity-->
-  <string name="RegistrationActivity_connect_with_signal">LibreSignal\'le bağlan</string>
+  <string name="RegistrationActivity_connect_with_signal">Signal\'le bağlan</string>
   <string name="RegistrationActivity_select_your_country">Ülkenizi seçin</string>
   <string name="RegistrationActivity_you_must_specify_your_country_code">Ülke kodunuzu
         girmelisiniz
@@ -418,12 +418,12 @@ Numaranızı ikinci kez kontrol ediniz! Numaranızı bir SMS ile doğrulamak üz
   <string name="RegistrationProgressActivity_too_many_requests">Çok fazla istek!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">Zaten bir çağrı istediniz. Tekrar isteyebilmek için 20 dakika beklemelisiniz.</string>
   <string name="RegistrationProgressActivity_registration_conflict">Kayıt çakışması</string>
-  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Bu numara zaten farklı bir LibreSignal sunucusunda kayıtlı (CyanogenMod?). Burada kayıt olmadan önce oradaki kaydını silmen gerekiyor.</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different">Bu numara zaten farklı bir Signal sunucusunda kayıtlı (CyanogenMod?). Burada kayıt olmadan önce oradaki kaydını silmen gerekiyor.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Kayıt tamamlandı</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">LibreSignal kaydı başarıyla tamamlandı.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">Signal kaydı başarıyla tamamlandı.</string>
   <string name="RegistrationService_registration_error">Kayıt hatası</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">LibreSignal kaydı bir sorunla karşılaştı.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">Signal kaydı bir sorunla karşılaştı.</string>
   <!--Slide-->
   <string name="Slide_image">Resim</string>
   <string name="Slide_audio">Ses</string>
@@ -445,7 +445,7 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <string name="ThreadRecord_called_you">Sizi aradı</string>
   <string name="ThreadRecord_missed_call">Cevapsız arama</string>
   <string name="ThreadRecord_media_message">Medya mesajı</string>
-  <string name="ThreadRecord_s_is_on_signal_say_hey">%s LibreSignal\'de, ona merhaba de!</string>
+  <string name="ThreadRecord_s_is_on_signal_say_hey">%s Signal\'de, ona merhaba de!</string>
   <!--VerifyIdentityActivity-->
   <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">Kimlik anahtarınız yok.</string>
   <string name="VerifyIdentityActivity_recipient_has_no_identity_key">Alıcının kimlik anahtarı yok.</string>
@@ -498,7 +498,7 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Açmak için dokunun.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Açmak için dokunun, veya kapatmak için kilide dokunun.</string>
-  <string name="KeyCachingService_passphrase_cached">LibreSignal kilidi açıldı</string>
+  <string name="KeyCachingService_passphrase_cached">Signal kilidi açıldı</string>
   <string name="KeyCachingService_lock">Parola ile kilitle</string>
   <!--MessageNotifier-->
   <string name="MessageNotifier_d_new_messages_in_d_conversations">%1$d yeni mesaj %2$d sohbetten</string>
@@ -514,10 +514,10 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <string name="MessageNotifier_media_message">Medya mesajı</string>
   <string name="MessageNotifier_reply">Cevapla</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">LibreSignal kilitlendiğinde hızlı cevap kullanılamaz!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Signal kilitlendiğinde hızlı cevap kullanılamaz!</string>
   <string name="QuickResponseService_problem_sending_message">Mesaj gönderilirken hata!</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">LibreSignal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Yeni mesaj</string>
   <!--attachment_type_selector-->
   <string name="attachment_type_selector__image">Resim</string>
@@ -546,7 +546,7 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <!--conversation_title_view-->
   <string name="conversation_title_view__conversation_muted">Sohbet sessize alındı</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">LibreSignal mesajı gönder</string>
+  <string name="conversation_activity__type_message_push">Signal mesajı gönder</string>
   <string name="conversation_activity__type_message_sms_insecure">Güvensiz SMS gönder</string>
   <string name="conversation_activity__type_message_mms_insecure">Güvensiz MMS gönder</string>
   <string name="conversation_activity__from_sim_name">Gönderen %1$s</string>
@@ -588,13 +588,15 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <string name="device_list_fragment__link_new_device">Yeni cihaz bağla</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">devam</string>
+  <!--expiration-->
+  <string name="expiration_off">Kapalı</string>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">Cihazınızda bulunan log kayıtları okunamadı. ADB kullanarak log kayıtlarına erişim sağlayabilirsiniz.</string>
   <string name="log_submit_activity__thanks">Yardımınız için teşekkürler!</string>
   <string name="log_submit_activity__submitting">Gönderiliyor</string>
   <string name="log_submit_activity__posting_logs">Loglar gönderiliyor...</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Mevcut metin mesajlarınızı LibreSignal\'in şifreli veritabanına almak ister misiniz?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Mevcut metin mesajlarınızı Signal\'in şifreli veritabanına almak ister misiniz?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Varsayılan sistem veritabanı hiçbir şekilde değiştirilemez veya dönüştürülemez.</string>
   <string name="database_migration_activity__skip">Atla</string>
   <string name="database_migration_activity__import">İçe Aktar</string>
@@ -607,7 +609,7 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <string name="import_fragment__import_system_sms_database">Sistem SMS veritabanını içe aktar</string>
   <string name="import_fragment__import_the_database_from_the_default_system">Varsayılan sistem mesajlaşma uygulamasının veritabanını içe aktar</string>
   <string name="import_fragment__restore_encrypted_backup">Şifrelenmiş yedeğini geri yükleyin</string>
-  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Daha önce dışa aktarılmış şifreli LibreSignal yedeğini geri yükleyin</string>
+  <string name="import_fragment__restore_a_previously_exported_encrypted_signal_backup">Daha önce dışa aktarılmış şifreli Signal yedeğini geri yükleyin</string>
   <string name="import_fragment__import_plaintext_backup">Şifrelenmemiş metin yedeğini içe aktar</string>
   <string name="import_fragment__import_a_plaintext_backup_file">SMS yedeği ile uyumlu bir metin yedeğini İçe aktar &amp; Geri yükle</string>
   <!--load_more_header-->
@@ -633,7 +635,7 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Kilidi aç</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">LibreSignal medya ve grup mesajlarını kablosuz taşıyıcı aracılığıyla taşıyabilmesi için MMS ayarlarının yapılmasını gerektirir. Cihazınız bu bilgiyi sağlamamaktadır. Bu durum bazen kilitli veya diğer kısıtlı yapılandırılmış cihazlar için geçerli olabilmektedir.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal medya ve grup mesajlarını kablosuz taşıyıcı aracılığıyla taşıyabilmesi için MMS ayarlarının yapılmasını gerektirir. Cihazınız bu bilgiyi sağlamamaktadır. Bu durum bazen kilitli veya diğer kısıtlı yapılandırılmış cihazlar için geçerli olabilmektedir.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Medya veya grup mesajları gönderebilmek için \'Tamam\' seçeneğine dokunup istenen ayarları tamamlayınız. Taşıyıcınızın MMS ayarları genellikle \'taşıyıcı MMS\' araştırılarak bulunabilir. Bunu bir kez yapmanız gerekecektir.</string>
   <!--recipient_preferences_activity-->
   <string name="recipient_preference_activity__blocked">ENGELLİ</string>
@@ -647,14 +649,14 @@ Geçersiz protokol sürümünde anahtar değişim mesajı alındı.</string>
   <string name="recipient_preferences__color_for_this_contact">Bu kişi için renk</string>
   <string name="recipient_preferences__verify_identity">Kimliği doğrula</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">LibreSignal Araması</string>
+  <string name="redphone_call_card__signal_call">Signal Araması</string>
   <string name="redphone_call_controls__end_call">Aramayı sonlandır</string>
   <string name="redphone_call_controls__audio">Ses</string>
   <string name="redphone_call_controls__mute">Sessiz</string>
-  <string name="redphone_call_controls__signal_call">LibreSignal araması</string>
+  <string name="redphone_call_controls__signal_call">Signal araması</string>
   <!--registration_activity-->
   <string name="registration_activity__verify_your_number_to_connect_with_signal">
-LibreSignal\'le bağlanmak için telefon numaranızı doğrulayın.</string>
+Signal\'le bağlanmak için telefon numaranızı doğrulayın.</string>
   <string name="registration_activity__your_country">ÜLKENİZ</string>
   <string name="registration_activity__your_country_code_and_phone_number">ÜLKE KODUNUZ VE
         TELEFON NUMARANIZ
@@ -669,32 +671,32 @@ LibreSignal\'le bağlanmak için telefon numaranızı doğrulayın.</string>
     </string>
   <string name="registration_problems__sms_interceptors">SMS yakalayıcılar.</string>
   <string name="registration_problems__some_third_party_text_messaging_clients_such_as_handcent">
-Bazı üçüncü taraf metin mesajlaşma uygulamaları, olumsuz davranıyor ve gelen tüm SMS mesajlarına müdahale ediyor. Eğer \'Your LibreSignal verification code:\', ile başlayan bir metin mesajı aldıysanız görmek için üçüncü parti uygulamalarınızı kontrol edin. Bu gibi durumlarda üçüncü taraf metin mesajlaşma uygulamalarınızı diğer uygulamaların erişimine izin verecek şekilde yapılandırmanız gerekir.</string>
+Bazı üçüncü taraf metin mesajlaşma uygulamaları, olumsuz davranıyor ve gelen tüm SMS mesajlarına müdahale ediyor. Eğer \'Your Signal verification code:\', ile başlayan bir metin mesajı aldıysanız görmek için üçüncü parti uygulamalarınızı kontrol edin. Bu gibi durumlarda üçüncü taraf metin mesajlaşma uygulamalarınızı diğer uygulamaların erişimine izin verecek şekilde yapılandırmanız gerekir.</string>
   <string name="registration_problems__incorrect_number">Geçersiz numara</string>
   <string name="registration_problems__please_checkt_to_make_sure_you_entered_your_number_correctly">
 Lütfen girdiğiniz numaranın ve alan kodlarının doğruluğunu kontrol ediniz.</string>
   <string name="registration_problems__google_voice">Google Voice.</string>
   <string name="registration_problems__signal_will_not_work_with_google_voice_numbers">
-LibreSignal Google Voice numaraları ile çalışmaz.</string>
+Signal Google Voice numaraları ile çalışmaz.</string>
   <!--registration_progress_activity-->
   <string name="registration_progress_activity__voice_verification">Ses doğrulama</string>
   <string name="registration_progress_activity__signal_can_also_call_you_to_verify_your_number">
-LibreSignal ayrıca numaranızı doğrulamak için sizi arayabilir. \'Beni Ara\' kısmına dokunun ve duyduğunuz altı haneli kodu aşağıya girin.</string>
+Signal ayrıca numaranızı doğrulamak için sizi arayabilir. \'Beni Ara\' kısmına dokunun ve duyduğunuz altı haneli kodu aşağıya girin.</string>
   <string name="registration_progress_activity__verify">Doğrula</string>
   <string name="registration_progress_activity__call_me">Beni ara</string>
   <string name="registration_progress_activity__edit_number">Numarayı düzenle</string>
   <string name="registration_progress_activity__connectivity_error">Bağlantı hatası.</string>
-  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">LibreSignal sunucuya bağlanamadı.</string>
+  <string name="registration_progress_activity__signal_was_unable_to_connect_to_the_server">Signal sunucuya bağlanamadı.</string>
   <string name="registration_progress_activity__some_possible_problems_include">Bazı olası problemler:</string>
   <string name="registration_progress_activity__no_network_connectivity">Ağ bağlantısı
         yok.
     </string>
-  <string name="registration_progress_activity__your_device_needs_network_connectivity">LibreSignal\'in bu özelliğini kullanabilmesi için cihazınızda etkin bir veri bağlantısı olması gerekmektedir. Cihazınızın mobil veri veya kablosuz bağlantısı olduğundan emin olunuz.</string>
+  <string name="registration_progress_activity__your_device_needs_network_connectivity">Signal\'in bu özelliğini kullanabilmesi için cihazınızda etkin bir veri bağlantısı olması gerekmektedir. Cihazınızın mobil veri veya kablosuz bağlantısı olduğundan emin olunuz.</string>
   <string name="registration_progress_activity__restrictive_firewall">Kısıtlayıcı güvenlik duvarı.</string>
   <string name="registration_progress_activity__if_you_are_connected_via_wifi_its_possible_that_there_is_a_firewall">
-Eğer WiFi ile bağlı iseniz, LibreSignal\'in sunucusuna erişimi engelleyen bir güvenlik duvarının bulunma olasılığı var. Başka bir ağ veya mobil veri bağlantısı ile deneyiniz.</string>
+Eğer WiFi ile bağlı iseniz, Signal\'in sunucusuna erişimi engelleyen bir güvenlik duvarının bulunma olasılığı var. Başka bir ağ veya mobil veri bağlantısı ile deneyiniz.</string>
   <string name="registration_progress_activity__signal_will_now_automatically_verify_your_number_with_a_confirmation_sms_message">
-LibreSignal şimdi otomatik bir onay SMS mesajı ile numaranızı doğrulayacak.</string>
+Signal şimdi otomatik bir onay SMS mesajı ile numaranızı doğrulayacak.</string>
   <string name="registration_progress_activity__connecting">Bağlanılıyor...</string>
   <string name="registration_progress_activity__waiting_for_sms_verification">SMS doğrulama
 bekleniliyor...
@@ -703,7 +705,7 @@ bekleniliyor...
   <string name="registration_progress_activity__this_couild_take_a_moment_please_be_patient">Bu
 biraz zaman alabilir. Lütfen bekleyiniz, doğrulama tamamlandığında bilgilendirileceksiniz.</string>
   <string name="registration_progress_activity__signal_timed_out_while_waiting_for_a_verification_sms_message">
-LibreSignal doğrulama SMS mesajını beklerken zaman aşımına uğradı.</string>
+Signal doğrulama SMS mesajını beklerken zaman aşımına uğradı.</string>
   <string name="registration_progress_activity__sms_verification_failed">SMS doğrulaması
 başarısız.</string>
   <string name="registration_progress_activity__generating_keys">Anahtarlar üretiliyor...</string>
@@ -728,7 +730,7 @@ başarısız.</string>
   <string name="AndroidManifest__create_passphrase">Parola oluşturun</string>
   <string name="AndroidManifest__enter_passphrase">Parolayı girin</string>
   <string name="AndroidManifest__select_contacts">Kişileri seç</string>
-  <string name="AndroidManifest__signal_detected">LibreSignal algılandı</string>
+  <string name="AndroidManifest__signal_detected">Signal algılandı</string>
   <string name="AndroidManifest__public_identity_key">Kimlik anahtarım</string>
   <string name="AndroidManifest__change_passphrase">Parolayı değiştir</string>
   <string name="AndroidManifest__verify_identity">Kimliği doğrula</string>
@@ -768,8 +770,8 @@ başarısız.</string>
   <string name="preferences__sms_mms">SMS ve MMS</string>
   <string name="preferences__pref_all_sms_title">Tüm SMS\'leri al</string>
   <string name="preferences__pref_all_mms_title">Tüm MMS\'leri al</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Gelen tüm metin mesajları için LibreSignal kullanın</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Gelen tüm medya mesajları için LibreSignal kullanın</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Gelen tüm metin mesajları için Signal kullanın</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Gelen tüm medya mesajları için Signal kullanın</string>
   <string name="preferences__input_settings">Girdi Ayarları</string>
   <string name="preferences__enable_enter_key_title">Enter tuşunu etkinleştir</string>
   <string name="preferences__replace_smiley_with_enter_key">Smiley tuşunu bir giriş tuşu ile değiştir</string>
@@ -781,16 +783,16 @@ başarısız.</string>
   <string name="preferences__change_passphrase">Parola değiştir</string>
   <string name="preferences__change_your_passphrase">Parolanı değiştir</string>
   <string name="preferences__enable_passphrase">Parolayı etkinleştir</string>
-  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Bir parola ile LibreSignal\'i ve mesaj bildirimlerini kilitleyin</string>
+  <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Bir parola ile Signal\'i ve mesaj bildirimlerini kilitleyin</string>
   <string name="preferences__screen_security">Ekran güvenliği</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">En son listelerde ve uygulama içinde ekran görüntüsü alınmasını engelle</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">LibreSignal\'i belirli bir zaman aralığından sonra otomatik kilitle</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Signal\'i belirli bir zaman aralığından sonra otomatik kilitle</string>
   <string name="preferences__inactivity_timeout_passphrase">Zaman aşımı parolası</string>
   <string name="preferences__inactivity_timeout_interval">Zaman aşımı süresi</string>
   <string name="preferences__notifications">Bildirimler</string>
   <string name="preferences__enable_message_notifications">Mesaj bildirimlerini etkinleştir</string>
   <string name="preferences__new_contacts_notifications">Yeni kişi bildirimleri</string>
-  <string name="preferences__show_a_notification_for_new_signal_contacts">Yeni LibreSignal kişileri için bir bildirim göster</string>
+  <string name="preferences__show_a_notification_for_new_signal_contacts">Yeni Signal kişileri için bir bildirim göster</string>
   <string name="preferences__led_color">LED rengi</string>
   <string name="preferences__led_color_unknown">Bilinmeyen</string>
   <string name="preferences__pref_led_blink_title">LED yanıp sönme şekli</string>
@@ -852,8 +854,8 @@ başarısız.</string>
   <string name="preferences__theme">Tema</string>
   <string name="preferences__default">Varsayılan</string>
   <string name="preferences__language">Dil</string>
-  <string name="preferences__signal_messages_and_calls">LibreSignal mesajları ve aramaları</string>
-  <string name="preferences__free_private_messages_and_calls">LibreSignal kullanıcılarına ücretsiz özel mesajlar ve aramalar</string>
+  <string name="preferences__signal_messages_and_calls">Signal mesajları ve aramaları</string>
+  <string name="preferences__free_private_messages_and_calls">Signal kullanıcılarına ücretsiz özel mesajlar ve aramalar</string>
   <string name="preferences__submit_debug_log">Hata ayıklama kaydı gönder</string>
   <string name="preferences__support_wifi_calling">\'WiFi Calling\' uyumluluk modu</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Cihazınızın WiFi üzerinden SMS/MMS gönderimini kullanıyorsa etkinleştirin (yalnızca \'WiFi Araması\' cihazınızda etkin olduğunda etkinleştirin)</string>
@@ -865,7 +867,7 @@ başarısız.</string>
   <string name="preferences_chats__media_auto_download">Otomatik medya indirme</string>
   <string name="preferences_chats__message_trimming">Mesaj kırpma</string>
   <string name="preferences_advanced__use_system_emoji">Sistem emojilerini kullan</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">LibreSignal\'in dahili emoji desteğini devre dışı bırak</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Signal\'in dahili emoji desteğini devre dışı bırak</string>
   <!--****************************************-->
   <!--menus-->
   <!--****************************************-->
@@ -882,7 +884,7 @@ başarısız.</string>
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Arama</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">LibreSignal araması</string>
+  <string name="conversation_callable_secure__menu_call">Signal araması</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Mesaj ayrıntıları</string>
   <string name="conversation_context__menu_copy_text">Metni kopyala</string>
@@ -891,6 +893,8 @@ başarısız.</string>
   <string name="conversation_context__menu_resend_message">Mesajı tekrar gönder</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Eki kaydet</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Davet et</string>
   <!--conversation_insecure_no_push-->
@@ -945,28 +949,28 @@ başarısız.</string>
   <string name="text_secure_normal__invite_friends">Arkadaşlarını davet et</string>
   <string name="text_secure_normal__help">Yardım</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">LibreSignal sürümünüz eski kalmış</string>
+  <string name="reminder_header_outdated_build">Signal sürümünüz eski kalmış</string>
   <plurals name="reminder_header_outdated_build_details">
     <item quantity="other">Signal sürümünüz %d gün içinde kullanım dışı kalacak. En yeni sürüme güncellemek için dokunun.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">LibreSignal sürümünüz bugün kullanım dışı kalacak. En yeni sürüme güncellemek için dokunun.</string>
-  <string name="reminder_header_expired_build">LibreSignal sürümünüz kullanım dışı kaldı!</string>
+  <string name="reminder_header_outdated_build_details_today">Signal sürümünüz bugün kullanım dışı kalacak. En yeni sürüme güncellemek için dokunun.</string>
+  <string name="reminder_header_expired_build">Signal sürümünüz kullanım dışı kaldı!</string>
   <string name="reminder_header_expired_build_details">Mesajlarınız artık başarılı olarak gönderilemez. En yeni sürüme güncellemek için dokunun.</string>
   <string name="reminder_header_expired_build_button">GÜNCELLEŞTİR</string>
   <string name="reminder_header_sms_default_title">Varsayılan SMS uygulaması olarak ayarla</string>
-  <string name="reminder_header_sms_default_text">LibreSignal\'i varsayılan SMS uygulaması yapmak için dokunun.</string>
+  <string name="reminder_header_sms_default_text">Signal\'i varsayılan SMS uygulaması yapmak için dokunun.</string>
   <string name="reminder_header_sms_default_button">BELİRLE</string>
   <string name="reminder_header_sms_import_title">Sistem SMS\'lerini içe aktar</string>
-  <string name="reminder_header_sms_import_text">Telefonunuzda bulunan SMS mesajlarını LibreSignal\'in şifrelenmiş veritabanına kopyalamak için dokunun.</string>
+  <string name="reminder_header_sms_import_text">Telefonunuzda bulunan SMS mesajlarını Signal\'in şifrelenmiş veritabanına kopyalamak için dokunun.</string>
   <string name="reminder_header_sms_import_button">İÇE AKTAR</string>
-  <string name="reminder_header_push_title">LibreSignal mesajlarını ve aramalarını etkinleştir</string>
+  <string name="reminder_header_push_title">Signal mesajlarını ve aramalarını etkinleştir</string>
   <string name="reminder_header_push_text">İletişim deneyiminizi yükseltin.</string>
   <string name="reminder_header_push_button">ETKİNLEŞTİR</string>
-  <string name="reminder_header_invite_title">LibreSignal\'e davet et</string>
+  <string name="reminder_header_invite_title">Signal\'e davet et</string>
   <string name="reminder_header_invite_text">%1$s ile sohbetinizi bir sonraki seviyeye alın.</string>
   <string name="reminder_header_invite_button">DAVET ET</string>
   <string name="reminder_header_share_title">Arkadaşlarını davet et!</string>
-  <string name="reminder_header_share_text">Ne kadar çok arkadaşın LibreSignal kullanırsa, o kadar iyi hale gelir.</string>
+  <string name="reminder_header_share_text">Ne kadar çok arkadaşın Signal kullanırsa, o kadar iyi hale gelir.</string>
   <string name="reminder_header_share_button">PAYLAŞ</string>
   <string name="reminder_header_close_button">KAPAT</string>
   <!--MediaPreviewActivity-->
