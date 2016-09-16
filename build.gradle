@@ -133,6 +133,7 @@ dependencyVerification {
             ]
 }
 
+
 android {
     compileSdkVersion 22
     buildToolsVersion '22.0.1'

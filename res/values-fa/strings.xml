@@ -429,7 +429,6 @@
 یک پیام تبادل کلید برای نسخه اشتباه پروتوکل دریافت شد.</string>
   <string name="SmsMessageRecord_received_message_with_unknown_identity_key_tap_to_process">پيامی با کليد شناسايی نامشخص دريافت شد. برای پردازش و شناسايی، لمس کنيد.</string>
   <string name="SmsMessageRecord_received_updated_but_unknown_identity_information">اطلاعات به‌زوز شده ولی ناشناس دريافت شد. برای شناسايی لمس کنيد.</string>
-  <string name="SmsMessageRecord_secure_session_reset">تنظیم مجدد جلسه امن.</string>
   <string name="SmsMessageRecord_duplicate_message">تکثیر پیام.</string>
   <!--ThreadRecord-->
   <string name="ThreadRecord_left_the_group">ترک گروه ...</string>
@@ -582,6 +581,21 @@
   <string name="experience_upgrade_activity__continue">ادامه</string>
   <!--expiration-->
   <string name="expiration_off">خاموش</string>
+  <plurals name="expiration_seconds">
+    <item quantity="other">ثانیه %d</item>
+  </plurals>
+  <plurals name="expiration_minutes">
+    <item quantity="other">دقیقه %d</item>
+  </plurals>
+  <plurals name="expiration_hours">
+    <item quantity="other">ساعت %d</item>
+  </plurals>
+  <plurals name="expiration_days">
+    <item quantity="other"> روز %d</item>
+  </plurals>
+  <plurals name="expiration_weeks">
+    <item quantity="other">هفته %d</item>
+  </plurals>
   <!--log_submit_activity-->
   <string name="log_submit_activity__log_fetch_failed">نمی توانیم فایل گزارش را در دستگاه شما بخوانیم.شما می توانید از طریق ADB گزارش دیباگ را دریافت کنید.</string>
   <string name="log_submit_activity__thanks">تشکر از کمک شما!</string>
