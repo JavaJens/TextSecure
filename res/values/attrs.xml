@@ -129,6 +129,8 @@
 
     <attr name="recipient_preference_blocked" format="color"/>
 
+    <attr name="verification_background" format="color"/>
+
     <declare-styleable name="ColorPreference">
         <attr name="itemLayout" format="reference" />
         <attr name="choices" format="reference" />
@@ -152,7 +154,8 @@
     </declare-styleable>
 
     <declare-styleable name="AudioView">
-        <attr name="tintColor" format="color" />
+        <attr name="foregroundTintColor" format="color" />
+        <attr name="backgroundTintColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="CircleColorImageView">
@@ -174,6 +177,10 @@
         <attr name="tint" format="color"/>
         <attr name="percentage" format="integer"/>
         <attr name="offset" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="SquareFrameLayout">
+        <attr name="square_height" format="boolean"/>
     </declare-styleable>
 
 </resources>

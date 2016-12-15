@@ -21,6 +21,7 @@ import android.database.Cursor;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,6 @@ import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.VisibleForTesting;
 
 import java.lang.ref.SoftReference;
 import java.security.MessageDigest;
@@ -195,9 +195,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     String        type          = cursor.getString(cursor.getColumnIndexOrThrow(MmsSmsDatabase.TRANSPORT));
     MessageRecord messageRecord = getMessageRecord(id, cursor, type);
 
-    if (messageRecord.isGroupAction() || messageRecord.isCallLog() || messageRecord.isJoined() ||
-        messageRecord.isExpirationTimerUpdate() || messageRecord.isEndSession())
-    {
+    if (messageRecord.isGroupAction() || messageRecord.isCallLog() || messageRecord.isJoined() || 
+        messageRecord.isExpirationTimerUpdate() || messageRecord.isEndSession() || messageRecord.isIdentityUpdate()) 
+   {
       return MESSAGE_TYPE_UPDATE;
     } else if (messageRecord.isOutgoing()) {
       return MESSAGE_TYPE_OUTGOING;

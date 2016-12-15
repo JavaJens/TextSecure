@@ -17,6 +17,7 @@ import org.thoughtcrime.securesms.crypto.storage.SignalProtocolStoreImpl;
 import org.thoughtcrime.securesms.crypto.storage.TextSecureSessionStore;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.EncryptingSmsDatabase;
+import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.MessagingDatabase.SyncMessageId;
 import org.thoughtcrime.securesms.database.MmsDatabase;
 import org.thoughtcrime.securesms.database.NoSuchMessageException;
@@ -132,9 +133,10 @@ public class PushDecryptJob extends ContextJob {
 
   private void handleMessage(MasterSecretUnion masterSecret, SignalServiceEnvelope envelope, Optional<Long> smsMessageId) {
     try {
-      SignalProtocolStore  axolotlStore = new SignalProtocolStoreImpl(context);
-      SignalServiceAddress localAddress = new SignalServiceAddress(TextSecurePreferences.getLocalNumber(context));
-      SignalServiceCipher  cipher       = new SignalServiceCipher(localAddress, axolotlStore);
+      GroupDatabase        groupDatabase = DatabaseFactory.getGroupDatabase(context);
+      SignalProtocolStore  axolotlStore  = new SignalProtocolStoreImpl(context);
+      SignalServiceAddress localAddress  = new SignalServiceAddress(TextSecurePreferences.getLocalNumber(context));
+      SignalServiceCipher  cipher        = new SignalServiceCipher(localAddress, axolotlStore);
 
       SignalServiceContent content = cipher.decrypt(envelope);
 
@@ -146,12 +148,16 @@ public class PushDecryptJob extends ContextJob {
         else if (message.isExpirationUpdate())         handleExpirationUpdate(masterSecret, envelope, message, smsMessageId);
         else if (message.getAttachments().isPresent()) handleMediaMessage(masterSecret, envelope, message, smsMessageId);
         else                                           handleTextMessage(masterSecret, envelope, message, smsMessageId);
+
+        if (message.getGroupInfo().isPresent() && groupDatabase.isUnknownGroup(message.getGroupInfo().get().getGroupId())) {
+          handleUnknownGroupMessage(envelope, message.getGroupInfo().get());
+        }
       } else if (content.getSyncMessage().isPresent()) {
         SignalServiceSyncMessage syncMessage = content.getSyncMessage().get();
 
         if      (syncMessage.getSent().isPresent())    handleSynchronizeSentMessage(masterSecret, envelope, syncMessage.getSent().get(), smsMessageId);
         else if (syncMessage.getRequest().isPresent()) handleSynchronizeRequestMessage(masterSecret, syncMessage.getRequest().get());
-        else if (syncMessage.getRead().isPresent())    handleSynchronizeReadMessage(masterSecret, syncMessage.getRead().get());
+        else if (syncMessage.getRead().isPresent())    handleSynchronizeReadMessage(masterSecret, syncMessage.getRead().get(), envelope.getTimestamp());
         else                                           Log.w(TAG, "Contains no known sync types...");
       }
 
@@ -221,6 +227,14 @@ public class PushDecryptJob extends ContextJob {
     }
   }
 
+  private void handleUnknownGroupMessage(@NonNull SignalServiceEnvelope envelope,
+                                         @NonNull SignalServiceGroup group)
+  {
+    ApplicationContext.getInstance(context)
+                      .getJobManager()
+                      .add(new RequestGroupInfoJob(context, envelope.getSource(), group.getGroupId()));
+  }
+
   private void handleExpirationUpdate(@NonNull MasterSecretUnion masterSecret,
                                       @NonNull SignalServiceEnvelope envelope,
                                       @NonNull SignalServiceDataMessage message,
@@ -254,6 +268,8 @@ public class PushDecryptJob extends ContextJob {
                                             @NonNull Optional<Long> smsMessageId)
       throws MmsException
   {
+    GroupDatabase groupDatabase = DatabaseFactory.getGroupDatabase(context);
+
     Long threadId;
 
     if (message.getMessage().isGroupUpdate()) {
@@ -266,10 +282,16 @@ public class PushDecryptJob extends ContextJob {
       threadId = handleSynchronizeSentTextMessage(masterSecret, message, smsMessageId);
     }
 
+    if (message.getMessage().getGroupInfo().isPresent() && groupDatabase.isUnknownGroup(message.getMessage().getGroupInfo().get().getGroupId())) {
+      handleUnknownGroupMessage(envelope, message.getMessage().getGroupInfo().get());
+    }
+
     if (threadId != null) {
       DatabaseFactory.getThreadDatabase(getContext()).setRead(threadId);
       MessageNotifier.updateNotification(getContext(), masterSecret.getMasterSecret().orNull());
     }
+
+    MessageNotifier.setLastDesktopActivityTimestamp(message.getTimestamp());
   }
 
   private void handleSynchronizeRequestMessage(@NonNull MasterSecretUnion masterSecret,
@@ -295,13 +317,28 @@ public class PushDecryptJob extends ContextJob {
   }
 
   private void handleSynchronizeReadMessage(@NonNull MasterSecretUnion masterSecret,
-                                            @NonNull List<ReadMessage> readMessages)
+                                            @NonNull List<ReadMessage> readMessages,
+                                            long envelopeTimestamp)
   {
     for (ReadMessage readMessage : readMessages) {
-      DatabaseFactory.getSmsDatabase(context).setTimestampRead(new SyncMessageId(readMessage.getSender(), readMessage.getTimestamp()));
-      DatabaseFactory.getMmsDatabase(context).setTimestampRead(new SyncMessageId(readMessage.getSender(), readMessage.getTimestamp()));
+      List<Pair<Long, Long>> expiringText = DatabaseFactory.getSmsDatabase(context).setTimestampRead(new SyncMessageId(readMessage.getSender(), readMessage.getTimestamp()), envelopeTimestamp);
+      List<Pair<Long, Long>> expiringMedia = DatabaseFactory.getMmsDatabase(context).setTimestampRead(new SyncMessageId(readMessage.getSender(), readMessage.getTimestamp()), envelopeTimestamp);
+
+      for (Pair<Long, Long> expiringMessage : expiringText) {
+        ApplicationContext.getInstance(context)
+                          .getExpiringMessageManager()
+                          .scheduleDeletion(expiringMessage.first, false, envelopeTimestamp, expiringMessage.second);
+      }
+
+      for (Pair<Long, Long> expiringMessage : expiringMedia) {
+        ApplicationContext.getInstance(context)
+                          .getExpiringMessageManager()
+                          .scheduleDeletion(expiringMessage.first, true, envelopeTimestamp, expiringMessage.second);
+      }
     }
 
+    MessageNotifier.setLastDesktopActivityTimestamp(envelopeTimestamp);
+    MessageNotifier.cancelDelayedNotifications();
     MessageNotifier.updateNotification(context, masterSecret.getMasterSecret().orNull());
   }
 
@@ -362,13 +399,6 @@ public class PushDecryptJob extends ContextJob {
     database.markAsPush(messageId);
 
     DatabaseFactory.getRecipientPreferenceDatabase(context).setExpireMessages(recipients, message.getMessage().getExpiresInSeconds());
-
-    database.markExpireStarted(messageId, message.getExpirationStartTimestamp());
-    ApplicationContext.getInstance(context)
-                      .getExpiringMessageManager()
-                      .scheduleDeletion(messageId, true,
-                                        message.getExpirationStartTimestamp(),
-                                        message.getMessage().getExpiresInSeconds());
 
     if (smsMessageId.isPresent()) {
       DatabaseFactory.getSmsDatabase(context).deleteMessage(smsMessageId.get());

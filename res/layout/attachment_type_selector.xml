@@ -5,12 +5,20 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="?attachment_type_selector_background"
-              android:elevation="4dp"
-              android:padding="16dp">
+              android:elevation="4dp">
+
+    <org.thoughtcrime.securesms.components.RecentPhotoViewRail
+            android:id="@+id/recent_photos"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:padding="4dp"/>
 
     <LinearLayout android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginRight="16dp"
+                  android:layout_marginTop="16dp"
                   android:weightSum="4">
 
         <LinearLayout android:layout_width="match_parent"
@@ -112,6 +120,9 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="16dp"
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginRight="16dp"
+                  android:layout_marginBottom="16dp"
                   android:weightSum="4">
 
         <LinearLayout android:layout_width="match_parent"
@@ -152,6 +163,21 @@
                       android:layout_weight="1"
                       android:gravity="center"
                       android:orientation="vertical">
+
+            <org.thoughtcrime.securesms.components.CircleColorImageView
+                    android:id="@+id/giphy_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_gif_white_36dp"
+                    android:scaleType="center"
+                    android:elevation="4dp"
+                    app:circleColor="@color/cyan_400"/>
+
+            <TextView android:layout_marginTop="10dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      style="@style/AttachmentTypeLabel"
+                      android:text="GIF"/>
 
         </LinearLayout>
 

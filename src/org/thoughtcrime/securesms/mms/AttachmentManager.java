@@ -39,6 +39,7 @@ import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.RemovableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
+import org.thoughtcrime.securesms.giph.ui.GiphyActivity;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -219,6 +220,20 @@ public class AttachmentManager {
 
   public static void selectContactInfo(Activity activity, int requestCode) {
     Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+    activity.startActivityForResult(intent, requestCode);
+  }
+
+  public static void selectLocation(Activity activity, int requestCode) {
+    //try {
+    //  activity.startActivityForResult(new PlacePicker.IntentBuilder().build(activity), requestCode);
+    //} catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+    //  Log.w(TAG, e);
+    //}
+    Log.w(TAG,"Fuck you big brother");
+  }
+
+  public static void selectGif(Activity activity, int requestCode) {
+    Intent intent = new Intent(activity, GiphyActivity.class);
     activity.startActivityForResult(intent, requestCode);
   }
 

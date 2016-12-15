@@ -2,10 +2,11 @@ buildscript {
     repositories {
         maven {
             url "https://repo1.maven.org/maven2"
+            jcenter()
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath files('libs/gradle-witness.jar')
     }
 }
@@ -76,7 +77,7 @@ dependencies {
     androidTestCompile ('org.assertj:assertj-core:1.7.1') {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
-    androidTestCompile ('com.squareup.assertj:assertj-android:1.0.0') {
+    androidTestCompile ('com.squareup.assertj:assertj-android:1.1.1') {
         exclude group: 'org.hamcrest',        module: 'hamcrest-core'
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -118,17 +119,17 @@ dependencyVerification {
             'javax.inject:javax.inject:91c77044a50c481636c32d916fd89c9118a72195390452c81065080f957de7ff',
             'com.madgag.spongycastle:core:8d6240b974b0aca4d3da9c7dd44d42339d8a374358aca5fc98e50a995764511f',
             //'org.whispersystems:signal-service-java:48db52056aa3510deb8c4ccd2dfb35033ae115bc4176048820c6dff73290ba6e',
-            'org.whispersystems:signal-protocol-android:d83cb3d15b667fc2543fa18ce80791c72c053e8ac54fc2941f0429a5944ca691',
+            'org.whispersystems:signal-protocol-android:1b4b9d557c8eaf861797ff683990d482d4aa8e9f23d9b17ff0cc67a02f38cb19',
             'com.googlecode.libphonenumber:libphonenumber:9625de9d2270e9a280ff4e6d9ef3106573fb4828773fd32c9b7614f4e17d2811',
             'com.google.protobuf:protobuf-java:e0c1c64575c005601725e7c6a02cebf9e1285e888f756b2a1d73ffa8d725cc74',
             'com.squareup.okhttp:okhttp:89b7f63e2e5b6c410266abc14f50fe52ea8d2d8a57260829e499b1cd9f0e61af',
             'com.fasterxml.jackson.core:jackson-databind:835097bcdd11f5bc8a08378c70d4c8054dfa4b911691cc2752063c75534d198d',
-            'org.whispersystems:curve25519-android:d6a3ef3a70622af4c728b7fe5f8fdfc9e6cd39b1d39b2c77e7a2add9d876bc23',
-            'org.whispersystems:signal-protocol-java:d518d52eeb3c44210e0b6c687360848a87afbaee0bdf42e2a8dd9974d54fdb3a',
+            'org.whispersystems:curve25519-android:bf6c34223d45d2f2813a8efcab9923caf99115115c760c9acea680bcb42d23c0',
+            'org.whispersystems:signal-protocol-java:a835cd0609cf116a74651bd0aa748db9392bba48c2d2af787757b8a1b50d131c',
             'com.squareup.okio:okio:5e1098bd3fdee4c3347f5ab815b40ba851e4ab1b348c5e49a5b0362f0ce6e978',
             'com.fasterxml.jackson.core:jackson-annotations:0ca408c24202a7626ec8b861e99d85eca5e38b73311dd6dd12e3e9deecc3fe94',
             'com.fasterxml.jackson.core:jackson-core:cbf4604784b4de226262845447a1ad3bb38a6728cebe86562e2c5afada8be2c0',
-            'org.whispersystems:curve25519-java:08cc3be52723e0fc4148e5e7002d51d6d7e495b2130022237f2d47b90af6ae0b',
+            'org.whispersystems:curve25519-java:00f1d4919f759055f41f7853a3d475dc7c8decf0dbf045ae93414f8f23b066cc',
             'com.android.support:support-v4:c62f0d025dafa86f423f48df9185b0d89496adbc5f6a9be5a7c394d84cf91423',
             ]
 }
@@ -136,16 +137,20 @@ dependencyVerification {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         applicationId "org.libresignal"
         minSdkVersion 9
         targetSdkVersion 22
 
+        vectorDrawables.useSupportLibrary = true
+
         buildConfigField "long", "BUILD_TIMESTAMP", getLastCommitTimestamp() + "L"
         buildConfigField "String", "TEXTSECURE_URL", "\"https://textsecure-service.whispersystems.org\""
         buildConfigField "String", "USER_AGENT", "\"LSA\""
+        buildConfigField "String", "GIPHY_PROXY_HOST", "\"giphy-proxy-production.whispersystems.org\""
+        buildConfigField "int", "GIPHY_PROXY_PORT", "80"
         buildConfigField "String", "REDPHONE_MASTER_URL", "\"https://redphone-master.whispersystems.org\""
         buildConfigField "String", "REDPHONE_RELAY_HOST", "\"relay.whispersystems.org\""
         buildConfigField "String", "REDPHONE_PREFIX_NAME", "\".whispersystems.org\""
@@ -190,15 +195,12 @@ android {
             //buildConfigField "String", "TEXTSECURE_URL", "\"https://textsecure-service-staging.whispersystems.org\""
             //buildConfigField "String", "REDPHONE_MASTER_URL", "\"https://redphone-staging.whispersystems.org\""
             //buildConfigField "String", "REDPHONE_RELAY_HOST", "\"redphone-staging-relay.whispersystems.org\""
+            testProguardFiles 'proguard-automation.pro'
         }
         release {
             minifyEnabled true
             proguardFiles = buildTypes.debug.proguardFiles
             signingConfig signingConfigs.release
-        }
-        dev.initWith(buildTypes.debug)
-        dev {
-            buildConfigField "boolean", "DEV_BUILD", "true"
         }
     }
 

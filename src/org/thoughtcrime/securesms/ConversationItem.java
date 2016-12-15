@@ -231,21 +231,24 @@ public class ConversationItem extends LinearLayout
     if (messageRecord.isOutgoing()) {
       bodyBubble.getBackground().setColorFilter(defaultBubbleColor, PorterDuff.Mode.MULTIPLY);
       mediaThumbnail.setBackgroundColorHint(defaultBubbleColor);
-      setAudioViewTint(messageRecord, conversationRecipients);
     } else {
       int color = recipient.getColor().toConversationColor(context);
       bodyBubble.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
       mediaThumbnail.setBackgroundColorHint(color);
     }
+
+    setAudioViewTint(messageRecord, conversationRecipients);
   }
 
   private void setAudioViewTint(MessageRecord messageRecord, Recipients recipients) {
     if (messageRecord.isOutgoing()) {
       if (DynamicTheme.LIGHT.equals(TextSecurePreferences.getTheme(context))) {
-        audioView.setTint(recipients.getColor().toConversationColor(context));
+        audioView.setTint(recipients.getColor().toConversationColor(context), defaultBubbleColor);
       } else {
-        audioView.setTint(Color.WHITE);
+        audioView.setTint(Color.WHITE, defaultBubbleColor);
       }
+    } else {
+      audioView.setTint(Color.WHITE, recipients.getColor().toConversationColor(context));
     }
   }
 
@@ -532,14 +535,14 @@ public class ConversationItem extends LinearLayout
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
-      } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) &&
-                 slide.getThumbnailUri() != null)
-      {
+      } else if (MediaPreviewActivity.isContentTypeSupported(slide.getContentType()) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(slide.getUri(), slide.getContentType());
         if (!messageRecord.isOutgoing()) intent.putExtra(MediaPreviewActivity.RECIPIENT_EXTRA, recipient.getRecipientId());
         intent.putExtra(MediaPreviewActivity.DATE_EXTRA, messageRecord.getTimestamp());
+        intent.putExtra(MediaPreviewActivity.SIZE_EXTRA, slide.asAttachment().getSize());
+        intent.putExtra(MediaPreviewActivity.THREAD_ID_EXTRA, messageRecord.getThreadId());
 
         context.startActivity(intent);
       } else {

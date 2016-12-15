@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="org.thoughtcrime.securesms"
-      android:versionCode="202"
-      android:versionName="3.19.1">
+      android:versionCode="217"
+      android:versionName="3.24.1">
 
     <uses-sdk tools:overrideLibrary="com.amulyakhare.textdrawable,com.astuetz.pagerslidingtabstrip,pl.tajchert.waitingdots,com.h6ah4i.android.multiselectlistpreferencecompat"/>
 
@@ -100,6 +100,9 @@
     <meta-data android:name="org.thoughtcrime.securesms.mms.TextSecureGlideModule"
                android:value="GlideModule" />
 
+    <meta-data android:name="com.google.android.gms.car.application"
+               android:resource="@xml/automotive_app_desc" />
+
     <activity android:name="org.thoughtcrime.redphone.RedPhone"
               android:excludeFromRecents="true"
               android:screenOrientation="portrait"
@@ -172,9 +175,13 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
         </intent-filter>
 
-
+        <meta-data android:name="com.sec.minimode.icon.portrait.normal"
+            android:resource="@drawable/icon" />
+        <meta-data android:name="com.sec.minimode.icon.landscape.normal"
+            android:resource="@drawable/icon" />
 
     </activity-alias>
 
@@ -255,11 +262,9 @@
           android:windowSoftInputMode="stateHidden"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".ViewIdentityActivity"
-              android:label="@string/AndroidManifest__public_identity_key"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".ViewLocalIdentityActivity"
+    <activity android:name=".giph.ui.GiphyActivity"
+              android:theme="@style/TextSecure.LightNoActionBar"
+              android:windowSoftInputMode="stateHidden"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".PassphraseChangeActivity"
@@ -267,7 +272,6 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".VerifyIdentityActivity"
-              android:label="@string/AndroidManifest__verify_identity"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".ApplicationPreferencesActivity"
@@ -297,6 +301,7 @@
 
     <activity android:name=".MediaOverviewActivity"
               android:windowSoftInputMode="stateHidden"
+              android:launchMode="singleTask"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
     <activity android:name=".DummyActivity"
@@ -447,6 +452,21 @@
         </intent-filter>
     </receiver>
 
+    <receiver android:name=".notifications.AndroidAutoHeardReceiver"
+              android:exported="false">
+        <intent-filter>
+          <action android:name="org.thoughtcrime.securesms.notifications.ANDROID_AUTO_HEARD"/>
+        </intent-filter>
+    </receiver>
+
+    <receiver android:name=".notifications.AndroidAutoReplyReceiver"
+              android:exported="false">
+        <intent-filter>
+          <action android:name="org.thoughtcrime.securesms.notifications.ANDROID_AUTO_REPLY"/>
+        </intent-filter>
+    </receiver>
+
+
     <provider android:name=".providers.PartProvider"
               android:grantUriPermissions="true"
               android:exported="false"
@@ -497,6 +517,13 @@
             <action android:name="info.guardianproject.panic.action.TRIGGER" />
         </intent-filter>
     </receiver>
+
+    <uses-library android:name="com.sec.android.app.multiwindow" android:required="false"/>
+    <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
+    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip" />
+    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip" />
+    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip" />
+    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip" />
 
 </application>
 </manifest>

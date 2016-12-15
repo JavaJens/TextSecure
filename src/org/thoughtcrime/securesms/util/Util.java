@@ -19,6 +19,8 @@ package org.thoughtcrime.securesms.util;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -384,6 +386,14 @@ public class Util {
     }
   }
 
+  public static <T> T getRandomElement(T[] elements) {
+    try {
+      return elements[SecureRandom.getInstance("SHA1PRNG").nextInt(elements.length)];
+    } catch (NoSuchAlgorithmException e) {
+      throw new AssertionError(e);
+    }
+  }
+
   public static boolean equals(@Nullable Object a, @Nullable Object b) {
     return a == b || (a != null && a.equals(b));
   }
@@ -406,5 +416,35 @@ public class Util {
 
   public static float clamp(float value, float min, float max) {
     return Math.min(Math.max(value, min), max);
+  }
+
+  public static @Nullable String readTextFromClipboard(@NonNull Context context) {
+    if (VERSION.SDK_INT >= 11) {
+      ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+
+      if (clipboardManager.hasPrimaryClip() && clipboardManager.getPrimaryClip().getItemCount() > 0) {
+        return clipboardManager.getPrimaryClip().getItemAt(0).getText().toString();
+      } else {
+        return null;
+      }
+    } else {
+      android.text.ClipboardManager clipboardManager = (android.text.ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+
+      if (clipboardManager.hasText()) {
+        return clipboardManager.getText().toString();
+      } else {
+        return null;
+      }
+    }
+  }
+
+  public static void writeTextToClipboard(@NonNull Context context, @NonNull String text) {
+    if (VERSION.SDK_INT >= 11) {
+      ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+      clipboardManager.setPrimaryClip(ClipData.newPlainText("Safety numbers", text));
+    } else {
+      android.text.ClipboardManager clipboardManager = (android.text.ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+      clipboardManager.setText(text);
+    }
   }
 }
