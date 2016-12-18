@@ -574,7 +574,6 @@ SMS-те от системния архив в Signal. Ако вече сте в
   <string name="conversation_activity__compose_description">Създаване на съобщение</string>
   <string name="conversation_activity__emoji_toggle_description">Смени emoji клавиатурата</string>
   <string name="conversation_activity__attachment_thumbnail">Изображение на прикачен файл</string>
-  <string name="conversation_activity__quick_attachment_drawer_toggle_description">Затвори/отвори чекмеджето с прикачени файлове</string>
   <string name="conversation_activity__enable_signal_for_sms">Активиране на SIgnal за SMS-и</string>
   <!--conversation_input_panel-->
   <string name="conversation_input_panel__slide_to_cancel">ПЛЪЗНЕТЕ, ЗА ДА ОТКАЖЕТЕ</string>

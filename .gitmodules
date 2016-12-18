@@ -10,3 +10,6 @@
 [submodule "libs/ShortcutBadger"]
 	path = libs/ShortcutBadger
 	url = https://github.com/WhisperSystems/ShortcutBadger.git
+[submodule "libs/PhotoView"]
+	path = libs/PhotoView
+	url = https://github.com/chrisbanes/PhotoView.git

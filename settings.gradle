@@ -1,4 +1,4 @@
-include ':android', ':java', 'libs:android-support-v4-preferencefragment', 'libs:org.w3c.dom', 'libs:ShortcutBadger:ShortcutBadger'
+include ':android', ':java', 'libs:android-support-v4-preferencefragment', 'libs:org.w3c.dom', 'libs:ShortcutBadger:ShortcutBadger', 'libs:PhotoView:library'
 project(':android').projectDir = new File('libs/libtextsecure-java/android')
 project(':java').projectDir = new File('libs/libtextsecure-java/java')
 
