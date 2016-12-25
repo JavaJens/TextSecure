@@ -36,7 +36,7 @@ import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture.Listener;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
-import org.whispersystems.libaxolotl.util.guava.Optional;
+import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.util.concurrent.ExecutionException;
 
@@ -83,7 +83,7 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity implemen
     heart             = ViewUtil.findById(this, R.id.heart);
     contactsFragment  = (ContactSelectionListFragment)getSupportFragmentManager().findFragmentById(R.id.contact_selection_list_fragment);
 
-    inviteText.setText(getString(R.string.InviteActivity_lets_switch_to_signal, "http://sgnl.link/1KpeYmF"));
+    inviteText.setText(getString(R.string.InviteActivity_lets_switch_to_signal, "https://sgnl.link/1KpeYmF"));
     updateSmsButtonText();
 
     if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
@@ -95,6 +95,7 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity implemen
     smsCancelButton.setOnClickListener(new SmsCancelClickListener());
     smsSendButton.setOnClickListener(new SmsSendClickListener());
     contactFilter.setOnFilterChangedListener(new ContactFilterChangedListener());
+    contactFilter.setNavigationIcon(R.drawable.ic_search_white_24dp);
   }
 
   private Animation loadAnimation(@AnimRes int animResId) {
@@ -120,7 +121,7 @@ public class InviteActivity extends PassphraseRequiredActionBarActivity implemen
   }
 
   private void updateSmsButtonText() {
-    smsSendButton.setText(getResources().getQuantityString(R.plurals.InviteActivity_send_to_friends,
+    smsSendButton.setText(getResources().getQuantityString(R.plurals.InviteActivity_send_sms_to_friends,
                                                            contactsFragment.getSelectedContacts().size(),
                                                            contactsFragment.getSelectedContacts().size()));
     smsSendButton.setEnabled(!contactsFragment.getSelectedContacts().isEmpty());

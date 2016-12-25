@@ -40,18 +40,11 @@
                      android:background="?android:windowBackground"
                      android:visibility="gone">
 
-            <org.thoughtcrime.securesms.components.RemovableMediaView
+            <org.thoughtcrime.securesms.components.RemovableEditableMediaView
                     android:id="@+id/removable_media_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
-
-                <org.thoughtcrime.securesms.components.location.SignalMapView
-                        android:id="@+id/attachment_location"
-                        android:layout_width="210dp"
-                        android:layout_height="210dp"
-                        android:layout_gravity="center_horizontal"
-                        android:visibility="gone"/>
 
                 <org.thoughtcrime.securesms.components.ThumbnailView
                         android:id="@+id/attachment_thumbnail"
@@ -67,12 +60,13 @@
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
-                        android:background="@color/white"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        app:tintColor="@color/grey_500"/>
+                        app:widgetBackground="@color/white"
+                        app:foregroundTintColor="@color/grey_500"
+                        app:backgroundTintColor="@color/white"/>
 
-            </org.thoughtcrime.securesms.components.RemovableMediaView>
+            </org.thoughtcrime.securesms.components.RemovableEditableMediaView>
 
         </FrameLayout>
 
@@ -83,6 +77,13 @@
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 android:text="@string/ConversationActivity_unblock"
+                android:visibility="gone"/>
+
+        <Button android:id="@+id/make_default_sms_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/conversation_activity__enable_signal_for_sms"
                 android:visibility="gone"/>
 
         <TextView android:id="@+id/space_left"

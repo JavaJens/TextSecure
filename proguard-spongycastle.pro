@@ -11,7 +11,11 @@
 -keep class org.spongycastle.crypto.prng.* {*;}
 -keep class org.spongycastle.crypto.signers.* {*;}
 
--keep class org.spongycastle.jcajce.provider.asymmetric.** {*;}
+-keep class org.spongycastle.jcajce.provider.asymmetric.* {*;}
+-keep class org.spongycastle.jcajce.provider.asymmetric.util.* {*;}
+-keep class org.spongycastle.jcajce.provider.asymmetric.dh.* {*;}
+-keep class org.spongycastle.jcajce.provider.asymmetric.ec.* {*;}
+
 -keep class org.spongycastle.jcajce.provider.digest.** {*;}
 -keep class org.spongycastle.jcajce.provider.keystore.** {*;}
 -keep class org.spongycastle.jcajce.provider.symmetric.** {*;}

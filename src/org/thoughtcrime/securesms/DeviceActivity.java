@@ -16,25 +16,26 @@ import android.widget.Toast;
 
 import org.thoughtcrime.securesms.crypto.IdentityKeyUtil;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
-import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
+import org.thoughtcrime.securesms.push.AccountManagerFactory;
+import org.thoughtcrime.securesms.qr.ScanListener;
 import org.thoughtcrime.securesms.util.Base64;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libaxolotl.IdentityKeyPair;
-import org.whispersystems.libaxolotl.InvalidKeyException;
-import org.whispersystems.libaxolotl.ecc.Curve;
-import org.whispersystems.libaxolotl.ecc.ECPublicKey;
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.push.exceptions.NotFoundException;
-import org.whispersystems.textsecure.internal.push.DeviceLimitExceededException;
+import org.whispersystems.libsignal.IdentityKeyPair;
+import org.whispersystems.libsignal.InvalidKeyException;
+import org.whispersystems.libsignal.ecc.Curve;
+import org.whispersystems.libsignal.ecc.ECPublicKey;
+import org.whispersystems.signalservice.api.SignalServiceAccountManager;
+import org.whispersystems.signalservice.api.push.exceptions.NotFoundException;
+import org.whispersystems.signalservice.internal.push.DeviceLimitExceededException;
 
 import java.io.IOException;
 
 public class DeviceActivity extends PassphraseRequiredActionBarActivity
-    implements Button.OnClickListener, DeviceAddFragment.ScanListener, DeviceLinkFragment.LinkClickedListener
+    implements Button.OnClickListener, ScanListener, DeviceLinkFragment.LinkClickedListener
 {
 
   private static final String TAG = DeviceActivity.class.getSimpleName();
@@ -55,7 +56,7 @@ public class DeviceActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onCreate(Bundle bundle, @NonNull MasterSecret masterSecret) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setTitle(R.string.AndroidManifest_manage_linked_devices);
+    getSupportActionBar().setTitle(R.string.AndroidManifest__linked_devices);
     this.deviceAddFragment  = new DeviceAddFragment();
     this.deviceListFragment = new DeviceListFragment();
     this.deviceLinkFragment = new DeviceLinkFragment();
@@ -95,11 +96,12 @@ public class DeviceActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void onUrlFound(final Uri uri) {
+  public void onQrDataFound(final String data) {
     Util.runOnMain(new Runnable() {
       @Override
       public void run() {
         ((Vibrator)getSystemService(Context.VIBRATOR_SERVICE)).vibrate(50);
+        Uri uri = Uri.parse(data);
         deviceLinkFragment.setLinkClickedListener(uri, DeviceActivity.this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -143,11 +145,11 @@ public class DeviceActivity extends PassphraseRequiredActionBarActivity
       @Override
       protected Integer doInBackground(Void... params) {
         try {
-          Context                  context          = DeviceActivity.this;
-          TextSecureAccountManager accountManager   = TextSecureCommunicationFactory.createManager(context);
-          String                   verificationCode = accountManager.getNewDeviceVerificationCode();
-          String                   ephemeralId      = uri.getQueryParameter("uuid");
-          String                   publicKeyEncoded = uri.getQueryParameter("pub_key");
+          Context                     context          = DeviceActivity.this;
+          SignalServiceAccountManager accountManager   = AccountManagerFactory.createManager(context);
+          String                      verificationCode = accountManager.getNewDeviceVerificationCode();
+          String                      ephemeralId      = uri.getQueryParameter("uuid");
+          String                      publicKeyEncoded = uri.getQueryParameter("pub_key");
 
           if (TextUtils.isEmpty(ephemeralId) || TextUtils.isEmpty(publicKeyEncoded)) {
             Log.w(TAG, "UUID or Key is empty!");

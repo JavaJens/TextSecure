@@ -32,15 +32,15 @@ import android.widget.Toast;
 
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
-import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
+import org.thoughtcrime.securesms.push.AccountManagerFactory;
 import org.thoughtcrime.securesms.service.RegistrationService;
 import org.thoughtcrime.securesms.util.Dialogs;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.push.exceptions.ExpectationFailedException;
-import org.whispersystems.textsecure.api.push.exceptions.RateLimitException;
-import org.whispersystems.textsecure.api.util.PhoneNumberFormatter;
+import org.whispersystems.signalservice.api.SignalServiceAccountManager;
+import org.whispersystems.signalservice.api.push.exceptions.ExpectationFailedException;
+import org.whispersystems.signalservice.api.push.exceptions.RateLimitException;
+import org.whispersystems.signalservice.api.util.PhoneNumberFormatter;
 
 import java.io.IOException;
 
@@ -521,8 +521,8 @@ public class RegistrationProgressActivity extends BaseActionBarActivity {
         @Override
         protected Integer doInBackground(Void... params) {
           try {
-            TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context, e164number, password);
-            int                      registrationId = TextSecurePreferences.getLocalRegistrationId(context);
+            SignalServiceAccountManager accountManager = AccountManagerFactory.createManager(context, e164number, password);
+            int                         registrationId = TextSecurePreferences.getLocalRegistrationId(context);
 
             accountManager.verifyAccountWithCode(code, signalingKey, true, registrationId, true);
             return SUCCESS;
@@ -613,15 +613,15 @@ public class RegistrationProgressActivity extends BaseActionBarActivity {
         @Override
         protected Integer doInBackground(Void... params) {
           try {
-            TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(context, e164number, password);
+            SignalServiceAccountManager accountManager = AccountManagerFactory.createManager(context, e164number, password);
             accountManager.requestVoiceVerificationCode();
 
             return SUCCESS;
           } catch (RateLimitException e) {
-            Log.w("RegistrationProgressActivity", e);
+            Log.w("RegProgressActivity", e);
             return RATE_LIMIT_EXCEEDED;
           } catch (IOException e) {
-            Log.w("RegistrationProgressActivity", e);
+            Log.w("RegProgressActivity", e);
             return NETWORK_ERROR;
           }
         }

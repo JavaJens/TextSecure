@@ -10,9 +10,9 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.whispersystems.textsecure.api.push.ContactTokenDetails;
-import org.whispersystems.textsecure.api.util.InvalidNumberException;
-import org.whispersystems.textsecure.api.util.PhoneNumberFormatter;
+import org.whispersystems.signalservice.api.push.ContactTokenDetails;
+import org.whispersystems.signalservice.api.util.InvalidNumberException;
+import org.whispersystems.signalservice.api.util.PhoneNumberFormatter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -198,15 +198,7 @@ public class TextSecureDirectory {
       if (cursor != null)
         cursor.close();
 
-      final SQLiteDatabase readableDb = databaseHelper.getReadableDatabase();
-      if (readableDb != null) {
-        cursor = readableDb.query(TABLE_NAME, new String[]{NUMBER},
-            null, null, null, null, null);
-
-        while (cursor != null && cursor.moveToNext()) {
-          results.add(cursor.getString(0));
-        }
-      }
+      results.addAll(getActiveNumbers());
 
       return results;
     } finally {

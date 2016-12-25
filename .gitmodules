@@ -1,0 +1,15 @@
+[submodule "libs/libtextsecure-java"]
+	path = libs/libtextsecure-java
+	url = https://github.com/LibreSignal/libtextsecure-java.git
+[submodule "libs/android-support-v4-preferencefragment"]
+	path = libs/android-support-v4-preferencefragment
+	url = https://github.com/kolavar/android-support-v4-preferencefragment.git
+[submodule "libs/org.w3c.dom"]
+	path = libs/org.w3c.dom
+	url = https://github.com/SMSSecure/org.w3c.dom.git
+[submodule "libs/ShortcutBadger"]
+	path = libs/ShortcutBadger
+	url = https://github.com/WhisperSystems/ShortcutBadger.git
+[submodule "libs/PhotoView"]
+	path = libs/PhotoView
+	url = https://github.com/chrisbanes/PhotoView.git

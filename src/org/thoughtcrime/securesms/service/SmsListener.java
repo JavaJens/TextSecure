@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
@@ -31,7 +32,6 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.jobs.SmsReceiveJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.VisibleForTesting;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,7 +41,7 @@ public class SmsListener extends BroadcastReceiver {
   private static final String SMS_RECEIVED_ACTION  = Telephony.Sms.Intents.SMS_RECEIVED_ACTION;
   private static final String SMS_DELIVERED_ACTION = Telephony.Sms.Intents.SMS_DELIVER_ACTION;
 
-  private static final Pattern CHALLENGE_PATTERN = Pattern.compile(".*Your TextSecure verification code: ([0-9]{3,4})-([0-9]{3,4}).*", Pattern.DOTALL);
+  private static final Pattern CHALLENGE_PATTERN = Pattern.compile(".*Your (Signal|TextSecure) verification code:? ([0-9]{3,4})-([0-9]{3,4}).*", Pattern.DOTALL);
 
   private boolean isExemption(SmsMessage message, String messageBody) {
 
@@ -136,7 +136,7 @@ public class SmsListener extends BroadcastReceiver {
       throw new AssertionError("Expression should match.");
     }
 
-    return challengeMatcher.group(1) + challengeMatcher.group(2);
+    return challengeMatcher.group(2) + challengeMatcher.group(3);
   }
 
   @Override

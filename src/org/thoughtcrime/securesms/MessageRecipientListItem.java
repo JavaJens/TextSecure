@@ -99,7 +99,7 @@ public class MessageRecipientListItem extends RelativeLayout
       resendButton.setVisibility(View.GONE);
       conflictButton.setVisibility(View.VISIBLE);
 
-      errorText = getContext().getString(R.string.MessageDetailsRecipient_new_identity);
+      errorText = getContext().getString(R.string.MessageDetailsRecipient_new_safety_number);
       conflictButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -109,6 +109,7 @@ public class MessageRecipientListItem extends RelativeLayout
     } else if (networkFailure != null || (!isPushGroup && record.isFailed())) {
       resendButton.setVisibility(View.VISIBLE);
       resendButton.setEnabled(true);
+      resendButton.requestFocus();
       conflictButton.setVisibility(View.GONE);
 
       errorText = getContext().getString(R.string.MessageDetailsRecipient_failed_to_send);

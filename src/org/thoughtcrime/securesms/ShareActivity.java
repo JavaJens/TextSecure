@@ -21,8 +21,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.os.Process;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.StructStat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,9 +43,13 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -59,6 +70,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private ViewGroup    fragmentContainer;
   private View         progressWheel;
   private Uri          resolvedExtra;
+  private String       mimeType;
   private boolean      isPassingAlongMedia;
 
   @Override
@@ -110,6 +122,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     isPassingAlongMedia = false;
 
     Uri streamExtra = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
+    mimeType        = getMimeType(streamExtra);
     if (streamExtra != null && PartAuthority.isLocalUri(streamExtra)) {
       isPassingAlongMedia = true;
       resolvedExtra       = streamExtra;
@@ -166,19 +179,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
     final Intent intent      = new Intent(this, target);
     final String textExtra   = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-    final Uri    streamExtra = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
-    final String type        = streamExtra != null ? getMimeType(streamExtra)
-                                                   : MediaUtil.getCorrectedMimeType(getIntent().getType());
     intent.putExtra(ConversationActivity.TEXT_EXTRA, textExtra);
-    if (resolvedExtra != null) intent.setDataAndType(resolvedExtra, type);
+    if (resolvedExtra != null) intent.setDataAndType(resolvedExtra, mimeType);
 
     return intent;
   }
 
-  private String getMimeType(Uri uri) {
-    final String type = MediaUtil.getMimeType(getApplicationContext(), uri);
-    return type == null ? MediaUtil.getCorrectedMimeType(getIntent().getType())
-                        : type;
+  private String getMimeType(@Nullable Uri uri) {
+    if (uri != null) {
+      final String mimeType = MediaUtil.getMimeType(getApplicationContext(), uri);
+      if (mimeType != null) return mimeType;
+    }
+    return MediaUtil.getCorrectedMimeType(getIntent().getType());
   }
 
   private class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
@@ -195,12 +207,19 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
           return null;
         }
 
-        InputStream input = context.getContentResolver().openInputStream(uris[0]);
-        if (input == null) {
+        InputStream inputStream;
+
+        if ("file".equals(uris[0].getScheme())) {
+          inputStream = openFileUri(uris[0]);
+        } else {
+          inputStream = context.getContentResolver().openInputStream(uris[0]);
+        }
+
+        if (inputStream == null) {
           return null;
         }
 
-        return PersistentBlobProvider.getInstance(context).create(masterSecret, input);
+        return PersistentBlobProvider.getInstance(context).create(masterSecret, inputStream, mimeType);
       } catch (IOException ioe) {
         Log.w(TAG, ioe);
         return null;
@@ -212,6 +231,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       resolvedExtra = uri;
       ViewUtil.fadeIn(fragmentContainer, 300);
       ViewUtil.fadeOut(progressWheel, 300);
+    }
+
+    private InputStream openFileUri(Uri uri) throws IOException {
+      FileInputStream fin   = new FileInputStream(uri.getPath());
+      int             owner = FileUtils.getFileDescriptorOwner(fin.getFD());
+      
+      if (owner == -1 || owner == Process.myUid()) {
+        fin.close();
+        throw new IOException("File owned by application");
+      }
+
+      return fin;
     }
   }
 }

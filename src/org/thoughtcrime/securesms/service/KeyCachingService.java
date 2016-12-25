@@ -243,7 +243,7 @@ public class KeyCachingService extends Service {
     builder.setWhen(0);
     builder.setPriority(Notification.PRIORITY_MIN);
 
-    builder.addAction(R.drawable.ic_menu_lock_holo_dark, getString(R.string.KeyCachingService_lock), buildLockIntent());
+    builder.addAction(R.drawable.ic_menu_lock_dark, getString(R.string.KeyCachingService_lock), buildLockIntent());
     builder.setContentIntent(buildLaunchIntent());
 
     stopForeground(true);
@@ -265,17 +265,16 @@ public class KeyCachingService extends Service {
   }
 
   private void foregroundServiceLegacy() {
-    Notification notification  = new Notification(R.drawable.icon_cached,
-                                                  getString(R.string.KeyCachingService_signal_passphrase_cached),
-                                                  System.currentTimeMillis());
-    notification.setLatestEventInfo(getApplicationContext(),
-                                    getString(R.string.KeyCachingService_passphrase_cached),
-                                    getString(R.string.KeyCachingService_signal_passphrase_cached),
-                                    buildLaunchIntent());
-    notification.tickerText = null;
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+    builder.setSmallIcon(R.drawable.icon_cached);
+    builder.setWhen(System.currentTimeMillis());
+
+    builder.setContentTitle(getString(R.string.KeyCachingService_passphrase_cached));
+    builder.setContentText(getString(R.string.KeyCachingService_signal_passphrase_cached));
+    builder.setContentIntent(buildLaunchIntent());
 
     stopForeground(true);
-    startForeground(SERVICE_RUNNING_ID, notification);
+    startForeground(SERVICE_RUNNING_ID, builder.build());
   }
 
   private void foregroundService() {

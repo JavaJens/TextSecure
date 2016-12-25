@@ -8,16 +8,15 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
-import org.thoughtcrime.securesms.gcm.GcmBroadcastReceiver;
 import org.thoughtcrime.securesms.jobs.PushContentReceiveJob;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.jobqueue.requirements.NetworkRequirement;
 import org.whispersystems.jobqueue.requirements.NetworkRequirementProvider;
 import org.whispersystems.jobqueue.requirements.RequirementListener;
-import org.whispersystems.libaxolotl.InvalidVersionException;
-import org.whispersystems.textsecure.api.TextSecureMessagePipe;
-import org.whispersystems.textsecure.api.TextSecureMessageReceiver;
-import org.whispersystems.textsecure.api.messages.TextSecureEnvelope;
+import org.whispersystems.libsignal.InvalidVersionException;
+import org.whispersystems.signalservice.api.SignalServiceMessagePipe;
+import org.whispersystems.signalservice.api.SignalServiceMessageReceiver;
+import org.whispersystems.signalservice.api.messages.SignalServiceEnvelope;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class MessageRetrievalService extends Service implements Runnable, Inject
   private NetworkRequirementProvider networkRequirementProvider;
 
   @Inject
-  public TextSecureMessageReceiver receiver;
+  public SignalServiceMessageReceiver receiver;
 
   private int          activeActivities = 0;
   private List<Intent> pushPending      = new LinkedList<>();
@@ -73,16 +72,16 @@ public class MessageRetrievalService extends Service implements Runnable, Inject
       waitForConnectionNecessary();
 
       Log.w(TAG, "Making websocket connection....");
-      TextSecureMessagePipe pipe = receiver.createMessagePipe();
+      SignalServiceMessagePipe pipe = receiver.createMessagePipe();
 
       try {
         while (isConnectionNecessary()) {
           try {
             Log.w(TAG, "Reading message...");
             pipe.read(REQUEST_TIMEOUT_MINUTES, TimeUnit.MINUTES,
-                      new TextSecureMessagePipe.MessagePipeCallback() {
+                      new SignalServiceMessagePipe.MessagePipeCallback() {
                         @Override
-                        public void onMessage(TextSecureEnvelope envelope) {
+                        public void onMessage(SignalServiceEnvelope envelope) {
                           Log.w(TAG, "Retrieved envelope! " + envelope.getSource());
 
                           PushContentReceiveJob receiveJob = new PushContentReceiveJob(MessageRetrievalService.this);
@@ -140,7 +139,6 @@ public class MessageRetrievalService extends Service implements Runnable, Inject
   private synchronized void decrementPushReceived() {
     if (!pushPending.isEmpty()) {
       Intent intent = pushPending.remove(0);
-      GcmBroadcastReceiver.completeWakefulIntent(intent);
       notifyAll();
     }
   }
@@ -162,7 +160,7 @@ public class MessageRetrievalService extends Service implements Runnable, Inject
     }
   }
 
-  private void shutdown(TextSecureMessagePipe pipe) {
+  private void shutdown(SignalServiceMessagePipe pipe) {
     try {
       pipe.shutdown();
     } catch (Throwable t) {

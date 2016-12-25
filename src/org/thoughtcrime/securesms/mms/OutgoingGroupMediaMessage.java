@@ -7,7 +7,7 @@ import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.util.Base64;
-import org.whispersystems.textsecure.internal.push.TextSecureProtos.GroupContext;
+import org.whispersystems.signalservice.internal.push.SignalServiceProtos.GroupContext;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -20,11 +20,12 @@ public class OutgoingGroupMediaMessage extends OutgoingSecureMediaMessage {
   public OutgoingGroupMediaMessage(@NonNull Recipients recipients,
                                    @NonNull String encodedGroupContext,
                                    @NonNull List<Attachment> avatar,
-                                   long sentTimeMillis)
+                                   long sentTimeMillis,
+                                   long expiresIn)
       throws IOException
   {
     super(recipients, encodedGroupContext, avatar, sentTimeMillis,
-          ThreadDatabase.DistributionTypes.CONVERSATION);
+          ThreadDatabase.DistributionTypes.CONVERSATION, expiresIn);
 
     this.group = GroupContext.parseFrom(Base64.decode(encodedGroupContext));
   }
@@ -32,12 +33,13 @@ public class OutgoingGroupMediaMessage extends OutgoingSecureMediaMessage {
   public OutgoingGroupMediaMessage(@NonNull Recipients recipients,
                                    @NonNull GroupContext group,
                                    @Nullable final Attachment avatar,
-                                   long sentTimeMillis)
+                                   long sentTimeMillis,
+                                   long expireIn)
   {
     super(recipients, Base64.encodeBytes(group.toByteArray()),
           new LinkedList<Attachment>() {{if (avatar != null) add(avatar);}},
           System.currentTimeMillis(),
-          ThreadDatabase.DistributionTypes.CONVERSATION);
+          ThreadDatabase.DistributionTypes.CONVERSATION, expireIn);
 
     this.group = group;
   }

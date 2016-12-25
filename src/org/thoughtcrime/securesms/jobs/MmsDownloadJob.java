@@ -24,11 +24,11 @@ import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.Util;
 import org.whispersystems.jobqueue.JobParameters;
 import org.whispersystems.jobqueue.requirements.NetworkRequirement;
-import org.whispersystems.libaxolotl.DuplicateMessageException;
-import org.whispersystems.libaxolotl.InvalidMessageException;
-import org.whispersystems.libaxolotl.LegacyMessageException;
-import org.whispersystems.libaxolotl.NoSessionException;
-import org.whispersystems.libaxolotl.util.guava.Optional;
+import org.whispersystems.libsignal.DuplicateMessageException;
+import org.whispersystems.libsignal.InvalidMessageException;
+import org.whispersystems.libsignal.LegacyMessageException;
+import org.whispersystems.libsignal.NoSessionException;
+import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -194,7 +194,7 @@ public class MmsDownloadJob extends MasterSecretJob {
 
 
 
-    IncomingMediaMessage message  = new IncomingMediaMessage(from, to, cc, body, retrieved.getDate() * 1000L, attachments, subscriptionId);
+    IncomingMediaMessage message  = new IncomingMediaMessage(from, to, cc, body, retrieved.getDate() * 1000L, attachments, subscriptionId, 0, false);
 
     Pair<Long, Long> messageAndThreadId  = database.insertMessageInbox(new MasterSecretUnion(masterSecret),
                                                                        message, contentLocation, threadId);

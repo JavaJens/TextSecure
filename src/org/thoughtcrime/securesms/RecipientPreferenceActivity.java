@@ -1,7 +1,10 @@
 package org.thoughtcrime.securesms;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -26,16 +29,27 @@ import android.widget.TextView;
 import org.thoughtcrime.securesms.color.MaterialColor;
 import org.thoughtcrime.securesms.color.MaterialColors;
 import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
+import org.thoughtcrime.securesms.database.GroupDatabase;
 import org.thoughtcrime.securesms.database.RecipientPreferenceDatabase.VibrateState;
+import org.thoughtcrime.securesms.jobs.MultiDeviceBlockedUpdateJob;
+import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.preferences.AdvancedRingtonePreference;
 import org.thoughtcrime.securesms.preferences.ColorPreference;
 import org.thoughtcrime.securesms.recipients.RecipientFactory;
 import org.thoughtcrime.securesms.recipients.Recipients;
+import org.thoughtcrime.securesms.util.DirectoryHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.IdentityUtil;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
+import org.whispersystems.libsignal.IdentityKey;
+import org.whispersystems.libsignal.util.guava.Optional;
+
+import java.util.concurrent.ExecutionException;
 
 public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActivity implements Recipients.RecipientsModifiedListener
 {
@@ -53,10 +67,11 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-  private AvatarImageView avatar;
-  private Toolbar         toolbar;
-  private TextView        title;
-  private TextView        blockedIndicator;
+  private AvatarImageView   avatar;
+  private Toolbar           toolbar;
+  private TextView          title;
+  private TextView          blockedIndicator;
+  private BroadcastReceiver staleReceiver;
 
   @Override
   public void onPreCreate() {
@@ -72,6 +87,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     Recipients recipients   = RecipientFactory.getRecipientsForIds(this, recipientIds, true);
 
     initializeToolbar();
+    initializeReceivers();
     setHeader(recipients);
     recipients.addListener(this);
 
@@ -85,6 +101,12 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    unregisterReceiver(staleReceiver);
   }
 
   @Override
@@ -108,6 +130,8 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
   private void initializeToolbar() {
     this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+    this.toolbar.setLogo(null);
+
     setSupportActionBar(toolbar);
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -116,6 +140,23 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     this.avatar           = (AvatarImageView) toolbar.findViewById(R.id.avatar);
     this.title            = (TextView) toolbar.findViewById(R.id.name);
     this.blockedIndicator = (TextView) toolbar.findViewById(R.id.blocked_indicator);
+  }
+
+  private void initializeReceivers() {
+    this.staleReceiver = new BroadcastReceiver() {
+      @Override
+      public void onReceive(Context context, Intent intent) {
+        Recipients recipients = RecipientFactory.getRecipientsForIds(context, getIntent().getLongArrayExtra(RECIPIENTS_EXTRA), true);
+        recipients.addListener(RecipientPreferenceActivity.this);
+        onModified(recipients);
+      }
+    };
+
+    IntentFilter staleFilter = new IntentFilter();
+    staleFilter.addAction(GroupDatabase.DATABASE_UPDATE_ACTION);
+    staleFilter.addAction(RecipientFactory.RECIPIENT_CLEAR_ACTION);
+
+    registerReceiver(staleReceiver, staleFilter);
   }
 
   private void setHeader(Recipients recipients) {
@@ -148,19 +189,19 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
     private final Handler handler = new Handler();
 
-    private Recipients recipients;
+    private Recipients        recipients;
+    private BroadcastReceiver staleReceiver;
+    private MasterSecret      masterSecret;
 
     @Override
     public void onCreate(Bundle icicle) {
       super.onCreate(icicle);
 
       addPreferencesFromResource(R.xml.recipient_preferences);
+      initializeRecipients();
 
-      this.recipients = RecipientFactory.getRecipientsForIds(getActivity(),
-                                                             getArguments().getLongArray(RECIPIENTS_EXTRA),
-                                                             true);
+      this.masterSecret = getArguments().getParcelable("master_secret");
 
-      this.recipients.addListener(this);
       this.findPreference(PREFERENCE_TONE)
           .setOnPreferenceChangeListener(new RingtoneChangeListener());
       this.findPreference(PREFERENCE_VIBRATE)
@@ -171,8 +212,6 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
           .setOnPreferenceClickListener(new BlockClickedListener());
       this.findPreference(PREFERENCE_COLOR)
           .setOnPreferenceChangeListener(new ColorChangeListener());
-      this.findPreference(PREFERENCE_IDENTITY)
-          .setOnPreferenceClickListener(new IdentityClickedListener());
    }
 
     @Override
@@ -185,6 +224,30 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     public void onDestroy() {
       super.onDestroy();
       this.recipients.removeListener(this);
+      getActivity().unregisterReceiver(staleReceiver);
+    }
+
+    private void initializeRecipients() {
+      this.recipients = RecipientFactory.getRecipientsForIds(getActivity(),
+                                                             getArguments().getLongArray(RECIPIENTS_EXTRA),
+                                                             true);
+
+      this.recipients.addListener(this);
+
+      this.staleReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+          recipients.removeListener(RecipientPreferenceFragment.this);
+          recipients = RecipientFactory.getRecipientsForIds(getActivity(), getArguments().getLongArray(RECIPIENTS_EXTRA), true);
+          onModified(recipients);
+        }
+      };
+
+      IntentFilter intentFilter = new IntentFilter();
+      intentFilter.addAction(GroupDatabase.DATABASE_UPDATE_ACTION);
+      intentFilter.addAction(RecipientFactory.RECIPIENT_CLEAR_ACTION);
+
+      getActivity().registerReceiver(staleReceiver, intentFilter);
     }
 
     private void setSummaries(Recipients recipients) {
@@ -193,7 +256,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       ListPreference             vibratePreference  = (ListPreference) this.findPreference(PREFERENCE_VIBRATE);
       ColorPreference            colorPreference    = (ColorPreference) this.findPreference(PREFERENCE_COLOR);
       Preference                 blockPreference    = this.findPreference(PREFERENCE_BLOCK);
-      Preference                 identityPreference = this.findPreference(PREFERENCE_IDENTITY);
+      final Preference           identityPreference = this.findPreference(PREFERENCE_IDENTITY);
 
       mutePreference.setChecked(recipients.isMuted());
 
@@ -229,6 +292,23 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
 
         if (recipients.isBlocked()) blockPreference.setTitle(R.string.RecipientPreferenceActivity_unblock);
         else                        blockPreference.setTitle(R.string.RecipientPreferenceActivity_block);
+
+        IdentityUtil.getRemoteIdentityKey(getActivity(), masterSecret, recipients.getPrimaryRecipient()).addListener(new ListenableFuture.Listener<Optional<IdentityKey>>() {
+          @Override
+          public void onSuccess(Optional<IdentityKey> result) {
+            if (result.isPresent()) {
+              if (identityPreference != null) identityPreference.setOnPreferenceClickListener(new IdentityClickedListener(result.get()));
+              if (identityPreference != null) identityPreference.setEnabled(true);
+            } else {
+              if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
+            }
+          }
+
+          @Override
+          public void onFailure(ExecutionException e) {
+            if (identityPreference != null) getPreferenceScreen().removePreference(identityPreference);
+          }
+        });
       }
     }
 
@@ -307,8 +387,17 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
           new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-              DatabaseFactory.getRecipientPreferenceDatabase(getActivity())
+              Context context = getActivity();
+              DatabaseFactory.getRecipientPreferenceDatabase(context)
                              .setColor(recipients, selectedColor);
+
+              if (DirectoryHelper.getUserCapabilities(context, recipients)
+                                 .getTextCapability() == DirectoryHelper.UserCapabilities.Capability.SUPPORTED)
+              {
+                ApplicationContext.getInstance(context)
+                                  .getJobManager()
+                                  .add(new MultiDeviceContactUpdateJob(context, recipients.getPrimaryRecipient().getRecipientId()));
+              }
               return null;
             }
           }.execute();
@@ -356,10 +445,18 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
     }
 
     private class IdentityClickedListener implements Preference.OnPreferenceClickListener {
+
+      private final IdentityKey identityKey;
+
+      private IdentityClickedListener(IdentityKey identityKey) {
+        this.identityKey = identityKey;
+      }
+
       @Override
       public boolean onPreferenceClick(Preference preference) {
         Intent verifyIdentityIntent = new Intent(getActivity(), VerifyIdentityActivity.class);
-        verifyIdentityIntent.putExtra("recipient", recipients.getPrimaryRecipient().getRecipientId());
+        verifyIdentityIntent.putExtra(VerifyIdentityActivity.RECIPIENT_ID, recipients.getPrimaryRecipient().getRecipientId());
+        verifyIdentityIntent.putExtra(VerifyIdentityActivity.RECIPIENT_IDENTITY, new IdentityKeyParcelable(identityKey));
         startActivity(verifyIdentityIntent);
 
         return true;
@@ -378,7 +475,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       private void handleBlock() {
         new AlertDialog.Builder(getActivity())
             .setTitle(R.string.RecipientPreferenceActivity_block_this_contact_question)
-            .setMessage(R.string.RecipientPreferenceActivity_you_will_no_longer_receive_messages_or_calls_from_this_user)
+            .setMessage(R.string.RecipientPreferenceActivity_you_will_no_longer_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.RecipientPreferenceActivity_block, new DialogInterface.OnClickListener() {
@@ -392,7 +489,7 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
       private void handleUnblock() {
         new AlertDialog.Builder(getActivity())
             .setTitle(R.string.RecipientPreferenceActivity_unblock_this_contact_question)
-            .setMessage(R.string.RecipientPreferenceActivity_are_you_sure_you_want_to_unblock_this_contact)
+            .setMessage(R.string.RecipientPreferenceActivity_you_will_once_again_be_able_to_receive_messages_and_calls_from_this_contact)
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.RecipientPreferenceActivity_unblock, new DialogInterface.OnClickListener() {
@@ -409,8 +506,14 @@ public class RecipientPreferenceActivity extends PassphraseRequiredActionBarActi
         new AsyncTask<Void, Void, Void>() {
           @Override
           protected Void doInBackground(Void... params) {
-            DatabaseFactory.getRecipientPreferenceDatabase(getActivity())
+            Context context = getActivity();
+
+            DatabaseFactory.getRecipientPreferenceDatabase(context)
                            .setBlocked(recipients, blocked);
+
+            ApplicationContext.getInstance(context)
+                              .getJobManager()
+                              .add(new MultiDeviceBlockedUpdateJob(context));
             return null;
           }
         }.execute();

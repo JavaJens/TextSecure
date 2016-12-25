@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.preferences;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,21 +19,32 @@ import com.doomonafireball.betterpickers.hmspicker.HmsPickerDialogFragment;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.BlockedContactsActivity;
+import org.thoughtcrime.securesms.ContactSelectionListFragment;
 import org.thoughtcrime.securesms.PassphraseChangeActivity;
+import org.thoughtcrime.securesms.PushContactSelectionActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.contacts.CustomContactDirectory;
+import org.thoughtcrime.securesms.contacts.RefreshContactDirectoryTask;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.crypto.MasterSecretUtil;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AppProtectionPreferenceFragment extends PreferenceFragment {
 
   private static final String PREFERENCE_CATEGORY_BLOCKED = "preference_category_blocked";
 
+  private static final int EDIT_CONTACTS_REQUEST_CODE = 1;
+
   private MasterSecret       masterSecret;
   private CheckBoxPreference disablePassphrase;
+  private Preference         enableCustomContactsPreference;
+  private Preference         editCustomContactsPreference;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -41,6 +53,8 @@ public class AppProtectionPreferenceFragment extends PreferenceFragment {
 
     masterSecret      = getArguments().getParcelable("master_secret");
     disablePassphrase = (CheckBoxPreference) this.findPreference("pref_enable_passphrase_temporary");
+    enableCustomContactsPreference = this.findPreference("pref_custom_contact_directory");
+    editCustomContactsPreference = this.findPreference("pref_custom_contact_directory_edit");
 
     this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_PREF)
         .setOnPreferenceClickListener(new ChangePassphraseClickListener());
@@ -50,6 +64,30 @@ public class AppProtectionPreferenceFragment extends PreferenceFragment {
         .setOnPreferenceClickListener(new BlockedContactsClickListener());
     disablePassphrase
         .setOnPreferenceChangeListener(new DisablePassphraseClickListener());
+
+    enableCustomContactsPreference.setOnPreferenceChangeListener(new EnableCustomContactsPreferenceChangeListener());
+    editCustomContactsPreference.setOnPreferenceClickListener(new EditCustomContactsPreferenceClickListener());
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if(requestCode == EDIT_CONTACTS_REQUEST_CODE) {
+      if(resultCode == Activity.RESULT_OK) {
+        List<String> contacts = data.getStringArrayListExtra("contacts");
+        if(contacts != null) {
+          CustomContactDirectory.getInstance(getActivity()).removeAllNumbers();
+          CustomContactDirectory.getInstance(getActivity()).addNumbers(new HashSet<>(contacts));
+
+          syncContacts();
+        }
+      }
+    } else {
+      super.onActivityResult(requestCode, resultCode, data);
+    }
+  }
+
+  private void syncContacts() {
+    new RefreshContactDirectoryTask(getActivity(), masterSecret).execute();
   }
 
   @Override
@@ -163,6 +201,32 @@ public class AppProtectionPreferenceFragment extends PreferenceFragment {
       }
 
       return false;
+    }
+  }
+
+  private class EditCustomContactsPreferenceClickListener implements Preference.OnPreferenceClickListener {
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+      startActivityForResult(
+              new Intent(getActivity(), PushContactSelectionActivity.class)
+                      .putExtra(ContactSelectionListFragment.DISPLAY_MODE, ContactSelectionListFragment.DISPLAY_MODE_ALL)
+                      .putExtra(
+                              ContactSelectionListFragment.PRESELECTION,
+                              new ArrayList<>(CustomContactDirectory.getInstance(getActivity()).getAllNumbers())
+                      ),
+              EDIT_CONTACTS_REQUEST_CODE
+      );
+
+      return true;
+    }
+  }
+
+  private class EnableCustomContactsPreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      syncContacts();
+
+      return true;
     }
   }
 

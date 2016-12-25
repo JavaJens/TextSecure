@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.sms.MessageSender;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.Rfc5724Uri;
-import org.whispersystems.libaxolotl.util.guava.Optional;
+import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
@@ -56,13 +56,14 @@ public class QuickResponseService extends MasterSecretIntentService {
       Recipients                      recipients     = RecipientFactory.getRecipientsFromString(this, numbers, false);
       Optional<RecipientsPreferences> preferences    = DatabaseFactory.getRecipientPreferenceDatabase(this).getRecipientsPreferences(recipients.getIds());
       int                             subscriptionId = preferences.isPresent() ? preferences.get().getDefaultSubscriptionId().or(-1) : -1;
+      long                            expiresIn      = preferences.isPresent() ? preferences.get().getExpireMessages() * 1000 : 0;
 
       if (!TextUtils.isEmpty(content)) {
         if (recipients.isSingleRecipient()) {
-          MessageSender.send(this, masterSecret, new OutgoingTextMessage(recipients, content, subscriptionId), -1, false);
+          MessageSender.send(this, masterSecret, new OutgoingTextMessage(recipients, content, expiresIn, subscriptionId), -1, false);
         } else {
           MessageSender.send(this, masterSecret, new OutgoingMediaMessage(recipients, new SlideDeck(), content, System.currentTimeMillis(),
-                                                                          subscriptionId, ThreadDatabase.DistributionTypes.DEFAULT), -1, false);
+                                                                          subscriptionId, expiresIn, ThreadDatabase.DistributionTypes.DEFAULT), -1, false);
         }
       }
     } catch (URISyntaxException e) {

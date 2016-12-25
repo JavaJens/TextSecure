@@ -5,9 +5,11 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,6 +36,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   public static final int ADD_CONTACT_INFO  = 4;
   public static final int TAKE_PHOTO        = 5;
   public static final int ADD_LOCATION      = 6;
+  public static final int ADD_GIF           = 7;
 
   private static final int ANIMATION_DURATION = 300;
 
@@ -44,17 +47,19 @@ public class AttachmentTypeSelector extends PopupWindow {
   private final @NonNull ImageView   videoButton;
   private final @NonNull ImageView   contactButton;
   private final @NonNull ImageView   cameraButton;
-  private final @NonNull ImageView   locationButton;
+  //private final @NonNull ImageView   locationButton;
+  private final @NonNull ImageView   gifButton;
   private final @NonNull ImageView   closeButton;
 
   private @Nullable View                      currentAnchor;
   private @Nullable AttachmentClickedListener listener;
 
-  public AttachmentTypeSelector(@NonNull Context context, @Nullable AttachmentClickedListener listener) {
+  public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener) {
     super(context);
 
-    LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    LinearLayout   layout   = (LinearLayout) inflater.inflate(R.layout.attachment_type_selector, null, true);
+    LayoutInflater      inflater     = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    LinearLayout        layout       = (LinearLayout) inflater.inflate(R.layout.attachment_type_selector, null, true);
+    RecentPhotoViewRail recentPhotos = ViewUtil.findById(layout, R.id.recent_photos);
 
     this.listener       = listener;
     this.imageButton    = ViewUtil.findById(layout, R.id.gallery_button);
@@ -62,20 +67,19 @@ public class AttachmentTypeSelector extends PopupWindow {
     this.videoButton    = ViewUtil.findById(layout, R.id.video_button);
     this.contactButton  = ViewUtil.findById(layout, R.id.contact_button);
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
+    //this.locationButton = ViewUtil.findById(layout, R.id.location_button);
+    this.gifButton      = ViewUtil.findById(layout, R.id.giphy_button);
     this.closeButton    = ViewUtil.findById(layout, R.id.close_button);
-    this.locationButton = ViewUtil.findById(layout, R.id.location_button);
 
     this.imageButton.setOnClickListener(new PropagatingClickListener(ADD_IMAGE));
     this.audioButton.setOnClickListener(new PropagatingClickListener(ADD_SOUND));
     this.videoButton.setOnClickListener(new PropagatingClickListener(ADD_VIDEO));
     this.contactButton.setOnClickListener(new PropagatingClickListener(ADD_CONTACT_INFO));
     this.cameraButton.setOnClickListener(new PropagatingClickListener(TAKE_PHOTO));
-    this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
+    //this.locationButton.setOnClickListener(new PropagatingClickListener(ADD_LOCATION));
+    this.gifButton.setOnClickListener(new PropagatingClickListener(ADD_GIF));
     this.closeButton.setOnClickListener(new CloseClickListener());
-
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.INVISIBLE);
-    }
+    recentPhotos.setListener(new RecentPhotoSelectedListener());
 
     setContentView(layout);
     setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
@@ -85,13 +89,14 @@ public class AttachmentTypeSelector extends PopupWindow {
     setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
     setFocusable(true);
     setTouchable(true);
+
+    loaderManager.initLoader(1, null, recentPhotos);
   }
 
   public void show(@NonNull Activity activity, final @NonNull View anchor) {
     this.currentAnchor = anchor;
 
-    int screenHeight = activity.getWindowManager().getDefaultDisplay().getHeight();
-    showAtLocation(anchor, Gravity.NO_GRAVITY, 0, screenHeight - getHeight());
+    showAtLocation(anchor, Gravity.BOTTOM, 0, 0);
 
     getContentView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
       @Override
@@ -111,8 +116,8 @@ public class AttachmentTypeSelector extends PopupWindow {
       animateButtonIn(cameraButton, ANIMATION_DURATION / 2);
 
       animateButtonIn(audioButton, ANIMATION_DURATION / 3);
-      animateButtonIn(locationButton, ANIMATION_DURATION / 3);
       animateButtonIn(videoButton, ANIMATION_DURATION / 4);
+      animateButtonIn(gifButton, ANIMATION_DURATION / 4);
       animateButtonIn(contactButton, 0);
       animateButtonIn(closeButton, 0);
     }
@@ -232,6 +237,15 @@ public class AttachmentTypeSelector extends PopupWindow {
     return new Pair<>(x, y);
   }
 
+  private class RecentPhotoSelectedListener implements RecentPhotoViewRail.OnItemClickedListener {
+    @Override
+    public void onItemClicked(Uri uri) {
+      animateWindowOutTranslate(getContentView());
+
+      if (listener != null) listener.onQuickAttachment(uri);
+    }
+  }
+
   private class PropagatingClickListener implements View.OnClickListener {
 
     private final int type;
@@ -258,6 +272,7 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   public interface AttachmentClickedListener {
     public void onClick(int type);
+    public void onQuickAttachment(Uri uri);
   }
 
 }

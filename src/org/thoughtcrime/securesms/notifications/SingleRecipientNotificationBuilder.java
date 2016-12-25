@@ -16,6 +16,7 @@ import android.support.v4.app.RemoteInput;
 import android.text.SpannableStringBuilder;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
@@ -100,6 +101,27 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
     }
   }
 
+  public void addAndroidAutoAction(@NonNull PendingIntent androidAutoReplyIntent,
+                                   @NonNull PendingIntent androidAutoHeardIntent, long timestamp)
+  {
+
+    if (mContentTitle == null || mContentText == null)
+      return;
+
+    RemoteInput remoteInput = new RemoteInput.Builder(AndroidAutoReplyReceiver.VOICE_REPLY_KEY)
+                                  .setLabel(context.getString(R.string.MessageNotifier_reply))
+                                  .build();
+
+    NotificationCompat.CarExtender.UnreadConversation.Builder unreadConversationBuilder =
+            new NotificationCompat.CarExtender.UnreadConversation.Builder(mContentTitle.toString())
+                .addMessage(mContentText.toString())
+                .setLatestTimestamp(timestamp)
+                .setReadPendingIntent(androidAutoHeardIntent)
+                .setReplyAction(androidAutoReplyIntent, remoteInput);
+
+    extend(new NotificationCompat.CarExtender().setUnreadConversation(unreadConversationBuilder.build()));
+  }
+
   public void addActions(@Nullable MasterSecret masterSecret,
                          @NonNull PendingIntent markReadIntent,
                          @NonNull PendingIntent quickReplyIntent,
@@ -147,16 +169,6 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
       messageBodies.add(stringBuilder.append(messageBody == null ? "" : messageBody));
     } else {
       messageBodies.add(stringBuilder.append(context.getString(R.string.SingleRecipientNotificationBuilder_new_message)));
-    }
-  }
-
-  public void setTicker(@NonNull Recipient recipient, @Nullable CharSequence message) {
-    if (privacy.isDisplayMessage()) {
-      setTicker(getStyledMessage(recipient, message));
-    } else if (privacy.isDisplayContact()) {
-      setTicker(getStyledMessage(recipient, context.getString(R.string.SingleRecipientNotificationBuilder_new_message)));
-    } else {
-      setTicker(context.getString(R.string.SingleRecipientNotificationBuilder_new_message));
     }
   }
 
@@ -210,6 +222,7 @@ public class SingleRecipientNotificationBuilder extends AbstractNotificationBuil
       return Glide.with(context)
                   .load(new DecryptableStreamUriLoader.DecryptableUri(masterSecret, uri))
                   .asBitmap()
+                  .diskCacheStrategy(DiskCacheStrategy.NONE)
                   .into(500, 500)
                   .get();
     } catch (InterruptedException | ExecutionException e) {

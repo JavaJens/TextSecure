@@ -34,7 +34,7 @@ import org.thoughtcrime.securesms.database.model.SmsMessageRecord;
 import org.thoughtcrime.securesms.sms.IncomingTextMessage;
 import org.thoughtcrime.securesms.sms.OutgoingTextMessage;
 import org.thoughtcrime.securesms.util.LRUCache;
-import org.whispersystems.libaxolotl.InvalidMessageException;
+import org.whispersystems.libsignal.InvalidMessageException;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;
@@ -109,7 +109,7 @@ public class EncryptingSmsDatabase extends SmsDatabase {
   }
 
   public Pair<Long, Long> updateBundleMessageBody(MasterSecretUnion masterSecret, long messageId, String body) {
-    long type = Types.BASE_INBOX_TYPE | Types.SECURE_MESSAGE_BIT;
+    long type = Types.BASE_INBOX_TYPE | Types.SECURE_MESSAGE_BIT | Types.PUSH_MESSAGE_BIT;
     String encryptedBody;
 
     if (masterSecret.getMasterSecret().isPresent()) {

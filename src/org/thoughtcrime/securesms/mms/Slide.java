@@ -28,7 +28,7 @@ import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libaxolotl.util.guava.Optional;
+import org.whispersystems.libsignal.util.guava.Optional;
 
 public abstract class Slide {
 
@@ -103,13 +103,18 @@ public abstract class Slide {
     return false;
   }
 
+  public boolean hasPlayOverlay() {
+    return false;
+  }
+
   protected static Attachment constructAttachmentFromUri(@NonNull Context context,
                                                          @NonNull Uri     uri,
                                                          @NonNull String  defaultMime,
-                                                                  long     size)
+                                                                  long     size,
+                                                                  boolean  hasThumbnail)
   {
     Optional<String> resolvedType = Optional.fromNullable(MediaUtil.getMimeType(context, uri));
-    return new UriAttachment(uri, resolvedType.or(defaultMime), AttachmentDatabase.TRANSFER_PROGRESS_STARTED, size);
+    return new UriAttachment(uri, hasThumbnail ? uri : null, resolvedType.or(defaultMime), AttachmentDatabase.TRANSFER_PROGRESS_STARTED, size);
   }
 
   @Override

@@ -19,14 +19,15 @@ import org.thoughtcrime.securesms.mms.ImageSlide;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ExecutionException;
 
 import ws.com.google.android.mms.ContentType;
 
 public class MediaUtil {
+
   private static final String TAG = MediaUtil.class.getSimpleName();
 
   public static @Nullable ThumbnailData generateThumbnail(Context context, MasterSecret masterSecret, String contentType, Uri uri)
@@ -71,10 +72,16 @@ public class MediaUtil {
   }
 
   public static @Nullable String getMimeType(Context context, Uri uri) {
+    if (uri == null) return null;
+
+    if (PersistentBlobProvider.isAuthority(context, uri)) {
+      return PersistentBlobProvider.getMimeType(context, uri);
+    }
+
     String type = context.getContentResolver().getType(uri);
     if (type == null) {
       final String extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString());
-      type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+      type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
     }
     return getCorrectedMimeType(type);
   }

@@ -14,20 +14,21 @@ import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.recipients.RecipientFactory;
 import org.thoughtcrime.securesms.recipients.Recipients;
+import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.transport.InsecureFallbackApprovalException;
 import org.thoughtcrime.securesms.transport.RetryLaterException;
-import org.whispersystems.textsecure.api.TextSecureMessageSender;
-import org.whispersystems.textsecure.api.crypto.UntrustedIdentityException;
-import org.whispersystems.textsecure.api.messages.TextSecureDataMessage;
-import org.whispersystems.textsecure.api.push.TextSecureAddress;
-import org.whispersystems.textsecure.api.push.exceptions.UnregisteredUserException;
-import org.whispersystems.textsecure.api.util.InvalidNumberException;
+import org.whispersystems.signalservice.api.SignalServiceMessageSender;
+import org.whispersystems.signalservice.api.crypto.UntrustedIdentityException;
+import org.whispersystems.signalservice.api.messages.SignalServiceDataMessage;
+import org.whispersystems.signalservice.api.push.SignalServiceAddress;
+import org.whispersystems.signalservice.api.push.exceptions.UnregisteredUserException;
+import org.whispersystems.signalservice.api.util.InvalidNumberException;
 
 import java.io.IOException;
 
 import javax.inject.Inject;
 
-import static org.thoughtcrime.securesms.dependencies.TextSecureCommunicationModule.TextSecureMessageSenderFactory;
+import static org.thoughtcrime.securesms.dependencies.SignalCommunicationModule.SignalMessageSenderFactory;
 
 public class PushTextSendJob extends PushSendJob implements InjectableType {
 
@@ -35,7 +36,7 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
 
   private static final String TAG = PushTextSendJob.class.getSimpleName();
 
-  @Inject transient TextSecureMessageSenderFactory messageSenderFactory;
+  @Inject transient SignalMessageSenderFactory messageSenderFactory;
 
   private final long messageId;
 
@@ -53,8 +54,9 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
 
   @Override
   public void onSend(MasterSecret masterSecret) throws NoSuchMessageException, RetryLaterException {
-    EncryptingSmsDatabase database = DatabaseFactory.getEncryptingSmsDatabase(context);
-    SmsMessageRecord      record   = database.getMessage(masterSecret, messageId);
+    ExpiringMessageManager expirationManager = ApplicationContext.getInstance(context).getExpiringMessageManager();
+    EncryptingSmsDatabase  database          = DatabaseFactory.getEncryptingSmsDatabase(context);
+    SmsMessageRecord       record            = database.getMessage(masterSecret, messageId);
 
     try {
       Log.w(TAG, "Sending message: " + messageId);
@@ -63,6 +65,11 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
       database.markAsPush(messageId);
       database.markAsSecure(messageId);
       database.markAsSent(messageId);
+
+      if (record.getExpiresIn() > 0) {
+        database.markExpireStarted(messageId);
+        expirationManager.scheduleDeletion(record.getId(), record.isMms(), record.getExpiresIn());
+      }
 
     } catch (InsecureFallbackApprovalException e) {
       Log.w(TAG, e);
@@ -103,13 +110,14 @@ public class PushTextSendJob extends PushSendJob implements InjectableType {
       throws UntrustedIdentityException, InsecureFallbackApprovalException, RetryLaterException
   {
     try {
-      TextSecureAddress       address           = getPushAddress(message.getIndividualRecipient().getNumber());
-      TextSecureMessageSender messageSender     = messageSenderFactory.create();
-      TextSecureDataMessage   textSecureMessage = TextSecureDataMessage.newBuilder()
-                                                                       .withTimestamp(message.getDateSent())
-                                                                       .withBody(message.getBody().getBody())
-                                                                       .asEndSessionMessage(message.isEndSession())
-                                                                       .build();
+      SignalServiceAddress       address           = getPushAddress(message.getIndividualRecipient().getNumber());
+      SignalServiceMessageSender messageSender     = messageSenderFactory.create();
+      SignalServiceDataMessage   textSecureMessage = SignalServiceDataMessage.newBuilder()
+                                                                             .withTimestamp(message.getDateSent())
+                                                                             .withBody(message.getBody().getBody())
+                                                                             .withExpiration((int)(message.getExpiresIn() / 1000))
+                                                                             .asEndSessionMessage(message.isEndSession())
+                                                                             .build();
 
 
       messageSender.sendMessage(address, textSecureMessage);

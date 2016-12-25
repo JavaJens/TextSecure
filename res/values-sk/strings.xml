@@ -1,21 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Signal</string>
+  <string name="app_name">LibreSignal</string>
   <string name="yes">Áno</string>
   <string name="no">Nie</string>
   <string name="delete">Zmazať</string>
   <string name="please_wait">Čakajte prosím...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">Nová správa</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">Aktuálne: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">Ešte ste si nenastavili heslo!</string>
   <string name="ApplicationPreferencesActivity_delete_all_old_messages_now">Zmazať všetky staré správy?</string>
   <string name="ApplicationPreferencesActivity_delete">Zmazať</string>
+  <string name="ApplicationPreferencesActivity_disable_passphrase">Vypnúť heslo?</string>
   <string name="ApplicationPreferencesActivity_disable">Vypnúť</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Chyba pripojenia na server!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS zapnuté</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Dotykom sem môžete zmeniť Vašu predvolenú aplikáciu pre SMS.</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS vypnuté</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Dotykom nastavte Signal ako Vašu predvolenú aplikáciu</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Dotykom nastavte LibreSignal ako Vašu predvolenú aplikáciu</string>
   <string name="ApplicationPreferencesActivity_on">zapnuté</string>
   <string name="ApplicationPreferencesActivity_On">Zapnuté</string>
   <string name="ApplicationPreferencesActivity_off">vypnuté</string>
@@ -26,6 +29,7 @@
   <string name="DraftDatabase_Draft_image_snippet">(obrázok)</string>
   <string name="DraftDatabase_Draft_audio_snippet">(zvuk)</string>
   <string name="DraftDatabase_Draft_video_snippet">(video)</string>
+  <string name="DraftDatabase_Draft_location_snippet">(poloha)</string>
   <!--AttchmentManager-->
   <string name="AttachmentManager_cant_open_media_selection">Nepodarilo sa nájsť aplikáciu pre výber médií.</string>
   <!--AttachmentTypeSelectorAdapter-->
@@ -35,13 +39,12 @@
   <string name="AttachmentTypeSelectorAdapter_audio">Audio</string>
   <string name="AttachmentTypeSelectorAdapter_contact">Kontaktné informácie</string>
   <!--AudioSlidePlayer-->
+  <string name="AudioSlidePlayer_error_playing_audio">Chyba prehrávania zvuku!</string>
   <!--BlockedContactsActivity-->
   <string name="BlockedContactsActivity_blocked_contacts">Blokované kontakty</string>
   <!--CallScreen-->
+  <string name="CallScreen_Incoming_call">Prichádzajúce volanie</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">Možno by ste mali overiť
-identitu tohto kontaktu.
-</string>
   <string name="ConfirmIdentityDialog_accept">Potvrdiť</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Správa %s</string>
@@ -57,7 +60,13 @@ identitu tohto kontaktu.
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Prepnúť na nezabezpečené SMS?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Prepnúť na nezabezpečené MMS?</string>
   <string name="ConversationItem_unable_to_open_media">Nepodarilo sa nájst aplikáciu schopnú otvoriť tento typ súboru.</string>
+  <string name="ConversationItem_from_s">od %s</string>
+  <string name="ConversationItem_to_s">pre %s</string>
   <!--ConversationActivity-->
+  <string name="ConversationActivity_reset_secure_session_question">Obnoviť zabezpečené spojenie</string>
+  <string name="ConversationActivity_reset">Reset</string>
+  <string name="ConversationActivity_delete_thread_question">Vymazať konverzáciu?</string>
+  <string name="ConversationActivity_this_will_permanently_delete_all_messages_in_this_conversation">Toto zmaže natrvalo všetky správy v tejto konverzácii.</string>
   <string name="ConversationActivity_add_attachment">Pridať prílohu</string>
   <string name="ConversationActivity_select_contact_info">Vyberte kontaktné informácie </string>
   <string name="ConversationActivity_compose_message">Vytvoriť správu</string>
@@ -70,6 +79,11 @@ identitu tohto kontaktu.
   <string name="ConversationActivity_group_members">Členovia skupiny</string>
   <string name="ConversationActivity_group_conversation">Skupinová konverzácia</string>
   <string name="ConversationActivity_unnamed_group">Nepomenovaná skupina</string>
+  <plurals name="ConversationActivity_d_recipients_in_group">
+    <item quantity="one">1 člen</item>
+    <item quantity="few">%d členov</item>
+    <item quantity="other">%d členov</item>
+  </plurals>
   <string name="ConversationActivity_saved_draft">Uložený koncept</string>
   <string name="ConversationActivity_invalid_recipient">Neplatný príjemca</string>
   <string name="ConversationActivity_calls_not_supported">Hovory nie sú podporované</string>
@@ -78,21 +92,31 @@ identitu tohto kontaktu.
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Ste si istí že chcete opustiť túto skupinu?</string>
   <string name="ConversationActivity_transport_insecure_sms">Nezašifrovaná SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Nezašifrovaná MMS</string>
-  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_transport_signal">LibreSignal</string>
   <string name="ConversationActivity_error_leaving_group">Chyba pri opúšťaní skupiny...</string>
   <string name="ConversationActivity_mms_not_supported_title">MMS nie sú podporované</string>
   <string name="ConversationActivity_mms_not_supported_message">Táto správa nemohla byť odoslaná keďže váš operátor nepodporuje MMS.</string>
   <string name="ConversationActivity_specify_recipient">Prosím vyberte kontakt</string>
-  <string name="ConversationActivity_unblock_question">Odblokovať?</string>
-  <string name="ConversationActivity_are_you_sure_you_want_to_unblock_this_contact">Naozaj chcete odblokovať tento kontakt?</string>
   <string name="ConversationActivity_unblock">Odblokovať</string>
   <string name="ConversationActivity_quick_camera_unavailable">Kamera je momentálne neprístupná</string>
+  <string name="ConversationActivity_unable_to_record_audio">Nemôžem zaznamenať zvuk!</string>
+  <string name="ConversationActivity_error_sending_voice_message">Chyba pri posielaní zvukovej správy...</string>
   <!--ConversationFragment-->
   <string name="ConversationFragment_message_details">Detaily správy</string>
   <string name="ConversationFragment_transport_s_sent_received_s">Prenos: %1$s\nodoslané/prijaté: %2$s</string>
   <string name="ConversationFragment_sender_s_transport_s_sent_s_received_s">Odosielateľ: %1$s\nPrenos: %2$s\nOdoslané: %3$s\nPrijaté: %4$s</string>
+  <plurals name="ConversationFragment_delete_selected_messages">
+    <item quantity="one">Zmazať vybranú správu?</item>
+    <item quantity="few">Zmazať vybrané správy?</item>
+    <item quantity="other">Zmazať vybrané správy?</item>
+  </plurals>
   <string name="ConversationFragment_save_to_sd_card">Vytvoriť súbor?</string>
-  <string name="ConversationFragment_success_exclamation">Operácia úspešne dokončená!</string>
+  <plurals name="ConversationFragment_error_while_saving_attachments_to_sd_card">
+    <item quantity="one">Nastala chyba pri ukladaní prílohy na dátové úložisko zariadenia!</item>
+    <item quantity="few">Nastala chyba pri ukladaní príloh na dátové úložisko zariadenia!</item>
+    <item quantity="other">Nastala chyba pri ukladaní príloh na dátové úložisko zariadenia!</item>
+  </plurals>
+  <string name="ConversationFragment_file_saved_successfully">Súbor úspešne uložený.</string>
   <string name="ConversationFragment_unable_to_write_to_sd_card_exclamation">Aplikácia nedokázala zapísať informácie na dátové úložisko zariadenia!</string>
   <string name="ConversationFragment_pending">Čaká na spracovanie...</string>
   <string name="ConversationFragment_mms">MMS</string>
@@ -111,7 +135,6 @@ identitu tohto kontaktu.
   <string name="CustomDefaultPreference_using_default">Používa sa predvolené: %s</string>
   <string name="CustomDefaultPreference_none">Žiadna</string>
   <!--DateUtils-->
-  <string name="DateUtils_now">Teraz</string>
   <string name="DateUtils_minutes_ago">%d min</string>
   <!--DeviceListActivity-->
   <!--DeviceListItem-->
@@ -122,8 +145,9 @@ identitu tohto kontaktu.
   <string name="ExportFragment_export">Export</string>
   <string name="ExportFragment_cancel">Zrušiť</string>
   <string name="ExportFragment_exporting">Export</string>
-  <string name="ExportFragment_success">Úspech!</string>
   <!--GcmRefreshJob-->
+  <!--GiphyActivity-->
+  <!--GiphyFragmentPageAdapter-->
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">Nová skupina</string>
   <string name="GroupCreateActivity_actionbar_update_title">Aktualizuj skupinu</string>
@@ -168,7 +192,6 @@ opätovným importom zduplikujete správy.
   <string name="KeyScanningActivity_install_barcode_Scanner">Nainštalovať čítačku čiarových kódov?</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Nepodarilo sa odoslať</string>
-  <string name="MessageDetailsRecipient_new_identity">Nová identita</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_storing_mms">Chyba pri ukladaní MMS!</string>
   <string name="MmsDownloader_error_connecting_to_mms_provider">Chyba spojenia s poskytovateľom MMS...</string>
@@ -192,6 +215,7 @@ opätovným importom zduplikujete správy.
   <string name="DeviceProvisioningActivity_content_progress_no_device">Nebolo nájdené žiadne zariadenie!</string>
   <string name="DeviceProvisioningActivity_content_progress_network_error">Chyba siete.</string>
   <string name="DeviceProvisioningActivity_content_progress_key_error">Neplatný QR kód.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Zadajte heslo</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Odošli heslo</string>
@@ -205,7 +229,6 @@ opätovným importom zduplikujete správy.
   <string name="RatingManager_no_thanks">Nie ďakujem</string>
   <string name="RatingManager_later">Neskôr</string>
   <!--RecipientPreferencesActivity-->
-  <string name="RecipientPreferenceActivity_are_you_sure_you_want_to_unblock_this_contact">Naozaj chcete odblokovať tento kontakt?</string>
   <string name="RecipientPreferenceActivity_unblock">Odblokovať</string>
   <!--RedPhone-->
   <!--RegistrationActivity-->
@@ -261,26 +284,11 @@ vzájomnej výmeny kľúčov.</string>
   <string name="SmsMessageRecord_received_key_exchange_message_for_invalid_protocol_version">
 Bola prijatá správa vzájomnej výmeny kľúčov s neplatnou verziou protokolu.
 </string>
-  <string name="SmsMessageRecord_received_updated_but_unknown_identity_information">Bola prijatá aktualizované, ale neznáme identifikačné údaje. Dotykom potvrdíte idenitu.</string>
   <string name="SmsMessageRecord_duplicate_message">Zduplikuj správu.</string>
   <!--ThreadRecord-->
   <string name="ThreadRecord_left_the_group">Opustil skupinu...</string>
   <string name="ThreadRecord_draft">Rozpísaná správa:</string>
   <!--VerifyIdentityActivity-->
-  <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">Nemáte kľúč totožnosti.</string>
-  <string name="VerifyIdentityActivity_recipient_has_no_identity_key">Príjemca nemá kľúč totožnosti.</string>
-  <string name="VerifyIdentityActivity_recipient_has_no_identity_key_exclamation">Príjemca nemá kľúč totožnosti!</string>
-  <string name="VerifyIdentityActivity_warning_the_scanned_key_does_not_match_please_check_the_fingerprint_text_carefully">POZOR, scannovaný kľúč sa NEZHODUJE! Dôsledne skontrolujte text odtlačku.</string>
-  <string name="VerifyIdentityActivity_not_verified_exclamation">NIE JE verifikované!</string>
-  <string name="VerifyIdentityActivity_their_key_is_correct_it_is_also_necessary_to_verify_your_key_with_them_as_well">Ich kľúč je v poriadku. Je tiež potrebné dať druhej strane verifikovať váš kľúč.</string>
-  <string name="VerifyIdentityActivity_verified_exclamation">Verifikované!</string>
-  <string name="VerifyIdentityActivity_you_don_t_have_an_identity_key_exclamation">Nemáte kľúč totožnosti!</string>
-  <!--ViewIdentityActivity-->
-  <string name="ViewIdentityActivity_you_do_not_have_an_identity_key">Nemáte kľúč totožnosti.</string>
-  <string name="ViewIdentityActivity_warning_the_scanned_key_does_not_match_exclamation">POZOR, scannovaný kľúč sa NEZHODUJE!</string>
-  <string name="ViewIdentityActivity_not_verified_exclamation">NIE JE overené!</string>
-  <string name="ViewIdentityActivity_the_scanned_key_matches_exclamation">Scannovaný kľúč sa zhoduje!</string>
-  <string name="ViewIdentityActivity_verified_exclamation">Verifikované!</string>
   <!--KeyExchangeInitiator-->
   <string name="KeyExchangeInitiator_initiate_despite_existing_request_question">Začať aj napriek existujúcemu požiadavku?</string>
   <string name="KeyExchangeInitiator_send">Odošli</string>
@@ -360,6 +368,7 @@ Bola prijatá správa vzájomnej výmeny kľúčov s neplatnou verziou protokolu
   <string name="conversation_item_received__download">Stiahnuť</string>
   <string name="conversation_item_received__contact_photo_description">Fotografia kontaktu</string>
   <string name="conversation_item_received__downloading">Sťahujem</string>
+  <!--audio_view-->
   <!--conversation_fragment_cab-->
   <string name="conversation_fragment_cab__batch_selection_mode">Mód hromadného výberu</string>
   <string name="conversation_fragment_cab__batch_selection_amount">%s vybraných</string>
@@ -370,6 +379,10 @@ Bola prijatá správa vzájomnej výmeny kľúčov s neplatnou verziou protokolu
   <!--device_link_fragment-->
   <!--device_list_fragment-->
   <!--experience_upgrade_activity-->
+  <!--expiration-->
+  <string name="expiration_off">Vypnuté</string>
+  <!--giphy_activity-->
+  <!--giphy_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">Ďakujem za tvoju pomoc!</string>
   <string name="log_submit_activity__submitting">Posielanie</string>
@@ -453,10 +466,8 @@ zlyhalo.
   <string name="registration_progress_activity__check">Kontrola</string>
   <!--recipients_panel-->
   <string name="recipients_panel__to"><small>Vlož meno alebo číslo</small></string>
-  <string name="recipients_panel__add_member">Pridať člena</string>
-  <!--verify_identity_activity-->
-  <string name="verify_identity_activity__their_identity_they_read">Ich totožnosť (oni vidia):</string>
-  <string name="verify_identity_activity__your_identity_you_read">Vaša totožnosť (vy vidíte):</string>
+  <!--verify_display_fragment-->
+  <!--verify_identity-->
   <!--message_details_header-->
   <string name="message_details_header__issues_need_your_attention">Isté problémy vyžadujú Vašu pozornosť.</string>
   <string name="message_details_header__sent">Odoslané</string>
@@ -469,9 +480,7 @@ zlyhalo.
   <string name="AndroidManifest__create_passphrase">Vytvor heslo</string>
   <string name="AndroidManifest__enter_passphrase">Zadaj heslo</string>
   <string name="AndroidManifest__select_contacts">Vyber kontakty</string>
-  <string name="AndroidManifest__public_identity_key">Kľúč verejnej totožnosti</string>
   <string name="AndroidManifest__change_passphrase">Zmeň heslo</string>
-  <string name="AndroidManifest__verify_identity">Over totožnosť</string>
   <string name="AndroidManifest__media_overview">Všetky obrázky</string>
   <string name="AndroidManifest__media_overview_named">Všetky obrázky s %1$s</string>
   <!--arrays.xml-->
@@ -581,6 +590,8 @@ zlyhalo.
   <string name="conversation_context__menu_resend_message">Prepošli správu</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">Uložiť prílohu </string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">Pozvať</string>
   <!--conversation_insecure_no_push-->
@@ -596,8 +607,6 @@ zlyhalo.
   <!--conversation_list_fragment-->
   <string name="conversation_list_fragment__fab_content_description">Nová konverzácia</string>
   <!--conversation_secure_verified-->
-  <string name="conversation_secure_verified__menu_security">Bezpečnosť</string>
-  <string name="conversation_secure_verified__menu_verify_identity">Over totožnosť</string>
   <string name="conversation_secure_verified__menu_reset_secure_session">Obnoviť zabezpečené spojenie</string>
   <!--conversation_muted-->
   <string name="conversation_muted__unmute">Nahlas</string>
@@ -626,8 +635,9 @@ zlyhalo.
   <string name="text_secure_normal__menu_settings">Nastavenia</string>
   <string name="text_secure_normal__menu_clear_passphrase">Zamkni</string>
   <string name="text_secure_normal__mark_all_as_read">Označ všetky prečítané</string>
+  <!--verify_display_fragment-->
   <!--reminder_header-->
-  <string name="reminder_header_sms_default_text">Ťuknutím nastavte Signal ako Vašu predvolenú SMS aplikáciu.</string>
+  <string name="reminder_header_sms_default_text">Ťuknutím nastavte LibreSignal ako Vašu predvolenú SMS aplikáciu.</string>
   <!--MediaPreviewActivity-->
   <string name="MediaPreviewActivity_you">Vy</string>
   <string name="MediaPreviewActivity_cant_display">Nepodarilo sa zobraziť náhľad pre tento obrázok</string>

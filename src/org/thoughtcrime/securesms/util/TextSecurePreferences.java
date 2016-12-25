@@ -74,6 +74,7 @@ public class TextSecurePreferences {
   private static final String SIGNALING_KEY_PREF               = "pref_signaling_key";
   private static final String DIRECTORY_FRESH_TIME_PREF        = "pref_directory_refresh_time";
   private static final String IN_THREAD_NOTIFICATION_PREF      = "pref_key_inthread_notifications";
+  private static final String BLOCKING_IDENTITY_CHANGES_PREF   = "pref_blocking_identity_changes";
 
   private static final String LOCAL_REGISTRATION_ID_PREF       = "pref_local_registration_id";
   private static final String SIGNED_PREKEY_REGISTERED_PREF    = "pref_signed_prekey_registered";
@@ -97,6 +98,9 @@ public class TextSecurePreferences {
   private static final String MULTI_DEVICE_PROVISIONED_PREF    = "pref_multi_device";
   public  static final String DIRECT_CAPTURE_CAMERA_ID         = "pref_direct_capture_camera_id";
 
+  private static final String CUSTOM_CONTACT_DIRECTORY         = "pref_custom_contact_directory";
+  private static final String CUSTOM_CONTACT_DIRECTORY_ASKED   = "pref_custom_contact_directory_asked";
+
   public static void setDirectCaptureCameraId(Context context, int value) {
     setIntegerPrefrence(context, DIRECT_CAPTURE_CAMERA_ID, value);
   }
@@ -112,6 +116,14 @@ public class TextSecurePreferences {
 
   public static boolean isMultiDevice(Context context) {
     return getBooleanPreference(context, MULTI_DEVICE_PROVISIONED_PREF, false);
+  }
+
+  public static boolean isBlockingIdentityUpdates(Context context) {
+    return getBooleanPreference(context, BLOCKING_IDENTITY_CHANGES_PREF, true);
+  }
+
+  public static void setBlockingIdentityUpdates(Context context, boolean value) {
+    setBooleanPreference(context, BLOCKING_IDENTITY_CHANGES_PREF, value);
   }
 
   public static NotificationPrivacyPreference getNotificationPrivacy(Context context) {
@@ -522,6 +534,24 @@ public class TextSecurePreferences {
     return getStringSetPreference(context,
                                   key,
                                   new HashSet<>(Arrays.asList(context.getResources().getStringArray(defaultValuesRes))));
+  }
+
+  public static boolean isCustomContactDirectoryEnabled(Context context) {
+    // the default is true for better privacy
+    // the user will be asked once to disable it
+    return getBooleanPreference(context, CUSTOM_CONTACT_DIRECTORY, true);
+  }
+
+  public static void setCustomContactDirectoryEnabled(Context context, boolean enabled) {
+    setBooleanPreference(context, CUSTOM_CONTACT_DIRECTORY, enabled);
+  }
+
+  public static boolean hasAskedCustomContactDirectory(Context context) {
+    return getBooleanPreference(context, CUSTOM_CONTACT_DIRECTORY_ASKED, false);
+  }
+
+  public static void setHasAskedCustomContactDirectory(Context context, boolean hasAsked) {
+    setBooleanPreference(context, CUSTOM_CONTACT_DIRECTORY_ASKED, hasAsked);
   }
 
   public static void setBooleanPreference(Context context, String key, boolean value) {

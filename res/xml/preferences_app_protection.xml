@@ -2,6 +2,18 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+        android:key="pref_custom_contact_directory"
+        android:defaultValue="true"
+        android:title="@string/preferences_privacy_custom_contact_directory"
+        android:summary="@string/preferences_privacy_custom_contact_directory_summary"/>
+
+    <Preference
+        android:key="pref_custom_contact_directory_edit"
+        android:title="@string/pref_custom_contact_directory_edit"
+        android:summary="@string/pref_custom_contact_directory_edit_summary"
+        android:dependency="pref_custom_contact_directory" />
+
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                         android:key="pref_enable_passphrase_temporary"
                         android:defaultValue="true"
                         android:title="@string/preferences__enable_passphrase"
@@ -27,6 +39,12 @@
                         android:key="pref_screen_security"
                         android:title="@string/preferences__screen_security"
                         android:summary="@string/preferences__disable_screen_security_to_allow_screen_shots" />
+
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="pref_blocking_identity_changes"
+            android:title="@string/preferences_app_protection__safety_numbers_approval"
+            android:summary="@string/preferences_app_protecting__require_approval_of_new_safety_numbers_when_they_change"/>
 
     <Preference android:key="preference_category_blocked"
                 android:title="@string/preferences_app_protection__blocked_contacts" />

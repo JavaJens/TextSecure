@@ -6,6 +6,9 @@
         android:paddingRight="10dip"
         android:orientation="vertical"
         android:background="@drawable/conversation_item_background"
+        android:focusable="true"
+        android:nextFocusLeft="@+id/container"
+        android:nextFocusRight="@+id/embedded_text_editor"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -43,7 +46,8 @@
                       android:layout_toRightOf="@id/contact_photo"
                       android:layout_marginRight="35dp"
                       android:background="@drawable/received_bubble"
-                      android:orientation="vertical">
+                      android:orientation="vertical"
+                      tools:backgroundTint="@color/blue_900">
 
             <org.thoughtcrime.securesms.components.ThumbnailView
                     android:id="@+id/image_view"
@@ -61,7 +65,8 @@
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
-                    app:tintColor="@color/white"
+                    app:foregroundTintColor="@color/white"
+                    app:backgroundTintColor="@color/blue_500"
                     tools:visibility="visible"/>
 
             <org.thoughtcrime.securesms.components.emoji.EmojiTextView
@@ -112,14 +117,28 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_gravity="center_vertical"
-                           android:paddingTop="2dp"
-                           android:paddingRight="4dp"
+                           android:paddingRight="2dp"
                            android:paddingEnd="4dp"
                            android:src="?menu_lock_icon_small"
                            android:contentDescription="@string/conversation_item__secure_message_description"
                            android:visibility="gone"
                            android:tint="?conversation_item_received_text_secondary_color"
-                           android:tintMode="multiply"/>
+                           android:tintMode="multiply"
+                           tools:visibility="visible"/>
+
+                <org.thoughtcrime.securesms.components.ExpirationTimerView
+                        android:id="@+id/expiration_indicator"
+                        app:empty="@drawable/ic_hourglass_empty_white_18dp"
+                        app:full="@drawable/ic_hourglass_full_white_18dp"
+                        app:tint="?conversation_item_received_text_secondary_color"
+                        app:percentage="0"
+                        app:offset="0"
+                        android:layout_gravity="center_vertical|end"
+                        android:alpha=".65"
+                        android:layout_width="10dp"
+                        android:layout_height="11dp"
+                        android:visibility="gone"
+                        tools:visibility="visible"/>
 
                 <org.thoughtcrime.securesms.components.DeliveryStatusView
                         android:id="@+id/delivery_status"
@@ -138,7 +157,8 @@
                           android:fontFamily="sans-serif-light"
                           android:autoLink="none"
                           android:linksClickable="false"
-                          tools:text="Now"/>
+                          tools:text="Now"
+                          tools:visibility="visible"/>
 
                 <TextView android:id="@+id/sim_info"
                           android:layout_width="wrap_content"

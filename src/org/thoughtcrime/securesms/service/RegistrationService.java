@@ -10,10 +10,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-
 import org.thoughtcrime.redphone.signaling.RedPhoneAccountAttributes;
 import org.thoughtcrime.redphone.signaling.RedPhoneAccountManager;
 import org.thoughtcrime.redphone.signaling.RedPhoneTrustStore;
@@ -23,19 +19,19 @@ import org.thoughtcrime.securesms.crypto.IdentityKeyUtil;
 import org.thoughtcrime.securesms.crypto.PreKeyUtil;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.jobs.GcmRefreshJob;
-import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
+import org.thoughtcrime.securesms.push.AccountManagerFactory;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientFactory;
 import org.thoughtcrime.securesms.util.DirectoryHelper;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libaxolotl.IdentityKeyPair;
-import org.whispersystems.libaxolotl.state.PreKeyRecord;
-import org.whispersystems.libaxolotl.state.SignedPreKeyRecord;
-import org.whispersystems.libaxolotl.util.KeyHelper;
-import org.whispersystems.libaxolotl.util.guava.Optional;
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.push.exceptions.ExpectationFailedException;
+import org.whispersystems.libsignal.IdentityKeyPair;
+import org.whispersystems.libsignal.state.PreKeyRecord;
+import org.whispersystems.libsignal.state.SignedPreKeyRecord;
+import org.whispersystems.libsignal.util.KeyHelper;
+import org.whispersystems.libsignal.util.guava.Optional;
+import org.whispersystems.signalservice.api.SignalServiceAccountManager;
+import org.whispersystems.signalservice.api.push.exceptions.ExpectationFailedException;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -163,7 +159,7 @@ public class RegistrationService extends Service {
     String signalingKey = intent.getStringExtra("signaling_key");
 
     try {
-      TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(this, number, password);
+      SignalServiceAccountManager accountManager = AccountManagerFactory.createManager(this, number, password);
 
       handleCommonRegistration(accountManager, number, password, signalingKey);
 
@@ -200,7 +196,7 @@ public class RegistrationService extends Service {
       initializeChallengeListener();
 
       setState(new RegistrationState(RegistrationState.STATE_CONNECTING, number));
-      TextSecureAccountManager accountManager = TextSecureCommunicationFactory.createManager(this, number, password);
+      SignalServiceAccountManager accountManager = AccountManagerFactory.createManager(this, number, password);
       accountManager.requestSmsVerificationCode();
 
       setState(new RegistrationState(RegistrationState.STATE_VERIFYING, number));
@@ -233,7 +229,7 @@ public class RegistrationService extends Service {
     }
   }
 
-  private void handleCommonRegistration(TextSecureAccountManager accountManager, String number, String password, String signalingKey)
+  private void handleCommonRegistration(SignalServiceAccountManager accountManager, String number, String password, String signalingKey)
       throws IOException
   {
     setState(new RegistrationState(RegistrationState.STATE_GENERATING_KEYS, number));
@@ -244,17 +240,6 @@ public class RegistrationService extends Service {
     SignedPreKeyRecord signedPreKey = PreKeyUtil.generateSignedPreKey(this, identityKey);
     accountManager.setPreKeys(identityKey.getPublicKey(),lastResort, signedPreKey, records);
 
-    if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS &&
-        !BuildConfig.FORCE_WEBSOCKETS)
-    {
-      setState(new RegistrationState(RegistrationState.STATE_GCM_REGISTERING, number));
-
-      String gcmRegistrationId = GoogleCloudMessaging.getInstance(this).register(GcmRefreshJob.REGISTRATION_ID);
-      accountManager.setGcmId(Optional.of(gcmRegistrationId));
-
-      TextSecurePreferences.setGcmRegistrationId(this, gcmRegistrationId);
-      TextSecurePreferences.setGcmRegistered(this, true);
-    }
     TextSecurePreferences.setWebsocketRegistered(this, true);
 
     DatabaseFactory.getIdentityDatabase(this).saveIdentity(self.getRecipientId(), identityKey.getPublicKey());

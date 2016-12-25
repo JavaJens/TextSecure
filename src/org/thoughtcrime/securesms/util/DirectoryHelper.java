@@ -14,6 +14,7 @@ import android.util.Pair;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.contacts.CustomContactDirectory;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
 import org.thoughtcrime.securesms.crypto.SessionUtil;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -21,14 +22,14 @@ import org.thoughtcrime.securesms.database.NotInDirectoryException;
 import org.thoughtcrime.securesms.database.TextSecureDirectory;
 import org.thoughtcrime.securesms.jobs.MultiDeviceContactUpdateJob;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
-import org.thoughtcrime.securesms.push.TextSecureCommunicationFactory;
+import org.thoughtcrime.securesms.push.AccountManagerFactory;
 import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.sms.IncomingJoinedMessage;
 import org.thoughtcrime.securesms.util.DirectoryHelper.UserCapabilities.Capability;
-import org.whispersystems.libaxolotl.util.guava.Optional;
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.push.ContactTokenDetails;
-import org.whispersystems.textsecure.api.util.InvalidNumberException;
+import org.whispersystems.libsignal.util.guava.Optional;
+import org.whispersystems.signalservice.api.SignalServiceAccountManager;
+import org.whispersystems.signalservice.api.push.ContactTokenDetails;
+import org.whispersystems.signalservice.api.util.InvalidNumberException;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -70,7 +71,7 @@ public class DirectoryHelper {
       throws IOException
   {
     List<String> newUsers = refreshDirectory(context,
-                                             TextSecureCommunicationFactory.createManager(context),
+                                             AccountManagerFactory.createManager(context),
                                              TextSecurePreferences.getLocalNumber(context));
 
     if (!newUsers.isEmpty() && TextSecurePreferences.isMultiDevice(context)) {
@@ -83,12 +84,15 @@ public class DirectoryHelper {
   }
 
   public static @NonNull List<String> refreshDirectory(@NonNull Context context,
-                                                       @NonNull TextSecureAccountManager accountManager,
+                                                       @NonNull SignalServiceAccountManager accountManager,
                                                        @NonNull String localNumber)
       throws IOException
   {
     TextSecureDirectory       directory              = TextSecureDirectory.getInstance(context);
-    Set<String>               eligibleContactNumbers = directory.getPushEligibleContactNumbers(localNumber);
+    Set<String>               eligibleContactNumbers =
+                                TextSecurePreferences.isCustomContactDirectoryEnabled(context) ?
+                                CustomContactDirectory.getInstance(context).getAllNumbersAsE164(localNumber) :
+                                directory.getPushEligibleContactNumbers(localNumber);
     List<ContactTokenDetails> activeTokens           = accountManager.getContacts(eligibleContactNumbers);
 
     if (activeTokens != null) {
@@ -112,7 +116,7 @@ public class DirectoryHelper {
   {
     try {
       TextSecureDirectory           directory      = TextSecureDirectory.getInstance(context);
-      TextSecureAccountManager      accountManager = TextSecureCommunicationFactory.createManager(context);
+      SignalServiceAccountManager   accountManager = AccountManagerFactory.createManager(context);
       String                        number         = Util.canonicalizeNumber(context, recipients.getPrimaryRecipient().getNumber());
       Optional<ContactTokenDetails> details        = accountManager.getContact(number);
 

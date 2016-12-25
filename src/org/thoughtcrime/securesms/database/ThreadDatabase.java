@@ -29,6 +29,8 @@ import android.util.Log;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.crypto.MasterCipher;
+import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
+import org.thoughtcrime.securesms.database.MessagingDatabase.SyncMessageId;
 import org.thoughtcrime.securesms.database.model.DisplayRecord;
 import org.thoughtcrime.securesms.database.model.MediaMmsMessageRecord;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
@@ -39,7 +41,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientFactory;
 import org.thoughtcrime.securesms.recipients.Recipients;
 import org.thoughtcrime.securesms.util.Util;
-import org.whispersystems.libaxolotl.InvalidMessageException;
+import org.whispersystems.libsignal.InvalidMessageException;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -66,6 +68,7 @@ public class ThreadDatabase extends Database {
   public  static final String ARCHIVED        = "archived";
   public  static final String STATUS          = "status";
   public  static final String RECEIPT_COUNT   = "delivery_receipt_count";
+  public  static final String EXPIRES_IN      = "expires_in";
 
   public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("                    +
     ID + " INTEGER PRIMARY KEY, " + DATE + " INTEGER DEFAULT 0, "                                  +
@@ -74,7 +77,7 @@ public class ThreadDatabase extends Database {
     TYPE + " INTEGER DEFAULT 0, " + ERROR + " INTEGER DEFAULT 0, "                                 +
     SNIPPET_TYPE + " INTEGER DEFAULT 0, " + SNIPPET_URI + " TEXT DEFAULT NULL, "                   +
     ARCHIVED + " INTEGER DEFAULT 0, " + STATUS + " INTEGER DEFAULT 0, "                            +
-    RECEIPT_COUNT + " INTEGER DEFAULT 0);";
+    RECEIPT_COUNT + " INTEGER DEFAULT 0, " + EXPIRES_IN + " INTEGER DEFAULT 0);";
 
   public static final String[] CREATE_INDEXS = {
     "CREATE INDEX IF NOT EXISTS thread_recipient_ids_index ON " + TABLE_NAME + " (" + RECIPIENT_IDS + ");",
@@ -132,7 +135,8 @@ public class ThreadDatabase extends Database {
   }
 
   private void updateThread(long threadId, long count, String body, @Nullable Uri attachment,
-                            long date, int status, int receiptCount, long type, boolean unarchive)
+                            long date, int status, int receiptCount, long type, boolean unarchive,
+                            long expiresIn)
   {
     ContentValues contentValues = new ContentValues(7);
     contentValues.put(DATE, date - date % 1000);
@@ -142,6 +146,7 @@ public class ThreadDatabase extends Database {
     contentValues.put(SNIPPET_TYPE, type);
     contentValues.put(STATUS, status);
     contentValues.put(RECEIPT_COUNT, receiptCount);
+    contentValues.put(EXPIRES_IN, expiresIn);
 
     if (unarchive) {
       contentValues.put(ARCHIVED, 0);
@@ -257,16 +262,22 @@ public class ThreadDatabase extends Database {
     notifyConversationListListeners();
   }
 
-  public void setRead(long threadId) {
+  public List<MarkedMessageInfo> setRead(long threadId) {
     ContentValues contentValues = new ContentValues(1);
     contentValues.put(READ, 1);
 
     SQLiteDatabase db = databaseHelper.getWritableDatabase();
     db.update(TABLE_NAME, contentValues, ID_WHERE, new String[] {threadId+""});
 
-    DatabaseFactory.getSmsDatabase(context).setMessagesRead(threadId);
-    DatabaseFactory.getMmsDatabase(context).setMessagesRead(threadId);
+    final List<MarkedMessageInfo> smsRecords = DatabaseFactory.getSmsDatabase(context).setMessagesRead(threadId);
+    final List<MarkedMessageInfo> mmsRecords = DatabaseFactory.getMmsDatabase(context).setMessagesRead(threadId);
+
     notifyConversationListListeners();
+
+    return new LinkedList<MarkedMessageInfo>() {{
+      addAll(smsRecords);
+      addAll(mmsRecords);
+    }};
   }
 
   public void setUnread(long threadId) {
@@ -465,6 +476,18 @@ public class ThreadDatabase extends Database {
     return null;
   }
 
+  public void updateReadState(long threadId) {
+    int unreadCount = DatabaseFactory.getMmsSmsDatabase(context).getUnreadCount(threadId);
+
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(READ, unreadCount == 0);
+
+    databaseHelper.getWritableDatabase().update(TABLE_NAME, contentValues,ID_WHERE,
+                                                new String[] {String.valueOf(threadId)});
+
+    notifyConversationListListeners();
+  }
+
   public boolean update(long threadId, boolean unarchive) {
     MmsSmsDatabase mmsSmsDatabase = DatabaseFactory.getMmsSmsDatabase(context);
     long count                    = mmsSmsDatabase.getConversationCount(threadId);
@@ -484,7 +507,7 @@ public class ThreadDatabase extends Database {
       if (reader != null && (record = reader.getNext()) != null) {
         updateThread(threadId, count, record.getBody().getBody(), getAttachmentUriFor(record),
                      record.getTimestamp(), record.getDeliveryStatus(), record.getReceiptCount(),
-                     record.getType(), unarchive);
+                     record.getType(), unarchive, record.getExpiresIn());
         notifyConversationListListeners();
         return false;
       } else {
@@ -553,10 +576,12 @@ public class ThreadDatabase extends Database {
       boolean archived        = cursor.getInt(cursor.getColumnIndex(ThreadDatabase.ARCHIVED)) != 0;
       int status              = cursor.getInt(cursor.getColumnIndexOrThrow(ThreadDatabase.STATUS));
       int receiptCount        = cursor.getInt(cursor.getColumnIndexOrThrow(ThreadDatabase.RECEIPT_COUNT));
+      long expiresIn          = cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.EXPIRES_IN));
       Uri snippetUri          = getSnippetUri(cursor);
 
       return new ThreadRecord(context, body, snippetUri, recipients, date, count, read == 1,
-                              threadId, receiptCount, status, type, distributionType, archived);
+                              threadId, receiptCount, status, type, distributionType, archived,
+                              expiresIn);
     }
 
     private DisplayRecord.Body getPlaintextBody(Cursor cursor) {

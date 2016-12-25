@@ -42,7 +42,9 @@ import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * List adapter to display all contacts and their related information
@@ -63,7 +65,7 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
   private final TypedArray        drawables;
   private final ItemClickListener clickListener;
 
-  private final HashMap<Long, String> selectedContacts = new HashMap<>();
+  private final Set<String> selectedContacts = new HashSet<>();
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(@NonNull  final View              itemView,
@@ -122,12 +124,15 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
     String labelText   = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getContext().getResources(),
                                                                              numberType, label).toString();
 
+
+
+    @SuppressWarnings("ResourceType")
     int color = (contactType == ContactsDatabase.PUSH_TYPE) ? drawables.getColor(0, 0xa0000000) :
                 drawables.getColor(1, 0xff000000);
 
     viewHolder.getView().unbind();
     viewHolder.getView().set(id, contactType, name, number, labelText, color, multiSelect);
-    viewHolder.getView().setChecked(selectedContacts.containsKey(id));
+    viewHolder.getView().setChecked(selectedContacts.contains(number));
   }
 
   @Override
@@ -145,7 +150,7 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
     return getHeaderString(position);
   }
 
-  public Map<Long, String> getSelectedContacts() {
+  public Set<String> getSelectedContacts() {
     return selectedContacts;
   }
 

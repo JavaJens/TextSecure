@@ -5,6 +5,8 @@
   <string name="no">இல்லை</string>
   <string name="delete">நீக்கு</string>
   <string name="please_wait">தயவுசெய்து காத்திருங்கள்...</string>
+  <!--AbstractNotificationBuilder-->
+  <string name="AbstractNotificationBuilder_new_message">புதிய செய்தி</string>
   <!--ApplicationPreferencesActivity-->
   <string name="ApplicationPreferencesActivity_currently_s">தற்போது: %s</string>
   <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet"> நீங்கள் இன்னும் ஒரு கடவுச்சொல்லை அமைக்கவில்லை!</string>
@@ -37,16 +39,16 @@
   </plurals>
   <!--DraftDatabase-->
   <string name="DraftDatabase_Draft_image_snippet">(படம்)</string>
-  <string name="DraftDatabase_Draft_audio_snippet">(ஆடியோ) </string>
-  <string name="DraftDatabase_Draft_video_snippet">(வீடியோ)</string>
+  <string name="DraftDatabase_Draft_audio_snippet">( கேட்பொலி) </string>
+  <string name="DraftDatabase_Draft_video_snippet">(காணொளி)</string>
   <string name="DraftDatabase_Draft_location_snippet">(இடம்)</string>
   <!--AttchmentManager-->
   <string name="AttachmentManager_cant_open_media_selection">மீடியாவை தேர்வுசெய்யும் ஒரு பயன்பாட்டை கண்டுபிடிக்க முடியவில்லை.</string>
   <!--AttachmentTypeSelectorAdapter-->
   <string name="AttachmentTypeSelectorAdapter_camera">நிழற்படக்கருவி</string>
-  <string name="AttachmentTypeSelectorAdapter_picture">படம்</string>
-  <string name="AttachmentTypeSelectorAdapter_video">வீடியோ</string>
-  <string name="AttachmentTypeSelectorAdapter_audio">ஆடியோ</string>
+  <string name="AttachmentTypeSelectorAdapter_picture">புகைப்படம்</string>
+  <string name="AttachmentTypeSelectorAdapter_video">காணொளி</string>
+  <string name="AttachmentTypeSelectorAdapter_audio">கேட்பொலி</string>
   <string name="AttachmentTypeSelectorAdapter_contact">தொடர்பின் தகவல்</string>
   <!--AudioSlidePlayer-->
   <string name="AudioSlidePlayer_error_playing_audio">ஒலி இயக்குவதில் பிழை!</string>
@@ -55,12 +57,10 @@
   <!--CallScreen-->
   <string name="CallScreen_Incoming_call">உள்வரும் அழைப்பு</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">நீங்கள் இந்த தொடர்புபை 
-உறுதி செய்ய விரும்பலாம்</string>
   <string name="ConfirmIdentityDialog_accept">ஏற்க</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">செய்தி %s</string>
-  <string name="ContactsDatabase_signal_call_s">சமிக்ஞை அழைப்பு %s</string>
+  <string name="ContactsDatabase_signal_call_s"> சிக்னல் அழைப்பு %s</string>
   <!--ConversationItem-->
   <string name="ConversationItem_message_size_d_kb">செய்தி அளவு : %d KB</string>
   <string name="ConversationItem_expires_s">காலாவதி நேரம்: %s</string>
@@ -72,7 +72,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">பாதுகாப்பற்ற குறைவடைந்த வழிக்கு தொடவும்</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">மறையாக்கபடாத SMS-ஆக அனுப்பலாமா?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">மறையாக்கபடாத MMS-ஆக அனுப்பலாமா?</string>
-  <string name="ConversationItem_unable_to_open_media">இந்த ஊடகத்தை திறக்க முடியும் ஒரு பயன்பாட்டை கண்டுபிடிக்க முடியவில்லை.</string>
+  <string name="ConversationItem_unable_to_open_media">இந்த ஊடகத்தை திறக்க பயன்படும் ஒரு பயன்பாட்டை கண்டுபிடிக்க இயலவில்லை</string>
   <string name="ConversationItem_from_s">அனுப்பினர் %s</string>
   <string name="ConversationItem_to_s">பெறுனர் %s</string>
   <!--ConversationActivity-->
@@ -108,12 +108,12 @@
   <string name="ConversationActivity_lets_switch_to_signal">%1$s நாம் சமிக்ஞைக்கு மாறுவோம்</string>
   <string name="ConversationActivity_lets_use_this_to_chat">நாம் அரட்டையடிக்க இதை பயன்படுத்துவோம்: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">குழுவை விட்டு விலகுவதில் பிழை...</string>
+  <string name="ConversationActivity_mms_not_supported_title">எம்எம்எஸ் ஆதரவில்லை</string>
+  <string name="ConversationActivity_mms_not_supported_message">இச் செய்தியை அனுப்ப ஆதரவில்லை உங்கள் தொலைதொடர்பு சாதனம்  எம் எம் எஸ் ஆதரவில்லை</string>
   <string name="ConversationActivity_specify_recipient">தயவு செய்து ஒரு தொடர்பை தேர்ந்தெடு</string>
-  <string name="ConversationActivity_unblock_question">தடுப்புநீக்கு ?</string>
-  <string name="ConversationActivity_are_you_sure_you_want_to_unblock_this_contact">உறுதியாக இந்த தொடர்பை தடை நீக்கு ?</string>
   <string name="ConversationActivity_unblock">தடுப்புநீக்க</string>
   <string name="ConversationActivity_quick_camera_unavailable">புகைப்படக் கருவி கிடைப்பிலில்லை</string>
-  <string name="ConversationActivity_unable_to_record_audio">ஒலி பதிவுச் செய்ய முடியவில்லை!</string>
+  <string name="ConversationActivity_unable_to_record_audio">ஒலி பதிவுச் செய்ய  இயலவில்லை!</string>
   <string name="ConversationActivity_error_sending_voice_message">குரல் செய்தியை அனுப்புவதில் பிழை ...</string>
   <!--ConversationFragment-->
   <string name="ConversationFragment_message_details">செய்தி விவரங்கள்</string>
@@ -121,15 +121,16 @@
   <string name="ConversationFragment_sender_s_transport_s_sent_s_received_s">அனுப்புநர்: %1$s\nபோக்குவரத்து: %2$s\nஅனுப்பியது: %3$s\nபெற்றது: %4$s</string>
   <plurals name="ConversationFragment_delete_selected_messages">
     <item quantity="one">தேர்ந்தெடுக்கப்பட்ட செய்தியை நீக்க ?</item>
-    <item quantity="other">தேர்ந்தெடுக்கப்பட்ட செய்தியைகளை நீக்க ?</item>
+    <item quantity="other">தேர்ந்தெடுக்கப்பட்ட செய்திகளை நீக்க  வேண்டுமா?</item>
   </plurals>
   <plurals name="ConversationFragment_this_will_permanently_delete_all_n_selected_messages">
     <item quantity="one">தேர்ந்தெடுக்கப்பட்ட செய்தியைகளை நிரந்தரமாக நீக்கீவிடும்.</item>
     <item quantity="other">தேர்ந்தெடுக்கப்பட்ட %1$d செய்தியைகளை நிரந்தரமாக நீக்கீவிடும்.</item>
   </plurals>
   <string name="ConversationFragment_save_to_sd_card">சேமிப்பில் சேர்க்கவேண்டுமா?</string>
-  <string name="ConversationFragment_success_exclamation">வெற்றி!</string>
+  <string name="ConversationFragment_file_saved_successfully">கோப்பு சேமிக்கபட்டது</string>
   <string name="ConversationFragment_unable_to_write_to_sd_card_exclamation">சேமிப்பில் சேர்க இயலவில்லை!</string>
+  <string name="ConversationFragment_collecting_attahments">இணைப்பு சேமிக்கபடுகிறது</string>
   <string name="ConversationFragment_pending">நிலுவையில் உள்ளது...</string>
   <string name="ConversationFragment_push">தரவு (சமிக்ஞை)</string>
   <string name="ConversationFragment_mms">MMS</string>
@@ -141,7 +142,7 @@
   <!--ConversationListFragment-->
   <plurals name="ConversationListFragment_delete_selected_conversations">
     <item quantity="one">தேர்ந்தெடுக்கப்பட்ட உரையாடலை அழி ?</item>
-    <item quantity="other">தேர்ந்தெடுக்கப்பட்ட உரையாடலைகளை அழி ?</item>
+    <item quantity="other">தேர்ந்தெடுக்கப்பட்ட உரையாடலைகளை  நீக்குக ?</item>
   </plurals>
   <string name="ConversationListFragment_deleting">நீக்கப்படுகிறது</string>
   <string name="ConversationListFragment_deleting_selected_conversations">தேர்ந்தெடுக்கப்பட்ட உரையாடலைகள் நீக்கப்படுகிறது ...</string>
@@ -163,7 +164,6 @@
   <string name="CustomDefaultPreference_using_default">பயன்படுத்தப்படும் இயல்புநிலை: %s</string>
   <string name="CustomDefaultPreference_none">எதுவும் இல்லை</string>
   <!--DateUtils-->
-  <string name="DateUtils_now">இப்போது</string>
   <string name="DateUtils_minutes_ago">%d நிமிடம்</string>
   <!--DeviceListActivity-->
   <string name="DeviceListActivity_unlink_s">\'%s\' துண்டி?</string>
@@ -182,13 +182,15 @@
   <!--ExperienceUpgradeActivity-->
   <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">சமிக்ஞைக்கு வரவேற்கிறது.</string>
   <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">சமிக்ஞைக்கு வரவேற்கிறது!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure தற்ப்போது சமிக்ஞை</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextLibre தற்ப்போது சமிக்ஞை</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">ஏற்றுமதி செய்</string>
   <string name="ExportFragment_cancel">ரத்து</string>
   <string name="ExportFragment_exporting">ஏற்றுமதி செய்யப்படுகிறது</string>
-  <string name="ExportFragment_success">வெற்றி!</string>
   <!--GcmRefreshJob-->
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Google Play சேவை உடன் TextSecure-ஐ பதிவு செய்ய இயலவில்லை. இணையதளம் வழியாக தொடர்புடையாடல் முடக்கப்பட்டுள்ளது, TextSecure அமைப்புகள் மெனுவில் மறுபதிவுச்செய்ய முயற்சிக்கவும்</string>
+  <!--GiphyActivity-->
+  <!--GiphyFragmentPageAdapter-->
   <!--GroupCreateActivity-->
   <string name="GroupCreateActivity_actionbar_title">புதிய குழு</string>
   <string name="GroupCreateActivity_actionbar_update_title">குழுவை மேம்படுத்து</string>
@@ -229,7 +231,6 @@
   <!--InputPanel-->
   <!--InviteActivity-->
   <string name="InviteActivity_share">பகிர்</string>
-  <string name="InviteActivity_send_sms">குறுஞ்செய்தியை அனுப்பு</string>
   <string name="InviteActivity_cancel">இரத்து</string>
   <string name="InviteActivity_sending">அனுப்படுகிறது...</string>
   <string name="InviteActivity_heart_content_description">இதயம்</string>
@@ -241,7 +242,6 @@
   <string name="KeyScanningActivity_install_barcode_Scanner">பார்கோடு ஸ்கேனர் நிறுவலாமா?</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">அனுப்ப முடியவில்லை</string>
-  <string name="MessageDetailsRecipient_new_identity">புதிய அடையாளம்</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_storing_mms">MMS  சேமிப்பதில் பிழை!</string>
   <string name="MmsDownloader_error_connecting_to_mms_provider">MMS சேவையுடன் இணைவதில் பிழை...</string>
@@ -278,20 +278,23 @@
   <string name="DeviceProvisioningActivity_content_progress_no_device">எந்த சாதனமும் காணப்படவில்லை.</string>
   <string name="DeviceProvisioningActivity_content_progress_network_error">இணையத்தில் பிழை.</string>
   <string name="DeviceProvisioningActivity_content_progress_key_error">QR குறியீடு செல்லாது.</string>
+  <!--ExpirationDialog-->
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">கடவுச்சொல்லை உள்ளிடவும். </string>
   <string name="PassphrasePromptActivity_ok_button_content_description">கடவுச்சொல்லை சமர்ப்பிக்க</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">தவறான கடவுச்சொல்!</string>
   <!--PlayServicesProblemFragment-->
   <!--RatingManager-->
+  <string name="RatingManager_rate_this_app">இச் செயலியை மதிப்புரை செய்க</string>
+  <string name="RatingManager_if_you_enjoy_using_this_app_please_take_a_moment">இச் செயலியின்  பயன்பாட்டை விரும்பினால் தயை கூர்ந்து  எங்கள் செயலியை   மதிப்புரை செய்க    </string>
   <string name="RatingManager_later">பிறகு</string>
   <!--RecipientPreferencesActivity-->
   <string name="RecipientPreferenceActivity_block">தடு</string>
-  <string name="RecipientPreferenceActivity_are_you_sure_you_want_to_unblock_this_contact">உறுதியாக இந்த தொடர்பை தடை நீக்கு ?</string>
   <string name="RecipientPreferenceActivity_unblock">தடுப்புநீக்க</string>
   <string name="RecipientPreferenceActivity_enabled">செயல்படுத்தப்பட்டது</string>
   <string name="RecipientPreferenceActivity_disabled">முடக்கப்பட்டது</string>
   <!--RedPhone-->
+  <string name="RedPhone_answering">பதிலளிக்கபடுகிறது </string>
   <string name="RedPhone_dialing">அழைத்தல்</string>
   <string name="RedPhone_ringing">அடிக்கிறது</string>
   <string name="RedPhone_busy">மும்முரமாக</string>
@@ -343,6 +346,7 @@
   <string name="RegistrationProgressActivity_too_many_requests">மிக அதிக கோரிக்கைகள்!</string>
   <string name="RegistrationProgressActivity_youve_already_requested_a_voice_call">நீங்கள் ஏற்கனவே ஒரு அழைப்பை அண்மையில் கோரிதீர்கள். நீங்கள் 20 நிமிடங்களுக்கு பின் மற்றொன்றை கோரலாம்.</string>
   <string name="RegistrationProgressActivity_registration_conflict">பதிசெய்வதில் முரண்பாடு</string>
+  <string name="RegistrationProgressActivity_this_number_is_already_registered_on_a_different"> இந்த எண் ஏற்கனவே வேறு ஒரு TextLibre வலைதளத்தில் (CyanogenMod?) பதிவாகியுள்ளது . நீங்கள் இங்கே பதிவு செய்யும்முன் அங்கே பதிவுநீக்கம் செய்யவேண்டும்.</string>
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">பதிவு முழுமையுற்றது</string>
   <string name="RegistrationService_registration_error">பதிவுசெய்தலில்  பிழை</string>
@@ -355,7 +359,6 @@
  செய்தி பெறப்பட்டது!</string>
   <string name="SmsMessageRecord_received_key_exchange_message_for_invalid_protocol_version">
 செல்லுபடியாகாத நெறிமுறைக்கு சாவிபரிமாற்ற செய்தி பெறப்பட்டது.</string>
-  <string name="SmsMessageRecord_received_updated_but_unknown_identity_information">மேம்படுத்தப்பட்ட ஆனால் தெரியாத அடையாளத்தகவல் பெறப்பட்டது. அடையாளத்தை சரிபார்க்க தொடவும்.</string>
   <string name="SmsMessageRecord_duplicate_message">நகல் செய்தி.</string>
   <!--ThreadRecord-->
   <string name="ThreadRecord_left_the_group">குழுவை விட்டு விலகினார்...</string>
@@ -365,20 +368,6 @@
   <string name="ThreadRecord_missed_call">தவறிய அழைப்பு</string>
   <string name="ThreadRecord_media_message">பல்லூடகச் செய்தி</string>
   <!--VerifyIdentityActivity-->
-  <string name="VerifyIdentityActivity_you_do_not_have_an_identity_key">உங்களிடம் ஒரு அடையாளச்சாவி இல்லை.</string>
-  <string name="VerifyIdentityActivity_recipient_has_no_identity_key">பெறுநரிடம் ஒரு அடையாளச்சாவி இல்லை.</string>
-  <string name="VerifyIdentityActivity_recipient_has_no_identity_key_exclamation">பெறுநரிடம்  ஒரு அடையாளச்சாவி  இல்லை!</string>
-  <string name="VerifyIdentityActivity_warning_the_scanned_key_does_not_match_please_check_the_fingerprint_text_carefully">எச்சரிக்கை, ஸ்கேன் செய்யப்பட்ட சாவி பொருந்தவில்லை! கவனமாக டிஜிட்டல் கைரேகையை சரிபார்க்கவும்.</string>
-  <string name="VerifyIdentityActivity_not_verified_exclamation">சரிபார்க்கப்படவில்லை!</string>
-  <string name="VerifyIdentityActivity_their_key_is_correct_it_is_also_necessary_to_verify_your_key_with_them_as_well">அவர்களின் சாவி சரியாக இருக்கிறது. அதுபோல அவர்களும் உங்கள் சாவியை சரிபார்ப்பது அவசியம்.</string>
-  <string name="VerifyIdentityActivity_verified_exclamation">சரிபார்க்கப்பட்டது!</string>
-  <string name="VerifyIdentityActivity_you_don_t_have_an_identity_key_exclamation">உங்களிடம்  ஒரு அடையாளச்சாவி இல்லை!</string>
-  <!--ViewIdentityActivity-->
-  <string name="ViewIdentityActivity_you_do_not_have_an_identity_key">உங்களிடம்  ஒரு அடையாளச்சாவி இல்லை.</string>
-  <string name="ViewIdentityActivity_warning_the_scanned_key_does_not_match_exclamation">எச்சரிக்கை, ஸ்கேன் செய்யப்பட்ட சாவி பொருந்தவில்லை!</string>
-  <string name="ViewIdentityActivity_not_verified_exclamation">சரிபார்க்கப்படவில்லை! </string>
-  <string name="ViewIdentityActivity_the_scanned_key_matches_exclamation">ஸ்கேன் செய்யப்பட்ட சாவி பொருந்திய்து!</string>
-  <string name="ViewIdentityActivity_verified_exclamation">சரிபார்க்கப்பட்டது!</string>
   <!--KeyExchangeInitiator-->
   <string name="KeyExchangeInitiator_initiate_despite_existing_request_question">பழைய கோரிக்கை இருப்பினும் தொடங்கலாமா?</string>
   <string name="KeyExchangeInitiator_send">அனுப்பு</string>
@@ -450,6 +439,7 @@
   <string name="contact_selection_recent_activity__no_recent_calls">சமீபத்திய அழைப்புகள் இல்லை.</string>
   <!--conversation_title_view-->
   <!--conversation_activity-->
+  <string name="conversation_activity__type_message_push">சிக்னல் தகவல் அனுப்புக </string>
   <string name="conversation_activity__type_message_sms_insecure">பாதுகாப்பில்லாத SMS அனுப்பு </string>
   <string name="conversation_activity__type_message_mms_insecure">பாதுகாப்பில்லாத MMS அனுப்பு </string>
   <string name="conversation_activity__send">அனுப்பு</string>
@@ -473,6 +463,7 @@
   <string name="conversation_item_received__download">பதிவிறக்கம்</string>
   <string name="conversation_item_received__contact_photo_description">தொடர்பின் புகைப்படம்</string>
   <string name="conversation_item_received__downloading">பதிவிறக்கப்படுகிறது</string>
+  <!--audio_view-->
   <!--conversation_fragment_cab-->
   <string name="conversation_fragment_cab__batch_selection_mode">தொகுப்பாய் தேர்வு செய்யப்பட்டது</string>
   <string name="conversation_fragment_cab__batch_selection_amount">%s தேர்ந்தெடுக்கப்பட்டது</string>
@@ -486,6 +477,10 @@
   <string name="device_list_fragment__link_new_device">புதுக் கருவியை இனைக்க</string>
   <!--experience_upgrade_activity-->
   <string name="experience_upgrade_activity__continue">தொடர்</string>
+  <!--expiration-->
+  <string name="expiration_off">அணை</string>
+  <!--giphy_activity-->
+  <!--giphy_fragment-->
   <!--log_submit_activity-->
   <string name="log_submit_activity__thanks">உங்கள் உதவிக்கு நன்றி!</string>
   <string name="log_submit_activity__submitting">சமர்பிப்பிக்கப்படுகிறது</string>
@@ -571,13 +566,11 @@
   <string name="registration_progress_activity__generating_keys">சாவிகள் உருவாக்கப்படுகிறது...</string>
   <string name="registration_progress_activity__alert">எச்சரிக்கை</string>
   <string name="registration_progress_activity__telephone">தொலைபேசி</string>
-  <string name="registration_progress_activity__check">பார்க்க</string>
+  <string name="registration_progress_activity__check">சரி பார்க்க</string>
   <!--recipients_panel-->
   <string name="recipients_panel__to"><small>ஒரு பெயர் அல்லது எண்ணை உள்ளிடவும்</small></string>
-  <string name="recipients_panel__add_member">குழுஉறுப்பினர் சேர்க்</string>
-  <!--verify_identity_activity-->
-  <string name="verify_identity_activity__their_identity_they_read">அவர்களின் அடையாளம் (அவர்கள்  படிக்க):</string>
-  <string name="verify_identity_activity__your_identity_you_read">உங்களின் அடையாளம் (நீங்கள் படிக்க):</string>
+  <!--verify_display_fragment-->
+  <!--verify_identity-->
   <!--message_details_header-->
   <string name="message_details_header__issues_need_your_attention">சில பிரச்சினைகளுக்கு உங்கள் கவனம் தேவைப்படுகிறது.</string>
   <string name="message_details_header__sent">அனுப்பபட்டது</string>
@@ -590,9 +583,8 @@
   <string name="AndroidManifest__create_passphrase">கடவுச்சொல்லை உருவாக்கு</string>
   <string name="AndroidManifest__enter_passphrase">கடவுச்சொல்லை உள்ளிடவும். </string>
   <string name="AndroidManifest__select_contacts">தொடர்புகளை தேர்ந்தெடு</string>
-  <string name="AndroidManifest__public_identity_key">பொது அடையாளச் சாவி</string>
+  <string name="AndroidManifest__signal_detected">சிக்னல் செயலி உணரப்பட்டது</string>
   <string name="AndroidManifest__change_passphrase">கடவுச்சொல்லை மாற்று</string>
-  <string name="AndroidManifest__verify_identity">அடையாளத்தை சரிபார்</string>
   <string name="AndroidManifest__media_overview">அனைத்து படங்கள்</string>
   <string name="AndroidManifest__media_overview_named">%1$s உடன் உள்ள அனைத்து படங்கள்</string>
   <string name="AndroidManifest__message_details">செய்தி விவரங்கள்</string>
@@ -679,7 +671,6 @@
   <string name="preferences__request_a_delivery_report_for_each_sms_message_you_send">நீங்கள் அனுப்பும் அனைத்து SMS-களுக்கும் விநியோக அறிக்கைகளை வேண்டவும்</string>
   <string name="preferences__delete_old_messages">பழைய செய்திகளை நீக்க</string>
   <string name="preferences__conversation_length_limit">உரையாடலின் நீள அளவு</string>
-  <string name="preferences__devices">கருவிகள்</string>
   <string name="preferences__light_theme">வெளிச்சமிக்க</string>
   <string name="preferences__dark_theme">இருள்கொண்ட </string>
   <string name="preferences__appearance">தோற்றம்</string>
@@ -713,6 +704,8 @@
   <string name="conversation_context__menu_resend_message">செய்தியை மீண்டும் அனுப்பு</string>
   <!--conversation_context_image-->
   <string name="conversation_context_image__save_attachment">இணைப்பைச் சேமி</string>
+  <!--conversation_expiring_off-->
+  <!--conversation_expiring_on-->
   <!--conversation_insecure-->
   <string name="conversation_insecure__invite">அழை</string>
   <!--conversation_insecure_no_push-->
@@ -729,8 +722,6 @@
   <!--conversation_list_fragment-->
   <string name="conversation_list_fragment__fab_content_description">புதிய உரையாடல்</string>
   <!--conversation_secure_verified-->
-  <string name="conversation_secure_verified__menu_security">பாதுகாப்பு</string>
-  <string name="conversation_secure_verified__menu_verify_identity">அடையாளத்தை சரிபார்</string>
   <!--conversation_muted-->
   <string name="conversation_muted__unmute">ஒலித்தடையை நீக்கு</string>
   <!--conversation_unmuted-->
@@ -757,6 +748,7 @@
   <string name="text_secure_normal__menu_clear_passphrase">பூட்டு</string>
   <string name="text_secure_normal__mark_all_as_read">அனைத்தையும் படித்தாக குறியிடு</string>
   <string name="text_secure_normal__help">உதவி</string>
+  <!--verify_display_fragment-->
   <!--reminder_header-->
   <string name="reminder_header_expired_build_button">புதுப்பிக்கப்படுத்துதல்</string>
   <string name="reminder_header_sms_default_button">பொறுத்து</string>

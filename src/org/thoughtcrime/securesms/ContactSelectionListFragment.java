@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Fragment for selecting a one or more contacts from a list.
@@ -62,6 +63,7 @@ public class ContactSelectionListFragment extends    Fragment
   public final static String DISPLAY_MODE = "display_mode";
   public final static String MULTI_SELECT = "multi_select";
   public final static String REFRESHABLE  = "refreshable";
+  public final static String PRESELECTION = "preselection"; // array list of phone numbers
 
   public final static int DISPLAY_MODE_ALL        = ContactsCursorLoader.MODE_ALL;
   public final static int DISPLAY_MODE_PUSH_ONLY  = ContactsCursorLoader.MODE_PUSH_ONLY;
@@ -69,7 +71,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   private TextView emptyText;
 
-  private Map<Long, String>         selectedContacts;
+  private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
   private SwipeRefreshLayout        swipeRefresh;
   private String                    cursorFilter;
@@ -111,7 +113,7 @@ public class ContactSelectionListFragment extends    Fragment
   public @NonNull List<String> getSelectedContacts() {
     List<String> selected = new LinkedList<>();
     if (selectedContacts != null) {
-      selected.addAll(selectedContacts.values());
+      selected.addAll(selectedContacts);
     }
 
     return selected;
@@ -127,6 +129,11 @@ public class ContactSelectionListFragment extends    Fragment
                                                                           new ListClickListener(),
                                                                           isMulti());
     selectedContacts = adapter.getSelectedContacts();
+
+    if(getActivity().getIntent().hasExtra(PRESELECTION)) {
+      selectedContacts.addAll(getActivity().getIntent().getStringArrayListExtra(PRESELECTION));
+    }
+
     recyclerView.setAdapter(adapter);
     recyclerView.addItemDecoration(new StickyHeaderDecoration(adapter, true));
     this.getLoaderManager().initLoader(0, null, this);
@@ -162,7 +169,9 @@ public class ContactSelectionListFragment extends    Fragment
   public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
     ((CursorRecyclerViewAdapter) recyclerView.getAdapter()).changeCursor(data);
     emptyText.setText(R.string.contact_selection_group_activity__no_contacts);
-    if (recyclerView.getAdapter().getItemCount() > 20) {
+    boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
+    recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
+    if (useFastScroller) {
       fastScroller.setVisibility(View.VISIBLE);
       fastScroller.setRecyclerView(recyclerView);
     }
@@ -178,12 +187,12 @@ public class ContactSelectionListFragment extends    Fragment
     @Override
     public void onItemClick(ContactSelectionListItem contact) {
 
-      if (!isMulti() || !selectedContacts.containsKey(contact.getContactId())) {
-        selectedContacts.put(contact.getContactId(), contact.getNumber());
+      if (!isMulti() || !selectedContacts.contains(contact.getNumber())) {
+        selectedContacts.add(contact.getNumber());
         contact.setChecked(true);
         if (onContactSelectedListener != null) onContactSelectedListener.onContactSelected(contact.getNumber());
       } else {
-        selectedContacts.remove(contact.getContactId());
+        selectedContacts.remove(contact.getNumber());
         contact.setChecked(false);
         if (onContactSelectedListener != null) onContactSelectedListener.onContactDeselected(contact.getNumber());
       }

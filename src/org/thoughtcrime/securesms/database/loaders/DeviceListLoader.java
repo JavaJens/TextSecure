@@ -1,12 +1,12 @@
 package org.thoughtcrime.securesms.database.loaders;
 
 import android.content.Context;
-import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
-import org.whispersystems.textsecure.api.TextSecureAccountManager;
-import org.whispersystems.textsecure.api.messages.multidevice.DeviceInfo;
-import org.whispersystems.textsecure.api.push.TextSecureAddress;
+import org.thoughtcrime.securesms.util.AsyncLoader;
+import org.whispersystems.signalservice.api.SignalServiceAccountManager;
+import org.whispersystems.signalservice.api.messages.multidevice.DeviceInfo;
+import org.whispersystems.signalservice.api.push.SignalServiceAddress;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -14,13 +14,13 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class DeviceListLoader extends AsyncTaskLoader<List<DeviceInfo>> {
+public class DeviceListLoader extends AsyncLoader<List<DeviceInfo>> {
 
   private static final String TAG = DeviceListLoader.class.getSimpleName();
 
-  private final TextSecureAccountManager accountManager;
+  private final SignalServiceAccountManager accountManager;
 
-  public DeviceListLoader(Context context, TextSecureAccountManager accountManager) {
+  public DeviceListLoader(Context context, SignalServiceAccountManager accountManager) {
     super(context);
     this.accountManager = accountManager;
   }
@@ -32,7 +32,7 @@ public class DeviceListLoader extends AsyncTaskLoader<List<DeviceInfo>> {
       Iterator<DeviceInfo> iterator = devices.iterator();
 
       while (iterator.hasNext()) {
-        if ((iterator.next().getId() == TextSecureAddress.DEFAULT_DEVICE_ID)) {
+        if ((iterator.next().getId() == SignalServiceAddress.DEFAULT_DEVICE_ID)) {
           iterator.remove();
         }
       }

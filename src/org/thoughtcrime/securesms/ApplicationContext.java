@@ -27,19 +27,20 @@ import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.dependencies.AxolotlStorageModule;
 import org.thoughtcrime.securesms.dependencies.InjectableType;
 import org.thoughtcrime.securesms.dependencies.RedPhoneCommunicationModule;
-import org.thoughtcrime.securesms.dependencies.TextSecureCommunicationModule;
+import org.thoughtcrime.securesms.dependencies.SignalCommunicationModule;
+import org.thoughtcrime.securesms.jobs.CreateSignedPreKeyJob;
 import org.thoughtcrime.securesms.jobs.GcmRefreshJob;
-import org.thoughtcrime.securesms.jobs.RefreshAttributesJob;
 import org.thoughtcrime.securesms.jobs.persistence.EncryptingJobSerializer;
 import org.thoughtcrime.securesms.jobs.requirements.MasterSecretRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.MediaNetworkRequirementProvider;
 import org.thoughtcrime.securesms.jobs.requirements.ServiceRequirementProvider;
+import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.whispersystems.jobqueue.JobManager;
 import org.whispersystems.jobqueue.dependencies.DependencyInjector;
 import org.whispersystems.jobqueue.requirements.NetworkRequirementProvider;
-import org.whispersystems.libaxolotl.logging.AxolotlLoggerProvider;
-import org.whispersystems.libaxolotl.util.AndroidAxolotlLogger;
+import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
+import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.service.MessageRetrievalService;
 
 import dagger.ObjectGraph;
@@ -54,8 +55,9 @@ import dagger.ObjectGraph;
  */
 public class ApplicationContext extends Application implements DependencyInjector {
 
-  private JobManager  jobManager;
-  private ObjectGraph objectGraph;
+  private ExpiringMessageManager expiringMessageManager;
+  private JobManager             jobManager;
+  private ObjectGraph            objectGraph;
 
   private MediaNetworkRequirementProvider mediaNetworkRequirementProvider = new MediaNetworkRequirementProvider();
 
@@ -71,7 +73,9 @@ public class ApplicationContext extends Application implements DependencyInjecto
     initializeLogging();
     initializeDependencyInjection();
     initializeJobManager();
+    initializeExpiringMessageManager();
     initializeGcmCheck();
+    initializeSignedPreKeyCheck();
   }
 
   @Override
@@ -85,9 +89,12 @@ public class ApplicationContext extends Application implements DependencyInjecto
     return jobManager;
   }
 
+  public ExpiringMessageManager getExpiringMessageManager() {
+    return expiringMessageManager;
+  }
+
   private void initializeDeveloperBuild() {
     if (BuildConfig.DEV_BUILD) {
-//      LeakCanary.install(this);
       StrictMode.setThreadPolicy(new ThreadPolicy.Builder().detectAll()
                                                            .penaltyLog()
                                                            .build());
@@ -100,7 +107,7 @@ public class ApplicationContext extends Application implements DependencyInjecto
   }
 
   private void initializeLogging() {
-    AxolotlLoggerProvider.setProvider(new AndroidAxolotlLogger());
+    SignalProtocolLoggerProvider.setProvider(new AndroidSignalProtocolLogger());
   }
 
   private void initializeJobManager() {
@@ -121,7 +128,7 @@ public class ApplicationContext extends Application implements DependencyInjecto
   }
 
   private void initializeDependencyInjection() {
-    this.objectGraph = ObjectGraph.create(new TextSecureCommunicationModule(this),
+    this.objectGraph = ObjectGraph.create(new SignalCommunicationModule(this),
                                           new RedPhoneCommunicationModule(this),
                                           new AxolotlStorageModule(this));
   }
@@ -136,6 +143,16 @@ public class ApplicationContext extends Application implements DependencyInjecto
     {
       startService(new Intent(this, MessageRetrievalService.class));
     }
+  }
+
+  private void initializeSignedPreKeyCheck() {
+    if (!TextSecurePreferences.isSignedPreKeyRegistered(this)) {
+      jobManager.add(new CreateSignedPreKeyJob(this));
+    }
+  }
+
+  private void initializeExpiringMessageManager() {
+    this.expiringMessageManager = new ExpiringMessageManager(this);
   }
 
 }
